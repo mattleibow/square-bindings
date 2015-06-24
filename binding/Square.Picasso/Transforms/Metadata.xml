@@ -1,0 +1,39 @@
+<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+
+  <!-- OkHttp -->
+  <attr path="/api/package[@name='com.squareup.okhttp']" name="managedName">Square.OkHttp</attr>
+  <remove-node path="/api/package[starts-with(@name, 'com.squareup.okhttp.internal')]" />
+  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='Cache.CacheRequestImpl']" />
+  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='Cache.CacheResponseBody']" />
+  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='Cache.Entry']" />
+  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='Call.ApplicationInterceptorChain']" />
+  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='Call.AsyncCall']" />
+  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='MultipartBuilder.MultipartRequestBody']" />
+  <!-- inheritance fixes -->
+  <attr path="/api/package[@name='com.squareup.okhttp']/class[@name='OkHttpClient']/method[@name='clone']" name="managedReturn">Java.Lang.Object</attr>
+  <!-- temporary errors as okio is not yet bound -->
+  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='RequestBody']/method[@name='create' and count(parameter)=2 and parameter[1][@type='com.squareup.okhttp.MediaType'] and parameter[2][@type='okio.ByteString']]" />
+  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='RequestBody']/method[@name='writeTo' and count(parameter)=1 and parameter[1][@type='okio.BufferedSink']]" />
+  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='ResponseBody']/method[@name='create' and count(parameter)=3 and parameter[1][@type='com.squareup.okhttp.MediaType'] and parameter[2][@type='long'] and parameter[3][@type='okio.BufferedSource']]" />
+  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='ResponseBody']/method[@name='source']" />
+
+  <attr path="/api/package[@name='com.squareup.picasso']" name="managedName">Square.Picasso</attr>
+  <!-- deprecated -->
+  <remove-node path="/api/package[@name='com.squareup.picasso']/class[@name='Downloader.Response']/method[@name='getBitmap']" />
+  <remove-node path="/api/package[@name='com.squareup.picasso']/class[@name='Picasso.CleanupThread']" />
+  <remove-node path="/api/package[@name='com.squareup.picasso']/class[@name='Picasso']/method[@name='isDebugging']" />
+  <remove-node path="/api/package[@name='com.squareup.picasso']/class[@name='Picasso']/method[@name='setDebugging']" />
+  <remove-node path="/api/package[@name='com.squareup.picasso']/class[@name='Picasso.Builder']/method[@name='debugging']" />
+  <remove-node path="/api/package[@name='com.squareup.picasso']/class[@name='UrlConnectionDownloader.ResponseCacheIcs']" />
+  <!-- property names -->
+  <attr path="/api/package[@name='com.squareup.picasso']/class[@name='Picasso']/method[@name='areIndicatorsEnabled']" name="managedName">GetIndicatorsEnabled</attr>
+  <attr path="/api/package[@name='com.squareup.picasso']/interface[@name='Transformation']/method[@name='key']" name="managedName">GetKey</attr>
+
+</metadata>
