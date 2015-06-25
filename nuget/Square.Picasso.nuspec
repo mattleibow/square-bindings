@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Square.Picasso</id>
+        <version>2.5.2.0</version>
+        <title>Picasso</title>
+        <authors>.NET Development Addict</authors>
+        <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/mattleibow/square-bindings</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.okhttp_256x256.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A powerful image downloading and caching library for Android</description>
+        <summary>A powerful image downloading and caching library for Android.</summary>
+        <releaseNotes></releaseNotes>
+        <copyright>Square</copyright>
+        <tags></tags>
+        <dependencies>
+            <dependency id="Square.OkIO" version="1.5.0" />
+            <dependency id="Square.OkHttp" version="2.4.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\README.md" target="README.md" />
+        <file src="..\LICENSE" target="LICENSE" />
+        
+        <file src="..\binding\Square.Picasso\bin\Release\Square.Picasso.dll" target="lib\MonoAndroid\Square.Picasso.dll" />
+    </files>
+</package>
