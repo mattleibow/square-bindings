@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BC45EFFF-5CEE-4C2D-BBE8-542DBE8E7940}</ProjectGuid>
+    <ProjectGuid>{0ADBD990-1A61-4D2A-B1CD-E46AC63348BE}</ProjectGuid>
     <ProjectTypeGuids>{10368E6C-D01B-4462-8E8B-01FC667A7035};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Square.Picasso</RootNamespace>
-    <AssemblyName>Square.Picasso</AssemblyName>
+    <RootNamespace>Square.OkIO</RootNamespace>
+    <AssemblyName>Square.OkIO</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
   </PropertyGroup>
@@ -37,8 +37,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RequestCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <TransformFile Include="Transforms\Metadata.xml" />
@@ -46,13 +46,7 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedJar Include="Jars\picasso-2.5.2.jar" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Square.OkHttp\Square.OkHttp.csproj">
-      <Project>{3877e12a-004d-47b8-a978-d58adfdb5b60}</Project>
-      <Name>Square.OkHttp</Name>
-    </ProjectReference>
+    <EmbeddedJar Include="Jars\okio-1.5.0.jar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

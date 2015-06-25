@@ -1,0 +1,25 @@
+<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+
+  <attr path="/api/package[@name='okio']" name="managedName">Square.OkIO</attr>
+
+  <attr path="/api/package[@name='okio']/class[@name='Buffer']" name="managedName">OkBuffer</attr>
+  <attr path="/api/package[@name='okio']/class[@name='Okio']" name="managedName">OkIO</attr>
+
+  <!-- inheritance fixes -->
+  <attr path="/api/package[@name='okio']/class[@name='ByteString']/method[@name='compareTo']/parameter[1]" name="managedType">Java.Lang.Object</attr>
+
+  <!-- methods to poroperties -->
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='buffer']" name="managedName">GetBuffer</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='buffer']" name="managedName">GetBuffer</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='outputStream']" name="managedName">GetOutputStream</attr>
+  <attr path="/api/package[@name='okio']/class[@name='Buffer']/method[@name='buffer']" name="managedName">GetBuffer</attr>
+  <attr path="/api/package[@name='okio']/class[@name='Buffer']/method[@name='outputStream']" name="managedName">GetOutputStream</attr>
+
+</metadata>

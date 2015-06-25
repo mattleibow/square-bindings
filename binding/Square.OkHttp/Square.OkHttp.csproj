@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BC45EFFF-5CEE-4C2D-BBE8-542DBE8E7940}</ProjectGuid>
+    <ProjectGuid>{3877E12A-004D-47B8-A978-D58ADFDB5B60}</ProjectGuid>
     <ProjectTypeGuids>{10368E6C-D01B-4462-8E8B-01FC667A7035};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Square.Picasso</RootNamespace>
-    <AssemblyName>Square.Picasso</AssemblyName>
+    <RootNamespace>Square.OkHttp</RootNamespace>
+    <AssemblyName>Square.OkHttp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
   </PropertyGroup>
@@ -37,7 +37,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RequestCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -46,12 +45,12 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedJar Include="Jars\picasso-2.5.2.jar" />
+    <EmbeddedJar Include="Jars\okhttp-2.4.0.jar" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Square.OkHttp\Square.OkHttp.csproj">
-      <Project>{3877e12a-004d-47b8-a978-d58adfdb5b60}</Project>
-      <Name>Square.OkHttp</Name>
+    <ProjectReference Include="..\Square.OkIO\Square.OkIO.csproj">
+      <Project>{0adbd990-1a61-4d2a-b1cd-e46ac63348be}</Project>
+      <Name>Square.OkIO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
