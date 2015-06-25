@@ -53,6 +53,10 @@
       <Project>{3877e12a-004d-47b8-a978-d58adfdb5b60}</Project>
       <Name>Square.OkHttp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Square.OkIO\Square.OkIO.csproj">
+      <Project>{0adbd990-1a61-4d2a-b1cd-e46ac63348be}</Project>
+      <Name>Square.OkIO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
