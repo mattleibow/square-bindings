@@ -1,0 +1,42 @@
+%YAML 1.2
+---
+name: Picasso
+id: square.picasso
+publisher: Xamarin Inc
+publisher-url: http://xamarin.com
+summary: A powerful image downloading and caching library for Android.
+version: 2.5.2.1
+src-url: https://github.com/mattleibow/square-bindings
+
+details: Details.md
+license: License.md
+getting-started: GettingStarted.md
+
+is_shell: true
+no_build: true
+packages:
+  android: 
+    - Square.OkIO, Version=1.5.0.0
+    - Square.OkHttp, Version=2.4.0.1
+    - Square.Picasso, Version=2.5.2.1
+local-nuget-repo: ../../
+
+screenshots: 
+  screenshot.png
+icons: 
+  - ../../icons/square.picasso_128x128.png
+  - ../../icons/square.picasso_512x512.png
+
+samples: 
+  - name: Android Sample
+    path: ../../sample/PicassoSample.sln
+    removeProjects:
+      - Square.Picasso
+      - Square.OkHttp
+      - Square.OkIO
+    installNuGets:
+      - project: PicassoSample
+        packages:
+          - Square.Picasso
+          - Square.OkHttp
+          - Square.OkIO
