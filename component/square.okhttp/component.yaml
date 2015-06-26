@@ -1,0 +1,37 @@
+%YAML 1.2
+---
+name: OkHttp
+id: square.okhttp
+publisher: Xamarin Inc
+publisher-url: http://xamarin.com
+summary: An HTTP+SPDY client for Android and Java applications.
+version: 2.4.0.2
+src-url: https://github.com/mattleibow/square-bindings
+
+details: Details.md
+license: License.md
+getting-started: GettingStarted.md
+
+is_shell: true
+no_build: true
+packages:
+  android: 
+    - Square.OkIO, Version=1.5.0.0
+    - Square.OkHttp, Version=2.4.0.2
+local-nuget-repo: ../../
+
+icons: 
+  - ../../icons/square.okhttp_128x128.png
+  - ../../icons/square.okhttp_512x512.png
+
+samples: 
+  - name: Android Sample
+    path: ../../sample/OkHttpSample.sln
+    removeProjects:
+      - Square.OkHttp
+      - Square.OkIO
+    installNuGets:
+      - project: OkHttpSample
+        packages:
+          - Square.OkHttp
+          - Square.OkIO

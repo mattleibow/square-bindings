@@ -11,7 +11,7 @@ namespace Square.OkHttp
         {
             var tcs = new TaskCompletionSource<Response>();
 
-            ExecuteAsync(
+            Enqueue(
                 response =>
                 {
                     tcs.SetResult(response);
@@ -31,7 +31,7 @@ namespace Square.OkHttp
             return tcs.Task;
         }
         
-        public virtual unsafe void ExecuteAsync (Action<Response> onResponse, Action<Request, Java.IO.IOException> onFailure)
+        public virtual unsafe void Enqueue(Action<Response> onResponse, Action<Request, Java.IO.IOException> onFailure)
         {
             Enqueue(new ActionCallback(onResponse, onFailure));
         }

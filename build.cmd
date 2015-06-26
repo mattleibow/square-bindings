@@ -14,3 +14,5 @@ rem build the components
 echo Packaging the Components
 xamarin-component package component\square.picasso
 move component\square.picasso\*.xam .\
+xamarin-component package component\square.okhttp
+move component\square.okhttp\*.xam .\
