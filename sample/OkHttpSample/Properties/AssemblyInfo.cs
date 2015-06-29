@@ -28,3 +28,6 @@ using Android.App;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+// This is required for internet communication
+[assembly: UsesPermission(Android.Manifest.Permission.Internet)]
