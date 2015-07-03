@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.OkHttp", "Square.OkH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.OkIO", "Square.OkIO\Square.OkIO.csproj", "{0ADBD990-1A61-4D2A-B1CD-E46AC63348BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.OkHttp.WS", "Square.OkHttp.WS\Square.OkHttp.WS.csproj", "{0F295A9C-1F8A-4313-8112-7D7B3911A32C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0ADBD990-1A61-4D2A-B1CD-E46AC63348BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ADBD990-1A61-4D2A-B1CD-E46AC63348BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ADBD990-1A61-4D2A-B1CD-E46AC63348BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F295A9C-1F8A-4313-8112-7D7B3911A32C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F295A9C-1F8A-4313-8112-7D7B3911A32C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F295A9C-1F8A-4313-8112-7D7B3911A32C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F295A9C-1F8A-4313-8112-7D7B3911A32C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,39 @@
+%YAML 1.2
+---
+name: OkHttp Web Sockets
+id: square.okhttp.ws
+publisher: Xamarin Inc
+publisher-url: http://xamarin.com
+summary: RFC6455-compliant web socket implementation.
+version: 2.4.0.0
+src-url: https://github.com/mattleibow/square-bindings
+
+details: Details.md
+license: License.md
+getting-started: GettingStarted.md
+
+is_shell: true
+no_build: true
+packages:
+  android: 
+    - Square.OkIO, Version=1.5.0.0
+    - Square.OkHttp, Version=2.4.0.2
+local-nuget-repo: ../../
+
+icons: 
+  - ../../icons/square.okhttp.ws_128x128.png
+  - ../../icons/square.okhttp.ws_512x512.png
+
+samples: 
+  - name: Android Sample
+    path: ../../sample/OkHttpWSSample.sln
+    removeProjects:
+      - Square.OkHttp.WS
+      - Square.OkHttp
+      - Square.OkIO
+    installNuGets:
+      - project: OkHttpWSSample
+        packages:
+          - Square.OkHttp.WS
+          - Square.OkHttp
+          - Square.OkIO
