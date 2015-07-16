@@ -20,9 +20,9 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="../README.md" target="README.md" />
-        <file src="../LICENSE" target="LICENSE" />
+        <file src="build/README.md" target="README.md" />
+        <file src="build/LICENSE" target="LICENSE" />
         
-        <file src="../binding/Square.Picasso/bin/Release/Square.Picasso.dll" target="lib\MonoAndroid\Square.Picasso.dll" />
+        <file src="build/Square.Picasso.dll" target="lib\MonoAndroid\Square.Picasso.dll" />
     </files>
 </package>

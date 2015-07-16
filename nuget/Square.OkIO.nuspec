@@ -17,9 +17,9 @@
         <dependencies></dependencies>
     </metadata>
     <files>
-        <file src="../README.md" target="README.md" />
-        <file src="../LICENSE" target="LICENSE" />
+        <file src="build/README.md" target="README.md" />
+        <file src="build/LICENSE" target="LICENSE" />
         
-        <file src="../binding/Square.OkIO/bin/Release/Square.OkIO.dll" target="lib\MonoAndroid\Square.OkIO.dll" />
+        <file src="build/Square.OkIO.dll" target="lib\MonoAndroid\Square.OkIO.dll" />
     </files>
 </package>
