@@ -1,6 +1,6 @@
 # square-bindings
 
-Xamarin.Android bindings for the various https://github.com/square libraries
+Xamarin.Android and Xamarin.iOS bindings for the various https://github.com/square libraries
 
 Bound:
 
@@ -12,6 +12,8 @@ Bound:
    [binding][5] | [sample][6]  
  - **OkIO** - https://github.com/square/okio  
    [binding][4]  
+ - **SocketRocket** - https://github.com/square/SocketRocket  
+   [binding][8] | [sample][9]  
 
 
 [1]: https://github.com/mattleibow/square-bindings/tree/master/binding/Square.Picasso
@@ -21,3 +23,5 @@ Bound:
 [5]: https://github.com/mattleibow/square-bindings/tree/master/binding/Square.OkHttp.WS
 [6]: https://github.com/mattleibow/square-bindings/tree/master/sample/OkHttpWSSample
 [7]: https://github.com/mattleibow/square-bindings/tree/master/sample/OkHttpSample
+[8]: https://github.com/mattleibow/square-bindings/tree/master/binding/Square.SocketRocket
+[9]: https://github.com/mattleibow/square-bindings/tree/master/sample/SocketRocketSample

@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Square.OkIO</id>
-        <version>1.5.0.0</version>
-        <title>OkIO</title>
+        <id>Square.SocketRocket</id>
+        <version>0.4.0.0</version>
+        <title>SocketRocket Web Sockets</title>
         <authors>.NET Development Addict</authors>
         <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/mattleibow/square-bindings</projectUrl>
-        <iconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.okio_256x256.png</iconUrl>
+        <iconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.socketrocket_256x256.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>A modern I/O API for Java</description>
-        <summary>OkIO is a new library that complements Java.IO and Java.Nio to make it much easier to access, store, and process your data.</summary>
+        <description>A conforming WebSocket (RFC 6455) client library</description>
+        <summary>A conforming WebSocket (RFC 6455) client library.</summary>
         <releaseNotes></releaseNotes>
         <copyright>Square</copyright>
         <tags></tags>
-        <dependencies></dependencies>
     </metadata>
     <files>
         <file src="../README.md" target="README.md" />
         <file src="../LICENSE" target="LICENSE" />
         
-        <file src="../binding/Square.OkIO/bin/Release/Square.OkIO.dll" target="lib\MonoAndroid\Square.OkIO.dll" />
+        <file src="../binding/Square.SocketRocket/bin/Release/Square.SocketRocket.dll" target="lib\Xamarin.iOS\Square.SocketRocket.dll" />
     </files>
 </package>

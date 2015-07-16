@@ -1,0 +1,34 @@
+%YAML 1.2
+---
+name: SocketRocket Web Sockets
+id: square.socketrocket
+publisher: Xamarin Inc
+publisher-url: http://xamarin.com
+summary: A conforming WebSocket (RFC 6455) client library.
+version: 0.4.0.0
+src-url: https://github.com/mattleibow/square-bindings
+
+details: Details.md
+license: License.md
+getting-started: GettingStarted.md
+
+is_shell: true
+no_build: true
+packages:
+  android: 
+    - Square.SocketRocket, Version=0.4.0.0
+local-nuget-repo: ../../
+
+icons: 
+  - ../../icons/square.socketrocket_128x128.png
+  - ../../icons/square.socketrocket_512x512.png
+
+samples: 
+  - name: iOS Sample
+    path: ../../sample/SocketRocketSample.sln
+    removeProjects:
+      - Square.SocketRocket
+    installNuGets:
+      - project: SocketRocketSample
+        packages:
+          - Square.SocketRocket
