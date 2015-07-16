@@ -1,6 +1,6 @@
 # Getting Started with OkHttp Web Sockets
 
-> **RFC6455**-compliant web socket implementation
+> A **RFC6455**-compliant web socket implementation
 
 ## Connecting
 

@@ -19,6 +19,9 @@ packages:
     - Square.OkIO, Version=1.5.0.0
     - Square.OkHttp, Version=2.4.0.1
     - Square.Picasso, Version=2.5.2.1
+libraries: 
+  android:
+    - ../../nuget/build/Square.Picasso.dll  
 local-nuget-repo: ../../
 
 screenshots: 

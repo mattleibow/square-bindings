@@ -17,6 +17,9 @@ no_build: true
 packages:
   android: 
     - Square.SocketRocket, Version=0.4.0.0
+libraries: 
+  ios-unified:
+    - ../../nuget/build/Square.SocketRocket.dll  
 local-nuget-repo: ../../
 
 icons: 
