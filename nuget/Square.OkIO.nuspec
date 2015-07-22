@@ -9,8 +9,8 @@
         <projectUrl>https://github.com/mattleibow/square-bindings</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.okio_256x256.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>A modern I/O API for Java</description>
-        <summary>OkIO is a new library that complements Java.IO and Java.Nio to make it much easier to access, store, and process your data.</summary>
+        <description>OkIO is a new library that complements Java.IO and Java.Nio to make it much easier to access, store, and process your data.</description>
+        <summary>A modern I/O API for Java.</summary>
         <releaseNotes></releaseNotes>
         <copyright>Square</copyright>
         <tags></tags>
@@ -18,7 +18,7 @@
     </metadata>
     <files>
         <file src="build/README.md" target="README.md" />
-        <file src="build/LICENSE" target="LICENSE" />
+        <file src="build/LICENSE.txt" target="LICENSE.txt" />
         
         <file src="build/Square.OkIO.dll" target="lib\MonoAndroid\Square.OkIO.dll" />
     </files>

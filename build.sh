@@ -55,7 +55,7 @@ xbuild binding/Square.sln /p:Configuration=Release /t:Rebuild
 echo Copying the output files packaging
 mkdir nuget/build
 cp README.md nuget/build
-cp LICENSE nuget/build
+cp LICENSE.txt nuget/build
 cp binding/Square.OkIO/bin/Release/Square.OkIO.dll nuget/build
 cp binding/Square.OkHttp/bin/Release/Square.OkHttp.dll nuget/build
 cp binding/Square.Picasso/bin/Release/Square.Picasso.dll nuget/build

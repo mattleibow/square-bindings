@@ -9,7 +9,7 @@
         <projectUrl>https://github.com/mattleibow/square-bindings</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.okhttp_256x256.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>An HTTP+SPDY client for Android and Java applications</description>
+        <description>An HTTP+SPDY client for Android and Java applications.</description>
         <summary>An HTTP+SPDY client for Android and Java applications.</summary>
         <releaseNotes></releaseNotes>
         <copyright>Square</copyright>
@@ -20,7 +20,7 @@
     </metadata>
     <files>
         <file src="build/README.md" target="README.md" />
-        <file src="build/LICENSE" target="LICENSE" />
+        <file src="build/LICENSE.txt" target="LICENSE.txt" />
         
         <file src="build/Square.OkHttp.dll" target="lib\MonoAndroid\Square.OkHttp.dll" />
     </files>

@@ -21,7 +21,7 @@ rem copy the output for NuGet (so that we can avoid Windows/Mac path issues)
 echo Copying the output files packaging
 mkdir nuget\build
 copy README.md nuget\build
-copy LICENSE nuget\build
+copy LICENSE.txt nuget\build
 copy binding\Square.OkIO\bin\Release\Square.OkIO.dll nuget\build
 copy binding\Square.OkHttp\bin\Release\Square.OkHttp.dll nuget\build
 copy binding\Square.Picasso\bin\Release\Square.Picasso.dll nuget\build
