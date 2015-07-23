@@ -32,39 +32,33 @@ namespace OkHttpSample
 
             download.Click += async delegate
             {
-                await Task.Run(async () =>
-                {
-                    OkHttpClient client = new OkHttpClient();
+                OkHttpClient client = new OkHttpClient();
 
-                    // Create request for remote resource.
-                    Request request = new Request.Builder()
-                        .Url(Endpoint)
-                        .Build();
+                // Create request for remote resource.
+                Request request = new Request.Builder()
+                    .Url(Endpoint)
+                    .Build();
 
-                    // Execute the request and retrieve the response.
-                    Response response = await client.NewCall(request).ExecuteAsync();
+                // Execute the request and retrieve the response.
+                Response response = await client.NewCall(request).ExecuteAsync();
 
-                    // Deserialize HTTP response to concrete type.
-                    string body = response.Body().String();
-                    List<Contributor> contributors = JsonConvert.DeserializeObject<List<Contributor>>(body);
+                // Deserialize HTTP response to concrete type.
+				string body = await response.Body().StringAsync();
+                List<Contributor> contributors = JsonConvert.DeserializeObject<List<Contributor>>(body);
 
-                    // Sort list by the most contributions.
-                    List<string> data = contributors
-                        .OrderByDescending(c => c.contributions)
-                        .Select(c => string.Format("{0} ({1})", c.login, c.contributions))
-                        .ToList();
+                // Sort list by the most contributions.
+                List<string> data = contributors
+                    .OrderByDescending(c => c.contributions)
+                    .Select(c => string.Format("{0} ({1})", c.login, c.contributions))
+                    .ToList();
 
-                    // Output list of contributors.
-                    IListAdapter adapter = new ArrayAdapter<string>(
-                        this, 
-                        Android.Resource.Layout.SimpleListItem1,
-                        Android.Resource.Id.Text1, 
-                        data);
-                    RunOnUiThread(() =>
-                    {
-                        listView.Adapter = adapter;
-                    });
-                });
+                // Output list of contributors.
+                IListAdapter adapter = new ArrayAdapter<string>(
+                    this, 
+                    Android.Resource.Layout.SimpleListItem1,
+                    Android.Resource.Id.Text1, 
+                    data);
+                listView.Adapter = adapter;
             };
         }
 
