@@ -1,4 +1,9 @@
-echo off
+@echo off
+
+set okio_version=1.5.0
+set okhttp_version=2.4.0
+set okhttpws_version=2.4.0
+set picasso_version=2.5.2
 
 echo Setting up
 rem clean up before packaging
@@ -8,6 +13,19 @@ rem make sure all the folders are in place
 mkdir build
 
 rem download the files
+echo Downloading binaries
+if not exist binding/Square.OkIO/Jars/okio-%okio_version%.jar (
+    wget "http://search.maven.org/remotecontent?filepath=com/squareup/okio/okio/%okio_version%/okio-%okio_version%.jar" -O "binding/Square.OkIO/Jars/okio-%okio_version%.jar" --no-check-certificate
+)
+if not exist binding/Square.OkHttp/Jars/okhttp-%okhttp_version%.jar (
+    wget "http://search.maven.org/remotecontent?filepath=com/squareup/okhttp/okhttp/%okhttp_version%/okhttp-%okhttp_version%.jar" -O "binding/Square.OkHttp/Jars/okhttp-%okhttp_version%.jar" --no-check-certificate
+)
+if not exist binding/Square.OkHttp.WS/Jars/okhttp-ws-%okhttpws_version%.jar (
+    wget "http://search.maven.org/remotecontent?filepath=com/squareup/okhttp/okhttp-ws/%okhttpws_version%/okhttp-ws-%okhttpws_version%.jar" -O "binding/Square.OkHttp.WS/Jars/okhttp-ws-%okhttpws_version%.jar" --no-check-certificate
+)
+if not exist binding/Square.Picasso/Jars/picasso-%picasso_version%.jar (
+    wget "http://search.maven.org/remotecontent?filepath=com/squareup/picasso/picasso/%picasso_version%/picasso-%picasso_version%.jar" -O "binding/Square.Picasso/Jars/picasso-%picasso_version%.jar" --no-check-certificate
+)
 
 rem check out any files
 
