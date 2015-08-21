@@ -5,7 +5,7 @@ id: square.picasso
 publisher: Xamarin Inc
 publisher-url: http://xamarin.com
 summary: A powerful image downloading and caching library for Android.
-version: 2.5.2.1
+version: 2.5.2.2
 src-url: https://github.com/mattleibow/square-bindings
 
 details: Details.md

@@ -1,5 +1,9 @@
 # Getting Started with Picasso
 
+<iframe src="https://appetize.io/embed/5w3cj57pegnx0av5kkacytd80r?device=nexus5&scale=75&autoplay=true&orientation=portrait&deviceColor=black" 
+        width="300px" height="597px" frameborder="0" scrolling="no"
+        style="float: right;margin-left:24px;">&nbsp;</iframe>
+
 > A powerful **image downloading** and **caching** library for Android.
 
 Images add much-needed context and visual flair to Android applications.
