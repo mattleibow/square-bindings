@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketRocketSample.OSX", "SocketRocketSample.OSX\SocketRocketSample.OSX.csproj", "{78EF921B-F53B-4347-BB67-41BB4BB31273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.SocketRocket.OSX", "..\..\binding\Square.SocketRocket.OSX\Square.SocketRocket.OSX.csproj", "{809CF6DE-870B-44B0-BE61-1E1142E0C798}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78EF921B-F53B-4347-BB67-41BB4BB31273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78EF921B-F53B-4347-BB67-41BB4BB31273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78EF921B-F53B-4347-BB67-41BB4BB31273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78EF921B-F53B-4347-BB67-41BB4BB31273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{809CF6DE-870B-44B0-BE61-1E1142E0C798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{809CF6DE-870B-44B0-BE61-1E1142E0C798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{809CF6DE-870B-44B0-BE61-1E1142E0C798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{809CF6DE-870B-44B0-BE61-1E1142E0C798}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
