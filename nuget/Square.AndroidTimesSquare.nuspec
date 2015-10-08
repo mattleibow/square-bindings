@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Square.AndroidTimesSquare</id>
+        <version>1.6.4.0</version>
+        <title>TimesSquare</title>
+        <authors>.NET Development Addict</authors>
+        <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/mattleibow/square-bindings</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.androidtimessquare_256x256.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Standalone Android widget for picking a single date from a calendar view.</description>
+        <summary>Standalone Android widget for picking a single date from a calendar view.</summary>
+        <releaseNotes></releaseNotes>
+        <copyright>Square</copyright>
+        <tags></tags>
+        <dependencies></dependencies>
+    </metadata>
+    <files>
+        <file src="build/README.md" target="README.md" />
+        <file src="build/LICENSE.txt" target="LICENSE.txt" />
+        
+        <file src="build/Square.AndroidTimesSquare.dll" target="lib\MonoAndroid\Square.AndroidTimesSquare.dll" />
+    </files>
+</package>

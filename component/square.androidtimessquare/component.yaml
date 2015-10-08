@@ -1,0 +1,39 @@
+%YAML 1.2
+---
+name: TimesSquare
+id: square.androidtimessquare
+publisher: Xamarin Inc
+publisher-url: http://xamarin.com
+summary: Standalone Android widget for picking a single date from a calendar view..
+version: 1.6.4.0
+src-url: https://github.com/mattleibow/square-bindings
+
+details: Details.md
+license: License.md
+getting-started: GettingStarted.md
+
+is_shell: true
+no_build: true
+packages:
+  android: 
+    - Square.AndroidTimesSquare, Version=1.6.4.0
+libraries: 
+  android:
+    - ../../nuget/build/Square.AndroidTimesSquare.dll  
+local-nuget-repo: ../../
+
+screenshots: 
+  screenshot.png
+icons: 
+  - ../../icons/square.androidtimessquare_128x128.png
+  - ../../icons/square.androidtimessquare_512x512.png
+
+samples: 
+  - name: Android Sample
+    path: ../../sample/AndroidTimesSquareSample.sln
+    removeProjects:
+      - Square.AndroidTimesSquare
+    installNuGets:
+      - project: AndroidTimesSquareSample
+        packages:
+          - Square.AndroidTimesSquare

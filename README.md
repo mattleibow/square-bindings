@@ -19,6 +19,9 @@ Bound:
  - **SocketRocket** - https://github.com/square/SocketRocket  
    A conforming WebSocket (RFC 6455) client library  
    [binding][8] | [sample][9] | [NuGet][14] | [Xamarin Component][18]  
+ - **AndroidTimesSquare** - https://github.com/square/android-times-square  
+   Standalone Android widget for picking a single date from a calendar view  
+   [binding][19] | [sample][20] | [NuGet][21] | [Xamarin Component][22]  
 
 
 [1]:  https://github.com/mattleibow/square-bindings/tree/master/binding/Square.Picasso
@@ -39,3 +42,7 @@ Bound:
 [16]: http://components.xamarin.com/view/square.okhttp
 [17]: http://components.xamarin.com/view/square.okhttp.ws
 [18]: http://components.xamarin.com/view/square.socketrocket
+[19]: https://github.com/mattleibow/square-bindings/tree/master/binding/Square.AndroidTimesSquare
+[20]: https://github.com/mattleibow/square-bindings/tree/master/sample/AndroidTimesSquareSample
+[21]: https://www.nuget.org/packages/Square.AndroidTimesSquare
+[22]: http://components.xamarin.com/view/square.androidtimessquare
