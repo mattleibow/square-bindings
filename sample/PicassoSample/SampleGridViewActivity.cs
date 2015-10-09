@@ -6,7 +6,7 @@ using Square.Picasso;
 
 namespace PicassoSample
 {
-    [Activity(Label = "@string/app_name", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", MainLauncher = true, Theme = "@style/Theme.AppCompat")]
     public class SampleGridViewActivity : PicassoSampleActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
+using Android.Support.V7.App;
 using Android.Widget;
-using Java.IO;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 using Square.OkHttp;
 
 namespace OkHttpSample
 {
-    [Activity(Label = "OkHttpSample", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    [Activity(Label = "OkHttpSample", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat")]
+    public class MainActivity : AppCompatActivity
     {
         private static string Endpoint = "https://api.github.com/repos/square/okhttp/contributors";
         
@@ -70,4 +64,3 @@ namespace OkHttpSample
         }
     }
 }
-

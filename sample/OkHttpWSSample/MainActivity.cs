@@ -1,21 +1,21 @@
 ﻿using System;
-using System.IO;
 using System.Threading;
 using Android.App;
 using Android.OS;
+using Android.Support.V7.App;
 using Android.Widget;
+using Java.Nio.Charset;
 
 using Square.OkHttp;
 using Square.OkHttp.WS;
 using Square.OkIO;
-using Java.Nio.Charset;
 
 namespace OkHttpSample
 {
-    [Activity(Label = "OkHttpWSSample", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    [Activity(Label = "OkHttpWSSample", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat")]
+    public class MainActivity : AppCompatActivity
     {
-        private static string Endpoint = "ws://echo.websocket.org";
+        private const string Endpoint = "ws://echo.websocket.org";
 
         protected override void OnCreate(Bundle bundle)
         {

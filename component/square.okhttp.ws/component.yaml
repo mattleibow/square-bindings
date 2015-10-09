@@ -5,7 +5,7 @@ id: square.okhttp.ws
 publisher: Xamarin Inc
 publisher-url: http://xamarin.com
 summary: A RFC6455-compliant web socket implementation.
-version: 2.4.0.0
+version: 2.5.0.0
 src-url: https://github.com/mattleibow/square-bindings
 
 details: Details.md
@@ -16,8 +16,9 @@ is_shell: true
 no_build: true
 packages:
   android: 
-    - Square.OkIO, Version=1.5.0.0
-    - Square.OkHttp, Version=2.4.0.2
+    - Square.OkIO, Version=1.6.0.0
+    - Square.OkHttp, Version=2.5.0.0
+    - Square.OkHttp.WS, Version=2.5.0.0
 libraries: 
   android:
     - ../../nuget/build/Square.OkHttp.WS.dll  

@@ -7,7 +7,7 @@ using Square.Picasso;
 
 namespace PicassoSample
 {
-    [Activity]
+    [Activity(Theme = "@style/Theme.AppCompat")]
     public class SampleGalleryActivity : PicassoSampleActivity
     {
         private const int GalleryRequest = 9391;

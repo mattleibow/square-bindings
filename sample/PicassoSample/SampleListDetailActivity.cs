@@ -10,7 +10,7 @@ using Square.Picasso;
 
 namespace PicassoSample
 {
-    [Activity]
+    [Activity(Theme = "@style/Theme.AppCompat")]
     public class SampleListDetailActivity : PicassoSampleActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

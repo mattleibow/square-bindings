@@ -8,13 +8,30 @@ namespace Square.OkHttp.WS
 {
 	partial class WebSocketCall
     {
-        public unsafe WebSocketListener Enqueue()
+        public WebSocketListener Enqueue()
         {
             var listener = new WebSocketListener(this);
             Enqueue(listener);
             return listener;
         }
-	}
+
+        public void Enqueue(
+            Action<int, string> close,
+            Action<Java.IO.IOException, Response> failure,
+            Action<IBufferedSource, WebSocketPayloadType> message,
+            Action<IWebSocket, Response> open,
+            Action<OkBuffer> pong)
+        {
+            Enqueue(new WebSocketListenerActions
+            {
+                Close = close,
+                Failure = failure,
+                Message = message,
+                Open = open,
+                Pong = pong
+            });
+        }
+    }
 
     public class WebSocketListener : Java.Lang.Object, IWebSocketListener
     {
@@ -75,5 +92,59 @@ namespace Square.OkHttp.WS
         public event EventHandler<MessageEventArgs> Message;
         public event EventHandler<OpenEventArgs> Open;
         public event EventHandler<PongEventArgs> Pong;
+    }
+
+    internal class WebSocketListenerActions : Java.Lang.Object, IWebSocketListener
+    {
+        void IWebSocketListener.OnClose(int code, string reason)
+        {
+            var handler = Close;
+            if (handler != null)
+            {
+                handler(code, reason);
+            }
+        }
+
+        void IWebSocketListener.OnFailure(Java.IO.IOException exception, Response response)
+        {
+            var handler = Failure;
+            if (handler != null)
+            {
+                handler(exception, response);
+            }
+        }
+
+        void IWebSocketListener.OnMessage(IBufferedSource source, WebSocketPayloadType payloadType)
+        {
+            var handler = Message;
+            if (handler != null)
+            {
+                handler(source, payloadType);
+            }
+        }
+
+        void IWebSocketListener.OnOpen(IWebSocket socket, Response response)
+        {
+            var handler = Open;
+            if (handler != null)
+            {
+                handler(socket, response);
+            }
+        }
+
+        void IWebSocketListener.OnPong(OkBuffer buffer)
+        {
+            var handler = Pong;
+            if (handler != null)
+            {
+                handler(buffer);
+            }
+        }
+
+        public Action<int, string> Close;
+        public Action<Java.IO.IOException, Response> Failure;
+        public Action<IBufferedSource, WebSocketPayloadType> Message;
+        public Action<IWebSocket, Response> Open;
+        public Action<OkBuffer> Pong;
     }
 }

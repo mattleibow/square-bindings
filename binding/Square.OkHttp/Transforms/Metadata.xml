@@ -10,20 +10,10 @@
   <attr path="/api/package[@name='com.squareup.okhttp']" name="managedName">Square.OkHttp</attr>
   
   <remove-node path="/api/package[starts-with(@name, 'com.squareup.okhttp.internal')]" />
-  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='Cache.CacheRequestImpl']" />
-  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='Cache.CacheResponseBody']" />
-  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='Cache.Entry']" />
-  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='Call.ApplicationInterceptorChain']" />
-  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='Call.AsyncCall']" />
-  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='MultipartBuilder.MultipartRequestBody']" />
+  <remove-node path="/api/package/class[@visibility='']" />
+  <remove-node path="/api/package/class/method[@deprecated='deprecated']" />
   
   <!-- inheritance fixes -->
   <attr path="/api/package[@name='com.squareup.okhttp']/class[@name='OkHttpClient']/method[@name='clone']" name="managedReturn">Java.Lang.Object</attr>
-  
-  <!-- temporary errors as okio is not yet bound -->
-  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='RequestBody']/method[@name='create' and count(parameter)=2 and parameter[1][@type='com.squareup.okhttp.MediaType'] and parameter[2][@type='okio.ByteString']]" />
-  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='RequestBody']/method[@name='writeTo' and count(parameter)=1 and parameter[1][@type='okio.BufferedSink']]" />
-  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='ResponseBody']/method[@name='create' and count(parameter)=3 and parameter[1][@type='com.squareup.okhttp.MediaType'] and parameter[2][@type='long'] and parameter[3][@type='okio.BufferedSource']]" />
-  <remove-node path="/api/package[@name='com.squareup.okhttp']/class[@name='ResponseBody']/method[@name='source']" />
 
 </metadata>

@@ -9,6 +9,8 @@
 
   <attr path="/api/package[@name='okio']" name="managedName">Square.OkIO</attr>
 
+  <remove-node path="/api/package/class[@visibility='']" />
+
   <attr path="/api/package[@name='okio']/class[@name='Buffer']" name="managedName">OkBuffer</attr>
   <attr path="/api/package[@name='okio']/class[@name='Okio']" name="managedName">OkIO</attr>
 

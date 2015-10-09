@@ -37,5 +37,3 @@ using Android.App;
 [assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
 // Used to load images from the gallery content provider
 [assembly: UsesPermission(Android.Manifest.Permission.ReadExternalStorage)]
-// Used to load images for contact photos
-[assembly: UsesPermission(Android.Manifest.Permission.ReadContacts)]

@@ -10,15 +10,10 @@
   <attr path="/api/package[@name='com.squareup.picasso']" name="managedName">Square.Picasso</attr>
   
   <!-- deprecated -->
-  <remove-node path="/api/package[@name='com.squareup.picasso']/class[@name='Downloader.Response']/method[@name='getBitmap']" />
-  <remove-node path="/api/package[@name='com.squareup.picasso']/class[@name='Picasso.CleanupThread']" />
-  <remove-node path="/api/package[@name='com.squareup.picasso']/class[@name='Picasso']/method[@name='isDebugging']" />
-  <remove-node path="/api/package[@name='com.squareup.picasso']/class[@name='Picasso']/method[@name='setDebugging']" />
-  <remove-node path="/api/package[@name='com.squareup.picasso']/class[@name='Picasso.Builder']/method[@name='debugging']" />
-  <remove-node path="/api/package[@name='com.squareup.picasso']/class[@name='UrlConnectionDownloader.ResponseCacheIcs']" />
-  
+  <remove-node path="/api/package/class[@visibility='']" />
+  <remove-node path="/api/package/class/method[@deprecated='deprecated']" />
+
   <!-- property names -->
-  <attr path="/api/package[@name='com.squareup.picasso']/class[@name='Picasso']/method[@name='areIndicatorsEnabled']" name="managedName">GetIndicatorsEnabled</attr>
   <attr path="/api/package[@name='com.squareup.picasso']/interface[@name='Transformation']/method[@name='key']" name="managedName">GetKey</attr>
 
 </metadata>

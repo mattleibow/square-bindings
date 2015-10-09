@@ -58,7 +58,6 @@ namespace PicassoSample
                 {
                     new Sample("Image Grid View", typeof(SampleGridViewActivity)),
                     new Sample("Load from Gallery", typeof(SampleGalleryActivity)),
-                    new Sample("Contact Photos", typeof(SampleContactsActivity)),
                     new Sample("List / Detail View", typeof(SampleListDetailActivity)),
                     new Sample("Sample Notification", activity => 
                     {

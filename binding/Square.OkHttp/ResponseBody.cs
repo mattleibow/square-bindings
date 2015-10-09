@@ -8,12 +8,12 @@ namespace Square.OkHttp
 {
 	partial class ResponseBody
 	{
-		public virtual Task<byte[]> BytesAsync()
+		public Task<byte[]> BytesAsync()
 		{
 			return Task.Run(() => Bytes());
 		}
 
-		public virtual Task<string> StringAsync()
+		public Task<string> StringAsync()
 		{
 			return Task.Run(() => String());
 		}

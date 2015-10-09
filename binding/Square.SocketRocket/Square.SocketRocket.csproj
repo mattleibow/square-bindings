@@ -40,7 +40,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="libSocketRocket.linkwith.cs">
-      <DependentUpon>libSocketRocket.a</DependentUpon>
+      <DependentUpon>libSocketRocket-0.4.1.a</DependentUpon>
     </Compile>
     <Compile Include="WebSocket.cs" />
   </ItemGroup>
@@ -52,8 +52,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
   <ItemGroup>
-    <ObjcBindingNativeLibrary Include="Archives\libSocketRocket.a">
-      <Link>libSocketRocket.a</Link>
+    <ObjcBindingNativeLibrary Include="Archives\libSocketRocket-0.4.1.a">
+      <Link>libSocketRocket-0.4.1.a</Link>
     </ObjcBindingNativeLibrary>
   </ItemGroup>
 </Project>

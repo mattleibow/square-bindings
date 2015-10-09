@@ -10,7 +10,7 @@
   <attr path="/api/package[@name='com.squareup.okhttp.ws']" name="managedName">Square.OkHttp.WS</attr>
   
   <remove-node path="/api/package[starts-with(@name, 'com.squareup.okhttp.internal.ws')]" />
-  <remove-node path="/api/package[@name='com.squareup.okhttp.ws']/class[@name='WebSocketCall.ConnectionWebSocket']" />
+  <remove-node path="/api/package/class[@visibility='']" />
 
   <attr path="/api/package[@name='com.squareup.okhttp.ws']/interface[@name='WebSocketListener']/method[@name='onClose']/parameter[1]" name="managedName">code</attr>
   <attr path="/api/package[@name='com.squareup.okhttp.ws']/interface[@name='WebSocketListener']/method[@name='onClose']/parameter[2]" name="managedName">reason</attr>

@@ -7,7 +7,7 @@ namespace Square.OkHttp
 {
 	partial class Call
     {
-        public virtual unsafe Task<Response> ExecuteAsync()
+        public Task<Response> ExecuteAsync()
         {
             var tcs = new TaskCompletionSource<Response>();
 
@@ -31,7 +31,7 @@ namespace Square.OkHttp
             return tcs.Task;
         }
         
-        public virtual unsafe void Enqueue(Action<Response> onResponse, Action<Request, Java.IO.IOException> onFailure)
+        public void Enqueue(Action<Response> onResponse, Action<Request, Java.IO.IOException> onFailure)
         {
             Enqueue(new ActionCallback(onResponse, onFailure));
         }

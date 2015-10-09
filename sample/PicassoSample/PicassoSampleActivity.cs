@@ -1,5 +1,5 @@
 ﻿using Android.OS;
-using Android.Support.V4.App;
+using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 
@@ -7,7 +7,7 @@ using Square.Picasso;
 
 namespace PicassoSample
 {
-    public abstract class PicassoSampleActivity : FragmentActivity
+    public abstract class PicassoSampleActivity : AppCompatActivity
     {
         private ToggleButton showHide;
         private FrameLayout sampleContent;
