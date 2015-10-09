@@ -15,7 +15,7 @@ getting-started: GettingStarted.md
 is_shell: true
 no_build: true
 packages:
-  android: 
+  ios-unified: 
     - Square.SocketRocket, Version=0.4.1.0
 libraries: 
   ios-unified:
