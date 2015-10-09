@@ -52,7 +52,8 @@ fi
 
 # build any native libraries
 echo Building native libraries
-(cd ./binding/Square.SocketRocket/Archives/SocketRocket &&
+if [ ! -f binding/Square.SocketRocket/Archives/libSocketRocket-$socketrocket_version.a ]; then
+  (cd ./binding/Square.SocketRocket/Archives/SocketRocket &&
     xcodebuild -project SocketRocket.xcodeproj -target SocketRocket -sdk iphonesimulator -arch i386 -configuration Release clean build &&
     mv build/Release-iphonesimulator/libSocketRocket.a libSocketRocket-i386.a &&
     xcodebuild -project SocketRocket.xcodeproj -target SocketRocket -sdk iphonesimulator -arch x86_64 -configuration Release clean build &&
@@ -66,8 +67,9 @@ echo Building native libraries
     lipo -create libSocketRocket-i386.a libSocketRocket-x86_64.a libSocketRocket-armv7.a libSocketRocket-armv7s.a libSocketRocket-arm64.a -output libSocketRocket.a &&
     rm libSocketRocket-*.a &&
     mv libSocketRocket.a ../libSocketRocket-$socketrocket_version.a)
-
-(cd ./binding/Square.Valet/Archives/Valet &&
+fi
+if [ ! -f binding/Square.Valet/Archives/libValet-$valet_version.a ]; then
+  (cd ./binding/Square.Valet/Archives/Valet &&
     xcodebuild -project Valet.xcodeproj -target "Valet iOS" -sdk iphonesimulator -arch i386 -configuration Release clean build &&
     mv build/Release-iphonesimulator/libValet.a libValet-i386.a &&
     xcodebuild -project Valet.xcodeproj -target "Valet iOS" -sdk iphonesimulator -arch x86_64 -configuration Release clean build &&
@@ -81,7 +83,7 @@ echo Building native libraries
     lipo -create libValet-i386.a libValet-x86_64.a libValet-armv7.a libValet-armv7s.a libValet-arm64.a -output libValet.a &&
     rm libValet-*.a &&
     mv libValet.a ../libValet-$valet_version.a)
-
+fi
 
 # build the solution
 echo Building the solution
