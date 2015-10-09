@@ -6,6 +6,8 @@ okhttpws_version=2.5.0
 picasso_version=2.5.2
 androidtimessquare_version=1.6.4
 socketrocket_version=0.4.1
+valet_version=2.0.3
+
 
 echo Setting up
 # clean up before packaging
@@ -13,6 +15,7 @@ rm -rf build
 rm -rf nuget/build
 # make sure all the folders are in place
 mkdir build
+
 
 # download the files
 echo Downloading binaries
@@ -40,6 +43,12 @@ if [ ! -d binding/Square.SocketRocket/Archives/SocketRocket/.git ]; then
     (cd ./binding/Square.SocketRocket/Archives/SocketRocket &&
         git --git-dir=.git checkout $socketrocket_version)
 fi
+if [ ! -d binding/Square.Valet/Archives/Valet/.git ]; then
+    git clone https://github.com/square/Valet.git binding/Square.Valet/Archives/Valet
+    (cd ./binding/Square.Valet/Archives/Valet &&
+        git --git-dir=.git checkout $valet_version)
+fi
+
 
 # build any native libraries
 echo Building native libraries
@@ -58,6 +67,22 @@ echo Building native libraries
     rm libSocketRocket-*.a &&
     mv libSocketRocket.a ../libSocketRocket-$socketrocket_version.a)
 
+(cd ./binding/Square.Valet/Archives/Valet &&
+    xcodebuild -project Valet.xcodeproj -target "Valet iOS" -sdk iphonesimulator -arch i386 -configuration Release clean build &&
+    mv build/Release-iphonesimulator/libValet.a libValet-i386.a &&
+    xcodebuild -project Valet.xcodeproj -target "Valet iOS" -sdk iphonesimulator -arch x86_64 -configuration Release clean build &&
+    mv build/Release-iphonesimulator/libValet.a libValet-x86_64.a &&
+    xcodebuild -project Valet.xcodeproj -target "Valet iOS" -sdk iphoneos -arch armv7 -configuration Release clean build &&
+    mv build/Release-iphoneos/libValet.a libValet-armv7.a &&
+    xcodebuild -project Valet.xcodeproj -target "Valet iOS" -sdk iphoneos -arch armv7s -configuration Release clean build &&
+    mv build/Release-iphoneos/libValet.a libValet-armv7s.a &&
+    xcodebuild -project Valet.xcodeproj -target "Valet iOS" -sdk iphoneos -arch arm64 -configuration Release clean build &&
+    mv build/Release-iphoneos/libValet.a libValet-arm64.a &&
+    lipo -create libValet-i386.a libValet-x86_64.a libValet-armv7.a libValet-armv7s.a libValet-arm64.a -output libValet.a &&
+    rm libValet-*.a &&
+    mv libValet.a ../libValet-$valet_version.a)
+
+
 # build the solution
 echo Building the solution
 xbuild binding/Square.sln /p:Configuration=Release /t:Rebuild
@@ -73,6 +98,8 @@ cp binding/Square.Picasso/bin/Release/Square.Picasso.dll nuget/build
 cp binding/Square.OkHttp.WS/bin/Release/Square.OkHttp.WS.dll nuget/build
 cp binding/Square.SocketRocket/bin/Release/Square.SocketRocket.dll nuget/build
 cp binding/Square.AndroidTimesSquare/bin/Release/Square.AndroidTimesSquare.dll nuget/build
+cp binding/Square.Valet/bin/Release/Square.Valet.dll nuget/build
+
 
 # build the nuget
 echo Packaging the NuGets
@@ -82,6 +109,8 @@ nuget pack nuget/Square.Picasso.nuspec -BasePath nuget -OutputDirectory build
 nuget pack nuget/Square.OkHttp.WS.nuspec -BasePath nuget -OutputDirectory build
 nuget pack nuget/Square.SocketRocket.nuspec -BasePath nuget -OutputDirectory build
 nuget pack nuget/Square.AndroidTimesSquare.nuspec -BasePath nuget -OutputDirectory build
+nuget pack nuget/Square.Valet.nuspec -BasePath nuget -OutputDirectory build
+
 
 # build the components
 echo Packaging the Components
@@ -90,6 +119,8 @@ xamarin-component package component/square.okhttp
 xamarin-component package component/square.okhttp.ws
 xamarin-component package component/square.socketrocket
 xamarin-component package component/square.androidtimessquare
+xamarin-component package component/square.valet
+
 
 # move the files to the output location
 echo Moving files to the build directory
@@ -98,6 +129,8 @@ mv component/square.okhttp.ws/*.xam build
 mv component/square.okhttp/*.xam build
 mv component/square.socketrocket/*.xam build
 mv component/square.androidtimessquare/*.xam build
+mv component/square.valet/*.xam build
+
 
 # clean any temporary files/folders
 echo Cleaning up
