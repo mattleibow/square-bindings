@@ -1,10 +1,12 @@
 @echo off
 
-set okio_version=1.5.0
-set okhttp_version=2.4.0
-set okhttpws_version=2.4.0
+set okio_version=1.6.0
+set okhttp_version=2.5.0
+set okhttpws_version=2.5.0
 set picasso_version=2.5.2
 set androidtimessquare_version=1.6.4
+set socketrocket_version=0.4.1
+set valet_version=2.0.3
 
 echo Setting up
 rem clean up before packaging
@@ -50,6 +52,7 @@ copy binding\Square.Picasso\bin\Release\Square.Picasso.dll nuget\build
 copy binding\Square.OkHttp.WS\bin\Release\Square.OkHttp.WS.dll nuget\build
 copy binding\Square.SocketRocket\bin\Release\Square.SocketRocket.dll nuget\build
 copy binding\Square.AndroidTimesSquare\bin\Release\Square.AndroidTimesSquare.dll nuget\build
+copy binding\Square.Valet\bin\Release\Square.Valet.dll nuget\build
 
 rem build the nuget
 echo Packaging the NuGets
@@ -59,6 +62,7 @@ nuget pack nuget\Square.Picasso.nuspec -OutputDirectory build
 nuget pack nuget\Square.OkHttp.WS.nuspec -OutputDirectory build
 nuget pack nuget\Square.SocketRocket.nuspec -OutputDirectory build
 nuget pack nuget\Square.AndroidTimesSquare.nuspec -OutputDirectory build
+nuget pack nuget\Square.Valet.nuspec -OutputDirectory build
 
 rem build the components
 echo Packaging the Components
@@ -67,6 +71,7 @@ xamarin-component package component\square.okhttp
 xamarin-component package component\square.okhttp.ws
 xamarin-component package component\square.socketrocket
 xamarin-component package component\square.androidtimessquare
+xamarin-component package component\square.valet
 
 rem move the files to the output location
 echo Moving files to the build directory
@@ -75,6 +80,7 @@ move component\square.okhttp.ws\*.xam build
 move component\square.okhttp\*.xam build
 move component\square.socketrocket\*.xam build
 move component\square.androidtimessquare\*.xam build
+move component\square.valet\*.xam build
 
 rem clean any temporary files/folders
 echo Cleaning up
