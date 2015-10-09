@@ -1,0 +1,37 @@
+%YAML 1.2
+---
+name: Keychain Valet
+id: square.valet
+publisher: Xamarin Inc
+publisher-url: http://xamarin.com
+summary: Valet lets you securely store data in the iOS or OS X Keychain without knowing a thing about how the Keychain works.
+version: 2.0.3.0
+src-url: https://github.com/mattleibow/square-bindings
+
+details: Details.md
+license: License.md
+getting-started: GettingStarted.md
+
+is_shell: true
+no_build: true
+packages:
+  ios-unified: 
+    - Square.Valet, Version=2.0.3.0
+libraries: 
+  ios-unified:
+    - ../../nuget/build/Square.Valet.dll  
+local-nuget-repo: ../../
+
+icons: 
+  - ../../icons/square.valet_128x128.png
+  - ../../icons/square.valet_512x512.png
+
+samples: 
+  - name: iOS Sample
+    path: ../../sample/ValetSample.sln
+    removeProjects:
+      - Square.Valet
+    installNuGets:
+      - project: ValetSample
+        packages:
+          - Square.Valet
