@@ -1,0 +1,37 @@
+%YAML 1.2
+---
+name: Aardvark
+id: square.aardvark
+publisher: Xamarin Inc
+publisher-url: http://xamarin.com
+summary: Aardvark is a library that makes it dead simple to create actionable bug reports.
+version: 1.2.2.0
+src-url: https://github.com/mattleibow/square-bindings
+
+details: Details.md
+license: License.md
+getting-started: GettingStarted.md
+
+is_shell: true
+no_build: true
+packages:
+  ios-unified: 
+    - Square.Aardvark, Version=1.2.2.0
+libraries: 
+  ios-unified:
+    - ../../nuget/build/Square.Aardvark.dll  
+local-nuget-repo: ../../
+
+icons: 
+  - ../../icons/square.aardvark_128x128.png
+  - ../../icons/square.aardvark_512x512.png
+
+samples: 
+  - name: iOS Sample
+    path: ../../sample/AardvarkSample.sln
+    removeProjects:
+      - Square.Aardvark
+    installNuGets:
+      - project: AardvarkSample
+        packages:
+          - Square.Aardvark

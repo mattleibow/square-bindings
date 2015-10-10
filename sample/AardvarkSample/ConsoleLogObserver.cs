@@ -9,7 +9,7 @@ namespace AardvarkSample
 	{
 		public LogDistributor LogDistributor { get; set; }
 
-		public void ObserveLogMessage (LogMessage logMessage)
+		public void Observe (LogMessage logMessage)
 		{
 			Console.WriteLine ("ConsoleLogObserver: " + logMessage.Text);
 		}

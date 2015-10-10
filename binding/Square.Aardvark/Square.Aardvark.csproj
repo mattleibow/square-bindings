@@ -41,6 +41,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="libAardvark-1.2.2.linkwith.cs" />
     <Compile Include="Aardvark.cs" />
+    <Compile Include="LogDistributor.cs" />
+    <Compile Include="LogStore.cs" />
+    <Compile Include="UIApplicationExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />

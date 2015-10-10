@@ -41,7 +41,7 @@ namespace Square.Aardvark
 		LogStore[] LogStores { get; }
 	}
 
-	interface IEmailBugReporterEmailBodyAdditionsDelegate
+	interface IEmailBodyAdditionsDelegate
 	{
 
 	}
@@ -49,13 +49,13 @@ namespace Square.Aardvark
 	// @protocol ARKEmailBugReporterEmailBodyAdditionsDelegate <NSObject>
 	[Protocol, Model]
 	[BaseType (typeof(NSObject), Name = "ARKEmailBugReporterEmailBodyAdditionsDelegate")]
-	interface EmailBugReporterEmailBodyAdditionsDelegate
+	interface EmailBodyAdditionsDelegate
 	{
 		// @required -(NSDictionary * _Nullable)emailBodyAdditionsForEmailBugReporter:(ARKEmailBugReporter * _Nonnull)emailBugReporter;
 		[Abstract]
 		[Export ("emailBodyAdditionsForEmailBugReporter:")]
 		[return: NullAllowed]
-		NSDictionary EmailBodyAdditionsForEmailBugReporter (EmailBugReporter emailBugReporter);
+		NSDictionary EmailBodyAdditions (EmailBugReporter emailBugReporter);
 	}
 
 	// @interface ARKEmailBugReporter : NSObject <ARKBugReporter>
@@ -68,7 +68,7 @@ namespace Square.Aardvark
 
 		// @property (copy, nonatomic) NSString * _Nonnull bugReportRecipientEmailAddress;
 		[Export ("bugReportRecipientEmailAddress")]
-		string BugReportRecipientEmailAddress { get; set; }
+		string RecipientEmailAddress { get; set; }
 
 		// @property (copy, nonatomic) NSString * _Nonnull prefilledEmailBody;
 		[Export ("prefilledEmailBody")]
@@ -76,7 +76,7 @@ namespace Square.Aardvark
 
 		// @property (nonatomic, weak) id<ARKEmailBugReporterEmailBodyAdditionsDelegate> _Nullable emailBodyAdditionsDelegate;
 		[NullAllowed, Export ("emailBodyAdditionsDelegate", ArgumentSemantic.Weak)]
-		IEmailBugReporterEmailBodyAdditionsDelegate EmailBodyAdditionsDelegate { get; set; }
+		IEmailBodyAdditionsDelegate EmailBodyAdditionsDelegate { get; set; }
 
 		// @property (nonatomic) id<ARKLogFormatter> _Nonnull logFormatter;
 		[Export ("logFormatter", ArgumentSemantic.Assign)]
@@ -96,15 +96,15 @@ namespace Square.Aardvark
 
 		// -(NSData * _Nonnull)formattedLogMessagesAsData:(NSArray * _Nonnull)logMessages;
 		[Export ("formattedLogMessagesAsData:")]
-		NSData FormattedLogMessagesAsData (LogMessage[] logMessages);
+		NSData FormatAsData (LogMessage[] logMessages);
 
 		// -(NSString * _Nonnull)formattedLogMessagesDataMIMEType;
 		[Export ("formattedLogMessagesDataMIMEType")]
-		string FormattedLogMessagesDataMIMEType { get; }
+		string DataMimeType { get; }
 
 		// -(NSString * _Nonnull)formattedLogMessagesAttachmentExtension;
 		[Export ("formattedLogMessagesAttachmentExtension")]
-		string FormattedLogMessagesAttachmentExtension { get; }
+		string AttachmentExtension { get; }
 	}
 
 	// @interface Aardvark : NSObject
@@ -115,13 +115,13 @@ namespace Square.Aardvark
 		[Static]
 		[Export ("addDefaultBugReportingGestureWithEmailBugReporterWithRecipient:")]
 		[return: NullAllowed]
-		EmailBugReporter AddDefaultBugReportingGestureWithEmailBugReporterWithRecipient (string emailAddress);
+		EmailBugReporter AddDefaultBugReportingGesture (string emailAddress);
 
 		// +(id _Nullable)addBugReporter:(id<ARKBugReporter> _Nonnull)bugReporter triggeringGestureRecognizerClass:(Class _Nonnull)gestureRecognizerClass;
 		[Static]
 		[Export ("addBugReporter:triggeringGestureRecognizerClass:")]
 		[return: NullAllowed]
-		NSObject AddBugReporter (IBugReporter bugReporter, Class gestureRecognizerClass);
+		UIGestureRecognizer AddBugReporter (IBugReporter bugReporter, Class gestureRecognizerClass);
 	}
 
 	interface ILogFormatter
@@ -137,7 +137,7 @@ namespace Square.Aardvark
 		// @required -(NSString * _Nonnull)formattedLogMessage:(ARKLogMessage * _Nonnull)logMessage;
 		[Abstract]
 		[Export ("formattedLogMessage:")]
-		string FormattedLogMessage (LogMessage logMessage);
+		string Format (LogMessage logMessage);
 	}
 
 	// @interface ARKDefaultLogFormatter : NSObject <ARKLogFormatter>
@@ -193,25 +193,25 @@ namespace Square.Aardvark
 
 		// -(void)distributeAllPendingLogsWithCompletionHandler:(dispatch_block_t _Nonnull)completionHandler;
 		[Export ("distributeAllPendingLogsWithCompletionHandler:")]
-		void DistributeAllPendingLogsWithCompletionHandler (Action completionHandler);
+		void DistributeAllPendingLogs (Action completionHandler);
 
 		// -(void)logMessage:(ARKLogMessage * _Nonnull)logMessage;
 		[Export ("logMessage:")]
-		void LogMessage (LogMessage logMessage);
+		void Log (LogMessage logMessage);
 
 		// -(void)logWithText:(NSString * _Nonnull)text image:(UIImage * _Nullable)image type:(ARKLogType)type userInfo:(NSDictionary * _Nullable)userInfo;
 		[Export ("logWithText:image:type:userInfo:")]
-		void LogWithText (string text, [NullAllowed] UIImage image, LogType type, [NullAllowed] NSDictionary userInfo);
+		void Log (string text, [NullAllowed] UIImage image, LogType type, [NullAllowed] NSDictionary userInfo);
 
 		// -(void)logWithType:(ARKLogType)type userInfo:(NSDictionary * _Nullable)userInfo format:(NSString * _Nonnull)format, ... __attribute__((format(NSString, 3, 4)));
 		[Internal]
 		[Export ("logWithType:userInfo:format:", IsVariadic = true)]
-		void LogWithType (LogType type, [NullAllowed] NSDictionary userInfo, string format, IntPtr varArgs);
+		void Log (LogType type, [NullAllowed] NSDictionary userInfo, string format, IntPtr varArgs);
 
 		// -(void)logWithFormat:(NSString * _Nonnull)format, ... __attribute__((format(NSString, 1, 2)));
 		[Internal]
 		[Export ("logWithFormat:", IsVariadic = true)]
-		void LogWithFormat (string format, IntPtr varArgs);
+		void Log (string format, IntPtr varArgs);
 
 		// -(void)logScreenshot;
 		[Export ("logScreenshot")]
@@ -264,7 +264,7 @@ namespace Square.Aardvark
 		// @required -(void)observeLogMessage:(ARKLogMessage * _Nonnull)logMessage;
 		[Abstract]
 		[Export ("observeLogMessage:")]
-		void ObserveLogMessage (LogMessage logMessage);
+		void Observe (LogMessage logMessage);
 	}
 
 	// @interface ARKLogStore : NSObject <ARKLogObserver>
@@ -283,7 +283,7 @@ namespace Square.Aardvark
 
 		// @property (readonly, copy, nonatomic) NSURL * _Nonnull persistedLogFileURL;
 		[Export ("persistedLogFileURL", ArgumentSemantic.Copy)]
-		NSUrl PersistedLogFileURL { get; }
+		NSUrl PersistedLogFileUrl { get; }
 
 		// @property (readonly, nonatomic) NSUInteger maximumLogMessageCount;
 		[Export ("maximumLogMessageCount")]
@@ -307,11 +307,11 @@ namespace Square.Aardvark
 
 		// -(void)retrieveAllLogMessagesWithCompletionHandler:(void (^ _Nonnull)(NSArray * _Nonnull))completionHandler;
 		[Export ("retrieveAllLogMessagesWithCompletionHandler:")]
-		void RetrieveAllLogMessagesWithCompletionHandler (Action<NSArray> completionHandler);
+		void RetrieveAllLogMessages (Action<NSArray> completionHandler);
 
 		// -(void)clearLogsWithCompletionHandler:(dispatch_block_t _Nullable)completionHandler;
 		[Export ("clearLogsWithCompletionHandler:")]
-		void ClearLogsWithCompletionHandler ([NullAllowed] Action completionHandler);
+		void ClearLogs ([NullAllowed] Action completionHandler);
 	}
 
 	// @interface ARKLogTableViewController : UITableViewController
@@ -360,15 +360,15 @@ namespace Square.Aardvark
 	{
 		// -(void)ARK_addTwoFingerPressAndHoldGestureRecognizerTriggerWithBugReporter:(id<ARKBugReporter> _Nonnull)bugReporter;
 		[Export ("ARK_addTwoFingerPressAndHoldGestureRecognizerTriggerWithBugReporter:")]
-		void ARK_addTwoFingerPressAndHoldGestureRecognizerTriggerWithBugReporter (IBugReporter bugReporter);
+		void AddTwoFingerPressAndHoldGestureRecognizerTrigger (IBugReporter bugReporter);
 
 		// -(id _Nullable)ARK_addBugReporter:(id<ARKBugReporter> _Nonnull)bugReporter triggeringGestureRecognizerClass:(Class _Nonnull)gestureRecognizerClass;
 		[Export ("ARK_addBugReporter:triggeringGestureRecognizerClass:")]
 		[return: NullAllowed]
-		NSObject ARK_addBugReporter (IBugReporter bugReporter, Class gestureRecognizerClass);
+		UIGestureRecognizer AddBugReporter (IBugReporter bugReporter, Class gestureRecognizerClass);
 
 		// -(void)ARK_removeBugReporter:(id<ARKBugReporter> _Nonnull)bugReporter;
 		[Export ("ARK_removeBugReporter:")]
-		void ARK_removeBugReporter (IBugReporter bugReporter);
+		void RemoveBugReporter (IBugReporter bugReporter);
 	}
 }

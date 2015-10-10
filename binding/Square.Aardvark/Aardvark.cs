@@ -1,5 +1,7 @@
 ﻿using System;
 using Foundation;
+using ObjCRuntime;
+using UIKit;
 
 namespace Square.Aardvark
 {
@@ -62,6 +64,17 @@ namespace Square.Aardvark
 		public static void LogScreenshot ()
 		{
 			AardvarkFunctions.ARKLogScreenshot ();
+		}
+
+		public static UIGestureRecognizer AddBugReporter (IBugReporter bugReporter, Type gestureRecognizerType)
+		{
+			return AddBugReporter (bugReporter, new Class (gestureRecognizerType));
+		}
+
+		public static UIGestureRecognizer AddBugReporter<T> (IBugReporter bugReporter)
+			where T : UIGestureRecognizer
+		{
+			return AddBugReporter (bugReporter, typeof(T));
 		}
 	}
 }

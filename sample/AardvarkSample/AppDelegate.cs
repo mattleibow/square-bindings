@@ -15,7 +15,7 @@ namespace AardvarkSample
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
 			// This line is all you'll need to get started.
-			BugReporter = Aardvark.AddDefaultBugReportingGestureWithEmailBugReporterWithRecipient ("fake-email@aardvarkbugreporting.src");
+			BugReporter = Aardvark.AddDefaultBugReportingGesture ("fake-email@aardvarkbugreporting.src");
 
 			// Log all ARKLog messages to Crashlytics to help debug crashes.
 			LogDistributor.DefaultDistributor.AddLogObserver (new ConsoleLogObserver ());
