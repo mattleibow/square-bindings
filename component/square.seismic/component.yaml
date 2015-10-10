@@ -22,8 +22,6 @@ libraries:
     - ../../nuget/build/Square.Seismic.dll  
 local-nuget-repo: ../../
 
-screenshots: 
-  screenshot.png
 icons: 
   - ../../icons/square.Seismic_128x128.png
   - ../../icons/square.Seismic_512x512.png
