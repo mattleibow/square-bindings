@@ -22,7 +22,7 @@ Bound:
  - **AndroidTimesSquare** - https://github.com/square/android-times-square  
    Standalone Android widget for picking a single date from a calendar view  
    [binding][19] | [sample][20] | [NuGet][21] | [Xamarin Component][22]  
- - **AndroidTimesSquare** - https://github.com/square/valet  
+ - **Valet** - https://github.com/square/valet  
    Valet lets you securely store data in the iOS or OS X Keychain without knowing a thing about how the Keychain works. It’s easy. We promise.  
    [binding][23] | [sample][24] | [NuGet][25] | [Xamarin Component][26]  
  - **Aardvark** - https://github.com/square/Aardvark  
