@@ -4,11 +4,11 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{21F9DF2B-121A-4DC4-B3A6-ED178CD457BF}</ProjectGuid>
+    <ProjectGuid>{08E76480-31A8-40B4-B2B2-4F39EF688133}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ValetSample</RootNamespace>
+    <RootNamespace>AardvarkSample</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>ValetSample</AssemblyName>
+    <AssemblyName>AardvarkSample</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,11 +38,9 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <IpaPackageName>
-    </IpaPackageName>
+    <MtouchLink>Full</MtouchLink>
     <MtouchI18n>
     </MtouchI18n>
-    <MtouchLink>Full</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -72,6 +70,8 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <IpaPackageName>
+    </IpaPackageName>
     <MtouchI18n>
     </MtouchI18n>
   </PropertyGroup>
@@ -99,6 +99,13 @@
     <Compile Include="ViewController.designer.cs">
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConsoleLogObserver.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\binding\Square.Aardvark\Square.Aardvark.csproj">
+      <Project>{A6D2CC86-74BA-4C7C-B444-D203B1B73293}</Project>
+      <Name>Square.Aardvark</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

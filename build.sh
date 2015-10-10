@@ -7,6 +7,7 @@ picasso_version=2.5.2
 androidtimessquare_version=1.6.4
 socketrocket_version=0.4.1
 valet_version=2.0.3
+aardvark_version=1.2.2
 
 
 echo Setting up
@@ -48,6 +49,11 @@ if [ ! -d binding/Square.Valet/Archives/Valet/.git ]; then
     (cd ./binding/Square.Valet/Archives/Valet &&
         git --git-dir=.git checkout $valet_version)
 fi
+if [ ! -d binding/Square.Aardvark/Archives/Aardvark/.git ]; then
+    git clone https://github.com/square/Aardvark.git binding/Square.Aardvark/Archives/Aardvark
+    (cd ./binding/Square.Aardvark/Archives/Aardvark &&
+        git --git-dir=.git checkout $aardvark_version)
+fi
 
 
 # build any native libraries
@@ -84,6 +90,22 @@ if [ ! -f binding/Square.Valet/Archives/libValet-$valet_version.a ]; then
     rm libValet-*.a &&
     mv libValet.a ../libValet-$valet_version.a)
 fi
+if [ ! -f binding/Square.Aardvark/Archives/libAardvark-$aardvark_version.a ]; then
+  (cd ./binding/Square.Aardvark/Archives/Aardvark &&
+    xcodebuild -project Aardvark.xcodeproj -target "Aardvark" -sdk iphonesimulator -arch i386 -configuration Release clean build &&
+    mv build/Release-iphonesimulator/libAardvark.a libAardvark-i386.a &&
+    xcodebuild -project Aardvark.xcodeproj -target "Aardvark" -sdk iphonesimulator -arch x86_64 -configuration Release clean build &&
+    mv build/Release-iphonesimulator/libAardvark.a libAardvark-x86_64.a &&
+    xcodebuild -project Aardvark.xcodeproj -target "Aardvark" -sdk iphoneos -arch armv7 -configuration Release clean build &&
+    mv build/Release-iphoneos/libAardvark.a libAardvark-armv7.a &&
+    xcodebuild -project Aardvark.xcodeproj -target "Aardvark" -sdk iphoneos -arch armv7s -configuration Release clean build &&
+    mv build/Release-iphoneos/libAardvark.a libAardvark-armv7s.a &&
+    xcodebuild -project Aardvark.xcodeproj -target "Aardvark" -sdk iphoneos -arch arm64 -configuration Release clean build &&
+    mv build/Release-iphoneos/libAardvark.a libAardvark-arm64.a &&
+    lipo -create libAardvark-i386.a libAardvark-x86_64.a libAardvark-armv7.a libAardvark-armv7s.a libAardvark-arm64.a -output libAardvark.a &&
+    rm libAardvark-*.a &&
+    mv libAardvark.a ../libAardvark-$aardvark_version.a)
+fi
 
 # build the solution
 echo Building the solution
@@ -101,6 +123,7 @@ cp binding/Square.OkHttp.WS/bin/Release/Square.OkHttp.WS.dll nuget/build
 cp binding/Square.SocketRocket/bin/Release/Square.SocketRocket.dll nuget/build
 cp binding/Square.AndroidTimesSquare/bin/Release/Square.AndroidTimesSquare.dll nuget/build
 cp binding/Square.Valet/bin/Release/Square.Valet.dll nuget/build
+cp binding/Square.Aardvark/bin/Release/Square.Aardvark.dll nuget/build
 
 
 # build the nuget
@@ -112,6 +135,7 @@ nuget pack nuget/Square.OkHttp.WS.nuspec -BasePath nuget -OutputDirectory build
 nuget pack nuget/Square.SocketRocket.nuspec -BasePath nuget -OutputDirectory build
 nuget pack nuget/Square.AndroidTimesSquare.nuspec -BasePath nuget -OutputDirectory build
 nuget pack nuget/Square.Valet.nuspec -BasePath nuget -OutputDirectory build
+nuget pack nuget/Square.Aardvark.nuspec -BasePath nuget -OutputDirectory build
 
 
 # build the components
@@ -122,6 +146,7 @@ xamarin-component package component/square.okhttp.ws
 xamarin-component package component/square.socketrocket
 xamarin-component package component/square.androidtimessquare
 xamarin-component package component/square.valet
+xamarin-component package component/square.aardvark
 
 
 # move the files to the output location
@@ -132,6 +157,7 @@ mv component/square.okhttp/*.xam build
 mv component/square.socketrocket/*.xam build
 mv component/square.androidtimessquare/*.xam build
 mv component/square.valet/*.xam build
+mv component/square.aardvark/*.xam build
 
 
 # clean any temporary files/folders
