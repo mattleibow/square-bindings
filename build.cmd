@@ -7,6 +7,7 @@ set picasso_version=2.5.2
 set androidtimessquare_version=1.6.4
 set socketrocket_version=0.4.1
 set valet_version=2.0.3
+set aardvark_version=1.2.2
 set seismic_version=1.0.2
 set pollexor_version=2.0.4
 
@@ -61,6 +62,7 @@ copy binding\Square.OkHttp.WS\bin\Release\Square.OkHttp.WS.dll nuget\build
 copy binding\Square.SocketRocket\bin\Release\Square.SocketRocket.dll nuget\build
 copy binding\Square.AndroidTimesSquare\bin\Release\Square.AndroidTimesSquare.dll nuget\build
 copy binding\Square.Valet\bin\Release\Square.Valet.dll nuget\build
+copy binding\Square.Aardvark\bin\Release\Square.Aardvark.dll nuget\build
 copy binding\Square.Seismic\bin\Release\Square.Seismic.dll nuget\build
 copy binding\Square.Pollexor\bin\Release\Square.Pollexor.dll nuget\build
 
@@ -73,6 +75,7 @@ nuget pack nuget\Square.OkHttp.WS.nuspec -OutputDirectory build
 nuget pack nuget\Square.SocketRocket.nuspec -OutputDirectory build
 nuget pack nuget\Square.AndroidTimesSquare.nuspec -OutputDirectory build
 nuget pack nuget\Square.Valet.nuspec -OutputDirectory build
+nuget pack nuget\Square.Aardvark.nuspec -OutputDirectory build
 nuget pack nuget\Square.Seismic.nuspec -OutputDirectory build
 nuget pack nuget\Square.Pollexor.nuspec -OutputDirectory build
 
@@ -84,6 +87,7 @@ xamarin-component package component\square.okhttp.ws
 xamarin-component package component\square.socketrocket
 xamarin-component package component\square.androidtimessquare
 xamarin-component package component\square.valet
+xamarin-component package component\square.aardvark
 xamarin-component package component\square.seismic
 xamarin-component package component\square.pollexor
 
@@ -95,6 +99,7 @@ move component\square.okhttp\*.xam build
 move component\square.socketrocket\*.xam build
 move component\square.androidtimessquare\*.xam build
 move component\square.valet\*.xam build
+move component\square.aardvark\*.xam build
 move component\square.seismic\*.xam build
 move component\square.pollexor\*.xam build
 
