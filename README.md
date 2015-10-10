@@ -28,6 +28,9 @@ Bound:
  - **Aardvark** - https://github.com/square/Aardvark  
    Aardvark is a library that makes it dead simple to create actionable bug reports.  
    [binding][27] | [sample][28] | [NuGet][29] | [Xamarin Component][30]    
+ - **Seismic** - https://github.com/square/Seismic  
+   Android device shake detection.  
+   [binding][31] | [sample][32] | [NuGet][33] | [Xamarin Component][34]    
 
 
 [1]:  https://github.com/mattleibow/square-bindings/tree/master/binding/Square.Picasso
@@ -60,3 +63,7 @@ Bound:
 [28]: https://github.com/mattleibow/square-bindings/tree/master/sample/AardvarkSample
 [29]: https://www.nuget.org/packages/Square.Aardvark
 [30]: http://components.xamarin.com/view/square.aardvark
+[31]: https://github.com/mattleibow/square-bindings/tree/master/binding/Square.Seismic
+[32]: https://github.com/mattleibow/square-bindings/tree/master/sample/SeismicSample
+[33]: https://www.nuget.org/packages/Square.Seismic
+[34]: http://components.xamarin.com/view/square.seismic
