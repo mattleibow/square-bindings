@@ -27,10 +27,13 @@ Bound:
    [binding][23] | [sample][24] | [NuGet][25] | [Xamarin Component][26]  
  - **Aardvark** - https://github.com/square/Aardvark  
    Aardvark is a library that makes it dead simple to create actionable bug reports.  
-   [binding][27] | [sample][28] | [NuGet][29] | [Xamarin Component][30]    
+   [binding][27] | [sample][28] | [NuGet][29] | [Xamarin Component][30]  
  - **Seismic** - https://github.com/square/Seismic  
    Android device shake detection.  
-   [binding][31] | [sample][32] | [NuGet][33] | [Xamarin Component][34]    
+   [binding][31] | [sample][32] | [NuGet][33] | [Xamarin Component][34]  
+ - **Pollexor** - https://github.com/square/Pollexor  
+   Thumbor image service client which allows you to build URIs in an expressive fashion using a fluent API.  
+   [binding][35] | [sample][36] | [NuGet][37] | [Xamarin Component][38]  
 
 
 [1]:  https://github.com/mattleibow/square-bindings/tree/master/binding/Square.Picasso
@@ -67,3 +70,7 @@ Bound:
 [32]: https://github.com/mattleibow/square-bindings/tree/master/sample/SeismicSample
 [33]: https://www.nuget.org/packages/Square.Seismic
 [34]: http://components.xamarin.com/view/square.seismic
+[35]: https://github.com/mattleibow/square-bindings/tree/master/binding/Square.Pollexor
+[36]: https://github.com/mattleibow/square-bindings/tree/master/sample/PollexorSample
+[37]: https://www.nuget.org/packages/Square.Pollexor
+[38]: http://components.xamarin.com/view/square.pollexor
