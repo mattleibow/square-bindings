@@ -7,7 +7,7 @@
 We can connect to a web socket using the `WebSocket` type:
 
     // Create request for remote resource
-	NSUrl url = new NSUrl("ws://echo.websocket.org/');
+	NSUrl url = new NSUrl("ws://echo.websocket.org/");
     WebSocket webSocket = new WebSocket(url);
 
 ## Listening
