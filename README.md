@@ -24,7 +24,10 @@ Bound:
    [binding][19] | [sample][20] | [NuGet][21] | [Xamarin Component][22]  
  - **AndroidTimesSquare** - https://github.com/square/valet  
    Valet lets you securely store data in the iOS or OS X Keychain without knowing a thing about how the Keychain works. It’s easy. We promise.  
-   [binding][23] | [sample][24] | [NuGet][25] | [Xamarin Component][26]    
+   [binding][23] | [sample][24] | [NuGet][25] | [Xamarin Component][26]  
+ - **Aardvark** - https://github.com/square/Aardvark  
+   Aardvark is a library that makes it dead simple to create actionable bug reports.  
+   [binding][27] | [sample][28] | [NuGet][29] | [Xamarin Component][30]    
 
 
 [1]:  https://github.com/mattleibow/square-bindings/tree/master/binding/Square.Picasso
@@ -53,3 +56,7 @@ Bound:
 [24]: https://github.com/mattleibow/square-bindings/tree/master/sample/ValetSample
 [25]: https://www.nuget.org/packages/Square.Valet
 [26]: http://components.xamarin.com/view/square.valet
+[27]: https://github.com/mattleibow/square-bindings/tree/master/binding/Square.Aardvark
+[28]: https://github.com/mattleibow/square-bindings/tree/master/sample/AardvarkSample
+[29]: https://www.nuget.org/packages/Square.Aardvark
+[30]: http://components.xamarin.com/view/square.aardvark
