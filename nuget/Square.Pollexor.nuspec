@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Square.Pollexor</id>
+        <version>2.0.4.0</version>
+        <title>Pollexor</title>
+        <authors>.NET Development Addict</authors>
+        <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/mattleibow/square-bindings</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.pollexor_256x256.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Thumbor image service client which allows you to build URIs in an expressive fashion using a fluent API.</description>
+        <summary>Thumbor image service client which allows you to build URIs in an expressive fashion using a fluent API.</summary>
+        <releaseNotes></releaseNotes>
+        <copyright>Square</copyright>
+        <tags></tags>
+        <dependencies></dependencies>
+    </metadata>
+    <files>
+        <file src="build/README.md" target="README.md" />
+        <file src="build/LICENSE.txt" target="LICENSE.txt" />
+        
+        <file src="build/Square.Pollexor.dll" target="lib\MonoAndroid\Square.Pollexor.dll" />
+    </files>
+</package>

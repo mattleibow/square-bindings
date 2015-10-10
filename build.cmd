@@ -8,6 +8,7 @@ set androidtimessquare_version=1.6.4
 set socketrocket_version=0.4.1
 set valet_version=2.0.3
 set seismic_version=1.0.2
+set pollexor_version=2.0.4
 
 echo Setting up
 rem clean up before packaging
@@ -36,6 +37,9 @@ if not exist binding/Square.AndroidTimesSquare/Jars/android-times-square-%androi
 if not exist binding/Square.Seismic/Jars/seismic-%seismic_version%.jar (
     wget "http://search.maven.org/remotecontent?filepath=com/squareup/seismic/%seismic_version%/seismic-%seismic_version%.jar" -O "binding/Square.Seismic/Jars/seismic-%seismic_version%.jar" --no-check-certificate
 )
+if not exist binding/Square.Pollexor/Jars/pollexor-%pollexor_version%.jar (
+    wget "http://search.maven.org/remotecontent?filepath=com/squareup/pollexor/%pollexor_version%/pollexor-%pollexor_version%.jar" -O "binding/Square.Pollexor/Jars/pollexor-%pollexor_version%.jar" --no-check-certificate
+)
 
 rem check out any files
 
@@ -58,6 +62,7 @@ copy binding\Square.SocketRocket\bin\Release\Square.SocketRocket.dll nuget\build
 copy binding\Square.AndroidTimesSquare\bin\Release\Square.AndroidTimesSquare.dll nuget\build
 copy binding\Square.Valet\bin\Release\Square.Valet.dll nuget\build
 copy binding\Square.Seismic\bin\Release\Square.Seismic.dll nuget\build
+copy binding\Square.Pollexor\bin\Release\Square.Pollexor.dll nuget\build
 
 rem build the nuget
 echo Packaging the NuGets
@@ -69,6 +74,7 @@ nuget pack nuget\Square.SocketRocket.nuspec -OutputDirectory build
 nuget pack nuget\Square.AndroidTimesSquare.nuspec -OutputDirectory build
 nuget pack nuget\Square.Valet.nuspec -OutputDirectory build
 nuget pack nuget\Square.Seismic.nuspec -OutputDirectory build
+nuget pack nuget\Square.Pollexor.nuspec -OutputDirectory build
 
 rem build the components
 echo Packaging the Components
@@ -79,6 +85,7 @@ xamarin-component package component\square.socketrocket
 xamarin-component package component\square.androidtimessquare
 xamarin-component package component\square.valet
 xamarin-component package component\square.seismic
+xamarin-component package component\square.pollexor
 
 rem move the files to the output location
 echo Moving files to the build directory
@@ -89,6 +96,7 @@ move component\square.socketrocket\*.xam build
 move component\square.androidtimessquare\*.xam build
 move component\square.valet\*.xam build
 move component\square.seismic\*.xam build
+move component\square.pollexor\*.xam build
 
 rem clean any temporary files/folders
 echo Cleaning up
