@@ -1,0 +1,8 @@
+<metadata>
+	<attr path="/api/package[@name='com.squareup.seismic']/class[@name='ShakeDetector']/constructor[@name='ShakeDetector' and count(parameter)=1 and parameter[1][@type='com.squareup.seismic.ShakeDetector.Listener']]/parameter[1]" name="managedName">listener</attr>
+	<attr path="/api/package[@name='com.squareup.seismic']/class[@name='ShakeDetector']/method[@name='onAccuracyChanged' and count(parameter)=2 and parameter[1][@type='android.hardware.Sensor'] and parameter[2][@type='int']]/parameter[1]" name="managedName">sensor</attr>
+	<attr path="/api/package[@name='com.squareup.seismic']/class[@name='ShakeDetector']/method[@name='onAccuracyChanged' and count(parameter)=2 and parameter[1][@type='android.hardware.Sensor'] and parameter[2][@type='int']]/parameter[2]" name="managedName">accuracy</attr>
+	<attr path="/api/package[@name='com.squareup.seismic']/class[@name='ShakeDetector']/method[@name='onSensorChanged' and count(parameter)=1 and parameter[1][@type='android.hardware.SensorEvent']]/parameter[1]" name="managedName">evt</attr>
+	<attr path="/api/package[@name='com.squareup.seismic']/class[@name='ShakeDetector']/method[@name='setSensitivity' and count(parameter)=1 and parameter[1][@type='int']]/parameter[1]" name="managedName">accelerationThreshold</attr>
+	<attr path="/api/package[@name='com.squareup.seismic']/class[@name='ShakeDetector']/method[@name='start' and count(parameter)=1 and parameter[1][@type='android.hardware.SensorManager']]/parameter[1]" name="managedName">sensorManager</attr>
+</metadata>

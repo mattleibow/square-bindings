@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Valet", "Square.Vale
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Aardvark", "Square.Aardvark\Square.Aardvark.csproj", "{A6D2CC86-74BA-4C7C-B444-D203B1B73293}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Seismic", "Square.Seismic\Square.Seismic.csproj", "{426B2B22-3679-4DF7-B5AC-3A387EB35862}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{14263AD2-F383-48A1-B15B-8B462A945E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14263AD2-F383-48A1-B15B-8B462A945E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14263AD2-F383-48A1-B15B-8B462A945E6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{426B2B22-3679-4DF7-B5AC-3A387EB35862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{426B2B22-3679-4DF7-B5AC-3A387EB35862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{426B2B22-3679-4DF7-B5AC-3A387EB35862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{426B2B22-3679-4DF7-B5AC-3A387EB35862}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4FE5BA3F-1D95-419E-85D8-8D61ED3C0941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4FE5BA3F-1D95-419E-85D8-8D61ED3C0941}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FE5BA3F-1D95-419E-85D8-8D61ED3C0941}.Release|Any CPU.ActiveCfg = Release|Any CPU
