@@ -1,4 +1,4 @@
-# Picasso License
+# Aardvark License
 
     Copyright 2015 Square, Inc.
     

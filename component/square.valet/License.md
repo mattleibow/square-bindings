@@ -1,4 +1,4 @@
-# Picasso License
+# Keychain Valet License
 
     Copyright 2015 Square, Inc.
     

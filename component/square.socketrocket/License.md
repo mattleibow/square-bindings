@@ -1,4 +1,4 @@
-# Picasso License
+# SocketRocket Web Sockets License
 
     Copyright 2015 Square, Inc.
     

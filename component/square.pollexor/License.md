@@ -1,4 +1,4 @@
-# Picasso License
+# Pollexor License
 
     Copyright 2015 Square, Inc.
     

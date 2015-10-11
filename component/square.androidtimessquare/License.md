@@ -1,4 +1,4 @@
-# Picasso License
+# TimesSquare License
 
     Copyright 2015 Square, Inc.
     

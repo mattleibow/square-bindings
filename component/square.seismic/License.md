@@ -1,4 +1,4 @@
-# Picasso License
+# Seismic License
 
     Copyright 2015 Square, Inc.
     

@@ -1,4 +1,4 @@
-# Picasso License
+# OkHttp License
 
     Copyright 2015 Square, Inc.
     
