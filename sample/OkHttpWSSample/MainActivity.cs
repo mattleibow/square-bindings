@@ -59,9 +59,9 @@ namespace OkHttpSample
                 };
                 listener.Message += (sender, e) =>
                 {
-                    string payload = e.Payload.ReadString(Charset.DefaultCharset());
+                    string payload = e.Payload.String();
                     e.Payload.Close();
-                    RunOnUiThread(() => adapter.Add(string.Format("{0}: {1}", e.PayloadType, payload)));
+					RunOnUiThread(() => adapter.Add(string.Format("{0}\n{1}", payload, e.Payload.ContentType())));
                 };
                 listener.Open += (sender, e) =>
                 {
@@ -91,9 +91,8 @@ namespace OkHttpSample
             // we want to send a message every 5 seconds
             new Timer(state =>
             {
-                var buffer = new OkBuffer();
-                buffer.WriteString("Hello World!", Charset.DefaultCharset());
-                webSocket.SendMessage(WebSocketPayloadType.Text, buffer);
+				var body = RequestBody.Create(WebSocket.Text, "Hello World!");
+                webSocket.SendMessage(body);
             }, null, TimeSpan.Zero, TimeSpan.FromSeconds(3));
         }
     }
