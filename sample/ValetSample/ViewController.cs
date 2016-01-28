@@ -21,7 +21,7 @@ namespace ValetSample
 		{
 			base.ViewDidLoad ();
 
-			valet = new SecureEnclaveValet ("UserPresence");
+			valet = new SecureEnclaveValet ("Enclave-Id", AccessControl.UserPresence);
 			username = "CustomerPresentProof";
 		}
 
