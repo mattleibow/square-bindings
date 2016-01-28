@@ -2,6 +2,7 @@
 
 set okio_version=1.6.0
 set okhttp_version=2.5.0
+set okhttp3_version=3.0.1
 set okhttpws_version=2.5.0
 set picasso_version=2.5.2
 set androidtimessquare_version=1.6.4
@@ -25,6 +26,9 @@ if not exist binding/Square.OkIO/Jars/okio-%okio_version%.jar (
 )
 if not exist binding/Square.OkHttp/Jars/okhttp-%okhttp_version%.jar (
     wget "http://search.maven.org/remotecontent?filepath=com/squareup/okhttp/okhttp/%okhttp_version%/okhttp-%okhttp_version%.jar" -O "binding/Square.OkHttp/Jars/okhttp-%okhttp_version%.jar" --no-check-certificate
+)
+if not exist binding/Square.OkHttp3/Jars/okhttp-%okhttp3_version%.jar (
+    wget "http://search.maven.org/remotecontent?filepath=com/squareup/okhttp3/okhttp/%okhttp3_version%/okhttp-%okhttp3_version%.jar" -O "binding/Square.OkHttp3/Jars/okhttp-%okhttp_version%.jar" --no-check-certificate
 )
 if not exist binding/Square.OkHttp.WS/Jars/okhttp-ws-%okhttpws_version%.jar (
     wget "http://search.maven.org/remotecontent?filepath=com/squareup/okhttp/okhttp-ws/%okhttpws_version%/okhttp-ws-%okhttpws_version%.jar" -O "binding/Square.OkHttp.WS/Jars/okhttp-ws-%okhttpws_version%.jar" --no-check-certificate
@@ -57,6 +61,7 @@ copy README.md nuget\build
 copy LICENSE.txt nuget\build
 copy binding\Square.OkIO\bin\Release\Square.OkIO.dll nuget\build
 copy binding\Square.OkHttp\bin\Release\Square.OkHttp.dll nuget\build
+copy binding\Square.OkHttp3\bin\Release\Square.OkHttp3.dll nuget\build
 copy binding\Square.Picasso\bin\Release\Square.Picasso.dll nuget\build
 copy binding\Square.OkHttp.WS\bin\Release\Square.OkHttp.WS.dll nuget\build
 copy binding\Square.SocketRocket\bin\Release\Square.SocketRocket.dll nuget\build
@@ -70,6 +75,7 @@ rem build the nuget
 echo Packaging the NuGets
 nuget pack nuget\Square.OkIO.nuspec -OutputDirectory build
 nuget pack nuget\Square.OkHttp.nuspec -OutputDirectory build
+nuget pack nuget\Square.OkHttp3.nuspec -OutputDirectory build
 nuget pack nuget\Square.Picasso.nuspec -OutputDirectory build
 nuget pack nuget\Square.OkHttp.WS.nuspec -OutputDirectory build
 nuget pack nuget\Square.SocketRocket.nuspec -OutputDirectory build
@@ -83,6 +89,7 @@ rem build the components
 echo Packaging the Components
 xamarin-component package component\square.picasso
 xamarin-component package component\square.okhttp
+xamarin-component package component\square.okhttp3
 xamarin-component package component\square.okhttp.ws
 xamarin-component package component\square.socketrocket
 xamarin-component package component\square.androidtimessquare
@@ -96,6 +103,7 @@ echo Moving files to the build directory
 move component\square.picasso\*.xam build
 move component\square.okhttp.ws\*.xam build
 move component\square.okhttp\*.xam build
+move component\square.okhttp3\*.xam build
 move component\square.socketrocket\*.xam build
 move component\square.androidtimessquare\*.xam build
 move component\square.valet\*.xam build
