@@ -18,7 +18,7 @@ namespace Square.OkHttp.WS
         public void Enqueue(
             Action<int, string> close,
             Action<Java.IO.IOException, Response> failure,
-            Action<IBufferedSource, WebSocketPayloadType> message,
+			Action<ResponseBody> message,
             Action<IWebSocket, Response> open,
             Action<OkBuffer> pong)
         {
@@ -60,12 +60,12 @@ namespace Square.OkHttp.WS
             }
         }
 
-        void IWebSocketListener.OnMessage(IBufferedSource source, WebSocketPayloadType payloadType)
+		void IWebSocketListener.OnMessage(ResponseBody payload)
         {
             var handler = Message;
             if (handler != null)
             {
-                handler(sender, new MessageEventArgs(source, payloadType));
+				handler(sender, new MessageEventArgs(payload));
             }
         }
 
@@ -114,12 +114,12 @@ namespace Square.OkHttp.WS
             }
         }
 
-        void IWebSocketListener.OnMessage(IBufferedSource source, WebSocketPayloadType payloadType)
+		void IWebSocketListener.OnMessage(ResponseBody payload)
         {
             var handler = Message;
             if (handler != null)
             {
-                handler(source, payloadType);
+				handler(payload);
             }
         }
 
@@ -143,7 +143,7 @@ namespace Square.OkHttp.WS
 
         public Action<int, string> Close;
         public Action<Java.IO.IOException, Response> Failure;
-        public Action<IBufferedSource, WebSocketPayloadType> Message;
+		public Action<ResponseBody> Message;
         public Action<IWebSocket, Response> Open;
         public Action<OkBuffer> Pong;
     }

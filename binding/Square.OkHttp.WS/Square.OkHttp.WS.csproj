@@ -10,8 +10,7 @@
     <RootNamespace>Square.OkHttp.WS</RootNamespace>
     <AssemblyName>Square.OkHttp.WS</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,7 +45,7 @@
     <TransformFile Include="Transforms\Metadata.generated.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedJar Include="Jars\okhttp-ws-2.5.0.jar" />
+    <EmbeddedJar Include="Jars\okhttp-ws-2.7.2.jar" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Square.OkHttp\Square.OkHttp.csproj">
