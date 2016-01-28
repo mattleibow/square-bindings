@@ -1,5 +1,6 @@
 using System;
 using CoreFoundation;
+using CoreServices;
 using Foundation;
 using ObjCRuntime;
 
@@ -31,10 +32,23 @@ namespace Square.SocketRocket
 		// @property (readonly, retain, nonatomic) NSURL * url;
 		[Export ("url", ArgumentSemantic.Retain)]
 		NSUrl Url { get; }
+        
+        // // @property (nonatomic, readonly) CFHTTPMessageRef receivedHTTPHeaders;
+		// [Export ("receivedHTTPHeaders", ArgumentSemantic.Retain)]
+		// CFHTTPMessageRef ReceivedHTTPHeaders { get; }
+        
+        // @property (nonatomic, readwrite) NSArray * requestCookies;
+		[Export ("requestCookies", ArgumentSemantic.Retain)]
+        NSHttpCookie[] RequestCookies { get; set; }
 
 		// @property (readonly, copy, nonatomic) NSString * protocol;
 		[Export ("protocol")]
 		string Protocol { get; }
+
+		// -(id)initWithURLRequest:(NSURLRequest *)request protocols:(NSArray *)protocols allowsUntrustedSSLCertificates:(BOOL)allowsUntrustedSSLCertificates;
+		[Export ("initWithURLRequest:protocols:allowsUntrustedSSLCertificates:")]
+		// TODO [Verify (StronglyTypedNSArray)]
+		IntPtr Constructor (NSUrlRequest request, NSObject[] protocols, bool allowsUntrustedSSLCertificates);
 
 		// -(id)initWithURLRequest:(NSURLRequest *)request protocols:(NSArray *)protocols;
 		[Export ("initWithURLRequest:protocols:")]
@@ -44,6 +58,11 @@ namespace Square.SocketRocket
 		// -(id)initWithURLRequest:(NSURLRequest *)request;
 		[Export ("initWithURLRequest:")]
 		IntPtr Constructor (NSUrlRequest request);
+
+		// -(id)initWithURL:(NSURL *)url protocols:(NSArray *)protocols allowsUntrustedSSLCertificates:(BOOL)allowsUntrustedSSLCertificates;
+		[Export ("initWithURL:protocols:allowsUntrustedSSLCertificates:")]
+		// TODO [Verify (StronglyTypedNSArray)]
+		IntPtr Constructor (NSUrl url, NSObject[] protocols, bool allowsUntrustedSSLCertificates);
 
 		// -(id)initWithURL:(NSURL *)url protocols:(NSArray *)protocols;
 		[Export ("initWithURL:protocols:")]
