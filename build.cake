@@ -5,7 +5,7 @@
 
 
 const string okio_version                 = "1.6.0"; // OkIO
-const string okhttp_version               = "2.5.0"; // OkHttp
+const string okhttp_version               = "2.7.2"; // OkHttp
 const string okhttp3_version              = "3.0.1"; // OkHttp3
 const string okhttpws_version             = "2.5.0"; // OkHttp-WS
 const string picasso_version              = "2.5.2"; // Picasso
