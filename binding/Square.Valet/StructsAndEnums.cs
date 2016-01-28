@@ -105,4 +105,34 @@ namespace Square.Valet
 		/// </summary>
 		RemovalFailed
 	}
+
+	public enum AccessControl
+	{
+		/// <summary>
+		/// Access to keychain elements requires user presence verification via 
+		/// Touch ID or device Passcode. Keychain elements are still accessible 
+		/// by Touch ID even if fingers are added or removed. Touch ID does not 
+		/// have to be available or enrolled.
+		/// </summary>
+		UserPresence = 1,
+		/// <summary>
+		/// Access to keychain elements requires user presence verification via 
+		/// any finger enrolled in Touch ID. Keychain elements are still 
+		/// accessible by Touch ID even if fingers are added or removed. Touch 
+		/// ID must be available and at least one finger must be enrolled.
+		/// </summary>
+		TouchIDAnyFingerprint = 2,
+		/// <summary>
+		/// Access to keychain elements requires user presence verification via 
+		/// fingers currently enrolled in Touch ID. Previously written keychain 
+		/// elements become inaccessible when fingers are added or removed. 
+		/// Touch ID must be available and at least one finger must be enrolled.
+		/// </summary>
+		TouchIDCurrentFingerprintSet = 3,
+		/// <summary>
+		/// Access to keychain elements requires user presence verification via 
+		/// device Passcode.
+		/// </summary>
+		DevicePasscode = 4
+	}
 }

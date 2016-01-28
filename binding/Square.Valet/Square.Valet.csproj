@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="libValet-2.0.3.linkwith.cs" />
+    <Compile Include="libValet.linkwith.cs" />
     <Compile Include="Valet.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -50,8 +50,8 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingNativeLibrary Include="Archives\libValet-2.0.3.a">
-      <Link>libValet-2.0.3.a</Link>
+    <ObjcBindingNativeLibrary Include="Archives\libValet-2.2.0.a">
+      <Link>libValet-2.2.0.a</Link>
     </ObjcBindingNativeLibrary>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />

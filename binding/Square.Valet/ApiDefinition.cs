@@ -93,7 +93,7 @@ namespace Square.Valet
 	}
 
 	// @interface VALSecureEnclaveValet : VALValet
-	[iOS (8, 0)]
+	[Introduced (PlatformName.iOS, 8, 0)]
 	[DisableDefaultCtor]
 	[BaseType (typeof(Valet), Name = "VALSecureEnclaveValet")]
 	interface SecureEnclaveValet
@@ -103,38 +103,43 @@ namespace Square.Valet
 		[Export ("supportsSecureEnclaveKeychainItems")]
 		bool SupportsSecureEnclaveKeychainItems { get; }
 
-		// -(instancetype _Nullable)initWithIdentifier:(NSString * _Nonnull)identifier accessibility:(VALAccessibility)accessibility __attribute__((objc_designated_initializer));
-		[Export ("initWithIdentifier:accessibility:")]
-		[Internal, New, Sealed]
-		IntPtr InitWithIdentifier (string identifier, Accessibility accessibility);
-
-		// -(instancetype _Nullable)initWithSharedAccessGroupIdentifier:(NSString * _Nonnull)sharedAccessGroupIdentifier accessibility:(VALAccessibility)accessibility __attribute__((objc_designated_initializer));
-		[Export ("initWithSharedAccessGroupIdentifier:accessibility:")]
-		[Internal, New, Sealed]
-		IntPtr InitWithSharedAccessGroupIdentifier (string sharedAccessGroupIdentifier, Accessibility accessibility);
-
-		// -(instancetype _Nullable)initWithIdentifier:(NSString * _Nonnull)identifier;
-		[Export ("initWithIdentifier:")]
+		// -(instancetype _Nullable)initWithIdentifier:(NSString * _Nonnull)identifier accessControl:(VALAccessControl)accessControl;
+		[Export ("initWithIdentifier:accessControl:")]
 		[Internal, Sealed]
-		IntPtr InitWithIdentifier (string identifier);
+		IntPtr InitWithIdentifier (string identifier, AccessControl accessControl);
 
-		// -(instancetype _Nullable)initWithSharedAccessGroupIdentifier:(NSString * _Nonnull)sharedAccessGroupIdentifier;
-		[Export ("initWithSharedAccessGroupIdentifier:")]
+		// -(instancetype _Nullable)initWithSharedAccessGroupIdentifier:(NSString * _Nonnull)sharedAccessGroupIdentifier accessControl:(VALAccessControl)accessControl;
+		[Export ("initWithSharedAccessGroupIdentifier:accessControl:")]
 		[Internal, Sealed]
-		IntPtr InitWithSharedAccessGroupIdentifier (string sharedAccessGroupIdentifier);
+		IntPtr InitWithSharedAccessGroupIdentifier (string sharedAccessGroupIdentifier, AccessControl accessControl);
 
-		// -(NSData * _Nullable)objectForKey:(NSString * _Nonnull)key userPrompt:(NSString * _Nonnull)userPrompt;
+		// @property (readonly) VALAccessControl accessControl;
+		[Export ("accessControl")]
+		AccessControl AccessControl { get; }
+
+		// -(NSData * _Nullable)objectForKey:(NSString * _Nonnull)key userPrompt:(NSString * _Nullable)userPrompt;
 		[Export ("objectForKey:userPrompt:")]
 		[return: NullAllowed]
-		NSData GetObject (string key, string userPrompt);
+		NSData GetObject (string key, [NullAllowed] string userPrompt);
 
-		// -(NSString * _Nullable)stringForKey:(NSString * _Nonnull)key userPrompt:(NSString * _Nonnull)userPrompt;
+		// -(NSData * _Nullable)objectForKey:(NSString * _Nonnull)key userPrompt:(NSString * _Nullable)userPrompt userCancelled:(BOOL * _Nullable)userCancelled;
+		[Export ("objectForKey:userPrompt:userCancelled:")]
+		[return: NullAllowed]
+		unsafe NSData GetObject (string key, [NullAllowed] string userPrompt, [NullAllowed] ref bool userCancelled);
+
+		// -(NSString * _Nullable)stringForKey:(NSString * _Nonnull)key userPrompt:(NSString * _Nullable)userPrompt;
 		[Export ("stringForKey:userPrompt:")]
 		[return: NullAllowed]
-		string GetString (string key, string userPrompt);
+		string GetString (string key, [NullAllowed] string userPrompt);
+
+		// -(NSString * _Nullable)stringForKey:(NSString * _Nonnull)key userPrompt:(NSString * _Nullable)userPrompt userCancelled:(BOOL * _Nullable)userCancelled;
+		[Export ("stringForKey:userPrompt:userCancelled:")]
+		[return: NullAllowed]
+		unsafe string GetString (string key, [NullAllowed] string userPrompt, [NullAllowed] ref bool userCancelled);
 	}
 
 	// @interface VALSynchronizableValet : VALValet
+	[Introduced (PlatformName.iOS, 7, 0)]
 	[DisableDefaultCtor]
 	[BaseType (typeof(Valet), Name = "VALSynchronizableValet")]
 	interface SynchronizableValet

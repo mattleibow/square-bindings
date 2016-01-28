@@ -8,12 +8,7 @@ namespace Square.Valet
 		{
 		}
 
-		public Valet (string identifier, Accessibility accessibility)
-			: this (identifier, false, accessibility)
-		{
-		}
-
-		public Valet (string identifier, bool isSharedAccessGroupIdentifier, Accessibility accessibility)
+		public Valet (string identifier, Accessibility accessibility, bool isSharedAccessGroupIdentifier = false)
 		{
 			Handle = isSharedAccessGroupIdentifier
 				? InitWithSharedAccessGroupIdentifier (identifier, accessibility)
@@ -23,37 +18,30 @@ namespace Square.Valet
 
 	partial class SecureEnclaveValet
 	{
-		public SecureEnclaveValet (string identifier, Accessibility accessibility)
-			: this (identifier, false, accessibility)
-		{
-		}
-
-		public SecureEnclaveValet (string identifier, bool isSharedAccessGroupIdentifier, Accessibility accessibility)
-			: base (identifier, isSharedAccessGroupIdentifier, accessibility)
-		{
-		}
-
+		[Obsolete("Use backwards-compatible SecureEnclaveValet with AccessControl.UserPresence instead")]
 		public SecureEnclaveValet (string identifier)
-			: this (identifier, false)
+			: this (identifier, AccessControl.UserPresence)
 		{
 		}
 
-		public SecureEnclaveValet (string identifier, bool isSharedAccessGroupIdentifier)
+		[Obsolete("Use backwards-compatible SecureEnclaveValet with VAccessControl.UserPresence instead")]
+		public SecureEnclaveValet (string identifier, Accessibility accessibility, bool isSharedAccessGroupIdentifier = false)
+			: this (identifier, AccessControl.UserPresence, isSharedAccessGroupIdentifier)
+		{
+		}
+
+
+		public SecureEnclaveValet (string identifier, AccessControl accessControl, bool isSharedAccessGroupIdentifier = false)
 		{
 			Handle = isSharedAccessGroupIdentifier
-				? InitWithSharedAccessGroupIdentifier (identifier)
-				: InitWithIdentifier (identifier);
+				? InitWithSharedAccessGroupIdentifier (identifier, accessControl)
+				: InitWithIdentifier (identifier, accessControl);
 		}
 	}
 
 	partial class SynchronizableValet
 	{
-		public SynchronizableValet (string identifier, Accessibility accessibility)
-			: this (identifier, false, accessibility)
-		{
-		}
-
-		public SynchronizableValet (string identifier, bool isSharedAccessGroupIdentifier, Accessibility accessibility)
+		public SynchronizableValet (string identifier, Accessibility accessibility, bool isSharedAccessGroupIdentifier = false)
 		{
 			Handle = isSharedAccessGroupIdentifier
 				? InitWithSharedAccessGroupIdentifier (identifier, accessibility)
