@@ -12,7 +12,7 @@ const string picasso_version              = "2.5.2"; // Picasso
 const string androidtimessquare_version   = "1.6.4"; // AndroidTimesSquare
 const string socketrocket_version         = "0.4.2"; // SocketRocket
 const string valet_version                = "2.0.3"; // Valet
-const string aardvark_version             = "1.2.2"; // Aardvark
+const string aardvark_version             = "1.4.0"; // Aardvark
 const string seismic_version              = "1.0.2"; // Seismic
 const string pollexor_version             = "2.0.4"; // Pollexor
 
@@ -143,6 +143,7 @@ Task ("externals").IsDependentOn ("externals-base").Does (() =>
     BuildXCode (
         project: "Aardvark.xcodeproj", 
         target: "Aardvark", 
+        libraryTitle: "Aardvark", 
         workingDirectory: "binding/Square.Aardvark/Archives/Aardvark");
     if (!FileExists (destination)) MoveFile (source, destination);
 });

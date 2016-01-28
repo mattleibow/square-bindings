@@ -39,7 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="libAardvark-1.2.2.linkwith.cs" />
+    <Compile Include="libAardvark.linkwith.cs" />
     <Compile Include="Aardvark.cs" />
     <Compile Include="LogDistributor.cs" />
     <Compile Include="LogStore.cs" />
@@ -52,8 +52,8 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingNativeLibrary Include="Archives\libAardvark-1.2.2.a">
-      <Link>libAardvark-1.2.2.a</Link>
+    <ObjcBindingNativeLibrary Include="Archives\libAardvark-1.4.0.a">
+      <Link>libAardvark-1.4.0.a</Link>
     </ObjcBindingNativeLibrary>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
