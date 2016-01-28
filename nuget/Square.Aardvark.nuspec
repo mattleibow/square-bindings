@@ -16,9 +16,9 @@
         <tags></tags>
     </metadata>
     <files>
-        <file src="build/README.md" target="README.md" />
-        <file src="build/LICENSE.txt" target="LICENSE.txt" />
+        <file src="output/README.md" target="README.md" />
+        <file src="output/LICENSE.txt" target="LICENSE.txt" />
         
-        <file src="build/Square.Aardvark.dll" target="lib\Xamarin.iOS\Square.Aardvark.dll" />
+        <file src="output/Square.Aardvark.dll" target="lib\Xamarin.iOS\Square.Aardvark.dll" />
     </files>
 </package>

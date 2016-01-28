@@ -19,7 +19,7 @@ packages:
     - Square.Seismic, Version=1.0.2.0
 libraries: 
   android:
-    - ../../nuget/build/Square.Seismic.dll  
+    - ../../output/Square.Seismic.dll  
 local-nuget-repo: ../../
 
 icons: 

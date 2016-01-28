@@ -20,9 +20,9 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="build/README.md" target="README.md" />
-        <file src="build/LICENSE.txt" target="LICENSE.txt" />
+        <file src="output/README.md" target="README.md" />
+        <file src="output/LICENSE.txt" target="LICENSE.txt" />
         
-        <file src="build/Square.OkHttp.WS.dll" target="lib\MonoAndroid\Square.OkHttp.WS.dll" />
+        <file src="output/Square.OkHttp.WS.dll" target="lib\MonoAndroid\Square.OkHttp.WS.dll" />
     </files>
 </package>

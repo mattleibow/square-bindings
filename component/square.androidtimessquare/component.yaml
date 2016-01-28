@@ -19,7 +19,7 @@ packages:
     - Square.AndroidTimesSquare, Version=1.6.4.0
 libraries: 
   android:
-    - ../../nuget/build/Square.AndroidTimesSquare.dll  
+    - ../../output/Square.AndroidTimesSquare.dll  
 local-nuget-repo: ../../
 
 screenshots: 

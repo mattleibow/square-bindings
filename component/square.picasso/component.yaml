@@ -21,7 +21,7 @@ packages:
     - Square.Picasso, Version=2.5.2.1
 libraries: 
   android:
-    - ../../nuget/build/Square.Picasso.dll  
+    - ../../output/Square.Picasso.dll  
 local-nuget-repo: ../../
 
 screenshots: 

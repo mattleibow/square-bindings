@@ -19,7 +19,7 @@ packages:
     - Square.Pollexor, Version=2.0.4.0
 libraries: 
   android:
-    - ../../nuget/build/Square.Pollexor.dll  
+    - ../../output/Square.Pollexor.dll  
 local-nuget-repo: ../../
 
 icons: 

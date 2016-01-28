@@ -16,9 +16,9 @@
         <tags></tags>
     </metadata>
     <files>
-        <file src="build/README.md" target="README.md" />
-        <file src="build/LICENSE.txt" target="LICENSE.txt" />
+        <file src="output/README.md" target="README.md" />
+        <file src="output/LICENSE.txt" target="LICENSE.txt" />
         
-        <file src="build/Square.Valet.dll" target="lib\Xamarin.iOS\Square.Valet.dll" />
+        <file src="output/Square.Valet.dll" target="lib\Xamarin.iOS\Square.Valet.dll" />
     </files>
 </package>

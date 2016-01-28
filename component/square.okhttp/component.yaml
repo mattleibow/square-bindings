@@ -20,7 +20,7 @@ packages:
     - Square.OkHttp, Version=2.5.0.0
 libraries: 
   android:
-    - ../../nuget/build/Square.OkHttp.dll   
+    - ../../output/Square.OkHttp.dll   
 local-nuget-repo: ../../
 
 icons: 

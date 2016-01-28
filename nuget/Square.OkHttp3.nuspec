@@ -19,9 +19,9 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="build/README.md" target="README.md" />
-        <file src="build/LICENSE.txt" target="LICENSE.txt" />
+        <file src="output/README.md" target="README.md" />
+        <file src="output/LICENSE.txt" target="LICENSE.txt" />
         
-        <file src="build/Square.OkHttp3.dll" target="lib\MonoAndroid403\Square.OkHttp3.dll" />
+        <file src="output/Square.OkHttp3.dll" target="lib\MonoAndroid403\Square.OkHttp3.dll" />
     </files>
 </package>

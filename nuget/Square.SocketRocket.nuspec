@@ -16,9 +16,9 @@
         <tags></tags>
     </metadata>
     <files>
-        <file src="build/README.md" target="README.md" />
-        <file src="build/LICENSE.txt" target="LICENSE.txt" />
+        <file src="output/README.md" target="README.md" />
+        <file src="output/LICENSE.txt" target="LICENSE.txt" />
         
-        <file src="build/Square.SocketRocket.dll" target="lib\Xamarin.iOS\Square.SocketRocket.dll" />
+        <file src="output/Square.SocketRocket.dll" target="lib\Xamarin.iOS\Square.SocketRocket.dll" />
     </files>
 </package>

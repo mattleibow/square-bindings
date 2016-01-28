@@ -19,7 +19,7 @@ packages:
     - Square.Aardvark, Version=1.2.2.0
 libraries: 
   ios-unified:
-    - ../../nuget/build/Square.Aardvark.dll  
+    - ../../output/Square.Aardvark.dll  
 local-nuget-repo: ../../
 
 icons: 

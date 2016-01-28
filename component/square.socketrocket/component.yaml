@@ -19,7 +19,7 @@ packages:
     - Square.SocketRocket, Version=0.4.1.0
 libraries: 
   ios-unified:
-    - ../../nuget/build/Square.SocketRocket.dll  
+    - ../../output/Square.SocketRocket.dll  
 local-nuget-repo: ../../
 
 icons: 

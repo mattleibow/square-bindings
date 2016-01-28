@@ -19,7 +19,7 @@ packages:
     - Square.Valet, Version=2.0.3.0
 libraries: 
   ios-unified:
-    - ../../nuget/build/Square.Valet.dll  
+    - ../../output/Square.Valet.dll  
 local-nuget-repo: ../../
 
 icons: 

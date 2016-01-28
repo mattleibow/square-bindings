@@ -17,9 +17,9 @@
         <dependencies></dependencies>
     </metadata>
     <files>
-        <file src="build/README.md" target="README.md" />
-        <file src="build/LICENSE.txt" target="LICENSE.txt" />
+        <file src="output/README.md" target="README.md" />
+        <file src="output/LICENSE.txt" target="LICENSE.txt" />
         
-        <file src="build/Square.Seismic.dll" target="lib\MonoAndroid\Square.Seismic.dll" />
+        <file src="output/Square.Seismic.dll" target="lib\MonoAndroid\Square.Seismic.dll" />
     </files>
 </package>

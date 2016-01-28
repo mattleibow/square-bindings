@@ -21,7 +21,7 @@ packages:
     - Square.OkHttp.WS, Version=2.5.0.0
 libraries: 
   android:
-    - ../../nuget/build/Square.OkHttp.WS.dll  
+    - ../../output/Square.OkHttp.WS.dll  
 local-nuget-repo: ../../
 
 icons: 
