@@ -168,6 +168,8 @@ Task ("clean-native").IsDependentOn ("clean").Does (() =>
 
 Task ("clean").IsDependentOn ("clean-base").Does (() => 
 {
+    CleanDirectories("sample/Components");
+    CleanDirectories("sample/packages");
 });
 
 
