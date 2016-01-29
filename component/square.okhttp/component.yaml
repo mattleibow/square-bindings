@@ -5,7 +5,7 @@ id: square.okhttp
 publisher: Xamarin Inc
 publisher-url: http://xamarin.com
 summary: An HTTP+SPDY client for Android and Java applications.
-version: 2.5.0.0
+version: 2.7.2.0
 src-url: https://github.com/mattleibow/square-bindings
 
 details: Details.md
@@ -17,7 +17,7 @@ no_build: true
 packages:
   android: 
     - Square.OkIO, Version=1.6.0.0
-    - Square.OkHttp, Version=2.5.0.0
+    - Square.OkHttp, Version=2.7.2.0
 libraries: 
   android:
     - ../../output/Square.OkHttp.dll   
