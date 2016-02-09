@@ -148,6 +148,7 @@ publish/
 
 # Xamarin Component Packages
 *.xam
+Components/
 
 # Windows Azure Build Output
 csx/

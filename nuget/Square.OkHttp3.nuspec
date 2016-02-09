@@ -2,15 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Square.OkHttp3</id>
-        <version>3.0.1.0</version>
-        <title>OkHttp3</title>
+        <version>3.1.1.0</version>
+        <title>OkHttp v3</title>
         <authors>.NET Development Addict</authors>
         <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/mattleibow/square-bindings</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.okhttp_256x256.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>An HTTP+SPDY client for Android and Java applications.</description>
-        <summary>An HTTP+SPDY client for Android and Java applications.</summary>
+        <description>An HTTP+HTTP/2 client for Android and Java applications.</description>
+        <summary>An HTTP+HTTP/2 client for Android and Java applications.</summary>
         <releaseNotes></releaseNotes>
         <copyright>Square</copyright>
         <tags></tags>
@@ -22,6 +22,6 @@
         <file src="output/README.md" target="README.md" />
         <file src="output/LICENSE.txt" target="LICENSE.txt" />
         
-        <file src="output/Square.OkHttp3.dll" target="lib\MonoAndroid403\Square.OkHttp3.dll" />
+        <file src="output/Square.OkHttp3.dll" target="lib\MonoAndroid\Square.OkHttp3.dll" />
     </files>
 </package>

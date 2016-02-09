@@ -5,9 +5,9 @@
 
 
 const string okio_version                 = "1.6.0"; // OkIO
-const string okhttp_version               = "2.7.2"; // OkHttp
-const string okhttp3_version              = "3.0.1"; // OkHttp3
-const string okhttpws_version             = "2.7.2"; // OkHttp-WS
+const string okhttp_version               = "2.7.4"; // OkHttp
+const string okhttp3_version              = "3.1.1"; // OkHttp3
+const string okhttpws_version             = "2.7.4"; // OkHttp-WS
 const string picasso_version              = "2.5.2"; // Picasso
 const string androidtimessquare_version   = "1.6.4"; // AndroidTimesSquare
 const string socketrocket_version         = "0.4.2"; // SocketRocket
@@ -19,6 +19,8 @@ const string pollexor_version             = "2.0.4"; // Pollexor
 
 CakeSpec.Libs = new ISolutionBuilder [] { 
     new IOSSolutionBuilder {
+        IsWindowsCompatible = true, 
+        Platform = "\"Any CPU\"",
         SolutionPath = "binding/Square.sln",
         OutputFiles = new [] { 
             new OutputFileCopy { FromFile = "binding/Square.OkIO/bin/Release/Square.OkIO.dll", ToDirectory = "output" },
@@ -55,24 +57,26 @@ CakeSpec.NuSpecs = new [] {
 
 
 CakeSpec.Samples = new ISolutionBuilder [] {
-	new IOSSolutionBuilder { SolutionPath = "./sample/AardvarkSample.sln" },
-	new DefaultSolutionBuilder { SolutionPath = "./sample/AndroidTimesSquareSample.sln" },
-	new DefaultSolutionBuilder { SolutionPath = "./sample/OkHttp3Sample.sln" },
-	new DefaultSolutionBuilder { SolutionPath = "./sample/OkHttpSample.sln" },
-	new DefaultSolutionBuilder { SolutionPath = "./sample/OkHttpWSSample.sln" },
-	new DefaultSolutionBuilder { SolutionPath = "./sample/PicassoSample.sln" },
-	new DefaultSolutionBuilder { SolutionPath = "./sample/PollexorSample.sln", RestoreComponents = true },
-	new DefaultSolutionBuilder { SolutionPath = "./sample/SeismicSample.sln" },
-	new IOSSolutionBuilder { SolutionPath = "./sample/SocketRocketSample.sln" },
-	new IOSSolutionBuilder { SolutionPath = "./sample/ValetSample.sln" },
+	new DefaultSolutionBuilder { IsWindowsCompatible = true, SolutionPath = "./sample/AndroidTimesSquareSample.sln" },
+	new DefaultSolutionBuilder { IsWindowsCompatible = true, SolutionPath = "./sample/OkHttp3Sample.sln" },
+	new DefaultSolutionBuilder { IsWindowsCompatible = true, SolutionPath = "./sample/OkHttpSample.sln" },
+	new DefaultSolutionBuilder { IsWindowsCompatible = true, SolutionPath = "./sample/OkHttpWSSample.sln" },
+	new DefaultSolutionBuilder { IsWindowsCompatible = true, SolutionPath = "./sample/PicassoSample.sln" },
+	new DefaultSolutionBuilder { IsWindowsCompatible = true, SolutionPath = "./sample/PollexorSample.sln", RestoreComponents = true },
+	new DefaultSolutionBuilder { IsWindowsCompatible = true, SolutionPath = "./sample/SeismicSample.sln" },
+	new IOSSolutionBuilder { IsWindowsCompatible = true, SolutionPath = "./sample/AardvarkSample.sln" },
+	new IOSSolutionBuilder { IsWindowsCompatible = true, SolutionPath = "./sample/SocketRocketSample.sln" },
+	new IOSSolutionBuilder { IsWindowsCompatible = true, SolutionPath = "./sample/ValetSample.sln" },
 };
 
 
+if (IsRunningOnUnix ()) {
 CakeSpec.GitRepositoryDependencies = new List<GitRepository> {
-	new GitRepository { Path = "binding/Square.SocketRocket/Archives/SocketRocket/",   Url = "https://github.com/square/SocketRocket.git" },
-	new GitRepository { Path = "binding/Square.Valet/Archives/Valet/",                 Url = "https://github.com/square/Valet.git" },
-	new GitRepository { Path = "binding/Square.Aardvark/Archives/Aardvark/",           Url = "https://github.com/square/Aardvark.git" },
+    new GitRepository { Path = "binding/Square.SocketRocket/Archives/SocketRocket/",   Url = "https://github.com/square/SocketRocket.git" },
+    new GitRepository { Path = "binding/Square.Valet/Archives/Valet/",                 Url = "https://github.com/square/Valet.git" },
+    new GitRepository { Path = "binding/Square.Aardvark/Archives/Aardvark/",           Url = "https://github.com/square/Aardvark.git" },
 };
+}
 
 
 Task ("externals").IsDependentOn ("externals-base").Does (() => 
@@ -111,6 +115,7 @@ Task ("externals").IsDependentOn ("externals-base").Does (() =>
     destination = string.Format("binding/Square.Pollexor/Jars/pollexor-{0}.jar", pollexor_version);
     if (!FileExists (destination)) DownloadFile (source, destination);
     
+    if (IsRunningOnUnix ()) {
     // checkout specific source versions
     
     RunGit ("binding/Square.SocketRocket/Archives/SocketRocket", "--git-dir=.git checkout " + socketrocket_version);
@@ -146,6 +151,7 @@ Task ("externals").IsDependentOn ("externals-base").Does (() =>
         libraryTitle: "Aardvark", 
         workingDirectory: "binding/Square.Aardvark/Archives/Aardvark");
     if (!FileExists (destination)) MoveFile (source, destination);
+    }
 });
 
 
@@ -160,9 +166,11 @@ Task ("clean-native").IsDependentOn ("clean").Does (() =>
     CleanDirectories("binding/Square.Seismic/Jars");
     CleanDirectories("binding/Square.Pollexor/Jars");
     
+    if (IsRunningOnUnix ()) {
     CleanDirectories("binding/Square.SocketRocket/Archives");
     CleanDirectories("binding/Square.Valet/Archives");
     CleanDirectories("binding/Square.Aardvark/Archives");
+    }
 });
 
 

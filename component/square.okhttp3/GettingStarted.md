@@ -1,6 +1,6 @@
 # Getting Started with OkHttp3
 
-> An **HTTP & SPDY** client for Android and Java applications
+> An HTTP+HTTP/2 client for Android and Java applications
 
 HTTP is the way modern applications network. It’s how we exchange data &amp;
 media. Doing HTTP efficiently makes your stuff load faster and saves
@@ -8,8 +8,8 @@ bandwidth.
 
 OkHttp is an HTTP client that’s efficient by default:
 
-  * HTTP/2 and SPDY support allows all requests to the same host to share a socket.
-  * Connection pooling reduces request latency (if SPDY isn’t available).
+  * HTTP/2 support allows all requests to the same host to share a socket.
+  * Connection pooling reduces request latency (if HTTP/2 isn’t available).
   * Transparent GZIP shrinks download sizes.
   * Response caching avoids the network completely for repeat requests.
 
@@ -20,7 +20,7 @@ necessary for IPv4+IPv6 and for services hosted in redundant data centers.
 OkHttp initiates new connections with modern TLS features (SNI, ALPN), and
 falls back to TLS 1.0 if the handshake fails.
 
-Using OkHttp is easy. Its 2.0 API is designed with fluent builders and
+Using OkHttp is easy. Its 3.0 API is designed with fluent builders and
 immutability. It supports synchronous blocking calls, async calls with
 callbacks and async calls using `Task` with `await`.
 
@@ -65,10 +65,10 @@ This code executes a request on a background thread using a callback mechanism:
     
     // Asynchronous callback
     client.NewCall(request).Enqueue(
-        response => {
+        (call, response) => {
             // Response came back
             string body = response.Body().String();
-        }, (request, exception) => {
+        }, (call, exception) => {
             // There was an error
         });
     

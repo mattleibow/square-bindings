@@ -45,7 +45,7 @@
     <TransformFile Include="Transforms\Metadata.generated.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedJar Include="Jars\okhttp-ws-2.7.2.jar" />
+    <EmbeddedJar Include="Jars\okhttp-ws-2.7.4.jar" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Square.OkHttp\Square.OkHttp.csproj">
