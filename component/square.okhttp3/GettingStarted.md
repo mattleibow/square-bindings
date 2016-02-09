@@ -1,4 +1,4 @@
-# Getting Started with OkHttp3
+# Getting Started with OkHttp
 
 > An HTTP+HTTP/2 client for Android and Java applications
 
