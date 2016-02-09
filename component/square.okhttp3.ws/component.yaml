@@ -1,6 +1,6 @@
 %YAML 1.2
 ---
-name: OkHttp3 v3 Web Sockets
+name: OkHttp v3 Web Sockets
 id: square.OkHttp3.ws
 publisher: Xamarin Inc
 publisher-url: http://xamarin.com
