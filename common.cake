@@ -1,8 +1,8 @@
 #tool nuget:?package=ILMerge&version=2.14.1208
-#tool nuget:?package=XamarinComponent&version=1.1.0.22
+#tool nuget:?package=XamarinComponent&version=1.1.0.23
 
 #addin nuget:?package=Cake.XCode&version=1.0.4
-#addin nuget:?package=Cake.Xamarin&version=1.2.3
+#addin nuget:?package=Cake.Xamarin&version=1.3.0.1
 #addin nuget:?package=Cake.FileHelpers&version=1.0.3.2
 #addin nuget:?package=Cake.Yaml&version=1.0.3
 #addin nuget:?package=Cake.Json&version=1.0.2
