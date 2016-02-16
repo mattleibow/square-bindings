@@ -9,6 +9,7 @@ const string okhttp_version               = "2.7.4"; // OkHttp
 const string okhttp3_version              = "3.1.2"; // OkHttp3
 const string okhttpws_version             = "2.7.4"; // OkHttp-WS
 const string okhttp3ws_version            = "3.1.2"; // OkHttp3-WS
+const string okhttpurlconnection_version  = "2.7.4"; // OkHttp-UrlConnection
 const string picasso_version              = "2.5.2"; // Picasso
 const string androidtimessquare_version   = "1.6.5"; // AndroidTimesSquare
 const string socketrocket_version         = "0.4.2"; // SocketRocket
@@ -30,6 +31,7 @@ CakeSpec.Libs = new ISolutionBuilder [] {
             new OutputFileCopy { FromFile = "binding/Square.Picasso/bin/Release/Square.Picasso.dll", ToDirectory = "output" },
             new OutputFileCopy { FromFile = "binding/Square.OkHttp.WS/bin/Release/Square.OkHttp.WS.dll", ToDirectory = "output" },
             new OutputFileCopy { FromFile = "binding/Square.OkHttp3.WS/bin/Release/Square.OkHttp3.WS.dll", ToDirectory = "output" },
+            new OutputFileCopy { FromFile = "binding/Square.OkHttp.UrlConnection/bin/Release/Square.OkHttp.UrlConnection.dll", ToDirectory = "output" },
             new OutputFileCopy { FromFile = "binding/Square.SocketRocket/bin/Release/Square.SocketRocket.dll", ToDirectory = "output" },
             new OutputFileCopy { FromFile = "binding/Square.AndroidTimesSquare/bin/Release/Square.AndroidTimesSquare.dll", ToDirectory = "output" },
             new OutputFileCopy { FromFile = "binding/Square.Valet/bin/Release/Square.Valet.dll", ToDirectory = "output" },
@@ -50,6 +52,7 @@ CakeSpec.NuSpecs = new [] {
 	"nuget/Square.Picasso.nuspec",
 	"nuget/Square.OkHttp.WS.nuspec",
 	"nuget/Square.OkHttp3.WS.nuspec",
+	"nuget/Square.OkHttp.UrlConnection.nuspec",
 	"nuget/Square.SocketRocket.nuspec",
 	"nuget/Square.AndroidTimesSquare.nuspec",
 	"nuget/Square.Valet.nuspec",
@@ -105,6 +108,10 @@ Task ("externals").IsDependentOn ("externals-base").Does (() =>
     
     source = string.Format("http://search.maven.org/remotecontent?filepath=com/squareup/okhttp3/okhttp-ws/{0}/okhttp-ws-{0}.jar", okhttp3ws_version);
     destination = string.Format("binding/Square.OkHttp3.WS/Jars/okhttp-ws-{0}.jar", okhttp3ws_version);
+    if (!FileExists (destination)) DownloadFile (source, destination);
+
+    source = string.Format("http://search.maven.org/remotecontent?filepath=com/squareup/okhttp/okhttp-urlconnection/{0}/okhttp-urlconnection-{0}.jar", okhttpurlconnection_version);
+    destination = string.Format("binding/Square.OkHttp.UrlConnection/Jars/okhttp-urlconnection-{0}.jar", okhttpurlconnection_version);
     if (!FileExists (destination)) DownloadFile (source, destination);
     
     source = string.Format("http://search.maven.org/remotecontent?filepath=com/squareup/picasso/picasso/{0}/picasso-{0}.jar", picasso_version);
@@ -170,6 +177,7 @@ Task ("clean-native").IsDependentOn ("clean").Does (() =>
     CleanDirectories("binding/Square.OkHttp3/Jars");
     CleanDirectories("binding/Square.OkHttp.WS/Jars");
     CleanDirectories("binding/Square.OkHttp3.WS/Jars");
+    CleanDirectories("binding/Square.OkHttp.UrlConnection/Jars");
     CleanDirectories("binding/Square.Picasso/Jars");
     CleanDirectories("binding/Square.AndroidTimesSquare/Jars");
     CleanDirectories("binding/Square.Seismic/Jars");

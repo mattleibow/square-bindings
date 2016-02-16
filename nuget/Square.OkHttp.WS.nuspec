@@ -3,7 +3,7 @@
     <metadata>
         <id>Square.OkHttp.WS</id>
         <version>2.7.4.0</version>
-        <title>OkHttp Web Sockets</title>
+        <title>OkHttp v2 Web Sockets</title>
         <authors>.NET Development Addict</authors>
         <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/mattleibow/square-bindings</projectUrl>
