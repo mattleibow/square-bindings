@@ -17,6 +17,7 @@ const string valet_version                = "2.2.0"; // Valet
 const string aardvark_version             = "1.4.0"; // Aardvark
 const string seismic_version              = "1.0.2"; // Seismic
 const string pollexor_version             = "2.0.4"; // Pollexor
+const string retrofit_version             = "1.9.0"; // Retrofit
 
 
 CakeSpec.Libs = new ISolutionBuilder [] { 
@@ -59,6 +60,7 @@ CakeSpec.NuSpecs = new [] {
 	"nuget/Square.Aardvark.nuspec",
 	"nuget/Square.Seismic.nuspec",
 	"nuget/Square.Pollexor.nuspec",
+	"nuget/Square.Retrofit.nuspec",
 };
 
 
@@ -130,6 +132,10 @@ Task ("externals").IsDependentOn ("externals-base").Does (() =>
     destination = string.Format("binding/Square.Pollexor/Jars/pollexor-{0}.jar", pollexor_version);
     if (!FileExists (destination)) DownloadFile (source, destination);
     
+    source = string.Format("http://search.maven.org/remotecontent?filepath=com/squareup/retrofit/retrofit/{0}/retrofit-{0}.jar", retrofit_version);
+    destination = string.Format("binding/Square.Retrofit/Jars/retrofit-{0}.jar", retrofit_version);
+    if (!FileExists (destination)) DownloadFile (source, destination);
+    
     if (IsRunningOnUnix ()) {
     // checkout specific source versions
     
@@ -182,6 +188,7 @@ Task ("clean-native").IsDependentOn ("clean").Does (() =>
     CleanDirectories("binding/Square.AndroidTimesSquare/Jars");
     CleanDirectories("binding/Square.Seismic/Jars");
     CleanDirectories("binding/Square.Pollexor/Jars");
+    CleanDirectories("binding/Square.Retrofit/Jars");
     
     if (IsRunningOnUnix ()) {
     CleanDirectories("binding/Square.SocketRocket/Archives");
