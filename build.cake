@@ -39,6 +39,7 @@ CakeSpec.Libs = new ISolutionBuilder [] {
             new OutputFileCopy { FromFile = "binding/Square.Aardvark/bin/Release/Square.Aardvark.dll", ToDirectory = "output" },
             new OutputFileCopy { FromFile = "binding/Square.Seismic/bin/Release/Square.Seismic.dll", ToDirectory = "output" },
             new OutputFileCopy { FromFile = "binding/Square.Pollexor/bin/Release/Square.Pollexor.dll", ToDirectory = "output" },
+            new OutputFileCopy { FromFile = "binding/Square.Retrofit/bin/Release/Square.Retrofit.dll", ToDirectory = "output" },
             new OutputFileCopy { FromFile = "README.md", ToDirectory = "output" },
             new OutputFileCopy { FromFile = "LICENSE.txt", ToDirectory = "output" },
         }
