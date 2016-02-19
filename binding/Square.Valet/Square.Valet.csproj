@@ -50,8 +50,8 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingNativeLibrary Include="Archives\libValet-2.2.0.a">
-      <Link>libValet-2.2.0.a</Link>
+    <ObjcBindingNativeLibrary Include="Archives\libValet-2.2.1.a">
+      <Link>libValet-2.2.1.a</Link>
     </ObjcBindingNativeLibrary>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
