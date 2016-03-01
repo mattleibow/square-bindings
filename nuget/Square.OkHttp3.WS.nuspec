@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Square.OkHttp3.WS</id>
-        <version>3.1.2.0</version>
+        <version>3.2.0.0</version>
         <title>OkHttp v3 Web Sockets</title>
         <authors>.NET Development Addict</authors>
         <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
@@ -16,7 +16,7 @@
         <tags></tags>
         <dependencies>
             <dependency id="Square.OkIO" version="1.6.0" />
-            <dependency id="Square.OkHttp3" version="3.1.2" />
+            <dependency id="Square.OkHttp3" version="3.2.0" />
         </dependencies>
     </metadata>
     <files>

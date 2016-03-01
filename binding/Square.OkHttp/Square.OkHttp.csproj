@@ -46,7 +46,7 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedJar Include="Jars\okhttp-2.7.4.jar" />
+    <EmbeddedJar Include="Jars\okhttp-2.7.5.jar" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Square.OkIO\Square.OkIO.csproj">

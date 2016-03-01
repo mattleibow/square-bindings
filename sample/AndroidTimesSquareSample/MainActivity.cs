@@ -231,7 +231,7 @@ namespace AndroidTimesSquareSample
                 var dateString = date.Day.ToString();
                 var span = new SpannableString(dateString + "\ntitle");
                 span.SetSpan(new RelativeSizeSpan(0.5f), 0, dateString.Length, SpanTypes.InclusiveExclusive);
-                cellView.TextFormatted = span;
+				cellView.DayOfMonthTextView.TextFormatted = span;
             }
         }
     }
