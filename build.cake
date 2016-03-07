@@ -1,3 +1,5 @@
+#tool nuget:?package=XamarinComponent
+
 #addin "Cake.Xamarin"
 #addin "Cake.XCode"
 #addin "Cake.FileHelpers"
@@ -27,18 +29,9 @@ const string retrofit_version             = "1.9.0"; // Retrofit
 // TOOLS & FUNCTIONS - the bits to make it all work
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-var NugetToolPath = GetToolPath ("nuget.exe");
-var XamarinComponentToolPath = GetToolPath ("XamarinComponent/tools/xamarin-component.exe");
+var NugetToolPath = File ("./tools/nuget.exe");
+var XamarinComponentToolPath = File ("./tools/XamarinComponent/tools/xamarin-component.exe");
 var GitToolPath = EnvironmentVariable ("GIT_EXE") ?? (IsRunningOnWindows () ? "C:\\Program Files (x86)\\Git\\bin\\git.exe" : "git");
-
-FilePath GetToolPath (FilePath toolPath)
-{
-	var appRoot = Context.Environment.GetApplicationRoot ().Combine ("../");
- 	var appRootExe = MakeAbsolute (appRoot.CombineWithFilePath (toolPath));
- 	if (FileExists (appRootExe))
- 		return appRootExe;
-    throw new FileNotFoundException ("Unable to find tool: " + appRootExe); 
-}
 
 var RunGit = new Action<DirectoryPath, string> ((directory, arguments) =>
 {
@@ -96,8 +89,12 @@ var RunLipo = new Action<DirectoryPath, FilePath, FilePath[]> ((directory, outpu
 	});
 });
 
-var BuildXCode = new Action<FilePath, string, string, DirectoryPath> ((project, target, libraryTitle, workingDirectory) =>
+var BuildXCode = new Action<FilePath, string, DirectoryPath, bool> ((project, libraryTitle, workingDirectory, isMac) =>
 {
+    if (!IsRunningOnUnix ()) {
+        return;
+    }
+    
     var fatLibrary = string.Format("lib{0}.a", libraryTitle);
 
 	var output = string.Format ("lib{0}.a", libraryTitle);
@@ -109,37 +106,101 @@ var BuildXCode = new Action<FilePath, string, string, DirectoryPath> ((project, 
 	
 	var buildArch = new Action<string, string, FilePath> ((sdk, arch, dest) => {
 		if (!FileExists (dest)) {
-			XCodeBuild (new XCodeBuildSettings {
-				Project = workingDirectory.CombineWithFilePath (project).ToString (),
-				Target = target,
-				Sdk = sdk,
-				Arch = arch,
-				Configuration = "Release",
-			});
-			var outputPath = workingDirectory.Combine ("build").Combine ("Release-" + sdk).CombineWithFilePath (output);
-			CopyFile (outputPath, dest);
-		}
+            XCodeBuild (new XCodeBuildSettings {
+                Project = workingDirectory.CombineWithFilePath (project).ToString (),
+                Target = libraryTitle,
+                Sdk = sdk,
+                Arch = arch,
+                Configuration = "Release",
+            });
+            var outputPath = workingDirectory.Combine ("build").Combine (isMac ? "Release" : ("Release-" + sdk)).CombineWithFilePath (output);
+            CopyFile (outputPath, dest);
+        }
 	});
 	
-	buildArch ("iphonesimulator", "i386", workingDirectory.CombineWithFilePath (i386));
-	buildArch ("iphonesimulator", "x86_64", workingDirectory.CombineWithFilePath (x86_64));
+    if (isMac) {
+        // not supported anymore
+        // buildArch ("macosx", "i386", workingDirectory.CombineWithFilePath (i386));
+        buildArch ("macosx", "x86_64", workingDirectory.CombineWithFilePath (x86_64));
+        
+		if (!FileExists (workingDirectory.CombineWithFilePath (fatLibrary))) {
+            RunLipo (workingDirectory, fatLibrary, new [] {
+                (FilePath)x86_64 
+            });
+        }
+    } else {
+        buildArch ("iphonesimulator", "i386", workingDirectory.CombineWithFilePath (i386));
+        buildArch ("iphonesimulator", "x86_64", workingDirectory.CombineWithFilePath (x86_64));
+        
+        buildArch ("iphoneos", "armv7", workingDirectory.CombineWithFilePath (armv7));
+        buildArch ("iphoneos", "armv7s", workingDirectory.CombineWithFilePath (armv7s));
+        buildArch ("iphoneos", "arm64", workingDirectory.CombineWithFilePath (arm64));
+        
+		if (!FileExists (workingDirectory.CombineWithFilePath (fatLibrary))) {
+            RunLipo (workingDirectory, fatLibrary, new [] {
+                (FilePath)i386, 
+                (FilePath)x86_64, 
+                (FilePath)armv7, 
+                (FilePath)armv7s, 
+                (FilePath)arm64
+            });
+        }
+    }
+});
+var DownloadPod = new Action<DirectoryPath, string, string, IDictionary<string, string>> ((podfilePath, platform, platformVersion, pods) => 
+{
+    if (!IsRunningOnUnix ()) {
+        return;
+    }
+    
+    if (!FileExists (podfilePath.CombineWithFilePath ("Podfile.lock"))) {
+        var builder = new StringBuilder ();
+        builder.AppendFormat ("platform :{0}, '{1}'", platform, platformVersion);
+        builder.AppendLine ();
+        foreach (var pod in pods) {
+            builder.AppendFormat ("pod '{0}', '{1}'", pod.Key, pod.Value);
+            builder.AppendLine ();
+        }
+        
+        if (!DirectoryExists (podfilePath)) {
+            CreateDirectory (podfilePath);
+        }
+        
+        System.IO.File.WriteAllText (podfilePath.CombineWithFilePath ("Podfile").ToString (), builder.ToString ());
 	
-	buildArch ("iphoneos", "armv7", workingDirectory.CombineWithFilePath (armv7));
-	buildArch ("iphoneos", "armv7s", workingDirectory.CombineWithFilePath (armv7s));
-	buildArch ("iphoneos", "arm64", workingDirectory.CombineWithFilePath (arm64));
-	
-	RunLipo (workingDirectory, fatLibrary, new [] {
-         (FilePath)i386, 
-         (FilePath)x86_64, 
-         (FilePath)armv7, 
-         (FilePath)armv7s, 
-         (FilePath)arm64 });
+        CocoaPodInstall (podfilePath, new CocoaPodInstallSettings {
+            NoIntegrate = true
+        });
+    }
+});
+var CreateStaticPod = new Action<DirectoryPath, string, string, string, string> ((path, osxVersion, iosVersion, name, version) => {
+    if (osxVersion != null) {
+        DownloadPod (path.Combine("osx"), 
+                    "osx", osxVersion, 
+                    new Dictionary<string, string> { { name, version } });
+        BuildXCode ("Pods/Pods.xcodeproj", 
+                    name,
+                    path.Combine ("osx"),
+                    true);
+    }
+    if (iosVersion != null) {
+        DownloadPod (path.Combine("ios"), 
+                    "ios", iosVersion, 
+                    new Dictionary<string, string> { { name, version } });
+        BuildXCode ("Pods/Pods.xcodeproj", 
+                    name,
+                    path.Combine ("ios"),
+                    false);
+    }
 });
 
 var DownloadJar = new Action<string, string, string> ((source, destination, version) =>
 {
     source = string.Format("http://search.maven.org/remotecontent?filepath=" + source, version);
     FilePath dest = string.Format(destination, version);
+    DirectoryPath destDir = dest.GetDirectory ();
+    if (!DirectoryExists (destDir))
+        CreateDirectory (destDir);
     if (!FileExists (dest)) {
         DownloadFile (source, dest);
     }
@@ -158,21 +219,6 @@ var CheckoutGit = new Action<string, string, string> ((source, destination, vers
 
     RunGit (destination, "--git-dir=.git checkout " + version);
 });
-var XCodeArchive = new Action<DirectoryPath, string, string, string> ((dir, name, target, version) =>
-{
-    if (!IsRunningOnUnix ()) {
-        return;
-    }
-
-    FilePath source = dir.CombineWithFilePath (string.Format ("{0}/lib{0}.a", name));
-    FilePath destination = dir.CombineWithFilePath (string.Format ("lib{0}-{1}.a", name, version));
-    
-    BuildXCode (name + ".xcodeproj", target, name, dir.Combine (name));
-    
-    if (!FileExists (destination)) {
-        MoveFile (source, destination);
-    }
-});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // EXTERNALS - 
@@ -182,61 +228,42 @@ Task ("externals")
     .Does (() => 
 {
     DownloadJar ("com/squareup/okio/okio/{0}/okio-{0}.jar",
-                 "binding/Square.OkIO/Jars/okio-{0}.jar",
+                 "externals/OkIO/okio.jar",
                  okio_version);
     DownloadJar ("com/squareup/okhttp/okhttp/{0}/okhttp-{0}.jar",
-                 "binding/Square.OkHttp/Jars/okhttp-{0}.jar", 
+                 "externals/OkHttp/okhttp.jar", 
                  okhttp_version);
     DownloadJar ("com/squareup/okhttp3/okhttp/{0}/okhttp-{0}.jar",
-                 "binding/Square.OkHttp3/Jars/okhttp-{0}.jar",
+                 "externals/OkHttp3/okhttp.jar",
                  okhttp3_version);
     DownloadJar ("com/squareup/okhttp/okhttp-ws/{0}/okhttp-ws-{0}.jar",
-                 "binding/Square.OkHttp.WS/Jars/okhttp-ws-{0}.jar",
+                 "externals/OkHttp.WS/okhttp-ws.jar",
                  okhttpws_version);
     DownloadJar ("com/squareup/okhttp3/okhttp-ws/{0}/okhttp-ws-{0}.jar",
-                 "binding/Square.OkHttp3.WS/Jars/okhttp-ws-{0}.jar",
+                 "externals/OkHttp3.WS/okhttp-ws.jar",
                  okhttp3ws_version);
     DownloadJar ("com/squareup/okhttp/okhttp-urlconnection/{0}/okhttp-urlconnection-{0}.jar",
-                 "binding/Square.OkHttp.UrlConnection/Jars/okhttp-urlconnection-{0}.jar", 
+                 "externals/OkHttp.UrlConnection/okhttp-urlconnection.jar", 
                  okhttpurlconnection_version);
     DownloadJar ("com/squareup/picasso/picasso/{0}/picasso-{0}.jar",
-                 "binding/Square.Picasso/Jars/picasso-{0}.jar", 
+                 "externals/Picasso/picasso.jar", 
                  picasso_version);
     DownloadJar ("com/squareup/android-times-square/{0}/android-times-square-{0}.aar",
-                 "binding/Square.AndroidTimesSquare/Jars/android-times-square-{0}.aar", 
+                 "externals/AndroidTimesSquare/android-times-square.aar", 
                  androidtimessquare_version);
     DownloadJar ("com/squareup/seismic/{0}/seismic-{0}.jar",
-                 "binding/Square.Seismic/Jars/seismic-{0}.jar", 
+                 "externals/Seismic/seismic.jar", 
                  seismic_version);
     DownloadJar ("com/squareup/pollexor/{0}/pollexor-{0}.jar",
-                 "binding/Square.Pollexor/Jars/pollexor-{0}.jar", 
+                 "externals/Pollexor/pollexor.jar", 
                  pollexor_version);
     DownloadJar ("com/squareup/retrofit/retrofit/{0}/retrofit-{0}.jar",
-                 "binding/Square.Retrofit/Jars/retrofit-{0}.jar", 
+                 "externals/Retrofit/retrofit.jar", 
                  retrofit_version);
-              
-    CheckoutGit ("https://github.com/square/SocketRocket.git",
-                 "binding/Square.SocketRocket/Archives/SocketRocket/",
-                 socketrocket_version);
-    CheckoutGit ("https://github.com/square/Valet.git",
-                 "binding/Square.Valet/Archives/Valet/",
-                 valet_version);
-    CheckoutGit ("https://github.com/square/Aardvark.git",
-                 "binding/Square.Aardvark/Archives/Aardvark/",
-                 aardvark_version);
-              
-    XCodeArchive ("binding/Square.SocketRocket/Archives/", 
-                  "SocketRocket", 
-                  "SocketRocket", 
-                  socketrocket_version);
-    XCodeArchive ("binding/Square.Valet/Archives/", 
-                  "Valet", 
-                  "Valet iOS", 
-                  valet_version);
-    XCodeArchive ("binding/Square.Aardvark/Archives/", 
-                  "Aardvark", 
-                  "Aardvark", 
-                  aardvark_version);
+                
+    CreateStaticPod ("externals/SocketRocket/", "10.8", "6.0", "SocketRocket", socketrocket_version);
+    CreateStaticPod ("externals/Valet/", "10.10", "6.0", "Valet", valet_version);
+    CreateStaticPod ("externals/Aardvark/", null, "6.0", "Aardvark", aardvark_version);
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -262,6 +289,7 @@ Task ("libs")
         "Square.OkHttp3.WS/bin/Release/Square.OkHttp3.WS.dll",
         "Square.OkHttp.UrlConnection/bin/Release/Square.OkHttp.UrlConnection.dll",
         "Square.SocketRocket/bin/Release/Square.SocketRocket.dll",
+        "Square.SocketRocket_OSX/bin/Release/Square.SocketRocket.OSX.dll",
         "Square.AndroidTimesSquare/bin/Release/Square.AndroidTimesSquare.dll",
         "Square.Valet/bin/Release/Square.Valet.dll",
         "Square.Aardvark/bin/Release/Square.Aardvark.dll",
@@ -316,7 +344,7 @@ Task ("samples")
     .IsDependentOn ("libs")
     .Does (() => 
 {
-    var samples = GetFiles ("./sample/*.sln");
+    var samples = GetFiles ("./sample/*/*.sln");
     foreach (var sample in samples) {
         RunComponentRestore (sample);
 		RunNuGetRestore (sample);
@@ -351,10 +379,7 @@ Task ("clean-native")
     .IsDependentOn ("clean")
     .Does (() => 
 {
-    CleanDirectories("./binding/*/Jars");
-    if (IsRunningOnUnix ()) {
-        CleanDirectories("./binding/*/Archives");
-    }
+    CleanDirectories("./externals");
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

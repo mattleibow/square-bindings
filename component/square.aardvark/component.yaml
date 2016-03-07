@@ -28,7 +28,7 @@ icons:
 
 samples: 
   - name: iOS Sample
-    path: ../../sample/AardvarkSample.sln
+    path: ../../sample/AardvarkSample/AardvarkSample.sln
     removeProjects:
       - Square.Aardvark
     installNuGets:

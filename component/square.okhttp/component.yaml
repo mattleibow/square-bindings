@@ -29,7 +29,7 @@ icons:
 
 samples: 
   - name: Android Sample
-    path: ../../sample/OkHttpSample.sln
+    path: ../../sample/OkHttpSample/OkHttpSample.sln
     removeProjects:
       - Square.OkHttp
       - Square.OkIO

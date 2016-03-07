@@ -28,7 +28,7 @@ icons:
 
 samples: 
   - name: Android Sample
-    path: ../../sample/SeismicSample.sln
+    path: ../../sample/SeismicSample/SeismicSample.sln
     removeProjects:
       - Square.Seismic
     installNuGets:

@@ -32,7 +32,7 @@ icons:
 
 samples: 
   - name: Android Sample
-    path: ../../sample/PicassoSample.sln
+    path: ../../sample/PicassoSample/PicassoSample.sln
     removeProjects:
       - Square.Picasso
       - Square.OkHttp

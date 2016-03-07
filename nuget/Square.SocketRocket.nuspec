@@ -20,5 +20,6 @@
         <file src="output/LICENSE.txt" target="LICENSE.txt" />
         
         <file src="output/Square.SocketRocket.dll" target="lib\Xamarin.iOS\Square.SocketRocket.dll" />
+        <file src="output/Square.SocketRocket.OSX.dll" target="lib\Xamarin.Mac\Square.SocketRocket.dll" />
     </files>
 </package>

@@ -28,7 +28,7 @@ icons:
 
 samples: 
   - name: iOS Sample
-    path: ../../sample/ValetSample.sln
+    path: ../../sample/ValetSample/ValetSample.sln
     removeProjects:
       - Square.Valet
     installNuGets:

@@ -28,7 +28,7 @@ icons:
 
 samples: 
   - name: Android Sample
-    path: ../../sample/PollexorSample.sln
+    path: ../../sample/PollexorSample/PollexorSample.sln
     removeProjects:
       - Square.Pollexor
     installNuGets:

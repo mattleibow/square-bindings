@@ -52,8 +52,8 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingNativeLibrary Include="Archives\libAardvark-1.4.0.a">
-      <Link>libAardvark-1.4.0.a</Link>
+    <ObjcBindingNativeLibrary Include="..\..\externals\Aardvark\ios\libAardvark.a">
+      <Link>libAardvark.a</Link>
     </ObjcBindingNativeLibrary>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />

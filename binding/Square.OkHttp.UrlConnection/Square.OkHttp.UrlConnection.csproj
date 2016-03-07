@@ -52,7 +52,7 @@
     <Folder Include="Jars\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedJar Include="Jars\okhttp-urlconnection-2.7.5.jar" />
+    <EmbeddedJar Include="..\..\externals\OkHttp.UrlConnection\okhttp-urlconnection.jar" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Square.OkHttp\Square.OkHttp.csproj">

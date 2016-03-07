@@ -17,9 +17,13 @@ no_build: true
 packages:
   ios-unified: 
     - Square.SocketRocket, Version=0.4.2.0
+  mac-unified: 
+    - Square.SocketRocket, Version=0.4.2.0
 libraries: 
   ios-unified:
     - ../../output/Square.SocketRocket.dll  
+  mac-unified:
+    - ../../output/Square.SocketRocket.OSX.dll  
 local-nuget-repo: ../../
 
 icons: 
@@ -28,7 +32,7 @@ icons:
 
 samples: 
   - name: iOS Sample
-    path: ../../sample/SocketRocketSample.sln
+    path: ../../sample/SocketRocketSample/SocketRocketSample.sln
     removeProjects:
       - Square.SocketRocket
     installNuGets:

@@ -45,7 +45,7 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedJar Include="Jars\picasso-2.5.2.jar" />
+    <EmbeddedJar Include="..\..\externals\Picasso\picasso.jar" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Square.OkHttp\Square.OkHttp.csproj">

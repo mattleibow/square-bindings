@@ -30,7 +30,7 @@ icons:
 
 samples: 
   - name: Android Sample
-    path: ../../sample/AndroidTimesSquareSample.sln
+    path: ../../sample/AndroidTimesSquareSample/AndroidTimesSquareSample.sln
     removeProjects:
       - Square.AndroidTimesSquare
     installNuGets:
