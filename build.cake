@@ -33,6 +33,10 @@ var NugetToolPath = File ("./tools/nuget.exe");
 var XamarinComponentToolPath = File ("./tools/XamarinComponent/tools/xamarin-component.exe");
 var GitToolPath = EnvironmentVariable ("GIT_EXE") ?? (IsRunningOnWindows () ? "C:\\Program Files (x86)\\Git\\bin\\git.exe" : "git");
 
+Information (MakeAbsolute (File (".")).ToString ());
+Information (MakeAbsolute (File ("./tools/nuget.exe")).ToString ());
+Information (FileExists (MakeAbsolute (File ("./tools/nuget.exe"))).ToString ());
+
 var RunGit = new Action<DirectoryPath, string> ((directory, arguments) =>
 {
 	StartProcess (GitToolPath, new ProcessSettings {
