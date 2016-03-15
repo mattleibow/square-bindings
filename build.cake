@@ -1,14 +1,77 @@
 #tool nuget:?package=XamarinComponent
 
-#addin "Cake.Xamarin"
-#addin "Cake.XCode"
-#addin "Cake.FileHelpers"
+#addin nuget:?package=Octokit
+#addin nuget:?package=Cake.Xamarin
+#addin nuget:?package=Cake.XCode
+#addin nuget:?package=Cake.FileHelpers
 
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
+using Octokit;
 
-var TARGET = Argument ("t", Argument ("target", Argument ("Target", "Default")));
+//////////////////////////////////////////////////////////////////////
+// ARGUMENTS
+//////////////////////////////////////////////////////////////////////
+
+var target = Argument("target", "Default").ToUpper();
+
+// special logic to tweak builds for platform limitations
+
+var ForMacOnly = target.EndsWith("-MAC");
+var ForWindowsOnly = target.EndsWith("-WINDOWS");
+var ForEverywhere = !ForMacOnly && !ForWindowsOnly;
+
+var ForWindows = ForEverywhere || !ForMacOnly;
+var ForMac = ForEverywhere || !ForWindowsOnly;
+
+target = target.Replace("-MAC", string.Empty).Replace("-WINDOWS", string.Empty);
+
+Information("Building target '{0}' for {1}.", target, ForEverywhere ? "everywhere" : (ForWindowsOnly ? "Windows only" : "Mac only"));
+
+//////////////////////////////////////////////////////////////////////
+// PREPARATION
+//////////////////////////////////////////////////////////////////////
+
+// the tools
+FilePath XamarinComponentPath = "./tools/XamarinComponent/tools/xamarin-component.exe";
+
+// the output folder
+DirectoryPath outDir = "./output/";
+FilePath outputZip = "output.zip";
+if (!DirectoryExists(outDir)) {
+    CreateDirectory(outDir);
+}
+
+// get CI variables
+var sha = EnvironmentVariable("APPVEYOR_REPO_COMMIT") ?? EnvironmentVariable("TRAVIS_COMMIT");
+var branch = EnvironmentVariable("APPVEYOR_REPO_BRANCH") ?? EnvironmentVariable("TRAVIS_BRANCH");
+var tag = EnvironmentVariable("APPVEYOR_REPO_TAG_NAME") ?? EnvironmentVariable("TRAVIS_TAG");
+var pull = EnvironmentVariable("APPVEYOR_PULL_REQUEST_NUMBER") ?? EnvironmentVariable("TRAVIS_PULL_REQUEST");
+
+// get the temporary build artifacts filename
+var buildType = "COMMIT";
+if (!string.IsNullOrEmpty(pull) && !string.Equals(pull, "false", StringComparison.OrdinalIgnoreCase)) {
+    buildType = "PULL" + pull;
+} else if (!string.IsNullOrEmpty(tag)) {
+    buildType = "TAG";
+}
+var tagOrBranch = branch;
+if (!string.IsNullOrEmpty(tag)) {
+    tagOrBranch = tag;
+}
+var TemporaryArtifactsFilename = string.Format("{0}_{1}_{2}.zip", buildType, tagOrBranch, sha);
+
+// the GitHub communication (for storing the temporary build artifacts)
+var GitHubToken = EnvironmentVariable("GitHubToken");
+var GitHubUser = "mattleibow";
+var GitHubRepository = "CrossPlatformBuild";
+var GitHubBuildTag = "CI";
+
+//////////////////////////////////////////////////////////////////////
+// VERSIONS
+//////////////////////////////////////////////////////////////////////
 
 const string okio_version                 = "1.6.0"; // OkIO
 const string okhttp_version               = "2.7.5"; // OkHttp
@@ -231,6 +294,7 @@ var CheckoutGit = new Action<string, string, string> ((source, destination, vers
 Task ("externals")
     .Does (() => 
 {
+if (ForWindows) {
     DownloadJar ("com/squareup/okio/okio/{0}/okio-{0}.jar",
                  "externals/OkIO/okio.jar",
                  okio_version);
@@ -264,10 +328,12 @@ Task ("externals")
     DownloadJar ("com/squareup/retrofit/retrofit/{0}/retrofit-{0}.jar",
                  "externals/Retrofit/retrofit.jar", 
                  retrofit_version);
-                
+}
+if (ForMac) {       
     CreateStaticPod ("externals/SocketRocket/", "10.8", "6.0", "SocketRocket", socketrocket_version);
     CreateStaticPod ("externals/Valet/", "10.10", "6.0", "Valet", valet_version);
     CreateStaticPod ("externals/Aardvark/", null, "6.0", "Aardvark", aardvark_version);
+}
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -278,29 +344,38 @@ Task ("libs")
     .IsDependentOn ("externals")
     .Does (() => 
 {
-	RunNuGetRestore ("./binding/Square.sln");
-    DotNetBuild ("./binding/Square.sln", c => {
+    FilePath solution = "./binding/Square.sln";
+    if (ForWindowsOnly) {
+        solution = "./binding/Square.Windows.sln";
+    } else if (ForMacOnly) {
+        solution = "./binding/Square.Mac.sln";
+    }
+	RunNuGetRestore (solution);
+    DotNetBuild (solution, c => {
         c.Configuration = "Release"; 
         // c.Properties ["Platform"] = new [] { "\"Any CPU\"" };
     });
     
-    var outputs = new [] {
-        "Square.OkIO/bin/Release/Square.OkIO.dll",
-        "Square.OkHttp/bin/Release/Square.OkHttp.dll",
-        "Square.OkHttp3/bin/Release/Square.OkHttp3.dll",
-        "Square.Picasso/bin/Release/Square.Picasso.dll",
-        "Square.OkHttp.WS/bin/Release/Square.OkHttp.WS.dll",
-        "Square.OkHttp3.WS/bin/Release/Square.OkHttp3.WS.dll",
-        "Square.OkHttp.UrlConnection/bin/Release/Square.OkHttp.UrlConnection.dll",
-        "Square.SocketRocket/bin/Release/Square.SocketRocket.dll",
-        "Square.SocketRocket_OSX/bin/Release/Square.SocketRocket.OSX.dll",
-        "Square.AndroidTimesSquare/bin/Release/Square.AndroidTimesSquare.dll",
-        "Square.Valet/bin/Release/Square.Valet.dll",
-        "Square.Aardvark/bin/Release/Square.Aardvark.dll",
-        "Square.Seismic/bin/Release/Square.Seismic.dll",
-        "Square.Pollexor/bin/Release/Square.Pollexor.dll",
-        "Square.Retrofit/bin/Release/Square.Retrofit.dll",
-    };
+    var outputs = new List<string> ();
+    if (ForWindows) {
+        outputs.Add ("Square.OkIO/bin/Release/Square.OkIO.dll");
+        outputs.Add ("Square.OkHttp/bin/Release/Square.OkHttp.dll");
+        outputs.Add ("Square.OkHttp3/bin/Release/Square.OkHttp3.dll");
+        outputs.Add ("Square.Picasso/bin/Release/Square.Picasso.dll");
+        outputs.Add ("Square.OkHttp.WS/bin/Release/Square.OkHttp.WS.dll");
+        outputs.Add ("Square.OkHttp3.WS/bin/Release/Square.OkHttp3.WS.dll");
+        outputs.Add ("Square.OkHttp.UrlConnection/bin/Release/Square.OkHttp.UrlConnection.dll");
+        outputs.Add ("Square.AndroidTimesSquare/bin/Release/Square.AndroidTimesSquare.dll");
+        outputs.Add ("Square.Seismic/bin/Release/Square.Seismic.dll");
+        outputs.Add ("Square.Pollexor/bin/Release/Square.Pollexor.dll");
+        outputs.Add ("Square.Retrofit/bin/Release/Square.Retrofit.dll");
+    }
+    if (ForMac) {
+        outputs.Add ("Square.SocketRocket/bin/Release/Square.SocketRocket.dll");
+        outputs.Add ("Square.SocketRocket_OSX/bin/Release/Square.SocketRocket.OSX.dll");
+        outputs.Add ("Square.Valet/bin/Release/Square.Valet.dll");
+        outputs.Add ("Square.Aardvark/bin/Release/Square.Aardvark.dll");
+    }
     
     foreach (var output in outputs) {
         CopyFileToDirectory ("./binding/" + output, "./output/");
@@ -319,7 +394,25 @@ Task ("nuget")
     .Does (() => 
 {
     DeleteFiles ("./output/*.nupkg");
-    var nugets = GetFiles ("./nuget/*.nuspec");
+    var nugets = new List<string> ();
+    if (ForWindows) {
+        nugets.Add ("./nuget/Square.AndroidTimesSquare.nuspec");
+        nugets.Add ("./nuget/Square.OkHttp.nuspec");
+        nugets.Add ("./nuget/Square.OkHttp.UrlConnection.nuspec");
+        nugets.Add ("./nuget/Square.OkHttp.WS.nuspec");
+        nugets.Add ("./nuget/Square.OkHttp3.nuspec");
+        nugets.Add ("./nuget/Square.OkHttp3.WS.nuspec");
+        nugets.Add ("./nuget/Square.OkIO.nuspec");
+        nugets.Add ("./nuget/Square.Picasso.nuspec");
+        nugets.Add ("./nuget/Square.Pollexor.nuspec");
+        nugets.Add ("./nuget/Square.Retrofit.nuspec");
+        nugets.Add ("./nuget/Square.Seismic.nuspec");
+    }
+    if (ForMac) {
+        nugets.Add ("./nuget/Square.Aardvark.nuspec");
+        nugets.Add ("./nuget/Square.SocketRocket.nuspec");
+        nugets.Add ("./nuget/Square.Valet.nuspec");
+    }
     foreach (var nuget in nugets) {
         PackageNuGet (nuget, "./output/");
     }
@@ -330,13 +423,27 @@ Task ("component")
     .Does (() => 
 {
     DeleteFiles ("./output/*.xam");
-    var yamls = GetFiles ("./component/**/component.yaml");
-    foreach (var yaml in yamls) {
-        var yamlDir = yaml.GetDirectory ();
-        PackageComponent (yamlDir, new XamarinComponentSettings { 
+    var yamls = new List<string> ();
+    if (ForWindows) {
+        yamls.Add ("./component/square.androidtimessquare");
+        yamls.Add ("./component/square.okhttp");
+        yamls.Add ("./component/square.okhttp.ws");
+        yamls.Add ("./component/square.okhttp3");
+        yamls.Add ("./component/square.okhttp3.ws");
+        yamls.Add ("./component/square.picasso");
+        yamls.Add ("./component/square.pollexor");
+        yamls.Add ("./component/square.seismic");
+    }
+    if (ForMac) {
+        yamls.Add ("./component/square.aardvark");
+        yamls.Add ("./component/square.socketrocket");
+        yamls.Add ("./component/square.valet");
+    }
+    foreach (DirectoryPath yaml in yamls) {
+        PackageComponent (yaml, new XamarinComponentSettings { 
             ToolPath = XamarinComponentToolPath
         });
-        MoveFiles (yamlDir.FullPath.TrimEnd ('/') + "/*.xam", "./output/");
+        MoveFiles (yaml + "/*.xam", "./output/");
     }
 });
 
@@ -348,7 +455,23 @@ Task ("samples")
     .IsDependentOn ("libs")
     .Does (() => 
 {
-    var samples = GetFiles ("./sample/*/*.sln");
+    var samples = new List<string> ();
+    if (ForWindows) {
+        samples.Add ("./sample/AndroidTimesSquareSample/AndroidTimesSquareSample.sln");
+        samples.Add ("./sample/OkHttp3Sample/OkHttp3Sample.sln");
+        samples.Add ("./sample/OkHttp3WSSample/OkHttp3WSSample.sln");
+        samples.Add ("./sample/OkHttpSample/OkHttpSample.sln");
+        samples.Add ("./sample/OkHttpWSSample/OkHttpWSSample.sln");
+        samples.Add ("./sample/PicassoSample/PicassoSample.sln");
+        samples.Add ("./sample/PollexorSample/PollexorSample.sln");
+        samples.Add ("./sample/SeismicSample/SeismicSample.sln");
+    }
+    if (ForMac) {
+        samples.Add ("./sample/AardvarkSample/AardvarkSample.sln");
+        samples.Add ("./sample/SocketRocketSample/SocketRocketSample.sln");
+        samples.Add ("./sample/SocketRocketSample_OSX/SocketRocketSample_OSX.sln");
+        samples.Add ("./sample/ValetSample/ValetSample.sln");
+    }
     foreach (var sample in samples) {
         RunComponentRestore (sample);
 		RunNuGetRestore (sample);
@@ -386,6 +509,109 @@ Task ("clean-native")
     CleanDirectories("./externals");
 });
 
+//////////////////////////////////////////////////////////////////////
+// TEMPORARY ARTIFACT MANAGEMENT
+//////////////////////////////////////////////////////////////////////
+
+Task("DownloadArtifacts")
+    .WithCriteria(!string.IsNullOrEmpty(sha))
+    .WithCriteria(!ForEverywhere)
+    .Does(() =>
+{
+    if (ForWindowsOnly) {
+        Information("Connecting to GitHub...");
+        var client = new GitHubClient(new ProductHeaderValue("CrossPlatformBuild"));
+        client.Credentials = new Credentials(GitHubToken);
+        
+        Information("Loading releases...");
+        var releases = client.Release.GetAll(GitHubUser, GitHubRepository).Result;
+        var releaseId = releases.Single(r => r.TagName == GitHubBuildTag).Id;
+        
+        Information("Loading CI release...");
+        Release release = null;
+        ReleaseAsset asset = null;
+        var waitSeconds = 0;
+        while (asset == null) {
+            release = client.Release.Get(GitHubUser, GitHubRepository, releaseId).Result;
+            Information("Loading asset...");
+            asset = release.Assets.SingleOrDefault(a => a.Name == TemporaryArtifactsFilename);
+            if (asset == null) {
+                // only try for 15 minutes
+                if (waitSeconds > 15 * 60) {
+                    throw new Exception("Unable to download assets, maybe the build has failed.");
+                }
+                Information("Asset not found, waiting another 30 seconds.");
+                waitSeconds += 30;
+                System.Threading.Thread.Sleep(1000 * 30);
+            }
+        }
+        Information("Found asset: {0}", asset.Id);
+        Information("Url: {0}", asset.BrowserDownloadUrl);
+        
+        Information("Downloading asset...");
+        if (FileExists(outputZip)) {
+            DeleteFile(outputZip);
+        }
+        var url = string.Format("https://api.github.com/repos/{0}/{1}/releases/assets/{2}?access_token={3}", GitHubUser, GitHubRepository, asset.Id, GitHubToken);
+        var wc = new WebClient();
+        wc.Headers.Add("Accept", "application/octet-stream");
+        wc.Headers.Add("User-Agent", "CrossPlatformBuild");
+        wc.DownloadFile(url, outputZip.FullPath);
+        
+        Information("Extracting output...");
+        CleanDirectory(outDir);
+        Unzip(outputZip, outDir);
+    }
+});
+
+Task("UploadArtifacts")
+    .WithCriteria(!string.IsNullOrEmpty(sha))
+    .WithCriteria(!ForEverywhere)
+    .Does(() =>
+{
+    Information("Connecting to GitHub...");
+    var client = new GitHubClient(new ProductHeaderValue("CrossPlatformBuild"));
+    client.Credentials = new Credentials(GitHubToken);
+
+    Information("Loading releases...");
+    var releases = client.Release.GetAll(GitHubUser, GitHubRepository).Result;
+    var releaseId = releases.Single(r => r.TagName == GitHubBuildTag).Id;
+
+    Information("Loading CI release...");
+    var release = client.Release.Get(GitHubUser, GitHubRepository, releaseId).Result;
+
+    Information("Loading asset...");
+    var asset = release.Assets.SingleOrDefault(a => a.Name == TemporaryArtifactsFilename);
+    
+    if (asset != null) {
+        Information("Deleting asset...");
+        client.Release.DeleteAsset(GitHubUser, GitHubRepository, asset.Id).Wait();
+    } else {
+        Information("Asset not found.");
+    }
+
+    if (ForMacOnly) {
+        Information("Compressing output...");
+        if (FileExists(outputZip)) {
+            DeleteFile(outputZip);
+        }
+        Zip(outDir, outputZip);
+
+        Information("Creating asset...");
+        var archiveContents = System.IO.File.OpenRead(outputZip.FullPath);
+        var assetUpload = new ReleaseAssetUpload {
+            FileName = TemporaryArtifactsFilename,
+            ContentType = "application/zip",
+            RawData = archiveContents
+        };
+        
+        Information("Uploading asset...");
+        asset = client.Release.UploadAsset(release, assetUpload).Result;
+        Information("Uploaded asset: {0}", asset.Id);
+        Information("Url: {0}", asset.BrowserDownloadUrl);
+    }
+});
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // START - 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -400,4 +626,13 @@ Task ("CI")
 {
 });
 
-RunTarget (TARGET);
+Task("Default")
+    .IsDependentOn("externals")
+    .IsDependentOn("libs")
+    .IsDependentOn("DownloadArtifacts") // download as late as possible so everything gets done
+    .IsDependentOn("nuget")
+    .IsDependentOn("component")
+    .IsDependentOn("samples")
+    .IsDependentOn("UploadArtifacts");
+
+RunTarget (target);
