@@ -18,7 +18,7 @@ install:
   - ./build-scripts/travis-before-build.sh
 
 script:
-  - chmod +x ./build.sh
+  - chmod +x ./bootstrapper.sh
   - ./bootstrapper.sh --target Default-Mac --configuration ${Configuration}
 
 after_script:
