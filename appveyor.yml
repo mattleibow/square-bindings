@@ -12,6 +12,10 @@ environment:
     secure: 5mY0TVM+8MUtvl18rZ+eCuXoLMWgxJCpVRTUvry+mG4=
   NoWarn: ;1591;
   ContinueOnDisconnected: False
+  XamarinEmail: 
+    secure: +SUXZSPLHwp39+Yh09d2xxVGsEgHtlSD4NT1Og5h3sg=
+  XamarinPassword:
+    secure: Tvdf5rZl6IOCwZbvyj9B2w==
    
 xamarin:
   email: 
