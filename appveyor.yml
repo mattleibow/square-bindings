@@ -22,12 +22,12 @@ xamarin:
   ios: true
 
 install:
- - cmd: .\build-scripts\appveyor-before-build.cmd
+  - cmd: .\build-scripts\appveyor-before-build.cmd
   
 build_script:
- - ps: .\bootstrapper.ps1 -Target Default-Windows -Configuration $Env:Configuration
+  - ps: .\bootstrapper.ps1 -Target Default-Windows -Configuration $Env:Configuration
   
 artifacts:
- - path: output
- - path: output\*.nupkg
- - path: output\*.xam
+  - path: output
+  - path: output\*.nupkg
+  - path: output\*.xam
