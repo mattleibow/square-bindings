@@ -15,6 +15,9 @@ export XamarinComponentVersion=1.1.0.29
 #openssl aes-256-cbc -k "${CertificatePassword}" -in build-scripts/iOSDeveloper.mobileprovision -out build-scripts/iOSDeveloper.mobileprovision.enc -a
 #openssl aes-256-cbc -k "${CertificatePassword}" -in build-scripts/iOSDeveloper.cer -out build-scripts/iOSDeveloper.cer.enc -a
 #openssl aes-256-cbc -k "${CertificatePassword}" -in build-scripts/iOSDeveloper.p12 -out build-scripts/iOSDeveloper.p12.enc -a
+#openssl aes-256-cbc -k "${CertificatePassword}" -in build-scripts/MacDeveloper.provisionprofile -out build-scripts/MacDeveloper.provisionprofile.enc -a
+#openssl aes-256-cbc -k "${CertificatePassword}" -in build-scripts/MacDeveloper.cer -out build-scripts/MacDeveloper.cer.enc -a
+#openssl aes-256-cbc -k "${CertificatePassword}" -in build-scripts/MacDeveloper.p12 -out build-scripts/MacDeveloper.p12.enc -a
 
 #
 # Decrypting the certificates and profiles
@@ -23,22 +26,33 @@ echo Decrypting the certificates and profiles
 openssl aes-256-cbc -k "${CertificatePassword}" -in build-scripts/iOSDeveloper.mobileprovision.enc -d -a -out build-scripts/iOSDeveloper.mobileprovision
 openssl aes-256-cbc -k "${CertificatePassword}" -in build-scripts/iOSDeveloper.cer.enc -d -a -out build-scripts/iOSDeveloper.cer
 openssl aes-256-cbc -k "${CertificatePassword}" -in build-scripts/iOSDeveloper.p12.enc -d -a -out build-scripts/iOSDeveloper.p12
+openssl aes-256-cbc -k "${CertificatePassword}" -in build-scripts/MacDeveloper.provisionprofile.enc -d -a -out build-scripts/MacDeveloper.provisionprofile
+openssl aes-256-cbc -k "${CertificatePassword}" -in build-scripts/MacDeveloper.cer.enc -d -a -out build-scripts/MacDeveloper.cer
+openssl aes-256-cbc -k "${CertificatePassword}" -in build-scripts/MacDeveloper.p12.enc -d -a -out build-scripts/MacDeveloper.p12
 
 #
 # Add the certificates to the keychain
 #
 echo Add the certificates to the keychain
 security set-keychain-settings -t 3600 -l ~/Library/Keychains/login.keychain
+# iOS
 security import ./build-scripts/iOSDeveloper.cer -k ~/Library/Keychains/login.keychain -T /usr/bin/codesign
 security import ./build-scripts/iOSDeveloper.p12 -k ~/Library/Keychains/login.keychain -T /usr/bin/codesign -P "${CertificatePassword}"
+# Mac
+security import ./build-scripts/MacDeveloper.cer -k ~/Library/Keychains/login.keychain -T /usr/bin/codesign
+security import ./build-scripts/MacDeveloper.p12 -k ~/Library/Keychains/login.keychain -T /usr/bin/codesign -P "${CertificatePassword}"
 
 #
 # Put the provisioning profile in place
 #
 echo Put the provisioning profile in place
+# iOS
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 cp ./build-scripts/iOSDeveloper.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 [ -f ~/Library/MobileDevice/Provisioning\ Profiles/iOSDeveloper.mobileprovision ] && echo "Added provisioning profile" || echo "Error adding provisioning profile"
+# Mac
+profiles -i -F ./build-scripts/MacDeveloper.provisionprofile
+profiles -c
 
 #
 # Download and install Mono and Xamarin
