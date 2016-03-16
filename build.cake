@@ -287,6 +287,15 @@ var CheckoutGit = new Action<string, string, string> ((source, destination, vers
     RunGit (destination, "--git-dir=.git checkout " + version);
 });
 
+var Build = new Action<FilePath> ((solution) =>
+{
+    if (IsRunningOnWindows ()) {
+        MSBuild (solution, s => s.SetConfiguration ("Release").SetMSBuildPlatform (MSBuildPlatform.x86));
+    } else {
+        XBuild (solution, s => s.SetConfiguration ("Release"));
+    }
+});
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // EXTERNALS - 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -351,10 +360,7 @@ Task ("libs")
         solution = "./binding/Square.Mac.sln";
     }
 	RunNuGetRestore (solution);
-    DotNetBuild (solution, c => {
-        c.Configuration = "Release"; 
-        // c.Properties ["Platform"] = new [] { "\"Any CPU\"" };
-    });
+    Build (solution);
     
     var outputs = new List<string> ();
     if (ForWindows) {
@@ -475,10 +481,7 @@ Task ("samples")
     foreach (var sample in samples) {
         RunComponentRestore (sample);
 		RunNuGetRestore (sample);
-        DotNetBuild (sample, c => {
-            c.Configuration = "Release"; 
-            // c.Properties ["Platform"] = new [] { "\"Any CPU\"" };
-        });
+        Build (sample);
     }
 });
 
