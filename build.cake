@@ -676,7 +676,7 @@ Task("Default")
     .IsDependentOn("DownloadArtifacts") // download as late as possible so everything gets done
     .IsDependentOn("nuget")
     .IsDependentOn("component")
-    .IsDependentOn("samples")
-    .IsDependentOn("UploadArtifacts");
+    .IsDependentOn("UploadArtifacts") // upload early so the other build can start
+    .IsDependentOn("samples");
 
 RunTarget (target);
