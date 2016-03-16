@@ -314,7 +314,13 @@ void MergeDirectory(DirectoryPath source, DirectoryPath dest, bool replace)
     FileInfo[] files = dir.GetFiles();
     foreach (FileInfo file in files) {
         string temppath = dest.CombineWithFilePath(file.Name).FullPath;
-        file.CopyTo(temppath, replace);
+        if (FileExists(temppath)) {
+            if (replace) {
+                DeleteFile(temppath);
+            }
+        } else {
+            file.CopyTo(temppath);
+        }
     }
 
     DirectoryInfo[] dirs = dir.GetDirectories();
