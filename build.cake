@@ -296,6 +296,35 @@ var Build = new Action<FilePath> ((solution) =>
     }
 });
 
+void MergeDirectory(DirectoryPath source, DirectoryPath dest, bool replace)
+{
+    var sourceDirName = source.FullPath;
+    var destDirName = dest.FullPath;
+    
+    if (!DirectoryExists(source)) {
+        throw new DirectoryNotFoundException("Source directory does not exist or could not be found: " + source);
+    }
+
+    if (!DirectoryExists(dest)) {
+        CreateDirectory(dest);
+    }
+
+    DirectoryInfo dir = new DirectoryInfo(sourceDirName);
+    
+    FileInfo[] files = dir.GetFiles();
+    foreach (FileInfo file in files) {
+        string temppath = dest.CombineWithFilePath(file.Name).FullPath;
+        file.CopyTo(temppath, replace);
+    }
+
+    DirectoryInfo[] dirs = dir.GetDirectories();
+    foreach (DirectoryInfo subdir in dirs) {
+        string temppath = dest.Combine(subdir.Name).FullPath;
+        MergeDirectory(subdir.FullName, temppath, replace);
+    }
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // EXTERNALS - 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -562,8 +591,14 @@ Task("DownloadArtifacts")
         wc.DownloadFile(url, outputZip.FullPath);
         
         Information("Extracting output...");
-        CleanDirectory(outDir);
-        Unzip(outputZip, outDir);
+        DirectoryPath tmp = "./temp-output/";
+        if (DirectoryExists(tmp)) {
+            CleanDirectory(tmp);
+        } else {
+            CreateDirectory(tmp);
+        }
+        Unzip(outputZip, tmp);
+        MergeDirectory(tmp, outDir, false);
     }
 });
 
