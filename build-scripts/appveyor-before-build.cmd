@@ -31,4 +31,4 @@ REM
 if not exist downloads (mkdir downloads)
 wget -nc -O "downloads\XamarinComponent-%XamarinComponentVersion%.nupkg" "https://www.nuget.org/api/v2/package/XamarinComponent/%XamarinComponentVersion%"
 7za -odownloads\XamarinComponent x "downloads\XamarinComponent-%XamarinComponentVersion%.nupkg"
-echo Y | downloads\XamarinComponent\tools\xamarin-component.exe login "${XamarinEmail}" -p "${XamarinPassword}" 
+echo Y | downloads\XamarinComponent\tools\xamarin-component.exe login "%XamarinEmail%" -p "%XamarinPassword%" 
