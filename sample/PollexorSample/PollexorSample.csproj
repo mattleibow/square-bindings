@@ -57,14 +57,14 @@
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="PhotoView">
-      <HintPath>..\Components\PhotoView-1.2.4\lib\android\PhotoView.dll</HintPath>
+      <HintPath>Components\PhotoView-1.2.4\lib\android\PhotoView.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="UniversalImageLoader">
-      <HintPath>..\Components\UniversalImageLoader-1.9.4.1\lib\android\UniversalImageLoader.dll</HintPath>
+      <HintPath>Components\UniversalImageLoader-1.9.4.1\lib\android\UniversalImageLoader.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Xamarin.Android.Support.v4.23.0.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
