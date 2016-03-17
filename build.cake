@@ -66,7 +66,7 @@ var TemporaryArtifactsFilename = string.Format("{0}_{1}_{2}.zip", buildType, tag
 // the GitHub communication (for storing the temporary build artifacts)
 var GitHubToken = EnvironmentVariable("GitHubToken");
 var GitHubUser = "mattleibow";
-var GitHubRepository = "CrossPlatformBuild";
+var GitHubRepository = "square-bindings";
 var GitHubBuildTag = "CI";
 
 //////////////////////////////////////////////////////////////////////
@@ -673,9 +673,9 @@ Task ("CI")
 Task("Default")
     .IsDependentOn("externals")
     .IsDependentOn("libs")
-    .IsDependentOn("DownloadArtifacts") // download as late as possible so everything gets done
     .IsDependentOn("nuget")
     .IsDependentOn("component")
+    .IsDependentOn("DownloadArtifacts") // download late as each package is platform-specific
     .IsDependentOn("UploadArtifacts") // upload early so the other build can start
     .IsDependentOn("samples");
 
