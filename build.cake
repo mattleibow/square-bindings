@@ -413,7 +413,7 @@ Task ("libs")
     }
     if (ForMac) {
         outputs.Add ("Square.SocketRocket/bin/Release/Square.SocketRocket.dll");
-        outputs.Add ("Square.SocketRocket_OSX/bin/Release/Square.SocketRocket.OSX.dll");
+        outputs.Add ("Square.SocketRocket-OSX/bin/Release/Square.SocketRocket.OSX.dll");
         outputs.Add ("Square.Valet/bin/Release/Square.Valet.dll");
         outputs.Add ("Square.Aardvark/bin/Release/Square.Aardvark.dll");
     }
@@ -510,7 +510,7 @@ Task ("samples")
     if (ForMac) {
         samples.Add ("./sample/AardvarkSample/AardvarkSample.sln");
         samples.Add ("./sample/SocketRocketSample/SocketRocketSample.sln");
-        samples.Add ("./sample/SocketRocketSample_OSX/SocketRocketSample_OSX.sln");
+        samples.Add ("./sample/SocketRocketSample-OSX/SocketRocketSample-OSX.sln");
         samples.Add ("./sample/ValetSample/ValetSample.sln");
     }
     foreach (var sample in samples) {

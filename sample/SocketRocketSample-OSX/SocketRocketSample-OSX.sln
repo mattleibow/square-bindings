@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.SocketRocket_OSX", "..\..\binding\Square.SocketRocket_OSX\Square.SocketRocket_OSX.csproj", "{777757E5-DD1E-42D5-8D9E-F0E38C854E66}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.SocketRocket-OSX", "..\..\binding\Square.SocketRocket-OSX\Square.SocketRocket-OSX.csproj", "{777757E5-DD1E-42D5-8D9E-F0E38C854E66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketRocketSample_OSX", "SocketRocketSample_OSX.csproj", "{1AE9DD40-9210-48E9-9F6C-5C6BA9B55E74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketRocketSample-OSX", "SocketRocketSample-OSX.csproj", "{1AE9DD40-9210-48E9-9F6C-5C6BA9B55E74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

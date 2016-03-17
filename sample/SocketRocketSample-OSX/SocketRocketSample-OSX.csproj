@@ -97,9 +97,9 @@
     <InterfaceDefinition Include="MainWindow.xib" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\binding\Square.SocketRocket_OSX\Square.SocketRocket_OSX.csproj">
+    <ProjectReference Include="..\..\binding\Square.SocketRocket-OSX\Square.SocketRocket-OSX.csproj">
       <Project>{777757E5-DD1E-42D5-8D9E-F0E38C854E66}</Project>
-      <Name>Square.SocketRocket_OSX</Name>
+      <Name>Square.SocketRocket-OSX</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />

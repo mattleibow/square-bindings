@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.OkHttp.UrlConnection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Retrofit", "Square.Retrofit\Square.Retrofit.csproj", "{81436FC0-604B-48E1-AC4F-92BA8F5B5468}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.SocketRocket_OSX", "Square.SocketRocket_OSX\Square.SocketRocket_OSX.csproj", "{777757E5-DD1E-42D5-8D9E-F0E38C854E66}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.SocketRocket-OSX", "Square.SocketRocket-OSX\Square.SocketRocket-OSX.csproj", "{777757E5-DD1E-42D5-8D9E-F0E38C854E66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

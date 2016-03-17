@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Valet", "Square.Vale
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Aardvark", "Square.Aardvark\Square.Aardvark.csproj", "{A6D2CC86-74BA-4C7C-B444-D203B1B73293}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.SocketRocket_OSX", "Square.SocketRocket_OSX\Square.SocketRocket_OSX.csproj", "{777757E5-DD1E-42D5-8D9E-F0E38C854E66}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.SocketRocket-OSX", "Square.SocketRocket-OSX\Square.SocketRocket-OSX.csproj", "{777757E5-DD1E-42D5-8D9E-F0E38C854E66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
