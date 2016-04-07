@@ -220,11 +220,16 @@ namespace Square.Aardvark
 
 	// @interface ARKLogMessage : NSObject <NSCopying, NSSecureCoding>
 	[BaseType (typeof(NSObject), Name = "ARKLogMessage")]
+	[DisableDefaultCtor]
 	interface LogMessage : INSCopying, INSSecureCoding
 	{
 		// -(instancetype _Nonnull)initWithText:(NSString * _Nonnull)text image:(UIImage * _Nullable)image type:(ARKLogType)type userInfo:(NSDictionary * _Nullable)userInfo;
 		[Export ("initWithText:image:type:userInfo:")]
 		IntPtr Constructor (string text, [NullAllowed] UIImage image, LogType type, [NullAllowed] NSDictionary userInfo);
+
+		// - (instancetype)initWithText:(NSString *)text image:(nullable UIImage *)image type:(ARKLogType)type userInfo:(nullable NSDictionary *)userInfo creationDate:(NSDate *)date NS_DESIGNATED_INITIALIZER;
+		[Export ("initWithText:image:type:userInfo:creationDate:")]
+		IntPtr Constructor (string text, [NullAllowed] UIImage image, LogType type, [NullAllowed] NSDictionary userInfo, NSDate date);
 
 		// @property (readonly, copy, nonatomic) NSDate * _Nonnull creationDate;
 		[Export ("creationDate", ArgumentSemantic.Copy)]
@@ -236,6 +241,7 @@ namespace Square.Aardvark
 
 		// @property (readonly, nonatomic) UIImage * _Nonnull image;
 		[Export ("image")]
+		[NullAllowed]
 		UIImage Image { get; }
 
 		// @property (readonly, nonatomic) ARKLogType type;
@@ -244,6 +250,7 @@ namespace Square.Aardvark
 
 		// @property (readonly, copy, nonatomic) NSDictionary * _Nonnull userInfo;
 		[Export ("userInfo", ArgumentSemantic.Copy)]
+		[NullAllowed]
 		NSDictionary UserInfo { get; }
 	}
 
