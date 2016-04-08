@@ -15,9 +15,9 @@ REM
 echo y | "%ANDROID_HOME%\tools\android.bat" update sdk --no-ui --all --filter platform-tools,tools
 
 REM
-REM Install the Android 10 (2.3) platfom
+REM Install the Android 15 (4.0.3) platfom
 REM
-echo y | "%ANDROID_HOME%\tools\android.bat" update sdk --no-ui --all --filter android-10
+echo y | "%ANDROID_HOME%\tools\android.bat" update sdk --no-ui --all --filter android-15
 
 REM
 REM Install chocolates
