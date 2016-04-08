@@ -126,7 +126,7 @@
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\binding\Square.SocketRocket-TVOS\Square.SocketRocket-TVOS.csproj">
+    <ProjectReference Include="..\..\binding\Square.SocketRocket-TVOS\Square.SocketRocket-TVOS.csproj">
       <Project>{DC846DEE-E019-441B-908A-8C56529714A5}</Project>
       <Name>Square.SocketRocket-TVOS</Name>
     </ProjectReference>
