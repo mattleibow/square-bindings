@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Square.SocketRocket</id>
-        <version>0.4.2.1</version>
+        <version>0.5.0.0</version>
         <title>SocketRocket Web Sockets</title>
         <authors>.NET Development Addict</authors>
         <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
@@ -21,5 +21,6 @@
         
         <file src="output/Square.SocketRocket.dll" target="lib\Xamarin.iOS\Square.SocketRocket.dll" />
         <file src="output/Square.SocketRocket.OSX.dll" target="lib\Xamarin.Mac\Square.SocketRocket.dll" />
+        <file src="output/Square.SocketRocket.TVOS.dll" target="lib\Xamarin.tvOS\Square.SocketRocket.dll" />
     </files>
 </package>

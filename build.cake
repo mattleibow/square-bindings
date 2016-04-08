@@ -442,6 +442,7 @@ Task ("libs")
     if (ForMac) {
         outputs.Add ("Square.SocketRocket/bin/Release/Square.SocketRocket.dll");
         outputs.Add ("Square.SocketRocket-OSX/bin/Release/Square.SocketRocket.OSX.dll");
+        outputs.Add ("Square.SocketRocket-TVOS/bin/Release/Square.SocketRocket.TVOS.dll");
         outputs.Add ("Square.Valet/bin/Release/Square.Valet.dll");
         outputs.Add ("Square.Aardvark/bin/Release/Square.Aardvark.dll");
     }
