@@ -59,10 +59,10 @@ profiles -c
 #
 echo Download and install Mono and Xamarin
 wget -nc -P downloads "http://download.mono-project.com/archive/${MonoVersion}/macos-10-universal/MonoFramework-MDK-${MonoVersion}.macos10.xamarin.universal.pkg"
-sudo installer -pkg "downloads/MonoFramework-MDK-${MonoVersion}.macos10.xamarin.universal.pkg" -target / 
-wget -nc -P downloads "http://download.xamarin.com/xm-binding-preview/xamarin.mac-${XamarinMacVersion}.pkg"
-sudo installer -pkg "downloads/xamarin.mac-${XamarinMacVersion}.pkg" -target / 
+wget -nc -P downloads "http://download.xamarin.com/XamarinforMac/Mac/xamarin.mac-${XamarinMacVersion}.pkg"
 wget -nc -P downloads "http://download.xamarin.com/MonoTouch/Mac/monotouch-${MonoTouchVersion}.pkg"
+sudo installer -pkg "downloads/MonoFramework-MDK-${MonoVersion}.macos10.xamarin.universal.pkg" -target / 
+sudo installer -pkg "downloads/xamarin.mac-${XamarinMacVersion}.pkg" -target / 
 sudo installer -pkg "downloads/monotouch-${MonoTouchVersion}.pkg" -target /
 
 #
