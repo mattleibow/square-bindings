@@ -3,9 +3,9 @@
 #
 # Variables
 #
-export MonoVersion=4.3.2
-export MonoTouchVersion=9.4.2.27
-export XamarinMacVersion=2.7.0.115
+export MonoVersion=4.4.0
+export MonoTouchVersion=9.8.0.156
+export XamarinMacVersion=2.8.0.58
 export ActivatorVersion=1.0.1
 export XamarinComponentVersion=1.1.0.29
 
