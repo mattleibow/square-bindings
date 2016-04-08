@@ -69,6 +69,14 @@ var GitHubUser = "mattleibow";
 var GitHubRepository = "square-bindings";
 var GitHubBuildTag = "CI";
 
+public enum TargetOS {
+    Windows,
+    Mac,
+    Android,
+    iOS,
+    tvOS,
+}
+
 //////////////////////////////////////////////////////////////////////
 // VERSIONS
 //////////////////////////////////////////////////////////////////////
@@ -81,7 +89,7 @@ const string okhttp3ws_version            = "3.2.0"; // OkHttp3-WS
 const string okhttpurlconnection_version  = "2.7.5"; // OkHttp-UrlConnection
 const string picasso_version              = "2.5.2"; // Picasso
 const string androidtimessquare_version   = "1.6.5"; // AndroidTimesSquare
-const string socketrocket_version         = "0.4.2"; // SocketRocket
+const string socketrocket_version         = "0.5.0"; // SocketRocket
 const string valet_version                = "2.2.1"; // Valet
 const string aardvark_version             = "1.5.0"; // Aardvark
 const string seismic_version              = "1.0.2"; // Seismic
@@ -156,7 +164,7 @@ var RunLipo = new Action<DirectoryPath, FilePath, FilePath[]> ((directory, outpu
 	});
 });
 
-var BuildXCode = new Action<FilePath, string, DirectoryPath, bool> ((project, libraryTitle, workingDirectory, isMac) =>
+var BuildXCode = new Action<FilePath, string, DirectoryPath, TargetOS> ((project, libraryTitle, workingDirectory, os) =>
 {
     if (!IsRunningOnUnix ()) {
         return;
@@ -180,12 +188,12 @@ var BuildXCode = new Action<FilePath, string, DirectoryPath, bool> ((project, li
                 Arch = arch,
                 Configuration = "Release",
             });
-            var outputPath = workingDirectory.Combine ("build").Combine (isMac ? "Release" : ("Release-" + sdk)).CombineWithFilePath (output);
+            var outputPath = workingDirectory.Combine ("build").Combine (os == TargetOS.Mac ? "Release" : ("Release-" + sdk)).CombineWithFilePath (output);
             CopyFile (outputPath, dest);
         }
 	});
 	
-    if (isMac) {
+    if (os == TargetOS.Mac) {
         // not supported anymore
         // buildArch ("macosx", "i386", workingDirectory.CombineWithFilePath (i386));
         buildArch ("macosx", "x86_64", workingDirectory.CombineWithFilePath (x86_64));
@@ -195,7 +203,7 @@ var BuildXCode = new Action<FilePath, string, DirectoryPath, bool> ((project, li
                 (FilePath)x86_64 
             });
         }
-    } else {
+    } else if (os == TargetOS.iOS) {
         buildArch ("iphonesimulator", "i386", workingDirectory.CombineWithFilePath (i386));
         buildArch ("iphonesimulator", "x86_64", workingDirectory.CombineWithFilePath (x86_64));
         
@@ -209,6 +217,17 @@ var BuildXCode = new Action<FilePath, string, DirectoryPath, bool> ((project, li
                 (FilePath)x86_64, 
                 (FilePath)armv7, 
                 (FilePath)armv7s, 
+                (FilePath)arm64
+            });
+        }
+    } else if (os == TargetOS.tvOS) {
+        buildArch ("appletvsimulator", "x86_64", workingDirectory.CombineWithFilePath (x86_64));
+        
+        buildArch ("appletvos", "arm64", workingDirectory.CombineWithFilePath (arm64));
+        
+		if (!FileExists (workingDirectory.CombineWithFilePath (fatLibrary))) {
+            RunLipo (workingDirectory, fatLibrary, new [] {
+                (FilePath)x86_64, 
                 (FilePath)arm64
             });
         }
@@ -240,7 +259,7 @@ var DownloadPod = new Action<DirectoryPath, string, string, IDictionary<string, 
         });
     }
 });
-var CreateStaticPod = new Action<DirectoryPath, string, string, string, string> ((path, osxVersion, iosVersion, name, version) => {
+var CreateStaticPod = new Action<DirectoryPath, string, string, string, string, string> ((path, osxVersion, iosVersion, tvosVersion, name, version) => {
     if (osxVersion != null) {
         DownloadPod (path.Combine("osx"), 
                     "osx", osxVersion, 
@@ -248,7 +267,7 @@ var CreateStaticPod = new Action<DirectoryPath, string, string, string, string> 
         BuildXCode ("Pods/Pods.xcodeproj", 
                     name,
                     path.Combine ("osx"),
-                    true);
+                    TargetOS.Mac);
     }
     if (iosVersion != null) {
         DownloadPod (path.Combine("ios"), 
@@ -257,7 +276,16 @@ var CreateStaticPod = new Action<DirectoryPath, string, string, string, string> 
         BuildXCode ("Pods/Pods.xcodeproj", 
                     name,
                     path.Combine ("ios"),
-                    false);
+                    TargetOS.iOS);
+    }
+    if (tvosVersion != null) {
+        DownloadPod (path.Combine("tvos"), 
+                    "tvos", tvosVersion, 
+                    new Dictionary<string, string> { { name, version } });
+        BuildXCode ("Pods/Pods.xcodeproj", 
+                    name,
+                    path.Combine ("tvos"),
+                    TargetOS.tvOS);
     }
 });
 
@@ -374,9 +402,9 @@ if (ForWindows) {
                  retrofit_version);
 }
 if (ForMac) {       
-    CreateStaticPod ("externals/SocketRocket/", "10.8", "6.0", "SocketRocket", socketrocket_version);
-    CreateStaticPod ("externals/Valet/", "10.10", "6.0", "Valet", valet_version);
-    CreateStaticPod ("externals/Aardvark/", null, "6.0", "Aardvark", aardvark_version);
+    CreateStaticPod ("externals/SocketRocket/", "10.8", "6.0", "9.0", "SocketRocket", socketrocket_version);
+    CreateStaticPod ("externals/Valet/", "10.10", "6.0", null, "Valet", valet_version);
+    CreateStaticPod ("externals/Aardvark/", null, "6.0", null, "Aardvark", aardvark_version);
 }
 });
 

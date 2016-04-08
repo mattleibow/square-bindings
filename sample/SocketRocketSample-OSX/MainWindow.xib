@@ -101,7 +101,8 @@
                                     <attributedString key="textStorage">
                                         <fragment>
                                             <string key="content">1. Press the Connect button.
-2. Wait for the connection indicator to disappear. 3. Enter a message. 4. Press the Send button. 5. Wait for the echo to appear in the Log. 6. Press the Clear Log button to clear the Log.</string>
+2. Wait for the connection indicator to disappear. 3. Enter a message. 4. Press the Send button. 5. Wait for the echo to appear in the Log. 6. Press the Clear Log button to clear the Log.
+</string>
                                             <attributes>
                                                 <font key="NSFont" size="12" name="Helvetica"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>

@@ -1,0 +1,33 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketRocketSample-TVOS", "SocketRocketSample-TVOS\SocketRocketSample-TVOS.csproj", "{28077168-5399-4552-B94D-CBBED5645433}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.SocketRocket-TVOS", "..\..\binding\Square.SocketRocket-TVOS\Square.SocketRocket-TVOS.csproj", "{DC846DEE-E019-441B-908A-8C56529714A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28077168-5399-4552-B94D-CBBED5645433}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{28077168-5399-4552-B94D-CBBED5645433}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{28077168-5399-4552-B94D-CBBED5645433}.Release|iPhone.ActiveCfg = Release|iPhone
+		{28077168-5399-4552-B94D-CBBED5645433}.Release|iPhone.Build.0 = Release|iPhone
+		{28077168-5399-4552-B94D-CBBED5645433}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{28077168-5399-4552-B94D-CBBED5645433}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{28077168-5399-4552-B94D-CBBED5645433}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{28077168-5399-4552-B94D-CBBED5645433}.Debug|iPhone.Build.0 = Debug|iPhone
+		{DC846DEE-E019-441B-908A-8C56529714A5}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{DC846DEE-E019-441B-908A-8C56529714A5}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{DC846DEE-E019-441B-908A-8C56529714A5}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{DC846DEE-E019-441B-908A-8C56529714A5}.Release|iPhone.Build.0 = Release|Any CPU
+		{DC846DEE-E019-441B-908A-8C56529714A5}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{DC846DEE-E019-441B-908A-8C56529714A5}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{DC846DEE-E019-441B-908A-8C56529714A5}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{DC846DEE-E019-441B-908A-8C56529714A5}.Debug|iPhone.Build.0 = Debug|Any CPU
+	EndGlobalSection
+EndGlobal
