@@ -5,7 +5,7 @@ id: square.socketrocket
 publisher: Xamarin Inc
 publisher-url: http://xamarin.com
 summary: A conforming WebSocket (RFC 6455) client library.
-version: 0.5.0.0
+version: 0.5.0.1
 src-url: https://github.com/mattleibow/square-bindings
 
 details: Details.md
@@ -16,9 +16,9 @@ is_shell: true
 no_build: true
 packages:
   ios-unified: 
-    - Square.SocketRocket, Version=0.5.0.0
+    - Square.SocketRocket, Version=0.5.0.1
   mac-unified: 
-    - Square.SocketRocket, Version=0.5.0.0
+    - Square.SocketRocket, Version=0.5.0.1
 libraries: 
   ios-unified:
     - ../../output/Square.SocketRocket.dll  
