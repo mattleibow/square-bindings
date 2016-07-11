@@ -83,9 +83,9 @@ public enum TargetOS {
 
 const string okio_version                 = "1.6.0"; // OkIO
 const string okhttp_version               = "2.7.5"; // OkHttp
-const string okhttp3_version              = "3.2.0"; // OkHttp3
+const string okhttp3_version              = "3.3.0"; // OkHttp3
 const string okhttpws_version             = "2.7.5"; // OkHttp-WS
-const string okhttp3ws_version            = "3.2.0"; // OkHttp3-WS
+const string okhttp3ws_version            = "3.3.0"; // OkHttp3-WS
 const string okhttpurlconnection_version  = "2.7.5"; // OkHttp-UrlConnection
 const string picasso_version              = "2.5.2"; // Picasso
 const string androidtimessquare_version   = "1.6.5"; // AndroidTimesSquare
@@ -188,7 +188,7 @@ var BuildXCode = new Action<FilePath, string, DirectoryPath, TargetOS> ((project
                 Arch = arch,
                 Configuration = "Release",
             });
-            var outputPath = workingDirectory.Combine ("build").Combine (os == TargetOS.Mac ? "Release" : ("Release-" + sdk)).CombineWithFilePath (output);
+            var outputPath = workingDirectory.Combine ("build").Combine (os == TargetOS.Mac ? "Release" : ("Release-" + sdk)).Combine (libraryTitle).CombineWithFilePath (output);
             CopyFile (outputPath, dest);
         }
 	});
@@ -243,11 +243,16 @@ var DownloadPod = new Action<DirectoryPath, string, string, IDictionary<string, 
         var builder = new StringBuilder ();
         builder.AppendFormat ("platform :{0}, '{1}'", platform, platformVersion);
         builder.AppendLine ();
+        if (CocoaPodVersion (new CocoaPodSettings ()) >= new System.Version (1, 0)) {
+            builder.AppendLine ("install! 'cocoapods', :integrate_targets => false");
+        }
+        builder.AppendLine ("target 'Xamarin' do");
         foreach (var pod in pods) {
-            builder.AppendFormat ("pod '{0}', '{1}'", pod.Key, pod.Value);
+            builder.AppendFormat ("  pod '{0}', '{1}'", pod.Key, pod.Value);
             builder.AppendLine ();
         }
-        
+        builder.AppendLine ("end");
+
         if (!DirectoryExists (podfilePath)) {
             CreateDirectory (podfilePath);
         }
