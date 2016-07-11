@@ -188,7 +188,7 @@ var BuildXCode = new Action<FilePath, string, DirectoryPath, TargetOS> ((project
                 Arch = arch,
                 Configuration = "Release",
             });
-            var outputPath = workingDirectory.Combine ("build").Combine (os == TargetOS.Mac ? "Release" : ("Release-" + sdk)).CombineWithFilePath (output);
+            var outputPath = workingDirectory.Combine ("build").Combine (os == TargetOS.Mac ? "Release" : ("Release-" + sdk)).Combine (libraryTitle).CombineWithFilePath (output);
             CopyFile (outputPath, dest);
         }
 	});
@@ -243,11 +243,16 @@ var DownloadPod = new Action<DirectoryPath, string, string, IDictionary<string, 
         var builder = new StringBuilder ();
         builder.AppendFormat ("platform :{0}, '{1}'", platform, platformVersion);
         builder.AppendLine ();
+        if (CocoaPodVersion (new CocoaPodSettings ()) >= new System.Version (1, 0)) {
+            builder.AppendLine ("install! 'cocoapods', :integrate_targets => false");
+        }
+        builder.AppendLine ("target 'Xamarin' do");
         foreach (var pod in pods) {
-            builder.AppendFormat ("pod '{0}', '{1}'", pod.Key, pod.Value);
+            builder.AppendFormat ("  pod '{0}', '{1}'", pod.Key, pod.Value);
             builder.AppendLine ();
         }
-        
+        builder.AppendLine ("end");
+
         if (!DirectoryExists (podfilePath)) {
             CreateDirectory (podfilePath);
         }
