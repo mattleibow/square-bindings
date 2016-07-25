@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{10368E6C-D01B-4462-8E8B-01FC667A7035};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectTypeGuids>{10368E6C-D01B-4462-8E8B-01FC667A7035};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{81436FC0-604B-48E1-AC4F-92BA8F5B5468}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Square.Retrofit</RootNamespace>
@@ -39,7 +39,7 @@
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
     <Reference Include="GoogleGson">
-      <HintPath>..\packages\GoogleGson.2.6.1.0\lib\MonoAndroid\GoogleGson.dll</HintPath>
+      <HintPath>..\packages\GoogleGson.2.6.2.0\lib\MonoAndroid\GoogleGson.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -51,7 +51,7 @@
     <TransformFile Include="Transforms\Metadata.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
-  <Import Project="..\packages\Xamarin.Android.Bindings.Generators.1.0.0.16\build\MonoAndroid\Xamarin.Android.Bindings.Generators.targets" Condition="Exists('..\packages\Xamarin.Android.Bindings.Generators.1.0.0.16\build\MonoAndroid\Xamarin.Android.Bindings.Generators.targets')" />
+  <Import Project="..\packages\Xamarin.Android.Bindings.Generators.1.6.1.17\build\MonoAndroid\Xamarin.Android.Bindings.Generators.targets" Condition="Exists('..\packages\Xamarin.Android.Bindings.Generators.1.6.1.17\build\MonoAndroid\Xamarin.Android.Bindings.Generators.targets')" />
   <ItemGroup>
     <Folder Include="Jars\" />
   </ItemGroup>

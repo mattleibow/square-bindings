@@ -24,4 +24,6 @@
   <attr path="/api/package[@name='okio']/class[@name='Buffer']/method[@name='buffer']" name="managedName">GetBuffer</attr>
   <attr path="/api/package[@name='okio']/class[@name='Buffer']/method[@name='outputStream']" name="managedName">GetOutputStream</attr>
 
+  <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='get']" name="managedReturn">Java.Lang.Object</attr>
+  
 </metadata>

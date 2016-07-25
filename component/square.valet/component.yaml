@@ -5,7 +5,7 @@ id: square.valet
 publisher: Xamarin Inc
 publisher-url: http://xamarin.com
 summary: Valet lets you securely store data in the iOS or OS X Keychain without knowing a thing about how the Keychain works.
-version: 2.2.1.0
+version: 2.2.2.0
 src-url: https://github.com/mattleibow/square-bindings
 
 details: Details.md
@@ -16,7 +16,7 @@ is_shell: true
 no_build: true
 packages:
   ios-unified: 
-    - Square.Valet, Version=2.2.1.0
+    - Square.Valet, Version=2.2.2.0
 libraries: 
   ios-unified:
     - ../../output/Square.Valet.dll  

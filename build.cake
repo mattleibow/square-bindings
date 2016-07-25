@@ -81,16 +81,16 @@ public enum TargetOS {
 // VERSIONS
 //////////////////////////////////////////////////////////////////////
 
-const string okio_version                 = "1.6.0"; // OkIO
+const string okio_version                 = "1.9.0"; // OkIO
 const string okhttp_version               = "2.7.5"; // OkHttp
-const string okhttp3_version              = "3.3.0"; // OkHttp3
+const string okhttp3_version              = "3.4.1"; // OkHttp3
 const string okhttpws_version             = "2.7.5"; // OkHttp-WS
-const string okhttp3ws_version            = "3.3.0"; // OkHttp3-WS
+const string okhttp3ws_version            = "3.4.1"; // OkHttp3-WS
 const string okhttpurlconnection_version  = "2.7.5"; // OkHttp-UrlConnection
 const string picasso_version              = "2.5.2"; // Picasso
 const string androidtimessquare_version   = "1.6.5"; // AndroidTimesSquare
 const string socketrocket_version         = "0.5.0"; // SocketRocket
-const string valet_version                = "2.2.1"; // Valet
+const string valet_version                = "2.2.2"; // Valet
 const string aardvark_version             = "1.5.0"; // Aardvark
 const string seismic_version              = "1.0.2"; // Seismic
 const string pollexor_version             = "2.0.4"; // Pollexor
