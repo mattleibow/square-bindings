@@ -16,6 +16,7 @@ env:
 install:
   - chmod +x ./build-scripts/travis-before-build.sh
   - ./build-scripts/travis-before-build.sh
+  - pod repo update
 
 script:
   - chmod +x ./bootstrapper.sh
