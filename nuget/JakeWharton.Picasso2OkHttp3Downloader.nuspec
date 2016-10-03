@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>JakeWharton.Picasso2OkHttp3Downloader</id>
+        <version>1.0.2</version>
+        <title>Picasso 2 OkHttp v3 Downloader</title>
+        <authors>.NET Development Addict</authors>
+        <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/mattleibow/square-bindings</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.picasso_256x256.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A OkHttp 3 downloader implementation for Picasso 2.</description>
+        <summary>A OkHttp 3 downloader implementation for Picasso 2.</summary>
+        <releaseNotes></releaseNotes>
+        <copyright>Jake Wharton</copyright>
+        <tags>xamarin,android,monodroid,okhttp,picasso,images</tags>
+        <dependencies>
+            <dependency id="Square.Picasso" version="2.5.2" />
+            <dependency id="Square.OkHttp3" version="3.4.1.1" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="output/README.md" target="README.md" />
+        <file src="output/LICENSE.txt" target="LICENSE.txt" />
+        
+        <file src="output/JakeWharton.Picasso2OkHttp3Downloader.dll" target="lib\MonoAndroid\JakeWharton.Picasso2OkHttp3Downloader.dll" />
+    </files>
+</package>
