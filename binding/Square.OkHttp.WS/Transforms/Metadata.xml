@@ -16,7 +16,6 @@
   <attr path="/api/package[@name='com.squareup.okhttp.ws']/interface[@name='WebSocketListener']/method[@name='onClose']/parameter[2]" name="managedName">reason</attr>
   <attr path="/api/package[@name='com.squareup.okhttp.ws']/interface[@name='WebSocketListener']/method[@name='onPong']/parameter[1]" name="managedName">payload</attr>
   <attr path="/api/package[@name='com.squareup.okhttp.ws']/interface[@name='WebSocketListener']/method[@name='onMessage']/parameter[1]" name="managedName">payload</attr>
-  <attr path="/api/package[@name='com.squareup.okhttp.ws']/interface[@name='WebSocketListener']/method[@name='onMessage']/parameter[2]" name="managedName">payloadType</attr>
   <attr path="/api/package[@name='com.squareup.okhttp.ws']/interface[@name='WebSocketListener']/method[@name='onFailure']/parameter[1]" name="managedName">exception</attr>
   <attr path="/api/package[@name='com.squareup.okhttp.ws']/interface[@name='WebSocketListener']/method[@name='onFailure']/parameter[2]" name="managedName">response</attr>
   <attr path="/api/package[@name='com.squareup.okhttp.ws']/interface[@name='WebSocketListener']/method[@name='onOpen']/parameter[1]" name="managedName">webSocket</attr>

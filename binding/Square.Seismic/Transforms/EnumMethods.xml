@@ -12,7 +12,7 @@
   -->
   
   <mapping jni-class="com/squareup/seismic/ShakeDetector">
-    <method jni-name="setSensitivity" parameter="p0" clr-enum-type="Square.Seismic.Sensitivity" />
+    <method jni-name="setSensitivity" parameter="accelerationThreshold" clr-enum-type="Square.Seismic.Sensitivity" />
   </mapping>
   
 </enum-method-mappings>

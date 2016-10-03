@@ -15,5 +15,8 @@
 
   <!-- property names -->
   <attr path="/api/package[@name='com.squareup.picasso']/interface[@name='Transformation']/method[@name='key']" name="managedName">GetKey</attr>
+  <attr path="/api/package[@name='com.squareup.picasso']/interface[@name='Picasso.Listener']/method[@name='onImageLoadFailed']/parameter[1]" name="managedName">picasso</attr>
+  <attr path="/api/package[@name='com.squareup.picasso']/interface[@name='Picasso.Listener']/method[@name='onImageLoadFailed']/parameter[2]" name="managedName">uri</attr>
+  <attr path="/api/package[@name='com.squareup.picasso']/interface[@name='Picasso.Listener']/method[@name='onImageLoadFailed']/parameter[3]" name="managedName">exception</attr>
 
 </metadata>
