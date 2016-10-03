@@ -1,9 +1,9 @@
-#tool nuget:?package=XamarinComponent
+#tool nuget:https://nuget.org/api/v2/?package=XamarinComponent
 
-#addin nuget:?package=Octokit
-#addin nuget:?package=Cake.Xamarin
-#addin nuget:?package=Cake.XCode
-#addin nuget:?package=Cake.FileHelpers
+#addin nuget:https://nuget.org/api/v2/?package=Octokit&version=0.20.0
+#addin nuget:https://nuget.org/api/v2/?package=Cake.Xamarin
+#addin nuget:https://nuget.org/api/v2/?package=Cake.XCode
+#addin nuget:https://nuget.org/api/v2/?package=Cake.FileHelpers
 
 using System.Net;
 using System.Text.RegularExpressions;
