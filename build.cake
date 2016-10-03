@@ -380,13 +380,13 @@ if (ForWindows) {
                  "externals/OkHttp/okhttp.jar", 
                  okhttp_version);
     DownloadJar ("com/squareup/okhttp3/okhttp/{0}/okhttp-{0}.jar",
-                 "externals/OkHttp3/okhttp.jar",
+                 "externals/OkHttp3/okhttp3.jar",
                  okhttp3_version);
     DownloadJar ("com/squareup/okhttp/okhttp-ws/{0}/okhttp-ws-{0}.jar",
                  "externals/OkHttp.WS/okhttp-ws.jar",
                  okhttpws_version);
     DownloadJar ("com/squareup/okhttp3/okhttp-ws/{0}/okhttp-ws-{0}.jar",
-                 "externals/OkHttp3.WS/okhttp-ws.jar",
+                 "externals/OkHttp3.WS/okhttp3-ws.jar",
                  okhttp3ws_version);
     DownloadJar ("com/squareup/okhttp/okhttp-urlconnection/{0}/okhttp-urlconnection-{0}.jar",
                  "externals/OkHttp.UrlConnection/okhttp-urlconnection.jar", 
