@@ -95,6 +95,7 @@ const string aardvark_version             = "1.5.0"; // Aardvark
 const string seismic_version              = "1.0.2"; // Seismic
 const string pollexor_version             = "2.0.4"; // Pollexor
 const string retrofit_version             = "1.9.0"; // Retrofit
+const string picassookhttp_version        = "1.0.2"; // Picasso 2 OkHttp 3 Downloader
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // TOOLS & FUNCTIONS - the bits to make it all work
@@ -405,6 +406,9 @@ if (ForWindows) {
     DownloadJar ("com/squareup/retrofit/retrofit/{0}/retrofit-{0}.jar",
                  "externals/Retrofit/retrofit.jar", 
                  retrofit_version);
+    DownloadJar ("com/jakewharton/picasso/picasso2-okhttp3-downloader/{0}/picasso2-okhttp3-downloader-{0}.jar",
+                 "externals/Picasso2OkHttp3Downloader/picasso2-okhttp3-downloader.jar", 
+                 picassookhttp_version);
 }
 if (ForMac) {       
     CreateStaticPod ("externals/SocketRocket/", "10.8", "6.0", "9.0", "SocketRocket", socketrocket_version);
@@ -443,6 +447,7 @@ Task ("libs")
         outputs.Add ("Square.Seismic/bin/Release/Square.Seismic.dll");
         outputs.Add ("Square.Pollexor/bin/Release/Square.Pollexor.dll");
         outputs.Add ("Square.Retrofit/bin/Release/Square.Retrofit.dll");
+        outputs.Add ("JakeWharton.Picasso2OkHttp3Downloader/bin/Release/JakeWharton.Picasso2OkHttp3Downloader.dll");
     }
     if (ForMac) {
         outputs.Add ("Square.SocketRocket/bin/Release/Square.SocketRocket.dll");
@@ -482,6 +487,7 @@ Task ("nuget")
         nugets.Add ("./nuget/Square.Pollexor.nuspec");
         nugets.Add ("./nuget/Square.Retrofit.nuspec");
         nugets.Add ("./nuget/Square.Seismic.nuspec");
+        nugets.Add ("./nuget/JakeWharton.Picasso2OkHttp3Downloader.nuspec");
     }
     if (ForMac) {
         nugets.Add ("./nuget/Square.Aardvark.nuspec");
