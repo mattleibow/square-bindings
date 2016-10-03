@@ -13,7 +13,7 @@
         <summary>A powerful image downloading and caching library for Android.</summary>
         <releaseNotes></releaseNotes>
         <copyright>Square</copyright>
-        <tags></tags>
+        <tags>xamarin,android,monodroid,picasso,images</tags>
         <dependencies>
             <dependency id="Square.OkIO" version="1.5.0" />
             <dependency id="Square.OkHttp" version="2.4.0" />

@@ -13,7 +13,7 @@
         <summary>An HTTP+SPDY client for Android and Java applications.</summary>
         <releaseNotes></releaseNotes>
         <copyright>Square</copyright>
-        <tags></tags>
+        <tags>xamarin,android,monodroid,okhttp</tags>
         <dependencies>
             <dependency id="Square.OkIO" version="1.6.0" />
         </dependencies>

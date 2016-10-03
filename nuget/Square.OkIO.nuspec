@@ -13,7 +13,7 @@
         <summary>A modern I/O API for Java.</summary>
         <releaseNotes></releaseNotes>
         <copyright>Square</copyright>
-        <tags></tags>
+        <tags>xamarin,android,monodroid,okio</tags>
         <dependencies></dependencies>
     </metadata>
     <files>

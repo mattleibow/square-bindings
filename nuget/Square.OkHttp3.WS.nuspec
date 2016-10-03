@@ -13,7 +13,7 @@
         <summary>A RFC6455-compliant web socket implementation.</summary>
         <releaseNotes></releaseNotes>
         <copyright>Square</copyright>
-        <tags></tags>
+        <tags>xamarin,android,monodroid,okhttp,web sockets</tags>
         <dependencies>
             <dependency id="Square.OkIO" version="1.6.0" />
             <dependency id="Square.OkHttp3" version="3.4.1.1" />

@@ -12,7 +12,7 @@
         <description>OkHttp ability to be used with HttpURLConnection.</description>
         <releaseNotes></releaseNotes>
         <copyright>Square</copyright>
-        <tags></tags>
+        <tags>xamarin,android,monodroid,okhttp</tags>
         <dependencies>
             <dependency id="Square.OkIO" version="1.6.0" />
             <dependency id="Square.OkHttp" version="2.7.5" />
