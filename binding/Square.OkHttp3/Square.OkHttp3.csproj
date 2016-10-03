@@ -37,6 +37,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OkHttpClient.Builder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Call.cs" />
     <Compile Include="ResponseBody.cs" />
