@@ -1,5 +1,5 @@
 <metadata>
-  <!--
+    <!--
   This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
   <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
   
@@ -7,10 +7,11 @@
   <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
   -->
 
-  <attr path="/api/package[@name='okhttp3']" name="managedName">Square.OkHttp3</attr>
+    <attr path="/api/package[@name='okhttp3']" name="managedName">Square.OkHttp3</attr>
 
-  <attr path="/api/package[@name='okhttp3']/class[@name='RealCall']" name="visibility">public</attr>
-  <remove-node path="/api/package[starts-with(@name, 'okhttp3.internal')]" />
-  <remove-node path="/api/package/class[@visibility='']" />
+    <attr path="/api/package[@name='okhttp3']/class[@name='RealCall']" name="visibility">public</attr>
+    <attr path="/api/package[@name='okhttp3']/class[@name='RealCall']/method[@name='clone' and count(parameter)=0]" name="managedReturn">Square.OkHttp3.ICall</attr>
+    <remove-node path="/api/package[starts-with(@name, 'okhttp3.internal')]" />
+    <remove-node path="/api/package/class[@visibility='']" />
 
 </metadata>
