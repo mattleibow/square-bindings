@@ -95,6 +95,7 @@ const string aardvark_version             = "1.5.0"; // Aardvark
 const string seismic_version              = "1.0.2"; // Seismic
 const string pollexor_version             = "2.0.4"; // Pollexor
 const string retrofit_version             = "1.9.0"; // Retrofit
+const string retrofit2_version            = "2.1.0"; // Retrofit2
 const string picassookhttp_version        = "1.0.2"; // Picasso 2 OkHttp 3 Downloader
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -406,6 +407,9 @@ if (ForWindows) {
     DownloadJar ("com/squareup/retrofit/retrofit/{0}/retrofit-{0}.jar",
                  "externals/Retrofit/retrofit.jar", 
                  retrofit_version);
+    DownloadJar ("com/squareup/retrofit2/retrofit/{0}/retrofit-{0}.jar",
+                 "externals/Retrofit2/retrofit2.jar", 
+                 retrofit2_version);
     DownloadJar ("com/jakewharton/picasso/picasso2-okhttp3-downloader/{0}/picasso2-okhttp3-downloader-{0}.jar",
                  "externals/Picasso2OkHttp3Downloader/picasso2-okhttp3-downloader.jar", 
                  picassookhttp_version);
