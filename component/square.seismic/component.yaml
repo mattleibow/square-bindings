@@ -5,7 +5,7 @@ id: square.seismic
 publisher: Xamarin Inc
 publisher-url: http://xamarin.com
 summary: Android device shake detection.
-version: 1.0.2.0
+version: "1.0.2"
 src-url: https://github.com/mattleibow/square-bindings
 
 details: Details.md
@@ -16,7 +16,7 @@ is_shell: true
 no_build: true
 packages:
   android: 
-    - Square.Seismic, Version=1.0.2.0
+    - Square.Seismic, Version=1.0.2
 libraries: 
   android:
     - ../../output/Square.Seismic.dll  

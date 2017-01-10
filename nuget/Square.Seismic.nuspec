@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Square.Seismic</id>
-        <version>1.0.2.0</version>
+        <version>1.0.2</version>
         <title>Seismic</title>
         <authors>.NET Development Addict</authors>
         <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>

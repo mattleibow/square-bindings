@@ -5,7 +5,7 @@ id: square.androidtimessquare
 publisher: Xamarin Inc
 publisher-url: http://xamarin.com
 summary: Standalone Android widget for picking a single date from a calendar view..
-version: 1.6.5.0
+version: "1.6.5"
 src-url: https://github.com/mattleibow/square-bindings
 
 details: Details.md
@@ -16,7 +16,7 @@ is_shell: true
 no_build: true
 packages:
   android: 
-    - Square.AndroidTimesSquare, Version=1.6.5.0
+    - Square.AndroidTimesSquare, Version=1.6.5
 libraries: 
   android:
     - ../../output/Square.AndroidTimesSquare.dll  

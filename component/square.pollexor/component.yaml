@@ -5,7 +5,7 @@ id: square.pollexor
 publisher: Xamarin Inc
 publisher-url: http://xamarin.com
 summary: Thumbor image service client which allows you to build URIs in an expressive fashion using a fluent API.
-version: 2.0.4.0
+version: "2.0.4"
 src-url: https://github.com/mattleibow/square-bindings
 
 details: Details.md
@@ -16,7 +16,7 @@ is_shell: true
 no_build: true
 packages:
   android: 
-    - Square.Pollexor, Version=2.0.4.0
+    - Square.Pollexor, Version=2.0.4
 libraries: 
   android:
     - ../../output/Square.Pollexor.dll  
