@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>JakeWharton.Picasso2OkHttp3Downloader</id>
-        <version>1.0.2</version>
+        <version>1.1.0</version>
         <title>Picasso 2 OkHttp v3 Downloader</title>
         <authors>.NET Development Addict</authors>
         <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
