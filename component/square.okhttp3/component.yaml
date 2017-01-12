@@ -5,7 +5,7 @@ id: square.okhttp3
 publisher: Xamarin Inc
 publisher-url: http://xamarin.com
 summary: An HTTP+HTTP/2 client for Android and Java applications.
-version: "3.5.0"
+version: "3.4.2"
 src-url: https://github.com/mattleibow/square-bindings
 
 details: Details.md
@@ -17,7 +17,7 @@ no_build: true
 packages:
   android: 
     - Square.OkIO, Version=1.10.0
-    - Square.OkHttp3, Version=3.5.0
+    - Square.OkHttp3, Version=3.4.2
 libraries: 
   android:
     - ../../output/Square.OkHttp3.dll   
