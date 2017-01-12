@@ -451,6 +451,7 @@ Task ("libs")
         outputs.Add ("Square.Seismic/bin/Release/Square.Seismic.dll");
         outputs.Add ("Square.Pollexor/bin/Release/Square.Pollexor.dll");
         outputs.Add ("Square.Retrofit/bin/Release/Square.Retrofit.dll");
+        outputs.Add ("Square.Retrofit2/bin/Release/Square.Retrofit2.dll");
         outputs.Add ("JakeWharton.Picasso2OkHttp3Downloader/bin/Release/JakeWharton.Picasso2OkHttp3Downloader.dll");
     }
     if (ForMac) {
@@ -490,6 +491,7 @@ Task ("nuget")
         nugets.Add ("./nuget/Square.Picasso.nuspec");
         nugets.Add ("./nuget/Square.Pollexor.nuspec");
         nugets.Add ("./nuget/Square.Retrofit.nuspec");
+        nugets.Add ("./nuget/Square.Retrofit2.nuspec");
         nugets.Add ("./nuget/Square.Seismic.nuspec");
         nugets.Add ("./nuget/JakeWharton.Picasso2OkHttp3Downloader.nuspec");
     }
