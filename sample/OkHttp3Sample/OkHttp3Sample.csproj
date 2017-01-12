@@ -44,6 +44,10 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="Square.OkIO, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Square.OkIO.1.9.0.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -77,10 +81,6 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\binding\Square.OkIO\Square.OkIO.csproj">
-      <Project>{0ADBD990-1A61-4D2A-B1CD-E46AC63348BE}</Project>
-      <Name>Square.OkIO</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\binding\Square.OkHttp3\Square.OkHttp3.csproj">
       <Project>{2DA76115-A022-4275-8119-FB9847254998}</Project>
       <Name>Square.OkHttp3</Name>

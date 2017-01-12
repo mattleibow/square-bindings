@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Retrofit", "Square.R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JakeWharton.Picasso2OkHttp3Downloader", "JakeWharton.Picasso2OkHttp3Downloader\JakeWharton.Picasso2OkHttp3Downloader.csproj", "{41A69D2C-EE27-4EFC-9B47-13AD90F2D8AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Retrofit2", "Square.Retrofit2\Square.Retrofit2.csproj", "{67847667-33D6-4FE8-A655-14EA78B9CECD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{41A69D2C-EE27-4EFC-9B47-13AD90F2D8AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41A69D2C-EE27-4EFC-9B47-13AD90F2D8AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41A69D2C-EE27-4EFC-9B47-13AD90F2D8AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67847667-33D6-4FE8-A655-14EA78B9CECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67847667-33D6-4FE8-A655-14EA78B9CECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67847667-33D6-4FE8-A655-14EA78B9CECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67847667-33D6-4FE8-A655-14EA78B9CECD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

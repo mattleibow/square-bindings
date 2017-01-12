@@ -35,6 +35,10 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Square.OkIO, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Square.OkIO.1.6.0.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -60,9 +64,8 @@
       <Project>{3877E12A-004D-47B8-A978-D58ADFDB5B60}</Project>
       <Name>Square.OkHttp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Square.OkIO\Square.OkIO.csproj">
-      <Project>{0ADBD990-1A61-4D2A-B1CD-E46AC63348BE}</Project>
-      <Name>Square.OkIO</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

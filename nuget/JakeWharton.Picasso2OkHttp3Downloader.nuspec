@@ -16,7 +16,7 @@
         <tags>xamarin,android,monodroid,okhttp,picasso,images</tags>
         <dependencies>
             <dependency id="Square.Picasso" version="2.5.2" />
-            <dependency id="Square.OkHttp3" version="3.4.2" />
+            <dependency id="Square.OkHttp3" version="3.4.1.1" />
         </dependencies>
     </metadata>
     <files>
