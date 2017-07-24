@@ -3,11 +3,11 @@
 #
 # Variables
 #
-export MonoVersion=4.4.0
-export MonoTouchVersion=9.8.0.156
-export XamarinMacVersion=2.8.0.58
+export MonoVersion=5.4.0
+export MonoTouchVersion=10.10.0.36
+export XamarinMacVersion=3.4.0.36
 export ActivatorVersion=1.0.1
-export XamarinComponentVersion=1.1.0.29
+export XamarinComponentVersion=1.1.0.60
 
 #
 # Encrypting the certificates and profiles
@@ -58,9 +58,9 @@ profiles -c
 # Download and install Mono and Xamarin
 #
 echo Download and install Mono and Xamarin
-wget -nc -P downloads "http://download.mono-project.com/archive/${MonoVersion}/macos-10-universal/MonoFramework-MDK-${MonoVersion}.macos10.xamarin.universal.pkg"
-wget -nc -P downloads "http://download.xamarin.com/XamarinforMac/Mac/xamarin.mac-${XamarinMacVersion}.pkg"
-wget -nc -P downloads "http://download.xamarin.com/MonoTouch/Mac/monotouch-${MonoTouchVersion}.pkg"
+wget -nv -nc -P downloads "http://download.mono-project.com/archive/${MonoVersion}/macos-10-universal/MonoFramework-MDK-${MonoVersion}.macos10.xamarin.universal.pkg"
+wget -nv -nc -P downloads "https://dl.xamarin.com/XamarinforMac/Mac/xamarin.mac-${XamarinMacVersion}.pkg"
+wget -nv -nc -P downloads "https://dl.xamarin.com/MonoTouch/Mac/xamarin.ios-${MonoTouchVersion}.pkg"
 sudo installer -pkg "downloads/MonoFramework-MDK-${MonoVersion}.macos10.xamarin.universal.pkg" -target / 
 sudo installer -pkg "downloads/xamarin.mac-${XamarinMacVersion}.pkg" -target / 
 sudo installer -pkg "downloads/monotouch-${MonoTouchVersion}.pkg" -target /
@@ -70,7 +70,7 @@ sudo installer -pkg "downloads/monotouch-${MonoTouchVersion}.pkg" -target /
 #
 echo Activate the Xamarin license
 mkdir -p downloads
-wget -nc -O "downloads/XamarinActivator-${ActivatorVersion}.nupkg" "https://www.nuget.org/api/v2/package/XamarinActivator/${ActivatorVersion}"
+wget -nv -nc -O "downloads/XamarinActivator-${ActivatorVersion}.nupkg" "https://www.nuget.org/api/v2/package/XamarinActivator/${ActivatorVersion}"
 unzip -o -d downloads/XamarinActivator "downloads/XamarinActivator-${ActivatorVersion}.nupkg"
 mono downloads/XamarinActivator/tools/XamarinActivator.exe activate -x ios -x mac -e "${XamarinEmail}" -p "${XamarinPassword}" 
 
@@ -79,6 +79,6 @@ mono downloads/XamarinActivator/tools/XamarinActivator.exe activate -x ios -x ma
 #
 echo Login to the Xamarin Component Store
 mkdir -p downloads
-wget -nc -O "downloads/XamarinComponent-${XamarinComponentVersion}.nupkg" "https://www.nuget.org/api/v2/package/XamarinComponent/${XamarinComponentVersion}"
+wget -nv -nc -O "downloads/XamarinComponent-${XamarinComponentVersion}.nupkg" "https://www.nuget.org/api/v2/package/XamarinComponent/${XamarinComponentVersion}"
 unzip -o -d downloads/XamarinComponent "downloads/XamarinComponent-${XamarinComponentVersion}.nupkg"
 echo Y | mono downloads/XamarinComponent/tools/xamarin-component.exe login "${XamarinEmail}" -p "${XamarinPassword}" 
