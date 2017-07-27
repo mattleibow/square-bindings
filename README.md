@@ -1,6 +1,6 @@
 # square-bindings
 
-[![Build Status][t-img]][t-link]  [![Build status][a-img]][a-link]
+[![Build Status](https://www.bitrise.io/app/b78abada10217042/status.svg?token=h7fruXhIpxYTwUVGBxoqjw)](https://www.bitrise.io/app/b78abada10217042)
 
 Xamarin.Android and Xamarin.iOS bindings for the various https://github.com/square libraries
 
@@ -76,8 +76,3 @@ Bound:
 [36]: https://github.com/mattleibow/square-bindings/tree/master/sample/PollexorSample
 [37]: https://www.nuget.org/packages/Square.Pollexor
 [38]: http://components.xamarin.com/view/square.pollexor
-
-[t-img]: https://travis-ci.org/mattleibow/square-bindings.svg?branch=master
-[t-link]: https://travis-ci.org/mattleibow/square-bindings
-[a-img]: https://ci.appveyor.com/api/projects/status/ipvvat62k4y2y08e/branch/master?svg=true
-[a-link]: https://ci.appveyor.com/project/mattleibow/square-bindings
