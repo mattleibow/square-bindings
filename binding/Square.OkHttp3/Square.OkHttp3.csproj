@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
-    <Reference Include="Square.OkIO, Version=1.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Square.OkIO">
       <HintPath>..\packages\Square.OkIO.1.11.0.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
       <Private>True</Private>
     </Reference>

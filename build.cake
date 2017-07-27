@@ -15,6 +15,10 @@ using System.Xml.Linq;
 
 var target = Argument("target", "Default").ToUpper();
 
+if (!DirectoryExists ("./output")) {
+    CreateDirectory ("./output");
+}
+
 public enum TargetOS {
     Windows,
     Mac,

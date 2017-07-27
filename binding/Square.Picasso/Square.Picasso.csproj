@@ -33,11 +33,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
-    <Reference Include="Square.OkHttp, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Square.OkHttp">
       <HintPath>..\packages\Square.OkHttp.2.5.0.0\lib\MonoAndroid\Square.OkHttp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Square.OkIO, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Square.OkIO">
       <HintPath>..\packages\Square.OkIO.1.6.0.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
       <Private>True</Private>
     </Reference>
