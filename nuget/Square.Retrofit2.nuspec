@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Square.Retrofit2</id>
-        <version>2.1.0</version>
+        <version>2.2.0</version>
         <title>Retrofit2</title>
         <authors>.NET Development Addict</authors>
         <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
@@ -14,7 +14,7 @@
         <copyright>Square</copyright>
         <tags></tags>
         <dependencies>
-            <dependency id="GoogleGson" version="2.6.1" />
+            <dependency id="Square.OkHttp3" version="3.6.0" />
         </dependencies>
     </metadata>
     <files>

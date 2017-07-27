@@ -45,7 +45,7 @@ const string aardvark_version             = "1.5.0"; // Aardvark
 const string seismic_version              = "1.0.2"; // Seismic
 const string pollexor_version             = "2.0.4"; // Pollexor
 const string retrofit_version             = "1.9.0"; // Retrofit
-const string retrofit2_version            = "2.1.0"; // Retrofit2
+const string retrofit2_version            = "2.2.0"; // Retrofit2
 const string picassookhttp_version        = "1.1.0"; // Picasso 2 OkHttp 3 Downloader
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
