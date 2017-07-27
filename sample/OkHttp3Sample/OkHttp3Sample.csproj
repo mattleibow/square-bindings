@@ -58,7 +58,7 @@
       <HintPath>packages\Xamarin.Android.Support.v7.AppCompat.23.1.1.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
     </Reference>
     <Reference Include="Square.OkIO">
-      <HintPath>packages\Square.OkIO.1.12.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
+      <HintPath>packages\Square.OkIO.1.13.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
