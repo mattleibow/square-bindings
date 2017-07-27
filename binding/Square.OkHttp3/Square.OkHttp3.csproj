@@ -36,7 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Square.OkIO">
-      <HintPath>..\..\sample\OkHttp3Sample\packages\Square.OkIO.1.12.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
+      <HintPath>..\packages\Square.OkIO.1.12.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
