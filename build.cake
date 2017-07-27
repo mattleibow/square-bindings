@@ -354,6 +354,7 @@ Task ("libs")
     foreach (var output in outputs) {
         CopyFileToDirectory ("./binding/" + output, "./output/");
     }
+    Zip("./output", "./output/dll.zip", "./output/*.dll");
     
     CopyFileToDirectory ("README.md", "./output/");
     CopyFileToDirectory ("LICENSE.txt", "./output/");
@@ -391,6 +392,7 @@ Task ("nuget")
     foreach (var nuget in nugets) {
         PackageNuGet (nuget, "./output/");
     }
+    Zip("./output", "./output/nupkg.zip", "./output/*.nupkg");
 });
 
 Task ("component")
@@ -419,6 +421,7 @@ Task ("component")
         });
         MoveFiles (yaml + "/*.xam", "./output/");
     }
+    Zip("./output", "./output/xam.zip", "./output/*.xam");
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
