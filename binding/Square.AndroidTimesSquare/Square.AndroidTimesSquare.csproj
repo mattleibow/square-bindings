@@ -40,6 +40,7 @@
     <Compile Include="CalendarCellDecorator.cs" />
     <Compile Include="CalendarPickerView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CalendarCellView.cs" />
   </ItemGroup>
   <ItemGroup>
     <LibraryProjectZip Include="..\..\externals\AndroidTimesSquare\android-times-square.aar" />

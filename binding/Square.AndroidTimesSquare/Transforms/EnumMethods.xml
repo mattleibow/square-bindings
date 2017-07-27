@@ -3,5 +3,9 @@
   <mapping jni-class="com/squareup/timessquare/CalendarCellView">
     <method jni-name="setRangeState" parameter="rangeState" clr-enum-type="Square.TimesSquare.RangeState" />
   </mapping>
+
+  <mapping jni-class="com/squareup/timessquare/CalendarCellView">
+    <method jni-name="getRangeState" parameter="return" clr-enum-type="Square.TimesSquare.RangeState" />
+  </mapping>
   
 </enum-method-mappings>
