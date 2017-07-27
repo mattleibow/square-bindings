@@ -64,6 +64,7 @@ namespace SocketRocketSample
 				webSocket.WebSocketClosed += (_, e) => {
 					logTextField.Text += string.Format ("Disconnected: '{1}' ({2}).{0}", Environment.NewLine, e.Reason, e.Code);
 					UpdateUI (ReadyState.Closed);
+					webSocket = null;
 				};
 				webSocket.WebSocketFailed += (_, e) => {
 					logTextField.Text += string.Format ("Failed to connect: {1}.{0}", Environment.NewLine, e.Error);
