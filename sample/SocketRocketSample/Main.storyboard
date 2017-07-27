@@ -52,7 +52,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sending a message using RocketSocket" borderStyle="roundedRect" placeholder="Sending a message using RocketSocket" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wNf-Ir-Cjd">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Sending a message using SocketRocket" borderStyle="roundedRect" placeholder="Sending a message using SocketRocket" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wNf-Ir-Cjd">
                                 <rect key="frame" x="16" y="165" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>

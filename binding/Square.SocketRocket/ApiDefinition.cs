@@ -145,6 +145,12 @@ namespace Square.SocketRocket
 		[Export ("webSocket:didReceivePong:")]
 		[EventArgs ("WebSocketReceivedPong")]
 		void ReceivedPong (WebSocket webSocket, NSData pongPayload);
+
+		// @optional -(BOOL)webSocketShouldConvertTextFrameToString:(SRWebSocket *)webSocket;
+		[Export ("webSocketShouldConvertTextFrameToString:")]
+		[DelegateName ("ShouldConvertTextFrameToString")]
+		[DefaultValue ("true")]
+		bool WebSocketShouldConvertTextFrameToString (WebSocket webSocket);
 	}
 
 	// @interface CertificateAdditions (NSURLRequest)
