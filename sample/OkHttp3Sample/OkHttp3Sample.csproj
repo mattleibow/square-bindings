@@ -45,7 +45,7 @@
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="Square.OkIO">
-      <HintPath>packages\Square.OkIO.1.11.0.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
+      <HintPath>packages\Square.OkIO.1.11.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
