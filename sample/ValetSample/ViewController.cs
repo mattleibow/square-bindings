@@ -9,7 +9,7 @@ namespace ValetSample
 {
 	public partial class ViewController : UIViewController
 	{
-		private SecureEnclaveValet valet;
+		private SinglePromptSecureEnclaveValet valet;
 		private string username;
 
 		public ViewController (IntPtr handle)
@@ -21,7 +21,7 @@ namespace ValetSample
 		{
 			base.ViewDidLoad ();
 
-			valet = new SecureEnclaveValet ("Enclave-Id", AccessControl.UserPresence);
+			valet = new SinglePromptSecureEnclaveValet ("Enclave-Id", AccessControl.UserPresence);
 			username = "CustomerPresentProof";
 		}
 
@@ -45,6 +45,13 @@ namespace ValetSample
 			var success = valet.RemoveObject (username);
 
 			textView.Text += (success ? "Removed item." : "Failure to remove item.") + Environment.NewLine;
+		}
+
+		partial void OnRequirePrompt (UIButton sender)
+		{
+			valet.RequirePromptOnNextAccess ();
+
+			textView.Text += "Prompt required for next access." + Environment.NewLine;
 		}
 	}
 }

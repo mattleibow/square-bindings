@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,51 +19,63 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qA9-Wb-ZwB">
-                                <rect key="frame" x="239.5" y="40" width="121" height="30"/>
+                                <rect key="frame" x="240" y="40" width="121" height="30"/>
                                 <state key="normal" title="Set / Update Item">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="OnSetItem:" destination="vXZ-lx-hvc" id="3" eventType="touchUpInside"/>
+                                    <action selector="OnSetItem:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAP-hZ-KqD">
-                                <rect key="frame" x="255.5" y="116" width="89" height="30"/>
+                                <rect key="frame" x="256" y="116" width="89" height="30"/>
                                 <state key="normal" title="Remove Item">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="OnRemoveItem:" destination="vXZ-lx-hvc" id="5" eventType="touchUpInside"/>
+                                    <action selector="OnRemoveItem:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQk-O3-Rdt">
-                                <rect key="frame" x="270.5" y="78" width="59" height="30"/>
+                                <rect key="frame" x="271" y="78" width="59" height="30"/>
                                 <state key="normal" title="Get Item">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="OnGetItem:" destination="vXZ-lx-hvc" id="4" eventType="touchUpInside"/>
+                                    <action selector="OnGetItem:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ld-mY-LH3">
-                                <rect key="frame" x="20" y="162" width="560" height="438"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="20" y="192" width="560" height="388"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="230">
+                                <rect key="frame" x="247" y="154" width="107" height="30"/>
+                                <state key="normal" title="Require Prompt">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="OnRemoveItem:" destination="232" eventType="touchUpInside" id="231"/>
+                                    <action selector="OnRequirePrompt:" destination="vXZ-lx-hvc" id="673" eventType="touchUpInside"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qA9-Wb-ZwB" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="5HK-3b-R62"/>
                             <constraint firstItem="ZQk-O3-Rdt" firstAttribute="top" secondItem="qA9-Wb-ZwB" secondAttribute="bottom" constant="8" id="Eev-yE-RFc"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="2ld-mY-LH3" secondAttribute="bottom" id="PuW-TG-ua5"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="2ld-mY-LH3" secondAttribute="bottom" id="PuW-TG-ua5" constant="20"/>
                             <constraint firstAttribute="centerX" secondItem="qA9-Wb-ZwB" secondAttribute="centerX" id="Sbp-WM-Dnp"/>
-                            <constraint firstItem="2ld-mY-LH3" firstAttribute="top" secondItem="QAP-hZ-KqD" secondAttribute="bottom" constant="16" id="T5y-Ub-0ZH"/>
                             <constraint firstItem="ZQk-O3-Rdt" firstAttribute="centerX" secondItem="QAP-hZ-KqD" secondAttribute="centerX" id="VVo-AP-RdJ"/>
                             <constraint firstItem="QAP-hZ-KqD" firstAttribute="top" secondItem="ZQk-O3-Rdt" secondAttribute="bottom" constant="8" id="gj0-GH-t1C"/>
                             <constraint firstItem="2ld-mY-LH3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="qBp-Fw-ZPV"/>
                             <constraint firstItem="ZQk-O3-Rdt" firstAttribute="centerX" secondItem="qA9-Wb-ZwB" secondAttribute="centerX" id="rVy-u4-o0t"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2ld-mY-LH3" secondAttribute="trailing" id="wwD-yW-UdN"/>
+                            <constraint id="233" firstItem="230" firstAttribute="top" secondItem="QAP-hZ-KqD" secondAttribute="bottom" constant="8"/>
+                            <constraint id="234" firstItem="2ld-mY-LH3" firstAttribute="top" secondItem="230" secondAttribute="bottom" constant="8"/>
+                            <constraint id="236" firstItem="230" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX"/>
                         </constraints>
                     </view>
                     <connections>

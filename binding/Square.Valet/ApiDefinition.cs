@@ -138,6 +138,26 @@ namespace Square.Valet
 		unsafe string GetString (string key, [NullAllowed] string userPrompt, [NullAllowed] ref bool userCancelled);
 	}
 
+	// @interface VALSinglePromptSecureEnclaveValet : VALSecureEnclaveValet
+	[BaseType (typeof (SecureEnclaveValet), Name = "VALSinglePromptSecureEnclaveValet")]
+	[DisableDefaultCtor]
+	interface SinglePromptSecureEnclaveValet
+	{
+		// -(instancetype _Nullable)initWithIdentifier:(NSString * _Nonnull)identifier accessControl:(VALAccessControl)accessControl;
+		[Export ("initWithIdentifier:accessControl:")]
+		[Internal, Sealed]
+		IntPtr InitWithIdentifier (string identifier, AccessControl accessControl);
+
+		// -(instancetype _Nullable)initWithSharedAccessGroupIdentifier:(NSString * _Nonnull)sharedAccessGroupIdentifier accessControl:(VALAccessControl)accessControl;
+		[Export ("initWithSharedAccessGroupIdentifier:accessControl:")]
+		[Internal, Sealed]
+		IntPtr InitWithSharedAccessGroupIdentifier (string sharedAccessGroupIdentifier, AccessControl accessControl);
+
+		// -(void)requirePromptOnNextAccess;
+		[Export ("requirePromptOnNextAccess")]
+		void RequirePromptOnNextAccess ();
+	}
+
 	// @interface VALSynchronizableValet : VALValet
 	[Introduced (PlatformName.iOS, 7, 0)]
 	[DisableDefaultCtor]

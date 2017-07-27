@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Square.Valet</id>
-        <version>2.3.0</version>
+        <version>2.4.0</version>
         <title>Keychain Valet</title>
         <authors>.NET Development Addict</authors>
         <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
@@ -13,7 +13,7 @@
         <summary>Valet lets you securely store data in the iOS or OS X Keychain without knowing a thing about how the Keychain works. It’s easy. We promise.</summary>
         <releaseNotes></releaseNotes>
         <copyright>Square</copyright>
-        <tags></tags>
+        <tags>xamarin,ios,xamarin.ios,valet,security,storage,keychain</tags>
     </metadata>
     <files>
         <file src="output/README.md" target="README.md" />
