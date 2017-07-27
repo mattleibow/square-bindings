@@ -483,6 +483,12 @@ Task ("clean-native")
 // START - 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+Task("Fast")
+    .IsDependentOn("externals")
+    .IsDependentOn("libs")
+    .IsDependentOn("nuget")
+    .IsDependentOn("component");
+
 Task("Default")
     .IsDependentOn("externals")
     .IsDependentOn("libs")
