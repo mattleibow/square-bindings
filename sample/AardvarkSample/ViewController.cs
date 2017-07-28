@@ -2,6 +2,7 @@
 using Foundation;
 using UIKit;
 
+using Square.CoreAardvark;
 using Square.Aardvark;
 
 namespace AardvarkSample
@@ -34,20 +35,20 @@ namespace AardvarkSample
 
 			// Ensure that the tap log store will only store tap logs.
 			tapGestureLogStore.LogFilterBlock = logMessage => {
-				if (logMessage.UserInfo == null)
+				if (logMessage?.UserInfo == null)
 					return false;
 
 				var val = (NSNumber)logMessage.UserInfo [SampleTapLogKey];
-				return val.BoolValue;
+				return val?.BoolValue == true;
 			};
 
 			// Do not log tap logs to the main tap log store.
 			LogDistributor.DefaultDistributor.DefaultLogStore.LogFilterBlock = logMessage => {
-				if (logMessage.UserInfo == null)
+				if (logMessage?.UserInfo == null)
 					return true;
 				
 				var val = (NSNumber)logMessage.UserInfo [SampleTapLogKey];
-				return !val.BoolValue;
+				return val?.BoolValue != true;
 			};
 
 			LogDistributor.DefaultDistributor.AddLogObserver (tapGestureLogStore);

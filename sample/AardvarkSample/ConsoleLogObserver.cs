@@ -1,6 +1,7 @@
 using System;
 using Foundation;
 
+using Square.CoreAardvark;
 using Square.Aardvark;
 
 namespace AardvarkSample

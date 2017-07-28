@@ -23,7 +23,6 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <MtouchProfiling>true</MtouchProfiling>
-    <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchI18n>
     </MtouchI18n>
   </PropertyGroup>
@@ -37,7 +36,6 @@
     <MtouchArch>ARMv7, ARMv7s, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchLink>Full</MtouchLink>
     <MtouchI18n>
     </MtouchI18n>
@@ -51,7 +49,6 @@
     <MtouchArch>i386, x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <MtouchLink>None</MtouchLink>
-    <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchI18n>
     </MtouchI18n>
   </PropertyGroup>
@@ -69,7 +66,6 @@
     <MtouchProfiling>true</MtouchProfiling>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <IpaPackageName>
     </IpaPackageName>
     <MtouchI18n>
@@ -106,6 +102,10 @@
     <ProjectReference Include="..\..\binding\Square.Aardvark\Square.Aardvark.csproj">
       <Project>{A6D2CC86-74BA-4C7C-B444-D203B1B73293}</Project>
       <Name>Square.Aardvark</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\binding\Square.CoreAardvark\Square.CoreAardvark.csproj">
+      <Project>{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}</Project>
+      <Name>Square.CoreAardvark</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

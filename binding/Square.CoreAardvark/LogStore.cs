@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Foundation;
 
-namespace Square.Aardvark
+namespace Square.CoreAardvark
 {
 	partial class LogStore
 	{
@@ -20,4 +20,3 @@ namespace Square.Aardvark
 		}
 	}
 }
-

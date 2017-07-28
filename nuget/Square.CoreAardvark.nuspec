@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Square.Aardvark</id>
-        <version>2.0.0</version>
+        <id>Square.CoreAardvark</id>
+        <version>1.0.0</version>
         <title>Aardvark</title>
         <authors>.NET Development Addict</authors>
         <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/mattleibow/square-bindings</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.aardvark_256x256.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Aardvark is a library that makes it dead simple to create actionable bug reports.</description>
-        <summary>Aardvark is a library that makes it dead simple to create actionable bug reports.</summary>
+        <description>Aardvark is a library that makes it dead simple to create actionable bug reports. Usable by extensions.</description>
+        <summary>Aardvark is a library that makes it dead simple to create actionable bug reports. Usable by extensions.</summary>
         <releaseNotes></releaseNotes>
         <copyright>Square</copyright>
         <tags>xamarin,ios,xamarin.ios,bugs,bug report,logging</tags>
-        <dependencies>
-            <dependency id="Square.CoreAardvark" version="1.0.0" />
-        </dependencies>
     </metadata>
     <files>
         <file src="output/README.md" target="README.md" />
         <file src="output/LICENSE.txt" target="LICENSE.txt" />
         
-        <file src="output/Square.Aardvark.dll" target="lib\Xamarin.iOS\Square.Aardvark.dll" />
+        <file src="output/Square.CoreAardvark.dll" target="lib\Xamarin.iOS\Square.CoreAardvark.dll" />
     </files>
 </package>

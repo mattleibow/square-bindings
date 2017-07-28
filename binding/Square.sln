@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JakeWharton.Picasso2OkHttp3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Retrofit2", "Square.Retrofit2\Square.Retrofit2.csproj", "{67847667-33D6-4FE8-A655-14EA78B9CECD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.CoreAardvark", "Square.CoreAardvark\Square.CoreAardvark.csproj", "{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{67847667-33D6-4FE8-A655-14EA78B9CECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67847667-33D6-4FE8-A655-14EA78B9CECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67847667-33D6-4FE8-A655-14EA78B9CECD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,7 @@
 ﻿using Foundation;
 using UIKit;
 
+using Square.CoreAardvark;
 using Square.Aardvark;
 
 namespace AardvarkSample

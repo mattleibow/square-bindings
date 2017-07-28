@@ -41,7 +41,8 @@ const string picasso_version              = "2.5.2"; // Picasso
 const string androidtimessquare_version   = "1.7.3"; // AndroidTimesSquare
 const string socketrocket_version         = "0.5.1"; // SocketRocket
 const string valet_version                = "2.4.0"; // Valet
-const string aardvark_version             = "1.5.0"; // Aardvark
+const string aardvark_version             = "2.0.0"; // Aardvark
+const string coreaardvark_version         = "1.0.0"; // CoreAardvark
 const string seismic_version              = "1.0.2"; // Seismic
 const string pollexor_version             = "2.0.4"; // Pollexor
 const string retrofit_version             = "1.9.0"; // Retrofit
@@ -310,6 +311,7 @@ Task ("externals")
         CreateStaticPod ("externals/SocketRocket/", "10.8", "6.0", "9.0", "SocketRocket", socketrocket_version);
         CreateStaticPod ("externals/Valet/", "10.10", "6.0", null, "Valet", valet_version);
         CreateStaticPod ("externals/Aardvark/", null, "6.0", null, "Aardvark", aardvark_version);
+        CreateStaticPod ("externals/CoreAardvark/", null, "6.0", null, "CoreAardvark", coreaardvark_version);
     }
 });
 
@@ -349,6 +351,7 @@ Task ("libs")
         outputs.Add ("Square.SocketRocket-TVOS/bin/Release/Square.SocketRocket.TVOS.dll");
         outputs.Add ("Square.Valet/bin/Release/Square.Valet.dll");
         outputs.Add ("Square.Aardvark/bin/Release/Square.Aardvark.dll");
+        outputs.Add ("Square.CoreAardvark/bin/Release/Square.CoreAardvark.dll");
     }
     
     foreach (var output in outputs) {
@@ -386,6 +389,7 @@ Task ("nuget")
     };
     if (IsRunningOnUnix ()) {
         nugets.Add ("./nuget/Square.Aardvark.nuspec");
+        nugets.Add ("./nuget/Square.CoreAardvark.nuspec");
         nugets.Add ("./nuget/Square.SocketRocket.nuspec");
         nugets.Add ("./nuget/Square.Valet.nuspec");
     }

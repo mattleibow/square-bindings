@@ -4,11 +4,11 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{A6D2CC86-74BA-4C7C-B444-D203B1B73293}</ProjectGuid>
+    <ProjectGuid>{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Square.Aardvark</RootNamespace>
+    <RootNamespace>Square.CoreAardvark</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Square.Aardvark</AssemblyName>
+    <AssemblyName>Square.CoreAardvark</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,8 +39,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="libAardvark.linkwith.cs" />
-    <Compile Include="Aardvark.cs" />
+    <Compile Include="libCoreAardvark.linkwith.cs" />
+    <Compile Include="CoreAardvark.cs" />
+    <Compile Include="LogDistributor.cs" />
+    <Compile Include="LogStore.cs" />
+    <Compile Include="DataArchive.cs" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
@@ -49,15 +52,9 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingNativeLibrary Include="..\..\externals\Aardvark\ios\libAardvark.a">
-      <Link>libAardvark.a</Link>
+    <ObjcBindingNativeLibrary Include="..\..\externals\CoreAardvark\ios\libCoreAardvark.a">
+      <Link>libCoreAardvark.a</Link>
     </ObjcBindingNativeLibrary>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Square.CoreAardvark\Square.CoreAardvark.csproj">
-      <Project>{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}</Project>
-      <Name>Square.CoreAardvark</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

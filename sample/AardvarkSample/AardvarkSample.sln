@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Aardvark", "..\..\bi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AardvarkSample", "AardvarkSample.csproj", "{08E76480-31A8-40B4-B2B2-4F39EF688133}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.CoreAardvark", "..\..\binding\Square.CoreAardvark\Square.CoreAardvark.csproj", "{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -31,6 +33,14 @@ Global
 		{A6D2CC86-74BA-4C7C-B444-D203B1B73293}.Release|iPhone.Build.0 = Release|Any CPU
 		{A6D2CC86-74BA-4C7C-B444-D203B1B73293}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{A6D2CC86-74BA-4C7C-B444-D203B1B73293}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Release|iPhone.Build.0 = Release|Any CPU
+		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
