@@ -115,13 +115,13 @@ namespace Square.CoreAardvark
 		[Export ("initWithText:image:type:userInfo:")]
 		IntPtr Constructor (string text, [NullAllowed] UIImage image, LogType type, [NullAllowed] NSDictionary userInfo);
 
-		// - (instancetype)initWithText:(NSString *)text image:(nullable UIImage *)image type:(ARKLogType)type userInfo:(nullable NSDictionary *)userInfo creationDate:(NSDate *)date NS_DESIGNATED_INITIALIZER;
-		[Export ("initWithText:image:type:userInfo:creationDate:")]
+		// - (instancetype)initWithText:(NSString *)text image:(nullable UIImage *)image type:(ARKLogType)type userInfo:(nullable NSDictionary *)userInfo date:(NSDate *)date NS_DESIGNATED_INITIALIZER;
+		[Export ("initWithText:image:type:userInfo:date:")]
 		IntPtr Constructor (string text, [NullAllowed] UIImage image, LogType type, [NullAllowed] NSDictionary userInfo, NSDate date);
 
-		// @property (readonly, copy, nonatomic) NSDate * _Nonnull creationDate;
-		[Export ("creationDate", ArgumentSemantic.Copy)]
-		NSDate CreationDate { get; }
+		// @property (readonly, copy, nonatomic) NSDate * _Nonnull date;
+		[Export ("date", ArgumentSemantic.Copy)]
+		NSDate Date { get; }
 
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull text;
 		[Export ("text")]

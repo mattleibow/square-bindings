@@ -62,6 +62,7 @@ namespace Square.Aardvark
 
 	// @interface ARKEmailBugReporter : NSObject <ARKBugReporter>
 	[BaseType (typeof(NSObject), Name = "ARKEmailBugReporter")]
+	[DisableDefaultCtor]
 	interface EmailBugReporter : BugReporter
 	{
 		// -(instancetype _Nonnull)initWithEmailAddress:(NSString * _Nonnull)emailAddress logStore:(ARKLogStore * _Nonnull)logStore;
@@ -110,7 +111,7 @@ namespace Square.Aardvark
 	}
 
 	// @interface Aardvark : NSObject
-	[BaseType (typeof(NSObject), Name = "Aardvark")]
+	[BaseType (typeof(NSObject), Name = "_TtC8Aardvark8Aardvark")]
 	interface Aardvark
 	{
 		// +(ARKEmailBugReporter * _Nullable)addDefaultBugReportingGestureWithEmailBugReporterWithRecipient:(NSString * _Nonnull)emailAddress;

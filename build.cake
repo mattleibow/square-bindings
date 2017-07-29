@@ -41,8 +41,8 @@ const string picasso_version              = "2.5.2"; // Picasso
 const string androidtimessquare_version   = "1.7.3"; // AndroidTimesSquare
 const string socketrocket_version         = "0.5.1"; // SocketRocket
 const string valet_version                = "2.4.0"; // Valet
-const string aardvark_version             = "2.0.0"; // Aardvark
-const string coreaardvark_version         = "1.0.0"; // CoreAardvark
+const string aardvark_version             = "3.0.0"; // Aardvark
+const string coreaardvark_version         = "2.0.0"; // CoreAardvark
 const string seismic_version              = "1.0.2"; // Seismic
 const string pollexor_version             = "2.0.4"; // Pollexor
 const string retrofit_version             = "1.9.0"; // Retrofit
@@ -182,7 +182,78 @@ var BuildXCode = new Action<FilePath, string, DirectoryPath, TargetOS> ((project
         }
     }
 });
-var DownloadPod = new Action<DirectoryPath, string, string, IDictionary<string, string>> ((podfilePath, platform, platformVersion, pods) => 
+var BuildDynamicXCode = new Action<FilePath, string, DirectoryPath, TargetOS> ((project, libraryTitle, workingDirectory, os) =>
+{
+    if (!IsRunningOnUnix ()) {
+        return;
+    }
+    
+    var fatLibrary = (DirectoryPath)string.Format("{0}.framework", libraryTitle);
+    var fatLibraryPath = workingDirectory.Combine (fatLibrary);
+
+    var output = (DirectoryPath)string.Format ("{0}.framework", libraryTitle);
+    var i386 = (DirectoryPath)string.Format ("{0}-i386.framework", libraryTitle);
+    var x86_64 = (DirectoryPath)string.Format ("{0}-x86_64.framework", libraryTitle);
+    var armv7 = (DirectoryPath)string.Format ("{0}-armv7.framework", libraryTitle);
+    var armv7s = (DirectoryPath)string.Format ("{0}-armv7s.framework", libraryTitle);
+    var arm64 = (DirectoryPath)string.Format ("{0}-arm64.framework", libraryTitle);
+    
+    var buildArch = new Action<string, string, DirectoryPath> ((sdk, arch, dest) => {
+        if (!DirectoryExists (dest)) {
+            XCodeBuild (new XCodeBuildSettings {
+                Project = workingDirectory.CombineWithFilePath (project).ToString (),
+                Target = libraryTitle,
+                Sdk = sdk,
+                Arch = arch,
+                Configuration = "Release",
+            });
+            var outputPath = workingDirectory.Combine ("build").Combine (os == TargetOS.Mac ? "Release" : ("Release-" + sdk)).Combine (libraryTitle).Combine (output);
+            CopyDirectory (outputPath, dest);
+        }
+    });
+    
+    if (os == TargetOS.Mac) {
+        buildArch ("macosx", "x86_64", workingDirectory.Combine (x86_64));
+        
+        if (!DirectoryExists (fatLibraryPath)) {
+            CopyDirectory (workingDirectory.Combine (x86_64), fatLibraryPath);
+            RunLipo (workingDirectory, fatLibrary.CombineWithFilePath (libraryTitle), new [] {
+                x86_64.CombineWithFilePath (libraryTitle),
+            });
+        }
+    } else if (os == TargetOS.iOS) {
+        buildArch ("iphonesimulator", "i386", workingDirectory.Combine (i386));
+        buildArch ("iphonesimulator", "x86_64", workingDirectory.Combine (x86_64));
+        
+        buildArch ("iphoneos", "armv7", workingDirectory.Combine (armv7));
+        buildArch ("iphoneos", "armv7s", workingDirectory.Combine (armv7s));
+        buildArch ("iphoneos", "arm64", workingDirectory.Combine (arm64));
+        
+        if (!DirectoryExists (fatLibraryPath)) {
+            CopyDirectory (workingDirectory.Combine (arm64), fatLibraryPath);
+            RunLipo (workingDirectory, fatLibrary.CombineWithFilePath (libraryTitle), new [] {
+                i386.CombineWithFilePath (libraryTitle),
+                x86_64.CombineWithFilePath (libraryTitle),
+                armv7.CombineWithFilePath (libraryTitle),
+                armv7s.CombineWithFilePath (libraryTitle),
+                arm64.CombineWithFilePath (libraryTitle)
+            });
+        }
+    } else if (os == TargetOS.tvOS) {
+        buildArch ("appletvsimulator", "x86_64", workingDirectory.Combine (x86_64));
+        
+        buildArch ("appletvos", "arm64", workingDirectory.Combine (arm64));
+        
+        if (!DirectoryExists (fatLibraryPath)) {
+            CopyDirectory (workingDirectory.Combine (arm64), fatLibraryPath);
+            RunLipo (workingDirectory, fatLibrary.CombineWithFilePath (libraryTitle), new [] {
+                x86_64.CombineWithFilePath (libraryTitle),
+                arm64.CombineWithFilePath (libraryTitle)
+            });
+        }
+    }
+});
+var DownloadPod = new Action<bool, DirectoryPath, string, string, IDictionary<string, string>> ((isDynamic, podfilePath, platform, platformVersion, pods) => 
 {
     if (!IsRunningOnUnix ()) {
         return;
@@ -195,11 +266,21 @@ var DownloadPod = new Action<DirectoryPath, string, string, IDictionary<string, 
         if (CocoaPodVersion (new CocoaPodSettings ()) >= new System.Version (1, 0)) {
             builder.AppendLine ("install! 'cocoapods', :integrate_targets => false");
         }
+        if (isDynamic) {
+            builder.AppendLine ("use_frameworks!");
+        }
         builder.AppendLine ("target 'Xamarin' do");
         foreach (var pod in pods) {
             builder.AppendFormat ("  pod '{0}', '{1}'", pod.Key, pod.Value);
             builder.AppendLine ();
         }
+        builder.AppendLine ("end");
+        builder.AppendLine ("post_install do |installer|");
+        builder.AppendLine ("  installer.pods_project.targets.each do |target|");
+        builder.AppendLine ("    target.build_configurations.each do |config|");
+        builder.AppendLine ("      config.build_settings['SWIFT_VERSION'] = '3.0'");
+        builder.AppendLine ("    end");
+        builder.AppendLine ("  end");
         builder.AppendLine ("end");
 
         if (!DirectoryExists (podfilePath)) {
@@ -213,33 +294,39 @@ var DownloadPod = new Action<DirectoryPath, string, string, IDictionary<string, 
         });
     }
 });
-var CreateStaticPod = new Action<DirectoryPath, string, string, string, string, string> ((path, osxVersion, iosVersion, tvosVersion, name, version) => {
+var CreatePod = new Action<bool, DirectoryPath, string, string, string, IDictionary<string, string>> ((isDynamic, path, osxVersion, iosVersion, tvosVersion, pods) => {
+    var name = pods.Keys.First ();
+    var build = isDynamic ? BuildDynamicXCode : BuildXCode;
+
     if (osxVersion != null) {
-        DownloadPod (path.Combine("osx"), 
-                    "osx", osxVersion, 
-                    new Dictionary<string, string> { { name, version } });
-        BuildXCode ("Pods/Pods.xcodeproj", 
-                    name,
-                    path.Combine ("osx"),
-                    TargetOS.Mac);
+        DownloadPod (isDynamic, 
+                     path.Combine("osx"), 
+                     "osx", osxVersion, 
+                     pods);
+        build ("Pods/Pods.xcodeproj", 
+               name,
+               path.Combine ("osx"),
+               TargetOS.Mac);
     }
     if (iosVersion != null) {
-        DownloadPod (path.Combine("ios"), 
-                    "ios", iosVersion, 
-                    new Dictionary<string, string> { { name, version } });
-        BuildXCode ("Pods/Pods.xcodeproj", 
-                    name,
-                    path.Combine ("ios"),
-                    TargetOS.iOS);
+        DownloadPod (isDynamic, 
+                     path.Combine("ios"), 
+                     "ios", iosVersion, 
+                     pods);
+        build ("Pods/Pods.xcodeproj", 
+               name,
+               path.Combine ("ios"),
+               TargetOS.iOS);
     }
     if (tvosVersion != null) {
-        DownloadPod (path.Combine("tvos"), 
-                    "tvos", tvosVersion, 
-                    new Dictionary<string, string> { { name, version } });
-        BuildXCode ("Pods/Pods.xcodeproj", 
-                    name,
-                    path.Combine ("tvos"),
-                    TargetOS.tvOS);
+        DownloadPod (isDynamic, 
+                     path.Combine("tvos"), 
+                     "tvos", tvosVersion, 
+                     pods);
+        build ("Pods/Pods.xcodeproj", 
+               name,
+               path.Combine ("tvos"),
+               TargetOS.tvOS);
     }
 });
 
@@ -308,10 +395,10 @@ Task ("externals")
                  picassookhttp_version);
 
     if (IsRunningOnUnix ()) {
-        CreateStaticPod ("externals/SocketRocket/", "10.8", "6.0", "9.0", "SocketRocket", socketrocket_version);
-        CreateStaticPod ("externals/Valet/", "10.10", "6.0", null, "Valet", valet_version);
-        CreateStaticPod ("externals/Aardvark/", null, "6.0", null, "Aardvark", aardvark_version);
-        CreateStaticPod ("externals/CoreAardvark/", null, "6.0", null, "CoreAardvark", coreaardvark_version);
+        CreatePod (false, "externals/SocketRocket/", "10.8", "6.0", "9.0", new Dictionary<string, string> { { "SocketRocket", socketrocket_version } });
+        CreatePod (false, "externals/Valet/", "10.10", "6.0", null, new Dictionary<string, string> { { "Valet", valet_version } });
+        CreatePod (true, "externals/Aardvark/", null, "8.0", null, new Dictionary<string, string> { { "Aardvark", aardvark_version }, { "CoreAardvark", coreaardvark_version } });
+        CreatePod (true, "externals/CoreAardvark/", null, "8.0", null, new Dictionary<string, string> { { "CoreAardvark", coreaardvark_version } });
     }
 });
 

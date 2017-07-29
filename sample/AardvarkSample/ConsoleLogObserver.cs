@@ -12,7 +12,7 @@ namespace AardvarkSample
 
 		public void Observe (LogMessage logMessage)
 		{
-			Console.WriteLine ("ConsoleLogObserver: " + logMessage.Text);
+			Console.WriteLine ($"[{logMessage.Date}] ConsoleLogObserver: '{logMessage.Text}'");
 		}
 	}
 }
