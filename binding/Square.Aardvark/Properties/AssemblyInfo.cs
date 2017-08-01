@@ -16,7 +16,7 @@ using Foundation;
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("")]
 [assembly: AssemblyProduct ("Square.Aardvark")]
-[assembly: AssemblyCopyright ("Copyright © Square 2015")]
+[assembly: AssemblyCopyright ("Copyright © Square 2017")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 [assembly: ComVisible (false)]

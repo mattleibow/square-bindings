@@ -16,7 +16,7 @@ using Foundation;
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("")]
 [assembly: AssemblyProduct ("Square.CoreAardvark")]
-[assembly: AssemblyCopyright ("Copyright © Square 2015")]
+[assembly: AssemblyCopyright ("Copyright © Square 2017")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 [assembly: ComVisible (false)]
@@ -32,4 +32,4 @@ using Foundation;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion ("2.0.0.0")]
-[assembly: AssemblyFileVersion ("2.0.0.0")]
+[assembly: AssemblyFileVersion ("2.1.0.0")]

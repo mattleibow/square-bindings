@@ -17,7 +17,7 @@ no_build: true
 packages:
   ios-unified: 
     - Square.Aardvark, Version=3.1.0
-    - Square.CoreAardvark, Version=2.0.0
+    - Square.CoreAardvark, Version=2.1.0
 libraries: 
   ios-unified:
     - ../../output/Square.Aardvark.dll  

@@ -11,7 +11,7 @@ using Android.App;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Square.OkHttp.UrlConnection")]
-[assembly: AssemblyCopyright("Copyright © Square 2016")]
+[assembly: AssemblyCopyright("Copyright © Square 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
