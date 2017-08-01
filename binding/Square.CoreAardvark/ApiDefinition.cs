@@ -207,5 +207,9 @@ namespace Square.CoreAardvark
 		// -(void)clearLogsWithCompletionHandler:(dispatch_block_t _Nullable)completionHandler;
 		[Export ("clearLogsWithCompletionHandler:")]
 		void ClearLogs ([NullAllowed] Action completionHandler);
+
+		// -(void)waitUntilAllLogsAreConsumedAndArchiveSaved;
+		[Export ("waitUntilAllLogsAreConsumedAndArchiveSaved")]
+		void WaitUntilAllLogsAreConsumedAndArchiveSaved ();
 	}
 }
