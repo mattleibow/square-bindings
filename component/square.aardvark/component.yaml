@@ -5,7 +5,7 @@ id: square.aardvark
 publisher: Xamarin Inc
 publisher-url: http://xamarin.com
 summary: Aardvark is a library that makes it dead simple to create actionable bug reports.
-version: "3.0.0"
+version: "3.1.0"
 src-url: https://github.com/mattleibow/square-bindings
 
 details: Details.md
@@ -16,7 +16,7 @@ is_shell: true
 no_build: true
 packages:
   ios-unified: 
-    - Square.Aardvark, Version=3.0.0
+    - Square.Aardvark, Version=3.1.0
     - Square.CoreAardvark, Version=2.0.0
 libraries: 
   ios-unified:
