@@ -1,8 +1,8 @@
 #tool nuget:https://nuget.org/api/v2/?package=XamarinComponent
 
-#addin nuget:https://nuget.org/api/v2/?package=Cake.XCode
-#addin nuget:https://nuget.org/api/v2/?package=Cake.FileHelpers
-#addin nuget:https://nuget.org/api/v2/?package=Cake.Xamarin
+#addin nuget:https://nuget.org/api/v2/?package=Cake.XCode?version=2.0.13
+#addin nuget:https://nuget.org/api/v2/?package=Cake.FileHelpers?version=1.0.4
+#addin nuget:https://nuget.org/api/v2/?package=Cake.Xamarin?version=1.3.0.15
 
 using System.Net;
 using System.Text.RegularExpressions;
