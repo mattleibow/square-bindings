@@ -4,6 +4,20 @@
 
 Xamarin.Android and Xamarin.iOS bindings for the various https://github.com/square libraries
 
+## HOW TO BUILD
+```
+sh bootstrapper.sh --target nuget
+```
+
+*OPTIONS*
+- externals     Download external (native) libraries
+- libs          Build the code
+- nuget         Create nuget packages
+- component     Create Xamarin Components
+- samples       Build samples
+- fast          Shortcut for nuget and components
+- default       Shortcut for all previous steps
+
 Bound:
 
  - **Picasso** - https://github.com/square/picasso  
@@ -36,7 +50,6 @@ Bound:
  - **Pollexor** - https://github.com/square/Pollexor  
    Thumbor image service client which allows you to build URIs in an expressive fashion using a fluent API.  
    [binding][35] | [sample][36] | [NuGet][37] | [Xamarin Component][38]  
-
 
 [1]:  https://github.com/mattleibow/square-bindings/tree/master/binding/Square.Picasso
 [2]:  https://github.com/mattleibow/square-bindings/tree/master/sample/PicassoSample
