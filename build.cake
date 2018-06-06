@@ -31,9 +31,9 @@ public enum TargetOS {
 // VERSIONS
 //////////////////////////////////////////////////////////////////////
 
-const string okio_version                 = "1.13.0"; // OkIO
+const string okio_version                 = "1.14.0"; // OkIO
 const string okhttp_version               = "2.7.5"; // OkHttp
-const string okhttp3_version              = "3.9.1"; // OkHttp3
+const string okhttp3_version              = "3.10.0"; // OkHttp3
 const string okhttpws_version             = "2.7.5"; // OkHttp-WS
 const string okhttp3ws_version            = "3.4.2"; // OkHttp3-WS
 const string okhttpurlconnection_version  = "2.7.5"; // OkHttp-UrlConnection
@@ -540,7 +540,6 @@ Task ("samples")
         samples.Add ("./sample/ValetSample/ValetSample.sln");
     }
     foreach (var sample in samples) {
-        RunComponentRestore (sample);
         RunNuGetRestore (sample);
         Build (sample);
     }

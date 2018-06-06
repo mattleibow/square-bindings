@@ -10,9 +10,11 @@
     <RootNamespace>Square.OkIO</RootNamespace>
     <AssemblyName>Square.OkIO</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
+    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidClassParser>class-parse</AndroidClassParser>
+    <AndroidClassParser>class-parse</AndroidClassParser>
+    <NoWarn>CS0108,CS0109,CS0618,CS0114</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

@@ -11,7 +11,7 @@
     <AssemblyName>Square.OkHttp3.WS</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
+         <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidClassParser>class-parse</AndroidClassParser>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
