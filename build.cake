@@ -37,6 +37,7 @@ const string okhttp3_version              = "3.8.1"; // OkHttp3
 const string okhttpws_version             = "2.7.5"; // OkHttp-WS
 const string okhttp3ws_version            = "3.4.2"; // OkHttp3-WS
 const string okhttpurlconnection_version  = "2.7.5"; // OkHttp-UrlConnection
+const string okhttp3urlconnection_version = "3.11.0";// OkHttp3-UrlConnection
 const string picasso_version              = "2.5.2"; // Picasso
 const string androidtimessquare_version   = "1.7.3"; // AndroidTimesSquare
 const string socketrocket_version         = "0.5.1"; // SocketRocket
@@ -372,6 +373,9 @@ Task ("externals")
     DownloadJar ("com/squareup/okhttp/okhttp-urlconnection/{0}/okhttp-urlconnection-{0}.jar",
                  "externals/OkHttp.UrlConnection/okhttp-urlconnection.jar", 
                  okhttpurlconnection_version);
+    DownloadJar ("com/squareup/okhttp3/okhttp-urlconnection/{0}/okhttp-urlconnection-{0}.jar",
+                 "externals/OkHttp3.UrlConnection/okhttp3-urlconnection.jar", 
+                 okhttp3urlconnection_version);
     DownloadJar ("com/squareup/picasso/picasso/{0}/picasso-{0}.jar",
                  "externals/Picasso/picasso.jar", 
                  picasso_version);
@@ -425,6 +429,7 @@ Task ("libs")
         "Square.OkHttp.WS/bin/Release/Square.OkHttp.WS.dll",
         "Square.OkHttp3.WS/bin/Release/Square.OkHttp3.WS.dll",
         "Square.OkHttp.UrlConnection/bin/Release/Square.OkHttp.UrlConnection.dll",
+        "Square.OkHttp3.UrlConnection/bin/Release/Square.OkHttp3.UrlConnection.dll",
         "Square.AndroidTimesSquare/bin/Release/Square.AndroidTimesSquare.dll",
         "Square.Seismic/bin/Release/Square.Seismic.dll",
         "Square.Pollexor/bin/Release/Square.Pollexor.dll",
@@ -463,6 +468,7 @@ Task ("nuget")
         "./nuget/Square.AndroidTimesSquare.nuspec",
         "./nuget/Square.OkHttp.nuspec",
         "./nuget/Square.OkHttp.UrlConnection.nuspec",
+        "./nuget/Square.OkHttp3.UrlConnection.nuspec",
         "./nuget/Square.OkHttp.WS.nuspec",
         "./nuget/Square.OkHttp3.nuspec",
         "./nuget/Square.OkHttp3.WS.nuspec",
