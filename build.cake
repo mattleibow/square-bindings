@@ -546,7 +546,6 @@ Task ("samples")
         samples.Add ("./sample/ValetSample/ValetSample.sln");
     }
     foreach (var sample in samples) {
-        RunComponentRestore (sample);
         RunNuGetRestore (sample);
         Build (sample);
     }

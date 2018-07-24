@@ -2,11 +2,10 @@
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Views;
-using ImageViews.Photo;
 using UniversalImageLoader.Core;
 using UniversalImageLoader.Core.Listener;
-
 using Square.Pollexor;
+using UK.CO.Senab.Photoview;
 
 namespace PollexorSample
 {
