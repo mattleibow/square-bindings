@@ -15,7 +15,7 @@
         <tags>xamarin,android,monodroid,okhttp</tags>
         <dependencies>
             <dependency id="Square.OkIO" version="1.13.0" />
-            <dependency id="Square.OkHttp" version="3.8.1" />
+            <dependency id="Square.OkHttp3" version="3.8.1" />
         </dependencies>
     </metadata>
     <files>
