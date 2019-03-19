@@ -29,9 +29,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JakeWharton.Picasso2OkHttp3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Retrofit2", "Square.Retrofit2\Square.Retrofit2.csproj", "{67847667-33D6-4FE8-A655-14EA78B9CECD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Retrofit2.ConverterGson", "Square.Retrofit2.ConverterGson\Square.Retrofit2.ConverterGson.csproj", "{42B6A308-CBEE-40B5-9307-2DD59B32BE9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Retrofit2.ConverterGson", "Square.Retrofit2.ConverterGson\Square.Retrofit2.ConverterGson.csproj", "{F4E07A22-68EF-4367-BCCF-14986FDD3A9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Retrofit2.AdapterRxJava2", "Square.Retrofit2.AdapterRxJava2\Square.Retrofit2.AdapterRxJava2.csproj", "{71E66A56-52F0-4087-8843-B0A2C0C7D818}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Retrofit2.AdapterRxJava2", "Square.Retrofit2.AdapterRxJava2\Square.Retrofit2.AdapterRxJava2.csproj", "{B6CBE75C-3F14-4501-B71D-D635E49CFDA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,14 +91,14 @@ Global
 		{67847667-33D6-4FE8-A655-14EA78B9CECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67847667-33D6-4FE8-A655-14EA78B9CECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67847667-33D6-4FE8-A655-14EA78B9CECD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{42B6A308-CBEE-40B5-9307-2DD59B32BE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{42B6A308-CBEE-40B5-9307-2DD59B32BE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{42B6A308-CBEE-40B5-9307-2DD59B32BE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{42B6A308-CBEE-40B5-9307-2DD59B32BE9B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71E66A56-52F0-4087-8843-B0A2C0C7D818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71E66A56-52F0-4087-8843-B0A2C0C7D818}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71E66A56-52F0-4087-8843-B0A2C0C7D818}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71E66A56-52F0-4087-8843-B0A2C0C7D818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4E07A22-68EF-4367-BCCF-14986FDD3A9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4E07A22-68EF-4367-BCCF-14986FDD3A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4E07A22-68EF-4367-BCCF-14986FDD3A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4E07A22-68EF-4367-BCCF-14986FDD3A9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6CBE75C-3F14-4501-B71D-D635E49CFDA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6CBE75C-3F14-4501-B71D-D635E49CFDA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6CBE75C-3F14-4501-B71D-D635E49CFDA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6CBE75C-3F14-4501-B71D-D635E49CFDA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
