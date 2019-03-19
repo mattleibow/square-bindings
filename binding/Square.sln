@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Picasso", "Square.Picasso\Square.Picasso.csproj", "{BC45EFFF-5CEE-4C2D-BBE8-542DBE8E7940}"
 EndProject
@@ -40,6 +40,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Retrofit2", "Square.Retrofit2\Square.Retrofit2.csproj", "{67847667-33D6-4FE8-A655-14EA78B9CECD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.CoreAardvark", "Square.CoreAardvark\Square.CoreAardvark.csproj", "{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Retrofit2.ConverterGson", "Square.Retrofit2.ConverterGson\Square.Retrofit2.ConverterGson.csproj", "{42B6A308-CBEE-40B5-9307-2DD59B32BE9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Retrofit2.AdapterRxJava2", "Square.Retrofit2.AdapterRxJava2\Square.Retrofit2.AdapterRxJava2.csproj", "{71E66A56-52F0-4087-8843-B0A2C0C7D818}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,8 +127,19 @@ Global
 		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42B6A308-CBEE-40B5-9307-2DD59B32BE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42B6A308-CBEE-40B5-9307-2DD59B32BE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42B6A308-CBEE-40B5-9307-2DD59B32BE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42B6A308-CBEE-40B5-9307-2DD59B32BE9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71E66A56-52F0-4087-8843-B0A2C0C7D818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71E66A56-52F0-4087-8843-B0A2C0C7D818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71E66A56-52F0-4087-8843-B0A2C0C7D818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71E66A56-52F0-4087-8843-B0A2C0C7D818}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {60BDAD37-6ED8-4A90-80D4-A3B0E24E803A}
 	EndGlobalSection
 EndGlobal

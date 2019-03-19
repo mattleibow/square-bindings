@@ -46,7 +46,9 @@ const string coreaardvark_version         = "2.1.0"; // CoreAardvark
 const string seismic_version              = "1.0.2"; // Seismic
 const string pollexor_version             = "2.0.4"; // Pollexor
 const string retrofit_version             = "1.9.0"; // Retrofit
-const string retrofit2_version            = "2.3.0"; // Retrofit2
+const string retrofit2_version            = "2.4.0"; // Retrofit2
+const string convertergson_version        = "2.4.0"; // Converter Gson
+const string adapterrxjava2_version       = "2.4.0"; // Adapter RxJava2 
 const string picassookhttp_version        = "1.1.0"; // Picasso 2 OkHttp 3 Downloader
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -390,6 +392,12 @@ Task ("externals")
     DownloadJar ("com/squareup/retrofit2/retrofit/{0}/retrofit-{0}.jar",
                  "externals/Retrofit2/retrofit2.jar", 
                  retrofit2_version);
+    DownloadJar ("com/squareup/retrofit2/converter-gson/{0}/converter-gson-{0}.jar",
+                 "externals/Retrofit2/convertergson.jar", 
+                 convertergson_version);
+    DownloadJar ("com/squareup/retrofit2/adapter-rxjava2/{0}/adapter-rxjava2-{0}.jar",
+                 "externals/Retrofit2/adapterrxjava2.jar", 
+                 adapterrxjava2_version);
     DownloadJar ("com/jakewharton/picasso/picasso2-okhttp3-downloader/{0}/picasso2-okhttp3-downloader-{0}.jar",
                  "externals/Picasso2OkHttp3Downloader/picasso2-okhttp3-downloader.jar", 
                  picassookhttp_version);
@@ -430,6 +438,8 @@ Task ("libs")
         "Square.Pollexor/bin/Release/Square.Pollexor.dll",
         "Square.Retrofit/bin/Release/Square.Retrofit.dll",
         "Square.Retrofit2/bin/Release/Square.Retrofit2.dll",
+        "Square.Retrofit2.ConverterGson/bin/Release/Square.Retrofit2.ConverterGson.dll",
+        "Square.Retrofit2.AdapterRxJava2/bin/Release/Square.Retrofit2.AdapterRxJava2.dll",
         "JakeWharton.Picasso2OkHttp3Downloader/bin/Release/JakeWharton.Picasso2OkHttp3Downloader.dll",
     };
     if (IsRunningOnUnix ()) {
@@ -471,6 +481,8 @@ Task ("nuget")
         "./nuget/Square.Pollexor.nuspec",
         "./nuget/Square.Retrofit.nuspec",
         "./nuget/Square.Retrofit2.nuspec",
+        "./nuget/Square.Retrofit2.ConverterGson.nuspec",
+        "./nuget/Square.Retrofit2.AdapterRxJava2.nuspec",
         "./nuget/Square.Seismic.nuspec",
         "./nuget/JakeWharton.Picasso2OkHttp3Downloader.nuspec",
     };
