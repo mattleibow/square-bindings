@@ -1,5 +1,3 @@
-#tool nuget:https://nuget.org/api/v2/?package=XamarinComponent
-
 #addin nuget:https://nuget.org/api/v2/?package=Cake.XCode&version=2.0.13
 #addin nuget:https://nuget.org/api/v2/?package=Cake.FileHelpers&version=1.0.4
 #addin nuget:https://nuget.org/api/v2/?package=Cake.Xamarin&version=1.3.0.15
@@ -56,7 +54,6 @@ const string picassookhttp_version        = "1.1.0"; // Picasso 2 OkHttp 3 Downl
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var NugetToolPath = File ("./tools/nuget.exe");
-var XamarinComponentToolPath = File ("./tools/XamarinComponent/tools/xamarin-component.exe");
 
 Information (MakeAbsolute (File (".")).ToString ());
 Information (MakeAbsolute (File ("./tools/nuget.exe")).ToString ());
@@ -67,20 +64,6 @@ var RunNuGetRestore = new Action<FilePath> ((solution) =>
     NuGetRestore (solution, new NuGetRestoreSettings { 
         ToolPath = NugetToolPath
     });
-});
-
-var RunComponentRestore = new Action<FilePath> ((solution) =>
-{
-    var settings = new XamarinComponentRestoreSettings { 
-        ToolPath = XamarinComponentToolPath,
-    };
-    var email = EnvironmentVariable ("XAMARIN_COMPONENT_EMAIL");
-    var password = EnvironmentVariable ("XAMARIN_COMPONENT_PASSWORD");
-    if (!string.IsNullOrEmpty (email) && !string.IsNullOrEmpty (password)) {
-        settings.Email = email;
-        settings.Password = password;
-    }
-    RestoreComponents (solution, settings);
 });
  
 var PackageNuGet = new Action<FilePath, DirectoryPath> ((nuspecPath, outputPath) =>
@@ -498,34 +481,7 @@ Task ("nuget")
     Zip("./output", "./output/nupkg.zip", "./output/*.nupkg");
 });
 
-Task ("component")
-    .IsDependentOn ("nuget")
-    .Does (() => 
-{
-    DeleteFiles ("./output/*.xam");
-    var yamls = new List<string> {
-        "./component/square.androidtimessquare",
-        "./component/square.okhttp",
-        "./component/square.okhttp.ws",
-        "./component/square.okhttp3",
-        "./component/square.okhttp3.ws",
-        "./component/square.picasso",
-        "./component/square.pollexor",
-        "./component/square.seismic",
-    };
-    if (IsRunningOnUnix ()) {
-        yamls.Add ("./component/square.aardvark");
-        yamls.Add ("./component/square.socketrocket");
-        yamls.Add ("./component/square.valet");
-    }
-    foreach (DirectoryPath yaml in yamls) {
-        PackageComponent (yaml, new XamarinComponentSettings { 
-            ToolPath = XamarinComponentToolPath
-        });
-        MoveFiles (yaml + "/*.xam", "./output/");
-    }
-    Zip("./output", "./output/xam.zip", "./output/*.xam");
-});
+Task ("component").IsDependentOn ("nuget");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // SAMPLES - 
@@ -552,7 +508,6 @@ Task ("samples")
         samples.Add ("./sample/ValetSample/ValetSample.sln");
     }
     foreach (var sample in samples) {
-        RunComponentRestore (sample);
         RunNuGetRestore (sample);
         Build (sample);
     }
@@ -568,12 +523,10 @@ Task ("clean")
     CleanDirectories ("./binding/*/bin");
     CleanDirectories ("./binding/*/obj");
     CleanDirectories ("./binding/packages");
-    CleanDirectories ("./binding/Components");
 
     CleanDirectories ("./sample/*/bin");
     CleanDirectories ("./sample/*/obj");
     CleanDirectories ("./sample/packages");
-    CleanDirectories ("./sample/Components");
 
     CleanDirectories ("./output");
 });
@@ -593,13 +546,11 @@ Task("Fast")
     .IsDependentOn("externals")
     .IsDependentOn("libs")
     .IsDependentOn("nuget")
-    .IsDependentOn("component");
 
 Task("Default")
     .IsDependentOn("externals")
     .IsDependentOn("libs")
     .IsDependentOn("nuget")
-    .IsDependentOn("component")
     .IsDependentOn("samples");
 
 RunTarget (target);
