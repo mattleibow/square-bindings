@@ -1,5 +1,3 @@
-#tool nuget:https://nuget.org/api/v2/?package=XamarinComponent
-
 #addin nuget:https://nuget.org/api/v2/?package=Cake.XCode&version=2.0.13
 #addin nuget:https://nuget.org/api/v2/?package=Cake.FileHelpers&version=1.0.4
 #addin nuget:https://nuget.org/api/v2/?package=Cake.Xamarin&version=1.3.0.15
@@ -46,7 +44,9 @@ const string coreaardvark_version         = "2.1.0"; // CoreAardvark
 const string seismic_version              = "1.0.2"; // Seismic
 const string pollexor_version             = "2.0.4"; // Pollexor
 const string retrofit_version             = "1.9.0"; // Retrofit
-const string retrofit2_version            = "2.3.0"; // Retrofit2
+const string retrofit2_version            = "2.4.0"; // Retrofit2
+const string convertergson_version        = "2.4.0"; // Converter Gson
+const string adapterrxjava2_version       = "2.4.0"; // Adapter RxJava2 
 const string picassookhttp_version        = "1.1.0"; // Picasso 2 OkHttp 3 Downloader
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,7 +54,6 @@ const string picassookhttp_version        = "1.1.0"; // Picasso 2 OkHttp 3 Downl
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var NugetToolPath = File ("./tools/nuget.exe");
-var XamarinComponentToolPath = File ("./tools/XamarinComponent/tools/xamarin-component.exe");
 
 Information (MakeAbsolute (File (".")).ToString ());
 Information (MakeAbsolute (File ("./tools/nuget.exe")).ToString ());
@@ -65,20 +64,6 @@ var RunNuGetRestore = new Action<FilePath> ((solution) =>
     NuGetRestore (solution, new NuGetRestoreSettings { 
         ToolPath = NugetToolPath
     });
-});
-
-var RunComponentRestore = new Action<FilePath> ((solution) =>
-{
-    var settings = new XamarinComponentRestoreSettings { 
-        ToolPath = XamarinComponentToolPath,
-    };
-    var email = EnvironmentVariable ("XAMARIN_COMPONENT_EMAIL");
-    var password = EnvironmentVariable ("XAMARIN_COMPONENT_PASSWORD");
-    if (!string.IsNullOrEmpty (email) && !string.IsNullOrEmpty (password)) {
-        settings.Email = email;
-        settings.Password = password;
-    }
-    RestoreComponents (solution, settings);
 });
  
 var PackageNuGet = new Action<FilePath, DirectoryPath> ((nuspecPath, outputPath) =>
@@ -390,6 +375,12 @@ Task ("externals")
     DownloadJar ("com/squareup/retrofit2/retrofit/{0}/retrofit-{0}.jar",
                  "externals/Retrofit2/retrofit2.jar", 
                  retrofit2_version);
+    DownloadJar ("com/squareup/retrofit2/converter-gson/{0}/converter-gson-{0}.jar",
+                 "externals/Retrofit2/convertergson.jar", 
+                 convertergson_version);
+    DownloadJar ("com/squareup/retrofit2/adapter-rxjava2/{0}/adapter-rxjava2-{0}.jar",
+                 "externals/Retrofit2/adapterrxjava2.jar", 
+                 adapterrxjava2_version);
     DownloadJar ("com/jakewharton/picasso/picasso2-okhttp3-downloader/{0}/picasso2-okhttp3-downloader-{0}.jar",
                  "externals/Picasso2OkHttp3Downloader/picasso2-okhttp3-downloader.jar", 
                  picassookhttp_version);
@@ -430,6 +421,8 @@ Task ("libs")
         "Square.Pollexor/bin/Release/Square.Pollexor.dll",
         "Square.Retrofit/bin/Release/Square.Retrofit.dll",
         "Square.Retrofit2/bin/Release/Square.Retrofit2.dll",
+        "Square.Retrofit2.ConverterGson/bin/Release/Square.Retrofit2.ConverterGson.dll",
+        "Square.Retrofit2.AdapterRxJava2/bin/Release/Square.Retrofit2.AdapterRxJava2.dll",
         "JakeWharton.Picasso2OkHttp3Downloader/bin/Release/JakeWharton.Picasso2OkHttp3Downloader.dll",
     };
     if (IsRunningOnUnix ()) {
@@ -471,6 +464,8 @@ Task ("nuget")
         "./nuget/Square.Pollexor.nuspec",
         "./nuget/Square.Retrofit.nuspec",
         "./nuget/Square.Retrofit2.nuspec",
+        "./nuget/Square.Retrofit2.ConverterGson.nuspec",
+        "./nuget/Square.Retrofit2.AdapterRxJava2.nuspec",
         "./nuget/Square.Seismic.nuspec",
         "./nuget/JakeWharton.Picasso2OkHttp3Downloader.nuspec",
     };
@@ -486,34 +481,7 @@ Task ("nuget")
     Zip("./output", "./output/nupkg.zip", "./output/*.nupkg");
 });
 
-Task ("component")
-    .IsDependentOn ("nuget")
-    .Does (() => 
-{
-    DeleteFiles ("./output/*.xam");
-    var yamls = new List<string> {
-        "./component/square.androidtimessquare",
-        "./component/square.okhttp",
-        "./component/square.okhttp.ws",
-        "./component/square.okhttp3",
-        "./component/square.okhttp3.ws",
-        "./component/square.picasso",
-        "./component/square.pollexor",
-        "./component/square.seismic",
-    };
-    if (IsRunningOnUnix ()) {
-        yamls.Add ("./component/square.aardvark");
-        yamls.Add ("./component/square.socketrocket");
-        yamls.Add ("./component/square.valet");
-    }
-    foreach (DirectoryPath yaml in yamls) {
-        PackageComponent (yaml, new XamarinComponentSettings { 
-            ToolPath = XamarinComponentToolPath
-        });
-        MoveFiles (yaml + "/*.xam", "./output/");
-    }
-    Zip("./output", "./output/xam.zip", "./output/*.xam");
-});
+Task ("component").IsDependentOn ("nuget");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // SAMPLES - 
@@ -540,7 +508,6 @@ Task ("samples")
         samples.Add ("./sample/ValetSample/ValetSample.sln");
     }
     foreach (var sample in samples) {
-        RunComponentRestore (sample);
         RunNuGetRestore (sample);
         Build (sample);
     }
@@ -556,12 +523,10 @@ Task ("clean")
     CleanDirectories ("./binding/*/bin");
     CleanDirectories ("./binding/*/obj");
     CleanDirectories ("./binding/packages");
-    CleanDirectories ("./binding/Components");
 
     CleanDirectories ("./sample/*/bin");
     CleanDirectories ("./sample/*/obj");
     CleanDirectories ("./sample/packages");
-    CleanDirectories ("./sample/Components");
 
     CleanDirectories ("./output");
 });
@@ -580,14 +545,12 @@ Task ("clean-native")
 Task("Fast")
     .IsDependentOn("externals")
     .IsDependentOn("libs")
-    .IsDependentOn("nuget")
-    .IsDependentOn("component");
+    .IsDependentOn("nuget");
 
 Task("Default")
     .IsDependentOn("externals")
     .IsDependentOn("libs")
     .IsDependentOn("nuget")
-    .IsDependentOn("component")
     .IsDependentOn("samples");
 
 RunTarget (target);

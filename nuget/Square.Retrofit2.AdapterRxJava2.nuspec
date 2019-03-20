@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Square.Retrofit2</id>
+        <id>Square.Retrofit2.AdapterRxJava2</id>
         <version>2.4.0</version>
-        <title>Retrofit2</title>
+        <title>Retrofit2 Adapter RxJava2</title>
         <authors>.NET Development Addict</authors>
         <licenseUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/mattleibow/square-bindings</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.retrofit2_256x256.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>A type-safe HTTP client for Android and Java.</description>
-        <releaseNotes></releaseNotes>
-        <copyright>Square</copyright>
-        <tags></tags>
+        <description>Xamarin.Android bindings for Square Retrofit2's AdapterRxJava2</description>
         <dependencies>
-            <dependency id="Square.OkHttp3" version="3.8.0" />
+            <dependency id="Square.Retrofit2" version="2.4.0" />
+            <dependency id="Xamarin.Android.ReactiveX.RxJava" version="2.2.7" />
         </dependencies>
     </metadata>
     <files>
         <file src="output/README.md" target="README.md" />
         <file src="output/LICENSE.txt" target="LICENSE.txt" />
         
-        <file src="output/Square.Retrofit2.dll" target="lib\MonoAndroid\Square.Retrofit2.dll" />
+        <file src="output/Square.Retrofit2.AdapterRxJava2.dll" target="lib\MonoAndroid\Square.Retrofit2.AdapterRxJava2.dll" />
     </files>
 </package>
