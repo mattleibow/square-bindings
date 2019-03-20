@@ -57,3 +57,11 @@ jobs:
         inputs:
           artifactName: artifacts_macos
           pathToPublish: output
+      - task: CopyFiles@2
+        inputs:
+          contents: 'output/*.nupkg'
+          targetFolder: $(Build.ArtifactStagingDirectory)
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathtoPublish: $(Build.ArtifactStagingDirectory)
+          artifactName: nuget
