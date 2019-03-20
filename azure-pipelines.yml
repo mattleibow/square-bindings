@@ -1,0 +1,39 @@
+
+variables:
+  MONO_VERSION: 5_16_0
+  XCODE_VERSION: 10.1
+
+trigger:
+- master
+
+jobs:
+
+  - job: build_windows
+    displayName: Build on Windows
+    pool:
+      vmImage: vs2017-win2016
+    steps:
+      - powershell: .\bootstrapper.ps1
+        displayName: Run build
+      - task: PublishBuildArtifacts@1
+        displayName: Publish artifacts
+        inputs:
+          artifactName: artifacts_windows
+          pathToPublish: output
+
+  - job: build_macos
+    displayName: Build on macOS
+    pool:
+      vmImage: macos-10.13
+    steps:
+      - bash: sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh $(MONO_VERSION)
+        displayName: Switch to the latest Xamarin SDK
+      - bash: echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'/Applications/Xcode_$(XCODE_VERSION).app;sudo xcode-select --switch /Applications/Xcode_$(XCODE_VERSION).app/Contents/Developer
+        displayName: Switch to the latest Xcode
+      - bash: ./bootstrapper.sh
+        displayName: Run build
+      - task: PublishBuildArtifacts@1
+        displayName: Publish artifacts
+        inputs:
+          artifactName: artifacts_macos
+          pathToPublish: output
