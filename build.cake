@@ -545,7 +545,7 @@ Task ("clean-native")
 Task("Fast")
     .IsDependentOn("externals")
     .IsDependentOn("libs")
-    .IsDependentOn("nuget")
+    .IsDependentOn("nuget");
 
 Task("Default")
     .IsDependentOn("externals")
