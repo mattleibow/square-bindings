@@ -5,7 +5,6 @@ variables:
 
 trigger:
  - master
- - azure-pipelines
 
 jobs:
 
