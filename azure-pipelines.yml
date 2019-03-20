@@ -4,7 +4,8 @@ variables:
   XCODE_VERSION: 10.1
 
 trigger:
-- master
+ - master
+ - azure-pipelines
 
 jobs:
 
@@ -30,6 +31,14 @@ jobs:
         displayName: Switch to the latest Xamarin SDK
       - bash: echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'/Applications/Xcode_$(XCODE_VERSION).app;sudo xcode-select --switch /Applications/Xcode_$(XCODE_VERSION).app/Contents/Developer
         displayName: Switch to the latest Xcode
+      - task: InstallAppleCertificate@2
+        displayName: Install the Apple certificate
+        inputs:
+          certSecureFile: 'Components iOS Certificate.p12'
+      - task: InstallAppleProvisioningProfile@1
+        displayName: Install the Apple provisioning profile
+        inputs:
+          provProfileSecureFile: 'Components iOS Provisioning.mobileprovision'
       - bash: ./bootstrapper.sh
         displayName: Run build
       - task: PublishBuildArtifacts@1
