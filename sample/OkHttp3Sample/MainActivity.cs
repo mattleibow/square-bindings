@@ -15,9 +15,9 @@ namespace OkHttp3Sample
     {
         private static string Endpoint = "https://api.github.com/repos/square/okhttp/contributors";
         
-        protected override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(bundle);
+            base.OnCreate(savedInstanceState);
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
