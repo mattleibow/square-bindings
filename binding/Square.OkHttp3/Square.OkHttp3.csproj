@@ -50,9 +50,6 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Additions\packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Additions\" />
     <Folder Include="Jars\" />
   </ItemGroup>
