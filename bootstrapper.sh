@@ -123,6 +123,9 @@ if [ ! -f "$CAKE_EXE" ]; then
     exit 1
 fi
 
+sudo gem uninstall cocoapods
+sudo gem install cocoapods -v 1.5.3
+
 # Start Cake
 if $SHOW_VERSION; then
     exec mono "$CAKE_EXE" -version
