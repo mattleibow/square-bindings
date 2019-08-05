@@ -20,5 +20,21 @@ namespace Square.CoreAardvark
 		// extern void ARKLogWithType (ARKLogType type, NSDictionary * _Nullable userInfo, NSString * _Nonnull format, ...) __attribute__((format(NSString, 3, 4)));
 		[DllImport ("__Internal")]
 		internal static extern void ARKLogWithType (LogType type, IntPtr userInfo, IntPtr format, IntPtr varArgs);
+
+		// extern void ARKEnableLogOnUncaughtException(void);
+		[DllImport ("__Internal")]
+		internal static extern void ARKEnableLogOnUncaughtException ();
+
+		// extern void ARKEnableLogOnUncaughtExceptionToLogDistributor(ARKLogDistributor *_Nonnull logDistributor);
+		[DllImport ("__Internal")]
+		internal static extern void ARKEnableLogOnUncaughtExceptionToLogDistributor (IntPtr logDistributor);
+
+		// extern void ARKDisableLogOnUncaughtException(void);
+		[DllImport ("__Internal")]
+		internal static extern void ARKDisableLogOnUncaughtException ();
+
+		// extern void ARKDisableLogOnUncaughtExceptionToLogDistributor(ARKLogDistributor *_Nonnull logDistributor);
+		[DllImport ("__Internal")]
+		internal static extern void ARKDisableLogOnUncaughtExceptionToLogDistributor (IntPtr logDistributor);
 	}
 }

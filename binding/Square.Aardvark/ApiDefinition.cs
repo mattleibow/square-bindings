@@ -60,6 +60,46 @@ namespace Square.Aardvark
 		NSDictionary EmailBodyAdditions (EmailBugReporter emailBugReporter);
 	}
 
+	interface IEmailBugReporterEmailAttachmentAdditionsDelegate
+	{
+
+	}
+
+	// @protocol ARKEmailBugReporterEmailAttachmentAdditionsDelegate <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject), Name = "ARKEmailBugReporterEmailAttachmentAdditionsDelegate")]
+	interface EmailBugReporterEmailAttachmentAdditionsDelegate
+	{
+		// @required -(BOOL)emailBugReporter:(nonnull ARKEmailBugReporter *)emailBugReporter shouldIncludeLogStoreInBugReport:(nonnull ARKLogStore *)logStore;
+		[Abstract]
+		[Export ("emailBugReporter:shouldIncludeLogStoreInBugReport:")]
+		bool ShouldIncludeLogStore (EmailBugReporter emailBugReporter, LogStore logStore);
+
+		// @required -(nullable NSArray<ARKEmailAttachment *> *)additionalEmailAttachmentsForEmailBugReporter:(nonnull ARKEmailBugReporter *)emailBugReporter;
+		[Abstract]
+		[Export ("additionalEmailAttachmentsForEmailBugReporter:")]
+		[return: NullAllowed]
+		EmailAttachment[] AdditionalEmailAttachments (EmailBugReporter emailBugReporter);
+	}
+
+	interface IEmailBugReporterPromptingDelegate
+	{
+
+	}
+
+	// @protocol ARKEmailBugReporterPromptingDelegate <NSObject>
+	[Protocol, Model]
+	[BaseType (typeof(NSObject), Name = "ARKEmailBugReporterPromptingDelegate")]
+	interface EmailBugReporterPromptingDelegate
+	{
+		// @required -(void)showBugReportingPromptForConfiguration:(ARKEmailBugReportConfiguration *_Nonnull)configuration completion:(ARKEmailBugReporterCustomPromptCompletionBlock _Nonnull)completion;
+		[Abstract]
+		[Export ("showBugReportingPromptForConfiguration:completion:")]
+		void ShowBugReportingPrompt (EmailBugReportConfiguration configuration, EmailBugReporterCustomPromptCompletionDelegate completion);
+	}
+
+	delegate void EmailBugReporterCustomPromptCompletionDelegate ([NullAllowed] EmailBugReportConfiguration configuration);
+
 	// @interface ARKEmailBugReporter : NSObject <ARKBugReporter>
 	[BaseType (typeof(NSObject), Name = "ARKEmailBugReporter")]
 	[DisableDefaultCtor]
@@ -81,6 +121,14 @@ namespace Square.Aardvark
 		[NullAllowed, Export ("emailBodyAdditionsDelegate", ArgumentSemantic.Weak)]
 		IEmailBodyAdditionsDelegate EmailBodyAdditionsDelegate { get; set; }
 
+		// @property (nullable, nonatomic, weak) id <ARKEmailBugReporterEmailAttachmentAdditionsDelegate> emailAttachmentAdditionsDelegate;
+		[NullAllowed, Export ("emailAttachmentAdditionsDelegate", ArgumentSemantic.Weak)]
+		IEmailBugReporterEmailAttachmentAdditionsDelegate EmailAttachmentAdditionsDelegate { get; set; }
+
+		// @property (nullable, nonatomic, weak) id <ARKEmailBugReporterPromptingDelegate> promptingDelegate;
+		[NullAllowed, Export ("promptingDelegate", ArgumentSemantic.Weak)]
+		IEmailBugReporterPromptingDelegate PromptingDelegate { get; set; }
+
 		// @property (nonatomic) id<ARKLogFormatter> _Nonnull logFormatter;
 		[Export ("logFormatter", ArgumentSemantic.Assign)]
 		ILogFormatter LogFormatter { get; set; }
@@ -97,6 +145,10 @@ namespace Square.Aardvark
 		[Export ("emailComposeWindowLevel")]
 		double EmailComposeWindowLevel { get; set; }
 
+		// @property (nonatomic) BOOL attachesViewHierarchyDescriptionWithScreenshot;
+		[Export ("attachesViewHierarchyDescriptionWithScreenshot")]
+		bool AttachesViewHierarchyDescriptionWithScreenshot { get; set; }
+
 		// -(NSData * _Nonnull)formattedLogMessagesAsData:(NSArray * _Nonnull)logMessages;
 		[Export ("formattedLogMessagesAsData:")]
 		NSData FormatAsData (LogMessage[] logMessages);
@@ -108,6 +160,62 @@ namespace Square.Aardvark
 		// -(NSString * _Nonnull)formattedLogMessagesAttachmentExtension;
 		[Export ("formattedLogMessagesAttachmentExtension")]
 		string AttachmentExtension { get; }
+	}
+
+	// @interface ARKEmailAttachment : NSObject
+	[BaseType (typeof(NSObject), Name = "ARKEmailAttachment")]
+	[DisableDefaultCtor]
+	interface EmailAttachment
+	{
+		// - (nonnull instancetype)initWithFileName:(nonnull NSString *)fileName data:(nonnull NSData *)data dataMIMEType:(nonnull NSString *)dataMIMEType;
+		[Export ("initWithFileName:data:dataMIMEType:")]
+		IntPtr Constructor (string fileName, NSData data, string dataMimeType);
+
+		// @property (nonnull, nonatomic, copy, readonly) NSString *fileName;
+		[Export ("fileName")]
+		string FileName { get; }
+
+		// @property (nonnull, nonatomic, copy, readonly) NSData *data;
+		[Export ("data")]
+		NSData Data { get; }
+
+		// @property (nonnull, nonatomic, copy, readonly) NSString *dataMIMEType;
+		[Export ("dataMIMEType")]
+		string DataMimeType { get; }
+	}
+
+	// @interface ARKEmailBugReportConfiguration : NSObject
+	[BaseType (typeof(NSObject), Name = "ARKEmailBugReportConfiguration")]
+	[DisableDefaultCtor]
+	interface EmailBugReportConfiguration
+	{
+		// @property (nonnull, nonatomic, copy) NSString *prefilledEmailSubject;
+		[Export ("prefilledEmailSubject")]
+		string PrefilledEmailSubject { get; set; }
+
+		// @property (nonnull, nonatomic, copy) NSArray<ARKLogStore *> *logStores;
+		[Export ("logStores")]
+		LogStore[] LogStores { get; set; }
+
+		// @property (nonatomic, readonly) BOOL includesScreenshot;
+		[Export ("includesScreenshot")]
+		bool IncludesScreenshot { get; }
+
+		// @property (nonatomic, readonly) BOOL includesViewHierarchyDescription;
+		[Export ("includesViewHierarchyDescription")]
+		bool IncludesViewHierarchyDescription { get; }
+
+		// @property (nonnull, nonatomic, copy) NSArray<ARKEmailAttachment *> *additionalAttachments;
+		[Export ("additionalAttachments")]
+		EmailAttachment[] AdditionalAttachments { get; set; }
+
+		// - (void)excludeScreenshot;
+		[Export ("excludeScreenshot")]
+		void ExcludeScreenshot ();
+
+		// - (void)excludeViewHierarchyDescription;
+		[Export ("excludeViewHierarchyDescription")]
+		void ExcludeViewHierarchyDescription ();
 	}
 
 	// @interface Aardvark : NSObject

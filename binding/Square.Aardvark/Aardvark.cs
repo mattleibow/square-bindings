@@ -5,6 +5,8 @@ using UIKit;
 
 using Square.CoreAardvark;
 
+[assembly: LinkerSafe]
+
 namespace Square.Aardvark
 {
 	partial class Aardvark

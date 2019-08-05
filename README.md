@@ -1,6 +1,6 @@
 # square-bindings
 
-[![Build status](https://ci.appveyor.com/api/projects/status/ipvvat62k4y2y08e/branch/master?svg=true)](https://ci.appveyor.com/project/mattleibow/square-bindings/branch/master) [![Build Status](https://www.bitrise.io/app/b78abada10217042/status.svg?token=h7fruXhIpxYTwUVGBxoqjw)](https://www.bitrise.io/app/b78abada10217042)
+[![Build Status](https://dev.azure.com/mattleibow/OpenSource/_apis/build/status/square-bindings?branchName=master)](https://dev.azure.com/mattleibow/OpenSource/_build/latest?definitionId=1&branchName=master)
 
 Xamarin.Android and Xamarin.iOS bindings for the various https://github.com/square libraries
 

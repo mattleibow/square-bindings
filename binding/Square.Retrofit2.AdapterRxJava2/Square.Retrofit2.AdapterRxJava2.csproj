@@ -1,69 +1,40 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.31">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectTypeGuids>{10368E6C-D01B-4462-8E8B-01FC667A7035};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{B6CBE75C-3F14-4501-B71D-D635E49CFDA4}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Square.Retrofit</RootNamespace>
+    <TargetFrameworks>monoandroid5.0</TargetFrameworks>
+    <IsBindingProject>true</IsBindingProject>
+    <AssemblyName>Square.Retrofit2.AdapterRxJava2</AssemblyName>
+    <RootNamespace>Square.Retrofit2.AdapterRxJava2</RootNamespace>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
-    <AssemblyName>Square.Retrofit2.AdapterRxJava2</AssemblyName>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <AndroidUseIntermediateDesignerFile>True</AndroidUseIntermediateDesignerFile>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidClassParser>class-parse</AndroidClassParser>
+    <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>None</AndroidLinkMode>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-    <ConsolePause>false</ConsolePause>
+  <PropertyGroup>
+    <PackageId>Square.Retrofit2.AdapterRxJava2</PackageId>
+    <Title>Retrofit v2 Adapter for RxJava</Title>
+    <Summary>Retrofit v2 Adapter for RxJava v2 bindings for Xamarin.Android.</Summary>
+    <Description>Retrofit v2 Adapter for RxJava v2 bindings for Xamarin.Android.</Description>
+    <Authors>mattleibow</Authors>
+    <Owners>mattleibow</Owners>
+    <Copyright>Square and Matthew Leibowitz.</Copyright>
+    <PackageProjectUrl>https://github.com/mattleibow/square-bindings</PackageProjectUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>rx retrofit xamarin android monodroid</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="Mono.Android" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <TransformFile Include="Transforms\EnumFields.xml" />
-    <TransformFile Include="Transforms\EnumMethods.xml" />
-    <TransformFile Include="Transforms\Metadata.xml">
-      <SubType>Designer</SubType>
-    </TransformFile>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
-  <ItemGroup>
-    <Folder Include="Jars\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedJar Include="..\..\externals\Retrofit2\adapterrxjava2.jar" />
+    <ProjectReference Include="..\Square.Retrofit2\Square.Retrofit2.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Android.ReactiveX.RxJava" Version="2.2.7" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Square.Retrofit2\Square.Retrofit2.csproj">
-      <Project>{67847667-33d6-4fe8-a655-14ea78b9cecd}</Project>
-      <Name>Square.Retrofit2</Name>
-    </ProjectReference>
+    <None Remove="Transforms\*.xml" />
+    <TransformFile Include="Transforms\*.xml" />
+    <EmbeddedJar Include="..\..\externals\$(PackageId)\*.jar" Link="Jars\%(Filename)%(Extension)" />
+    <LibraryProjectZip Include="..\..\externals\$(PackageId)\*.aar" Link="Jars\%(Filename)%(Extension)" />
   </ItemGroup>
 </Project>
