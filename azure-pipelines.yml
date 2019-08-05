@@ -5,6 +5,7 @@ trigger:
 variables:
   VERBOSITY: diagnostic
   API_TOOLS_VERSION: 1.0.2-preview.5
+  DOTNET_CORE_VERSION: 2.2.x
 
 strategy:
   matrix:
@@ -30,9 +31,9 @@ steps:
     condition: eq(variables['System.JobName'], 'macos')
 
   - task: UseDotNet@2
-    displayName: 'Use .NET Core 2.2 SDK'
+    displayName: 'Use the correct version of the .NET Core SDK'
     inputs:
-      version: 2.2.x
+      version: $(DOTNET_CORE_VERSION)
   - powershell: dotnet tool install -g api-tools --version $(API_TOOLS_VERSION)
     displayName: 'Install api-tools'
 
