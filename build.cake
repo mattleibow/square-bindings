@@ -14,6 +14,7 @@ using System.Xml.Linq;
 var target = Argument("t", Argument("target", "Default"));
 var configuration = Argument("c", Argument("configuration", "Release"));
 var buildNumber = EnvironmentVariable ("BUILD_NUMBER") ?? "0";
+var javaHome = EnvironmentVariable ("JAVA_HOME");
 
 if (!DirectoryExists ("./output")) {
     CreateDirectory ("./output");
@@ -360,6 +361,9 @@ Task ("libs")
             .WithProperty ("InformationalVersion", infoVersion)
             .WithProperty ("PackageOutputPath", MakeAbsolute ((DirectoryPath)"./output/").FullPath)
             .WithTarget ("Pack");
+
+        if (!string.IsNullOrEmpty (javaHome))
+            settings.WithProperty ("JavaSdkDirectory", javaHome);
 
         settings.WithProperty ("PackageVersion", packageVersion);
         MSBuild (file, settings);
