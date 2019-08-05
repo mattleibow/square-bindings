@@ -49,4 +49,4 @@ steps:
     displayName: 'Publish artifacts'
     inputs:
       PathToPublish: output
-      ArtifactName: nuget
+      ArtifactName: nuget-$(System.JobName)
