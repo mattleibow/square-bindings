@@ -9,11 +9,11 @@ variables:
 strategy:
   matrix:
     macos:
-      imageName: macos-10.14
+      imageName: 'Hosted macOS'
       MONO_VERSION: 5_18_1
-      XCODE_VERSION: 10.2.1
+      XCODE_VERSION: 10.3
     windows:
-      imageName: vs2017-win2016
+      imageName: 'Hosted Windows 2019 with VS2019'
 
 pool:
   name: $(imageName)
