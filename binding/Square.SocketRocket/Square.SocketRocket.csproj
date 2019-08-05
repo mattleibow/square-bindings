@@ -25,11 +25,8 @@
     <Compile Remove="StructsAndEnums.cs" />
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
-    <NativeReference Include="..\..\externals\$(PackageId)\ios\*.a" Kind="Static" ForceLoad="true" SmarkLink="true" Frameworks="CFNetwork Security Foundation" LinkerFlags="-licucore" Condition="'$(TargetFramework)' == 'xamarinios1.0'" />
-    <NativeReference Include="..\..\externals\$(PackageId)\tvos\*.a" Kind="Static" ForceLoad="true" SmarkLink="true" Frameworks="CFNetwork Security Foundation" LinkerFlags="-licucore" Condition="'$(TargetFramework)' == 'xamarintvos1.0'" />
-    <NativeReference Include="..\..\externals\$(PackageId)\osx\*.a" Kind="Static" ForceLoad="true" SmarkLink="true" Frameworks="CoreServices Security" LinkerFlags="-licucore -F CoreServices -F Security" Condition="'$(TargetFramework)' == 'xamarinmac2.0'" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Native.Square.SocketRocket.manifest" CopyToOutputDirectory="PreserveNewest" />
+    <NativeReference Include="..\..\externals\Square.SocketRocket\ios\libSocketRocket.a" Kind="Static" ForceLoad="true" SmarkLink="true" Frameworks="CFNetwork Security Foundation" LinkerFlags="-licucore" Condition="'$(TargetFramework)' == 'xamarinios1.0'" />
+    <NativeReference Include="..\..\externals\Square.SocketRocket\tvos\libSocketRocket.a" Kind="Static" ForceLoad="true" SmarkLink="true" Frameworks="CFNetwork Security Foundation" LinkerFlags="-licucore" Condition="'$(TargetFramework)' == 'xamarintvos1.0'" />
+    <NativeReference Include="..\..\externals\Square.SocketRocket\osx\libSocketRocket.a" Kind="Static" ForceLoad="true" SmarkLink="true" Frameworks="CoreServices Security" LinkerFlags="-licucore" Condition="'$(TargetFramework)' == 'xamarinmac2.0'" />
   </ItemGroup>
 </Project>

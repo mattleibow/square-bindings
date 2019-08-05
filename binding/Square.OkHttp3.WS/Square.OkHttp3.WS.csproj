@@ -28,9 +28,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Square.OkIO" Version="1.9.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Square.OkHttp3\Square.OkHttp3.csproj" />
+    <PackageReference Include="Square.OkHttp3" Version="3.4.2" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Transforms\*.xml" />

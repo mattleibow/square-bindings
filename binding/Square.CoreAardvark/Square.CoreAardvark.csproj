@@ -25,6 +25,6 @@
     <Compile Remove="StructsAndEnums.cs" />
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
-    <NativeReference Include="..\..\externals\$(PackageId)\ios\*.framework" Kind="Framework" ForceLoad="true" SmarkLink="true" LinkerFlags="-ObjC" />
+    <NativeReference Include="..\..\externals\Square.CoreAardvark\ios\CoreAardvark.framework" Kind="Framework" ForceLoad="true" SmarkLink="true" LinkerFlags="-ObjC" />
   </ItemGroup>
 </Project>

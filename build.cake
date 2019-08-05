@@ -13,7 +13,6 @@ using System.Xml.Linq;
 
 var target = Argument("t", Argument("target", "Default"));
 var configuration = Argument("c", Argument("configuration", "Release"));
-var buildNumber = EnvironmentVariable ("BUILD_NUMBER") ?? "0";
 var javaHome = EnvironmentVariable ("JAVA_HOME");
 
 if (!DirectoryExists ("./output")) {
@@ -32,26 +31,26 @@ public enum TargetOS {
 // VERSIONS
 //////////////////////////////////////////////////////////////////////
 
-var versions = new Dictionary<string, string> {
-    { "Square.OkIO",                             "1.13.0"   },
-    { "Square.OkHttp",                           "2.7.5"    },
-    { "Square.OkHttp.WS",                        "2.7.5"    },
-    { "Square.OkHttp3",                          "3.8.1"    },
-    { "Square.OkHttp3.WS",                       "3.4.2"    },
-    { "Square.OkHttp.UrlConnection",             "2.7.5"    },
-    { "Square.Picasso",                          "2.5.2"    },
-    { "Square.AndroidTimesSquare",               "1.7.3"    },
-    { "Square.SocketRocket",                     "0.5.1"    },
-    { "Square.Valet",                            "2.4.1"    },
-    { "Square.Aardvark",                         "3.4.1"    },
-    { "Square.CoreAardvark",                     "2.2.1"    },
-    { "Square.Seismic",                          "1.0.2"    },
-    { "Square.Pollexor",                         "2.0.4"    },
-    { "Square.Retrofit",                         "1.9.0"    },
-    { "Square.Retrofit2",                        "2.4.0"    },
-    { "Square.Retrofit2.ConverterGson",          "2.4.0"    },
-    { "Square.Retrofit2.AdapterRxJava2",         "2.4.0"    },
-    { "JakeWharton.Picasso2OkHttp3Downloader",   "1.1.0"    },
+var versions = new Dictionary<string, string[]> {
+    { "JakeWharton.Picasso2OkHttp3Downloader",   new [] { "1.1.0"  , "1.1.0.1"  }  },
+    { "Square.Aardvark",                         new [] { "3.4.1"  , "3.4.1"  }  },
+    { "Square.AndroidTimesSquare",               new [] { "1.7.3"  , "1.7.3.1"  }  },
+    { "Square.CoreAardvark",                     new [] { "2.2.1"  , "2.2.1"  }  },
+    { "Square.OkHttp.UrlConnection",             new [] { "2.7.5"  , "2.7.5.1"  }  },
+    { "Square.OkHttp.WS",                        new [] { "2.7.5"  , "2.7.5.1"  }  },
+    { "Square.OkHttp",                           new [] { "2.7.5"  , "2.7.5.1"  }  },
+    { "Square.OkHttp3.WS",                       new [] { "3.4.2"  , "3.4.2.1"  }  },
+    { "Square.OkHttp3",                          new [] { "3.8.1"  , "3.8.1.1"  }  },
+    { "Square.OkIO",                             new [] { "1.13.0" , "1.13.0.1" }  },
+    { "Square.Picasso",                          new [] { "2.5.2"  , "2.5.2.2"  }  },
+    { "Square.Pollexor",                         new [] { "2.0.4"  , "2.0.4.1"  }  },
+    { "Square.Retrofit",                         new [] { "1.9.0"  , "1.9.0.1"  }  },
+    { "Square.Retrofit2.AdapterRxJava2",         new [] { "2.4.0"  , "2.4.0.1"  }  },
+    { "Square.Retrofit2.ConverterGson",          new [] { "2.4.0"  , "2.4.0.1"  }  },
+    { "Square.Retrofit2",                        new [] { "2.4.0"  , "2.4.0.1"  }  },
+    { "Square.Seismic",                          new [] { "1.0.2"  , "1.0.2.1"  }  },
+    { "Square.SocketRocket",                     new [] { "0.5.1"  , "0.5.1.1"  }  },
+    { "Square.Valet",                            new [] { "2.4.1"  , "2.4.1.1"  }  },
 };
 
 var macOnly = new [] {
@@ -59,6 +58,11 @@ var macOnly = new [] {
     "Square.Valet",
     "Square.Aardvark",
     "Square.CoreAardvark",
+
+    "AardvarkSample",
+    "SocketRocketSample",
+    "SocketRocketSample-OSX",
+    "ValetSample",
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -246,7 +250,7 @@ void CreatePod (DirectoryPath path, bool isDynamic, string osxVersion, string io
 {
     var pods = new Dictionary<string, string> ();
     foreach (var id in podIds) {
-        pods [id] = versions ["Square." + id].ToString ();
+        pods [id] = versions ["Square." + id] [0];
     }
 
     path = ((DirectoryPath)"./externals").Combine (path);
@@ -274,7 +278,7 @@ void DownloadJar (string source, FilePath destination)
     destination = ((DirectoryPath)"./externals").CombineWithFilePath (destination);
 
     var id = destination.GetDirectory ().GetDirectoryName ();
-    var version = versions [id];
+    var version = versions [id] [0];
     var url = string.Format("http://search.maven.org/remotecontent?filepath=" + source, version);
 
     EnsureDirectoryExists (destination.GetDirectory ());
@@ -336,19 +340,17 @@ Task ("libs")
     .IsDependentOn ("externals")
     .Does (() =>
 {
-    foreach (var file in GetFiles ("./binding/*/*.csproj").OrderBy (f => f.GetDirectory ().FullPath)) {
+    foreach (var file in GetFiles ("./binding/*/*.csproj")) {
         var id = file.GetFilenameWithoutExtension ().ToString ();
 
         if (!IsRunningOnUnix () && macOnly.Contains (id))
             continue;
 
-        var version = Version.Parse (versions [id]);
+        var version = Version.Parse (versions [id] [0]);
         var assemblyVersion = $"{version.Major}.0.0.0";
         var fileVersion     = $"{version.Major}.{version.Minor}.{version.Build}.0";
-        var infoVersion     = $"{version.Major}.{version.Minor}.{version.Build}.{buildNumber}";
-        var packageVersion  = $"{version.Major}.{version.Minor}.{version.Build}";
-        if (!string.IsNullOrEmpty (buildNumber))
-            packageVersion += "." + buildNumber;
+        var infoVersion     = versions [id] [1];
+        var packageVersion  = versions [id] [1];
 
         var settings = new MSBuildSettings ()
             .SetConfiguration (configuration)
