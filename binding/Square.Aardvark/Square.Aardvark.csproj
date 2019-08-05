@@ -33,4 +33,7 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
     <NativeReference Include="..\..\externals\Square.Aardvark\ios\Aardvark.framework" Kind="Framework" ForceLoad="true" SmarkLink="true" Frameworks="MessageUI" LinkerFlags="-ObjC" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="Native.Square.Aardvark.manifest" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>

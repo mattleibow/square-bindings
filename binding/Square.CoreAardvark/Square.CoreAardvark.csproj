@@ -27,4 +27,7 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
     <NativeReference Include="..\..\externals\Square.CoreAardvark\ios\CoreAardvark.framework" Kind="Framework" ForceLoad="true" SmarkLink="true" LinkerFlags="-ObjC" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="Native.Square.CoreAardvark.manifest" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>
