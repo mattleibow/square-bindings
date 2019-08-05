@@ -62,5 +62,31 @@ namespace Square.CoreAardvark
 				CoreAardvarkFunctions.ARKLogWithType (type, userInfo == null ? IntPtr.Zero : userInfo.Handle, ns.Handle, IntPtr.Zero);
 			}
 		}
+
+		public static void EnableLogOnUncaughtException ()
+		{
+			CoreAardvarkFunctions.ARKEnableLogOnUncaughtException ();
+		}
+
+		public static void DisableLogOnUncaughtException ()
+		{
+			CoreAardvarkFunctions.ARKDisableLogOnUncaughtException ();
+		}
+
+		public static void EnableLogOnUncaughtException (LogDistributor logDistributor)
+		{
+			if (logDistributor == null)
+				throw new ArgumentNullException (nameof (logDistributor));
+
+			CoreAardvarkFunctions.ARKEnableLogOnUncaughtExceptionToLogDistributor (logDistributor.Handle);
+		}
+
+		public static void DisableLogOnUncaughtException (LogDistributor logDistributor)
+		{
+			if (logDistributor == null)
+				throw new ArgumentNullException (nameof (logDistributor));
+
+			CoreAardvarkFunctions.ARKDisableLogOnUncaughtExceptionToLogDistributor (logDistributor.Handle);
+		}
 	}
 }

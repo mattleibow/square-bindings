@@ -231,13 +231,6 @@ void DownloadPod (bool isDynamic, DirectoryPath podfilePath, string platform, st
             builder.AppendLine ();
         }
         builder.AppendLine ("end");
-        builder.AppendLine ("post_install do |installer|");
-        builder.AppendLine ("  installer.pods_project.targets.each do |target|");
-        builder.AppendLine ("    target.build_configurations.each do |config|");
-        builder.AppendLine ("      config.build_settings['SWIFT_VERSION'] = '4.0'");
-        builder.AppendLine ("    end");
-        builder.AppendLine ("  end");
-        builder.AppendLine ("end");
 
         if (!DirectoryExists (podfilePath))
             CreateDirectory (podfilePath);
