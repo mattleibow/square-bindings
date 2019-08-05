@@ -28,4 +28,10 @@
     <NativeReference Include="..\..\externals\Square.Valet\ios\libValet.a" Kind="Static" ForceLoad="true" SmarkLink="true" Frameworks="Security" Condition="'$(TargetFramework)' == 'xamarinios1.0'" />
     <NativeReference Include="..\..\externals\Square.Valet\osx\libValet.a" Kind="Static" ForceLoad="true" SmarkLink="true" Frameworks="Security" Condition="'$(TargetFramework)' == 'xamarinmac2.0'" />
   </ItemGroup>
+  <Target Name="_RemoveNativeReferencesManifest" AfterTargets="BuiltProjectOutputGroup">
+    <ItemGroup>
+      <_BuiltProjectOutputGroupOutputIntermediate Remove="$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
+      <BuiltProjectOutputGroupOutput Remove="$(ProjectDir)$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
+    </ItemGroup>
+  </Target>
 </Project>

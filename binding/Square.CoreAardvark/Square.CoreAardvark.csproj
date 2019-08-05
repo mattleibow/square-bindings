@@ -20,14 +20,17 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>bugs report logging xamarin ios</PackageTags>
   </PropertyGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'xamarinios1.0'">
+  <ItemGroup>
     <Compile Remove="ApiDefinition.cs" />
     <Compile Remove="StructsAndEnums.cs" />
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
     <NativeReference Include="..\..\externals\Square.CoreAardvark\ios\CoreAardvark.framework" Kind="Framework" ForceLoad="true" SmarkLink="true" LinkerFlags="-ObjC" />
   </ItemGroup>
-  <Target Name="Hack" AfterTargets="Build" Condition="'$(TargetFramework)' == 'xamarinios1.0'">
-    <Touch Files="$(TargetDir)Native.Square.CoreAardvark.manifest" AlwaysCreate="true" />
+  <Target Name="_RemoveNativeReferencesManifest" AfterTargets="BuiltProjectOutputGroup">
+    <ItemGroup>
+      <_BuiltProjectOutputGroupOutputIntermediate Remove="$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
+      <BuiltProjectOutputGroupOutput Remove="$(ProjectDir)$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
+    </ItemGroup>
   </Target>
 </Project>
