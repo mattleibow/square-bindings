@@ -1,53 +1,34 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.31">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0ADBD990-1A61-4D2A-B1CD-E46AC63348BE}</ProjectGuid>
-    <ProjectTypeGuids>{10368E6C-D01B-4462-8E8B-01FC667A7035};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Square.OkIO</RootNamespace>
+    <TargetFrameworks>monoandroid4.4</TargetFrameworks>
+    <IsBindingProject>true</IsBindingProject>
     <AssemblyName>Square.OkIO</AssemblyName>
-    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Square.OkIO</RootNamespace>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
+    <AndroidUseIntermediateDesignerFile>True</AndroidUseIntermediateDesignerFile>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidClassParser>class-parse</AndroidClassParser>
+    <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+  <PropertyGroup>
+    <PackageId>Square.OkIO</PackageId>
+    <Title>OkIO bindings for Xamarin.Android</Title>
+    <Summary>A modern I/O API for Java.</Summary>
+    <Description>OkIO is a new library that complements Java.IO and Java.Nio to make it much easier to access, store, and process your data.</Description>
+    <Authors>mattleibow</Authors>
+    <Owners>mattleibow</Owners>
+    <Copyright>Square and Matthew Leibowitz.</Copyright>
+    <PackageProjectUrl>https://github.com/mattleibow/square-bindings</PackageProjectUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>okio square square.okio xamarin android monodroid</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mono.Android" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <None Remove="Transforms\*.xml" />
+    <TransformFile Include="Transforms\*.xml" />
+    <EmbeddedJar Include="..\..\externals\$(PackageId)\*.jar" Link="Jars\%(Filename)%(Extension)" />
+    <LibraryProjectZip Include="..\..\externals\$(PackageId)\*.aar" Link="Jars\%(Filename)%(Extension)" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="OkBuffer.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Options.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <TransformFile Include="Transforms\Metadata.xml" />
-    <TransformFile Include="Transforms\EnumFields.xml" />
-    <TransformFile Include="Transforms\EnumMethods.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedJar Include="..\..\externals\OkIO\okio.jar" />
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
 </Project>

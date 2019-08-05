@@ -1,67 +1,51 @@
 
-variables:
-  MONO_VERSION: 5_16_0
-  XCODE_VERSION: 10.1
-
 trigger:
- - master
+  - master
 
-jobs:
+variables:
+  VERBOSITY: diagnostic
+  API_TOOLS_VERSION: 1.0.2-preview.5
 
-  - job: build_windows
-    displayName: Build on Windows
-    pool:
-      vmImage: vs2017-win2016
-    steps:
-      - powershell: .\bootstrapper.ps1
-        displayName: Run build
-      - task: PublishBuildArtifacts@1
-        displayName: Publish artifacts
-        inputs:
-          artifactName: artifacts_windows
-          pathToPublish: output
+strategy:
+  matrix:
+    macos:
+      imageName: macos-10.14
+      MONO_VERSION: 5_18_1
+      XCODE_VERSION: 10.2.1
+    windows:
+      imageName: vs2017-win2016
 
-  - job: build_macos
-    displayName: Build on macOS
-    pool:
-      vmImage: macos-10.13
-    steps:
-      - bash: sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh $(MONO_VERSION)
-        displayName: Switch to the latest Xamarin SDK
-      - bash: echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'/Applications/Xcode_$(XCODE_VERSION).app;sudo xcode-select --switch /Applications/Xcode_$(XCODE_VERSION).app/Contents/Developer
-        displayName: Switch to the latest Xcode
-      - task: InstallAppleCertificate@2
-        displayName: Install the iOS certificate
-        inputs:
-          certSecureFile: 'Components iOS Certificate.p12'
-      - task: InstallAppleProvisioningProfile@1
-        displayName: Install the iOS provisioning profile
-        inputs:
-          provProfileSecureFile: 'Components iOS Provisioning.mobileprovision'
-      - task: InstallAppleCertificate@2
-        displayName: Install the macOS certificate
-        inputs:
-          certSecureFile: 'Components Mac Certificate.p12'
-      - task: InstallAppleProvisioningProfile@1
-        displayName: Install the macOS provisioning profile
-        inputs:
-          provProfileSecureFile: 'Components Mac Provisioning.provisionprofile'
-      - task: InstallAppleProvisioningProfile@1
-        displayName: Install the tvOS provisioning profile
-        inputs:
-          provProfileSecureFile: 'Components tvOS Provisioning.mobileprovision'
-      - bash: ./bootstrapper.sh
-        displayName: Run build
-      - task: PublishBuildArtifacts@1
-        displayName: Publish artifacts
-        inputs:
-          artifactName: artifacts_macos
-          pathToPublish: output
-      - task: CopyFiles@2
-        inputs:
-          contents: 'output/*.nupkg'
-          targetFolder: $(Build.ArtifactStagingDirectory)
-      - task: PublishBuildArtifacts@1
-        inputs:
-          pathtoPublish: $(Build.ArtifactStagingDirectory)
-          artifactName: nuget
+pool:
+  name: $(imageName)
+
+steps:
+  - bash: sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh $(MONO_VERSION)
+    displayName: 'Switch to the latest Xamarin SDK'
+    condition: eq(variables['System.JobName'], 'macos')
+  - bash: echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'/Applications/Xcode_$(XCODE_VERSION).app;sudo xcode-select --switch /Applications/Xcode_$(XCODE_VERSION).app/Contents/Developer
+    displayName: 'Switch to the latest Xcode'
+    condition: eq(variables['System.JobName'], 'macos')
+  - bash: echo '##vso[task.setvariable variable=PATH;]'$PATH:$HOME/.dotnet/tools
+    displayName: 'Add ~/.dotnet/tools to the PATH environment variable'
+    condition: eq(variables['System.JobName'], 'macos')
+
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core 2.2 SDK'
+    inputs:
+      version: 2.2.x
+  - powershell: dotnet tool install -g api-tools --version $(API_TOOLS_VERSION)
+    displayName: 'Install api-tools'
+
+  - powershell: .\build.ps1 --verbosity=$(VERBOSITY)
+    displayName: 'Run build'
+
+  - powershell: |
+      if (Get-ChildItem output -Filter *.nupkg) {
+        api-tools nuget-diff output --latest --group-ids --output output/api-diff --cache externals/package_cache
+      }
+    displayName: 'API diff'
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish artifacts'
+    inputs:
+      PathToPublish: output
+      ArtifactName: nuget

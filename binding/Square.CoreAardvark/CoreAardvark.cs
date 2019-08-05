@@ -3,6 +3,8 @@ using Foundation;
 using ObjCRuntime;
 using UIKit;
 
+[assembly: LinkerSafe]
+
 namespace Square.CoreAardvark
 {
 	public partial class CoreAardvark

@@ -1,63 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="MSBuild.Sdk.Extras/2.0.31">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Square.CoreAardvark</RootNamespace>
-    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <TargetFrameworks>xamarinios1.0</TargetFrameworks>
+    <IsBindingProject>true</IsBindingProject>
     <AssemblyName>Square.CoreAardvark</AssemblyName>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
+    <RootNamespace>Square.CoreAardvark</RootNamespace>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  <PropertyGroup>
+    <PackageId>Square.CoreAardvark</PackageId>
+    <Title>CoreAardvark bindings for Xamarin.iOS</Title>
+    <Summary>Aardvark is a library that makes it dead simple to create actionable bug reports.</Summary>
+    <Description>Aardvark is a library that makes it dead simple to create actionable bug reports.</Description>
+    <Authors>mattleibow</Authors>
+    <Owners>mattleibow</Owners>
+    <Copyright>Square and Matthew Leibowitz.</Copyright>
+    <PackageProjectUrl>https://github.com/mattleibow/square-bindings</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.aardvark_256x256.png</PackageIconUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>bugs report logging xamarin ios</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="Xamarin.iOS" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CoreAardvark.cs" />
-    <Compile Include="LogDistributor.cs" />
-    <Compile Include="LogStore.cs" />
-    <Compile Include="DataArchive.cs" />
-    <Compile Include="LogMessage.cs" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Remove="ApiDefinition.cs" />
+    <Compile Remove="StructsAndEnums.cs" />
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+    <NativeReference Include="..\..\externals\$(PackageId)\ios\*.framework" Kind="Framework" ForceLoad="true" SmarkLink="true" LinkerFlags="-ObjC" />
   </ItemGroup>
-  <ItemGroup>
-    <NativeReference Include="..\..\externals\CoreAardvark\ios\CoreAardvark.framework">
-      <Kind>Framework</Kind>
-      <ForceLoad>True</ForceLoad>
-      <SmarkLink>True</SmarkLink>
-      <LinkerFlags>-ObjC</LinkerFlags>
-    </NativeReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

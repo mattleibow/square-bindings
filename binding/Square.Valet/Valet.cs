@@ -1,4 +1,7 @@
 ﻿using System;
+using Foundation;
+
+[assembly: LinkerSafe]
 
 namespace Square.Valet
 {
