@@ -33,9 +33,9 @@ public enum TargetOS {
 
 var versions = new Dictionary<string, string[]> {
     { "JakeWharton.Picasso2OkHttp3Downloader",   new [] { "1.1.0"  , "1.1.0.1"  }  },
-    { "Square.Aardvark",                         new [] { "3.4.1"  , "3.4.1"  }  },
+    { "Square.Aardvark",                         new [] { "3.4.1"  , "3.4.1"    }  },
     { "Square.AndroidTimesSquare",               new [] { "1.7.3"  , "1.7.3.1"  }  },
-    { "Square.CoreAardvark",                     new [] { "2.2.1"  , "2.2.1"  }  },
+    { "Square.CoreAardvark",                     new [] { "2.2.1"  , "2.2.1"    }  },
     { "Square.OkHttp.UrlConnection",             new [] { "2.7.5"  , "2.7.5.1"  }  },
     { "Square.OkHttp.WS",                        new [] { "2.7.5"  , "2.7.5.1"  }  },
     { "Square.OkHttp",                           new [] { "2.7.5"  , "2.7.5.1"  }  },
