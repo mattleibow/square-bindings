@@ -18,12 +18,105 @@
   <attr path="/api/package[@name='okio']/class[@name='ByteString']/method[@name='compareTo']/parameter[1]" name="managedType">Java.Lang.Object</attr>
 
   <!-- methods to poroperties -->
-  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='buffer']" name="managedName">GetBuffer</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='buffer']" name="managedName">GetBufferObsolete</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='buffer']" name="propertyName">Buffer</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='getBuffer']" name="propertyName"></attr>
   <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='buffer']" name="managedName">GetBuffer</attr>
   <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='outputStream']" name="managedName">GetOutputStream</attr>
   <attr path="/api/package[@name='okio']/class[@name='Buffer']/method[@name='buffer']" name="managedName">GetBuffer</attr>
   <attr path="/api/package[@name='okio']/class[@name='Buffer']/method[@name='outputStream']" name="managedName">GetOutputStream</attr>
 
   <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='get']" name="managedReturn">Java.Lang.Object</attr>
-  
+
+  <!-- parameter names -->
+  <attr path="/api/package[@name='okio']/interface[@name='Source']/method[@name='read']/parameter[1]" name="managedName">sink</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='Source']/method[@name='read']/parameter[2]" name="managedName">byteCount</attr>
+
+  <attr path="/api/package[@name='okio']/interface[@name='Sink']/method[@name='write']/parameter[1]" name="managedName">source</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='Sink']/method[@name='write']/parameter[2]" name="managedName">byteCount</attr>
+
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='write' and count(parameter)=1 and parameter[1][@type='byte[]']]/parameter[1]" name="managedName">source</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='write' and count(parameter)=3 and parameter[1][@type='byte[]'] and parameter[2][@type='int'] and parameter[3][@type='int']]/parameter[1]" name="managedName">source</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='write' and count(parameter)=3 and parameter[1][@type='byte[]'] and parameter[2][@type='int'] and parameter[3][@type='int']]/parameter[2]" name="managedName">offset</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='write' and count(parameter)=3 and parameter[1][@type='byte[]'] and parameter[2][@type='int'] and parameter[3][@type='int']]/parameter[3]" name="managedName">byteCount</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='write' and count(parameter)=1 and parameter[1][@type='okio.ByteString']]/parameter[1]" name="managedName">byteString</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='write' and count(parameter)=2 and parameter[1][@type='okio.Source'] and parameter[2][@type='long']]/parameter[1]" name="managedName">source</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='write' and count(parameter)=2 and parameter[1][@type='okio.Source'] and parameter[2][@type='long']]/parameter[2]" name="managedName">byteCount</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeAll' and count(parameter)=1 and parameter[1][@type='okio.Source']]/parameter[1]" name="managedName">source</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeByte' and count(parameter)=1 and parameter[1][@type='int']]/parameter[1]" name="managedName">b</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeDecimalLong' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">v</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeLong' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">v</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeLongLe' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">v</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeHexadecimalUnsignedLong' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">v</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeInt' and count(parameter)=1 and parameter[1][@type='int']]/parameter[1]" name="managedName">i</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeIntLe' and count(parameter)=1 and parameter[1][@type='int']]/parameter[1]" name="managedName">i</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeShort' and count(parameter)=1 and parameter[1][@type='int']]/parameter[1]" name="managedName">s</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeShortLe' and count(parameter)=1 and parameter[1][@type='int']]/parameter[1]" name="managedName">s</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeString' and count(parameter)=4 and parameter[1][@type='java.lang.String'] and parameter[2][@type='int'] and parameter[3][@type='int'] and parameter[4][@type='java.nio.charset.Charset']]/parameter[1]" name="managedName">str</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeString' and count(parameter)=4 and parameter[1][@type='java.lang.String'] and parameter[2][@type='int'] and parameter[3][@type='int'] and parameter[4][@type='java.nio.charset.Charset']]/parameter[2]" name="managedName">beginIndex</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeString' and count(parameter)=4 and parameter[1][@type='java.lang.String'] and parameter[2][@type='int'] and parameter[3][@type='int'] and parameter[4][@type='java.nio.charset.Charset']]/parameter[3]" name="managedName">endIndex</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeString' and count(parameter)=4 and parameter[1][@type='java.lang.String'] and parameter[2][@type='int'] and parameter[3][@type='int'] and parameter[4][@type='java.nio.charset.Charset']]/parameter[4]" name="managedName">charset</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeString' and count(parameter)=2 and parameter[1][@type='java.lang.String'] and parameter[2][@type='java.nio.charset.Charset']]/parameter[1]" name="managedName">str</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeString' and count(parameter)=2 and parameter[1][@type='java.lang.String'] and parameter[2][@type='java.nio.charset.Charset']]/parameter[2]" name="managedName">charset</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeUtf8' and count(parameter)=1 and parameter[1][@type='java.lang.String']]/parameter[1]" name="managedName">str</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeUtf8' and count(parameter)=3 and parameter[1][@type='java.lang.String'] and parameter[2][@type='int'] and parameter[3][@type='int']]/parameter[1]" name="managedName">str</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeUtf8' and count(parameter)=3 and parameter[1][@type='java.lang.String'] and parameter[2][@type='int'] and parameter[3][@type='int']]/parameter[2]" name="managedName">beginIndex</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeUtf8' and count(parameter)=3 and parameter[1][@type='java.lang.String'] and parameter[2][@type='int'] and parameter[3][@type='int']]/parameter[3]" name="managedName">endIndex</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='writeUtf8CodePoint' and count(parameter)=1 and parameter[1][@type='int']]/parameter[1]" name="managedName">codePoint</attr>
+
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='indexOf' and count(parameter)=1 and parameter[1][@type='byte']]/parameter[1]" name="managedName">b</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='indexOf' and count(parameter)=2 and parameter[1][@type='byte'] and parameter[2][@type='long']]/parameter[1]" name="managedName">b</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='indexOf' and count(parameter)=2 and parameter[1][@type='byte'] and parameter[2][@type='long']]/parameter[2]" name="managedName">fromIndex</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='indexOf' and count(parameter)=3 and parameter[1][@type='byte'] and parameter[2][@type='long'] and parameter[3][@type='long']]/parameter[1]" name="managedName">b</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='indexOf' and count(parameter)=3 and parameter[1][@type='byte'] and parameter[2][@type='long'] and parameter[3][@type='long']]/parameter[2]" name="managedName">fromIndex</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='indexOf' and count(parameter)=3 and parameter[1][@type='byte'] and parameter[2][@type='long'] and parameter[3][@type='long']]/parameter[3]" name="managedName">toIndex</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='indexOf' and count(parameter)=1 and parameter[1][@type='okio.ByteString']]/parameter[1]" name="managedName">bytes</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='indexOf' and count(parameter)=2 and parameter[1][@type='okio.ByteString'] and parameter[2][@type='long']]/parameter[1]" name="managedName">bytes</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='indexOf' and count(parameter)=2 and parameter[1][@type='okio.ByteString'] and parameter[2][@type='long']]/parameter[2]" name="managedName">fromIndex</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='indexOfElement' and count(parameter)=1 and parameter[1][@type='okio.ByteString']]/parameter[1]" name="managedName">targetBytes</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='indexOfElement' and count(parameter)=2 and parameter[1][@type='okio.ByteString'] and parameter[2][@type='long']]/parameter[1]" name="managedName">targetBytes</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='indexOfElement' and count(parameter)=2 and parameter[1][@type='okio.ByteString'] and parameter[2][@type='long']]/parameter[2]" name="managedName">fromIndex</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='rangeEquals' and count(parameter)=2 and parameter[1][@type='long'] and parameter[2][@type='okio.ByteString']]/parameter[1]" name="managedName">offset</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='rangeEquals' and count(parameter)=2 and parameter[1][@type='long'] and parameter[2][@type='okio.ByteString']]/parameter[2]" name="managedName">bytes</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='rangeEquals' and count(parameter)=4 and parameter[1][@type='long'] and parameter[2][@type='okio.ByteString'] and parameter[3][@type='int'] and parameter[4][@type='int']]/parameter[1]" name="managedName">offset</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='rangeEquals' and count(parameter)=4 and parameter[1][@type='long'] and parameter[2][@type='okio.ByteString'] and parameter[3][@type='int'] and parameter[4][@type='int']]/parameter[2]" name="managedName">bytes</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='rangeEquals' and count(parameter)=4 and parameter[1][@type='long'] and parameter[2][@type='okio.ByteString'] and parameter[3][@type='int'] and parameter[4][@type='int']]/parameter[3]" name="managedName">bytesOffset</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='rangeEquals' and count(parameter)=4 and parameter[1][@type='long'] and parameter[2][@type='okio.ByteString'] and parameter[3][@type='int'] and parameter[4][@type='int']]/parameter[4]" name="managedName">byteCount</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='read' and count(parameter)=1 and parameter[1][@type='byte[]']]/parameter[1]" name="managedName">sink</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='read' and count(parameter)=3 and parameter[1][@type='byte[]'] and parameter[2][@type='int'] and parameter[3][@type='int']]/parameter[1]" name="managedName">sink</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='read' and count(parameter)=3 and parameter[1][@type='byte[]'] and parameter[2][@type='int'] and parameter[3][@type='int']]/parameter[2]" name="managedName">offset</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='read' and count(parameter)=3 and parameter[1][@type='byte[]'] and parameter[2][@type='int'] and parameter[3][@type='int']]/parameter[3]" name="managedName">byteCount</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readAll' and count(parameter)=1 and parameter[1][@type='okio.Sink']]/parameter[1]" name="managedName">sink</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readByteArray' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">byteCount</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readByteString' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">byteCount</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readFully' and count(parameter)=1 and parameter[1][@type='byte[]']]/parameter[1]" name="managedName">sink</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readFully' and count(parameter)=1 and parameter[1][@type='byte[]']]/parameter[2]" name="managedName">offset</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readFully' and count(parameter)=1 and parameter[1][@type='byte[]']]/parameter[3]" name="managedName">byteCount</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readFully' and count(parameter)=2 and parameter[1][@type='okio.Buffer'] and parameter[2][@type='long']]/parameter[1]" name="managedName">sink</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readFully' and count(parameter)=2 and parameter[1][@type='okio.Buffer'] and parameter[2][@type='long']]/parameter[2]" name="managedName">byteCount</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readString' and count(parameter)=1 and parameter[1][@type='java.nio.charset.Charset']]/parameter[1]" name="managedName">charset</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readString' and count(parameter)=2 and parameter[1][@type='long'] and parameter[2][@type='java.nio.charset.Charset']]/parameter[1]" name="managedName">byteCount</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readString' and count(parameter)=2 and parameter[1][@type='long'] and parameter[2][@type='java.nio.charset.Charset']]/parameter[2]" name="managedName">charset</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readUtf8' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">byteCount</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readUtf8LineStrict' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">limit</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='request' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">byteCount</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='require' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">byteCount</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='select' and count(parameter)=1 and parameter[1][@type='okio.Options']]/parameter[1]" name="managedName">options</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='skip' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">byteCount</attr>
+
+  <!-- interface fixups -->
+  <add-node path="/api/package[@name='okio']/interface[@name='BufferedSource']">
+    <method abstract="true" deprecated="not deprecated" final="false" name="close" jni-signature="()V" bridge="false" native="false" return="void" jni-return="V" static="false" synchronized="false" synthetic="false" visibility="public">
+      <exception name="IOException" type="java.io.IOException">
+      </exception>
+    </method>
+  </add-node>
+
+  <add-node path="/api/package[@name='okio']/interface[@name='BufferedSink']">
+    <method abstract="true" deprecated="not deprecated" final="false" name="close" jni-signature="()V" bridge="false" native="false" return="void" jni-return="V" static="false" synchronized="false" synthetic="false" visibility="public">
+      <exception name="IOException" type="java.io.IOException">
+      </exception>
+    </method>
+  </add-node>
+
 </metadata>

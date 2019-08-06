@@ -41,7 +41,7 @@ var versions = new Dictionary<string, string[]> {
     { "Square.OkHttp",                           new [] { "2.7.5"  , "2.7.5.1"  }  },
     { "Square.OkHttp3.WS",                       new [] { "3.4.2"  , "3.4.2.1"  }  },
     { "Square.OkHttp3",                          new [] { "3.8.1"  , "3.8.1.1"  }  },
-    { "Square.OkIO",                             new [] { "1.13.0" , "1.13.0.1" }  },
+    { "Square.OkIO",                             new [] { "1.17.4" , "1.17.4"   }  },
     { "Square.Picasso",                          new [] { "2.5.2"  , "2.5.2.2"  }  },
     { "Square.Pollexor",                         new [] { "2.0.4"  , "2.0.4.1"  }  },
     { "Square.Retrofit",                         new [] { "1.9.0"  , "1.9.0.1"  }  },
@@ -394,22 +394,14 @@ Task ("nuget")
         var id = package.Key;
         var version = package.Value [1];
 
-        Information ($"Checking version of {id}...");
-
-        var publishedPackages = NuGetList (id, new NuGetListSettings {
-            AllVersions = true,
-            IncludeDelisted = true,
-            Prerelease = true,
-        });
-
-        Information ($"Found {publishedPackages.Count ()} versions.");
-
-        if (publishedPackages.All (n => n.Version != version)) {
+        Information ($"Checking for {version} of {id}...");
+        try {
+            DownloadFile ($"https://api.nuget.org/v3/registration3/{id.ToLower ()}/{version}.json");
+            Information ($"Version {version} already published.");
+        } catch {
             Information ($"No matching versions found, copying...");
             newCount++;
             CopyFileToDirectory ($"./output/{id}.{version}.nupkg", "./output/new/");
-        } else {
-            Information ($"All versions published.");
         }
     }
 
