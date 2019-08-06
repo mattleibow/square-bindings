@@ -82,6 +82,12 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\binding\Square.Valet\Square.Valet.csproj">
+      <Project>{14263ad2-f383-48a1-b15b-8b462a945e6d}</Project>
+      <Name>Square.Valet</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
@@ -99,12 +105,6 @@
     <Compile Include="ViewController.designer.cs">
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\binding\Square.Valet\Square.Valet.csproj">
-      <Project>{14263ad2-f383-48a1-b15b-8b462a945e6d}</Project>
-      <Name>Square.Valet</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

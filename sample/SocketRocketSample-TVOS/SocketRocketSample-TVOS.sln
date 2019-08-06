@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketRocketSample-TVOS", "SocketRocketSample-TVOS.csproj", "{28077168-5399-4552-B94D-CBBED5645433}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.SocketRocket-TVOS", "..\..\binding\Square.SocketRocket-TVOS\Square.SocketRocket-TVOS.csproj", "{DC846DEE-E019-441B-908A-8C56529714A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.SocketRocket", "..\..\binding\Square.SocketRocket\Square.SocketRocket.csproj", "{5740CB7F-20A9-4449-91F3-0A5913D9DDEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,13 +21,13 @@ Global
 		{28077168-5399-4552-B94D-CBBED5645433}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{28077168-5399-4552-B94D-CBBED5645433}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{28077168-5399-4552-B94D-CBBED5645433}.Debug|iPhone.Build.0 = Debug|iPhone
-		{DC846DEE-E019-441B-908A-8C56529714A5}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{DC846DEE-E019-441B-908A-8C56529714A5}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{DC846DEE-E019-441B-908A-8C56529714A5}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{DC846DEE-E019-441B-908A-8C56529714A5}.Release|iPhone.Build.0 = Release|Any CPU
-		{DC846DEE-E019-441B-908A-8C56529714A5}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{DC846DEE-E019-441B-908A-8C56529714A5}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{DC846DEE-E019-441B-908A-8C56529714A5}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{DC846DEE-E019-441B-908A-8C56529714A5}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{5740CB7F-20A9-4449-91F3-0A5913D9DDEC}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{5740CB7F-20A9-4449-91F3-0A5913D9DDEC}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{5740CB7F-20A9-4449-91F3-0A5913D9DDEC}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{5740CB7F-20A9-4449-91F3-0A5913D9DDEC}.Release|iPhone.Build.0 = Release|Any CPU
+		{5740CB7F-20A9-4449-91F3-0A5913D9DDEC}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{5740CB7F-20A9-4449-91F3-0A5913D9DDEC}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{5740CB7F-20A9-4449-91F3-0A5913D9DDEC}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{5740CB7F-20A9-4449-91F3-0A5913D9DDEC}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

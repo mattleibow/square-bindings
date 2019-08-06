@@ -5,10 +5,6 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OkHttp3WSSample", "OkHttp3WSSample.csproj", "{2B32C15A-4014-45DC-B5F5-55EBBE26C61F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.OkIO", "..\..\binding\Square.OkIO\Square.OkIO.csproj", "{0ADBD990-1A61-4D2A-B1CD-E46AC63348BE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.OkHttp3", "..\..\binding\Square.OkHttp3\Square.OkHttp3.csproj", "{2DA76115-A022-4275-8119-FB9847254998}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.OkHttp3.WS", "..\..\binding\Square.OkHttp3.WS\Square.OkHttp3.WS.csproj", "{0F295A9C-1F8A-4313-8112-7D7B3911A32F}"
 EndProject
 Global
@@ -23,14 +19,6 @@ Global
 		{2B32C15A-4014-45DC-B5F5-55EBBE26C61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B32C15A-4014-45DC-B5F5-55EBBE26C61F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B32C15A-4014-45DC-B5F5-55EBBE26C61F}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{0ADBD990-1A61-4D2A-B1CD-E46AC63348BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0ADBD990-1A61-4D2A-B1CD-E46AC63348BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0ADBD990-1A61-4D2A-B1CD-E46AC63348BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0ADBD990-1A61-4D2A-B1CD-E46AC63348BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2DA76115-A022-4275-8119-FB9847254998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2DA76115-A022-4275-8119-FB9847254998}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2DA76115-A022-4275-8119-FB9847254998}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2DA76115-A022-4275-8119-FB9847254998}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F295A9C-1F8A-4313-8112-7D7B3911A32F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F295A9C-1F8A-4313-8112-7D7B3911A32F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F295A9C-1F8A-4313-8112-7D7B3911A32F}.Release|Any CPU.ActiveCfg = Release|Any CPU

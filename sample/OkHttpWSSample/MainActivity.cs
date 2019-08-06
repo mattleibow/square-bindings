@@ -15,7 +15,7 @@ namespace OkHttpSample
     [Activity(Label = "OkHttpWSSample", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/Theme.AppCompat")]
     public class MainActivity : AppCompatActivity
     {
-        private const string Endpoint = "ws://echo.websocket.org";
+        private const string Endpoint = "wss://echo.websocket.org";
 
         protected override void OnCreate(Bundle bundle)
         {
