@@ -79,6 +79,12 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\binding\Square.SocketRocket\Square.SocketRocket.csproj">
+      <Project>{9A837ED0-26ED-4483-87AA-4897B54C54D8}</Project>
+      <Name>Square.SocketRocket</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
@@ -98,10 +104,4 @@
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\..\binding\Square.SocketRocket\Square.SocketRocket.csproj">
-      <Project>{9A837ED0-26ED-4483-87AA-4897B54C54D8}</Project>
-      <Name>Square.SocketRocket</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>

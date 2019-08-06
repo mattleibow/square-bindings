@@ -387,29 +387,25 @@ Task ("component")
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Task ("samples")
-    .IsDependentOn ("libs")
     .Does (() =>
 {
-    // var samples = new List<string> {
-    //     "./sample/AndroidTimesSquareSample/AndroidTimesSquareSample.sln",
-    //     "./sample/OkHttp3Sample/OkHttp3Sample.sln",
-    //     "./sample/OkHttp3WSSample/OkHttp3WSSample.sln",
-    //     "./sample/OkHttpSample/OkHttpSample.sln",
-    //     "./sample/OkHttpWSSample/OkHttpWSSample.sln",
-    //     "./sample/PicassoSample/PicassoSample.sln",
-    //     "./sample/PollexorSample/PollexorSample.sln",
-    //     "./sample/SeismicSample/SeismicSample.sln",
-    // };
-    // if (IsRunningOnUnix ()) {
-    //     samples.Add ("./sample/AardvarkSample/AardvarkSample.sln");
-    //     samples.Add ("./sample/SocketRocketSample/SocketRocketSample.sln");
-    //     samples.Add ("./sample/SocketRocketSample-OSX/SocketRocketSample-OSX.sln");
-    //     samples.Add ("./sample/ValetSample/ValetSample.sln");
-    // }
-    // foreach (var sample in samples) {
-    //     RunNuGetRestore (sample);
-    //     Build (sample);
-    // }
+    foreach (var file in GetFiles ("./sample/*/*.sln")) {
+        var id = file.GetFilenameWithoutExtension ().ToString ();
+
+        if (!IsRunningOnUnix () && macOnly.Contains (id))
+            continue;
+
+        var settings = new MSBuildSettings ()
+            .SetConfiguration (configuration)
+            .SetVerbosity (Verbosity.Minimal)
+            .WithRestore ()
+            .WithProperty ("DesignTimeBuild", "false");
+
+        if (!string.IsNullOrEmpty (javaHome))
+            settings.WithProperty ("JavaSdkDirectory", javaHome);
+
+        MSBuild (file, settings);
+    }
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

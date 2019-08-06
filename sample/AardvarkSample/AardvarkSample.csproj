@@ -76,36 +76,28 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="Xamarin.Swift3">
-      <HintPath>packages\Xamarin.Swift3.3.0.1\lib\xamarinios10\Xamarin.Swift3.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Swift3.Core">
-      <HintPath>packages\Xamarin.Swift3.Core.3.0.1\lib\xamarinios10\Xamarin.Swift3.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Swift3.CoreGraphics">
-      <HintPath>packages\Xamarin.Swift3.CoreGraphics.3.0.1\lib\xamarinios10\Xamarin.Swift3.CoreGraphics.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Swift3.CoreImage">
-      <HintPath>packages\Xamarin.Swift3.CoreImage.3.0.1\lib\xamarinios10\Xamarin.Swift3.CoreImage.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Swift3.Darwin">
-      <HintPath>packages\Xamarin.Swift3.Darwin.3.0.1\lib\xamarinios10\Xamarin.Swift3.Darwin.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Swift3.Dispatch">
-      <HintPath>packages\Xamarin.Swift3.Dispatch.3.0.1\lib\xamarinios10\Xamarin.Swift3.Dispatch.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Swift3.Foundation">
-      <HintPath>packages\Xamarin.Swift3.Foundation.3.0.1\lib\xamarinios10\Xamarin.Swift3.Foundation.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Swift3.ObjectiveC">
-      <HintPath>packages\Xamarin.Swift3.ObjectiveC.3.0.1\lib\xamarinios10\Xamarin.Swift3.ObjectiveC.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Swift3.QuartzCore">
-      <HintPath>packages\Xamarin.Swift3.QuartzCore.3.0.1\lib\xamarinios10\Xamarin.Swift3.QuartzCore.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Swift3.UIKit">
-      <HintPath>packages\Xamarin.Swift3.UIKit.3.0.1\lib\xamarinios10\Xamarin.Swift3.UIKit.dll</HintPath>
-    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Swift4" Version="4.0.0.2" />
+    <PackageReference Include="Xamarin.Swift4.Core" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.CoreGraphics" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.CoreImage" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.Darwin" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.Dispatch" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.Foundation" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.ObjectiveC" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.QuartzCore" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.UIKit" Version="4.2.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\binding\Square.Aardvark\Square.Aardvark.csproj">
+      <Project>{A6D2CC86-74BA-4C7C-B444-D203B1B73293}</Project>
+      <Name>Square.Aardvark</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\binding\Square.CoreAardvark\Square.CoreAardvark.csproj">
+      <Project>{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}</Project>
+      <Name>Square.CoreAardvark</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -117,7 +109,6 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -129,15 +120,4 @@
     <Compile Include="ConsoleLogObserver.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\..\binding\Square.Aardvark\Square.Aardvark.csproj">
-      <Project>{A6D2CC86-74BA-4C7C-B444-D203B1B73293}</Project>
-      <Name>Square.Aardvark</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\binding\Square.CoreAardvark\Square.CoreAardvark.csproj">
-      <Project>{ABCDCC86-74BA-4C7C-B444-ABCDB1B73293}</Project>
-      <Name>Square.CoreAardvark</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets" Condition="Exists('packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets')" />
 </Project>
