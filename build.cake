@@ -62,6 +62,7 @@ var macOnly = new [] {
     "AardvarkSample",
     "SocketRocketSample",
     "SocketRocketSample-OSX",
+    "SocketRocketSample-TVOS",
     "ValetSample",
 };
 
@@ -343,7 +344,7 @@ Task ("libs")
     foreach (var file in GetFiles ("./binding/*/*.csproj")) {
         var id = file.GetFilenameWithoutExtension ().ToString ();
 
-        if (!IsRunningOnUnix () && macOnly.Contains (id))
+        if (IsRunningOnWindows () && macOnly.Contains (id))
             continue;
 
         var version = Version.Parse (versions [id] [0]);
@@ -392,7 +393,7 @@ Task ("samples")
     foreach (var file in GetFiles ("./sample/*/*.sln")) {
         var id = file.GetFilenameWithoutExtension ().ToString ();
 
-        if (!IsRunningOnUnix () && macOnly.Contains (id))
+        if (IsRunningOnWindows () && macOnly.Contains (id))
             continue;
 
         var settings = new MSBuildSettings ()
