@@ -344,14 +344,23 @@ Task ("libs")
     foreach (var file in GetFiles ("./binding/*/*.csproj")) {
         var id = file.GetFilenameWithoutExtension ().ToString ();
 
-        if (IsRunningOnWindows () && macOnly.Contains (id))
-            continue;
-
         var version = Version.Parse (versions [id] [0]);
         var assemblyVersion = $"{version.Major}.0.0.0";
         var fileVersion     = $"{version.Major}.{version.Minor}.{version.Build}.0";
         var infoVersion     = versions [id] [1];
         var packageVersion  = versions [id] [1];
+
+        XmlPoke(file, "/Project/PropertyGroup/Version", assemblyVersion);
+        XmlPoke(file, "/Project/PropertyGroup/FileVersion", fileVersion);
+        XmlPoke(file, "/Project/PropertyGroup/InformationalVersion", fileVersion);
+        XmlPoke(file, "/Project/PropertyGroup/PackageVersion", packageVersion);
+    }
+
+    foreach (var file in GetFiles ("./binding/*/*.csproj")) {
+        var id = file.GetFilenameWithoutExtension ().ToString ();
+
+        if (IsRunningOnWindows () && macOnly.Contains (id))
+            continue;
 
         var settings = new MSBuildSettings ()
             .SetConfiguration (configuration)
@@ -359,16 +368,12 @@ Task ("libs")
             .WithRestore ()
             // .WithProperty ("IncludeSymbols", "true")
             .WithProperty ("DesignTimeBuild", "false")
-            .WithProperty ("Version", assemblyVersion)
-            .WithProperty ("FileVersion", fileVersion)
-            .WithProperty ("InformationalVersion", infoVersion)
             .WithProperty ("PackageOutputPath", MakeAbsolute ((DirectoryPath)"./output/").FullPath)
             .WithTarget ("Pack");
 
         if (!string.IsNullOrEmpty (javaHome))
             settings.WithProperty ("JavaSdkDirectory", javaHome);
 
-        settings.WithProperty ("PackageVersion", packageVersion);
         MSBuild (file, settings);
     }
 });

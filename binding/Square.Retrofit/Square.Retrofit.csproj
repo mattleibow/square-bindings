@@ -13,6 +13,12 @@
     <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
   </PropertyGroup>
   <PropertyGroup>
+    <Version>1.0.0.0</Version>
+    <FileVersion>1.9.0.0</FileVersion>
+    <InformationalVersion>1.9.0.0</InformationalVersion>
+    <PackageVersion>1.9.0.1</PackageVersion>
+  </PropertyGroup>
+  <PropertyGroup>
     <PackageId>Square.Retrofit</PackageId>
     <Title>Retrofit bindings for Xamarin.Android</Title>
     <Summary>A type-safe HTTP client for Android and Java.</Summary>

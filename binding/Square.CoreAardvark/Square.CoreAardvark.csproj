@@ -1,10 +1,16 @@
-<Project Sdk="MSBuild.Sdk.Extras/2.0.31">
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.31">
   <PropertyGroup>
     <TargetFrameworks>xamarinios1.0</TargetFrameworks>
     <IsBindingProject>true</IsBindingProject>
     <AssemblyName>Square.CoreAardvark</AssemblyName>
     <RootNamespace>Square.CoreAardvark</RootNamespace>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Version>2.0.0.0</Version>
+    <FileVersion>2.2.1.0</FileVersion>
+    <InformationalVersion>2.2.1.0</InformationalVersion>
+    <PackageVersion>2.2.1</PackageVersion>
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Square.CoreAardvark</PackageId>
