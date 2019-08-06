@@ -383,7 +383,31 @@ Task ("libs")
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Task ("nuget")
-    .IsDependentOn ("libs");
+    .IsDependentOn ("libs")
+    .Does (() =>
+{
+    EnsureDirectoryExists ("./output/new/");
+
+    foreach (var package in versions) {
+        var id = package.Key;
+        var version = package.Value [1];
+
+        Information ($"Checking version of {id}...");
+
+        var publishedPackages = NuGetList (id, new NuGetListSettings {
+            AllVersions = true,
+            IncludeDelisted = true,
+            Prerelease = true,
+        });
+
+        Information ($"Found {publishedPackages.Count ()} versions...");
+
+        if (publishedPackages.All (n => n.Version != version)) {
+            Information ($"No matching versions found, copying...");
+            CopyFileToDirectory ($"./output/{id}.{version}.nupkg", "./output/new/");
+        }
+    }
+});
 
 Task ("component")
     .IsDependentOn ("nuget");
