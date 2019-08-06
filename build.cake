@@ -388,6 +388,8 @@ Task ("nuget")
 {
     EnsureDirectoryExists ("./output/new/");
 
+    var newCount = 0;
+
     foreach (var package in versions) {
         var id = package.Key;
         var version = package.Value [1];
@@ -400,13 +402,19 @@ Task ("nuget")
             Prerelease = true,
         });
 
-        Information ($"Found {publishedPackages.Count ()} versions...");
+        Information ($"Found {publishedPackages.Count ()} versions.");
 
         if (publishedPackages.All (n => n.Version != version)) {
             Information ($"No matching versions found, copying...");
+            newCount++;
             CopyFileToDirectory ($"./output/{id}.{version}.nupkg", "./output/new/");
+        } else {
+            Information ($"All versions published.");
         }
     }
+
+    if (newCount == 0)
+        Warning ("No new package versions built.");
 });
 
 Task ("component")
