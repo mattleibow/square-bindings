@@ -21,6 +21,18 @@
     <PackageTags>calendar xamarin android monodroid</PackageTags>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Xamarin.Swift4" Version="4.0.0.2" />
+    <PackageReference Include="Xamarin.Swift4.Core" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.CoreGraphics" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.CoreImage" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.Darwin" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.Dispatch" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.Foundation" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.ObjectiveC" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.QuartzCore" Version="4.2.1.1" />
+    <PackageReference Include="Xamarin.Swift4.UIKit" Version="4.2.1.1" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Square.CoreAardvark" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
