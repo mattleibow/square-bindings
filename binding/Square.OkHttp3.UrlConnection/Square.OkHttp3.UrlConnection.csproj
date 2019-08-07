@@ -33,8 +33,8 @@
     <PackageTags>okhttp square square.okhttp xamarin android monodroid</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Square.OkHttp3" Version="3.8.1.1" />
-    <PackageReference Include="Square.OkIO" Version="1.9.0" />
+    <PackageReference Include="Square.OkHttp3" Version="3.11.0" />
+    <PackageReference Include="Square.OkIO" Version="1.15.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Transforms\*.xml" />
