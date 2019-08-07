@@ -14,6 +14,7 @@ using System.Xml.Linq;
 var target = Argument("t", Argument("target", "Default"));
 var configuration = Argument("c", Argument("configuration", "Release"));
 var javaHome = EnvironmentVariable ("JAVA_HOME");
+var packageToBuild = Argument("id", "");
 
 if (!DirectoryExists ("./output")) {
     CreateDirectory ("./output");
@@ -40,8 +41,8 @@ var versions = new Dictionary<string, string[]> {
     { "Square.OkHttp.WS",                        new [] { "2.7.5"  , "2.7.5.1"  }  },
     { "Square.OkHttp",                           new [] { "2.7.5"  , "2.7.5.1"  }  },
     { "Square.OkHttp3.WS",                       new [] { "3.4.2"  , "3.4.2.1"  }  },
-    { "Square.OkHttp3",                          new [] { "3.8.1"  , "3.8.1.1"  }  },
     { "Square.OkHttp3.UrlConnection",            new [] { "3.8.1"  , "3.8.1"    }  },
+    { "Square.OkHttp3",                          new [] { "3.12.1" , "3.12.1"   }  },
     { "Square.OkIO",                             new [] { "1.17.4" , "1.17.4"   }  },
     { "Square.Picasso",                          new [] { "2.5.2"  , "2.5.2.2"  }  },
     { "Square.Pollexor",                         new [] { "2.0.4"  , "2.0.4.1"  }  },
@@ -248,14 +249,17 @@ void DownloadPod (bool isDynamic, DirectoryPath podfilePath, string platform, st
     }
 }
 
-void CreatePod (DirectoryPath path, bool isDynamic, string osxVersion, string iosVersion, string tvosVersion, params string[] podIds)
+void CreatePod (string packageId, bool isDynamic, string osxVersion, string iosVersion, string tvosVersion, params string[] podIds)
 {
+    if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (packageId, StringComparison.OrdinalIgnoreCase))
+        return;
+
     var pods = new Dictionary<string, string> ();
     foreach (var id in podIds) {
         pods [id] = versions ["Square." + id] [0];
     }
 
-    path = ((DirectoryPath)"./externals").Combine (path);
+    var path = ((DirectoryPath)"./externals").Combine (packageId);
     var name = pods.Keys.First ();
     var build = isDynamic
         ? new Action<FilePath, string, DirectoryPath, TargetOS> (BuildDynamicXCode)
@@ -277,10 +281,13 @@ void CreatePod (DirectoryPath path, bool isDynamic, string osxVersion, string io
 
 void DownloadJar (string source, FilePath destination)
 {
+    var packageId = destination.GetDirectory ().GetDirectoryName ();
+    if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (packageId, StringComparison.OrdinalIgnoreCase))
+        return;
+
     destination = ((DirectoryPath)"./externals").CombineWithFilePath (destination);
 
-    var id = destination.GetDirectory ().GetDirectoryName ();
-    var version = versions [id] [0];
+    var version = versions [packageId] [0];
     var url = string.Format("http://search.maven.org/remotecontent?filepath=" + source, version);
 
     EnsureDirectoryExists (destination.GetDirectory ());
@@ -346,6 +353,8 @@ Task ("libs")
 {
     foreach (var file in GetFiles ("./binding/*/*.csproj")) {
         var id = file.GetFilenameWithoutExtension ().ToString ();
+        if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (id, StringComparison.OrdinalIgnoreCase))
+            continue;
 
         var version = Version.Parse (versions [id] [0]);
         var assemblyVersion = $"{version.Major}.0.0.0";
@@ -361,6 +370,8 @@ Task ("libs")
 
     foreach (var file in GetFiles ("./binding/*/*.csproj")) {
         var id = file.GetFilenameWithoutExtension ().ToString ();
+        if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (id, StringComparison.OrdinalIgnoreCase))
+            continue;
 
         if (IsRunningOnWindows () && macOnly.Contains (id))
             continue;
@@ -395,6 +406,9 @@ Task ("nuget")
 
     foreach (var package in versions) {
         var id = package.Key;
+        if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (id, StringComparison.OrdinalIgnoreCase))
+            continue;
+
         var version = package.Value [1];
 
         Information ($"Checking for {version} of {id}...");
