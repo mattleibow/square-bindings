@@ -12,7 +12,7 @@
   <remove-node path="/api/package[starts-with(@name, 'okhttp3.internal')]" />
   <remove-node path="/api/package/class[@visibility='']" />
 
-  <!-- inheritance fixes -->
-  <attr path="/api/package[@name='okhttp3']/class[@name='OkUrlFactory']/method[@name='clone']" name="managedReturn">Java.Lang.Object</attr>
+  <!-- convert method to property -->
+  <attr path="/api/package[@name='okhttp3']/class[@name='OkUrlFactory']/method[@name='client' and count(parameter)=0]" name="managedName">GetClient</attr>
 
 </metadata>

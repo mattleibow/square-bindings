@@ -41,7 +41,7 @@ var versions = new Dictionary<string, string[]> {
     { "Square.OkHttp.WS",                        new [] { "2.7.5"  , "2.7.5.1"  }  },
     { "Square.OkHttp",                           new [] { "2.7.5"  , "2.7.5.1"  }  },
     { "Square.OkHttp3.WS",                       new [] { "3.4.2"  , "3.4.2.1"  }  },
-    { "Square.OkHttp3.UrlConnection",            new [] { "3.8.1"  , "3.8.1"    }  },
+    { "Square.OkHttp3.UrlConnection",            new [] { "3.8.1"  , "3.8.1.1"  }  },
     { "Square.OkHttp3",                          new [] { "3.12.3" , "3.12.3"   }  },
     { "Square.OkIO",                             new [] { "1.17.4" , "1.17.4"   }  },
     { "Square.Picasso",                          new [] { "2.5.2"  , "2.5.2.2"  }  },
