@@ -281,7 +281,7 @@ void CreatePod (string packageId, bool isDynamic, string osxVersion, string iosV
 void DownloadJar (string source, FilePath destination)
 {
     var packageId = destination.GetDirectory ().GetDirectoryName ();
-    if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (packageId, StringComparison.OrdinalIgnoreCase))
+    if (!packageToBuild.Equals (packageId, StringComparison.OrdinalIgnoreCase))
         return;
 
     destination = ((DirectoryPath)"./externals").CombineWithFilePath (destination);
@@ -350,7 +350,7 @@ Task ("libs")
 {
     foreach (var file in GetFiles ("./binding/*/*.csproj")) {
         var id = file.GetFilenameWithoutExtension ().ToString ();
-        if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (id, StringComparison.OrdinalIgnoreCase))
+        if (!packageToBuild.Equals (id, StringComparison.OrdinalIgnoreCase))
             continue;
 
         var version = Version.Parse (versions [id] [0]);
@@ -367,7 +367,7 @@ Task ("libs")
 
     foreach (var file in GetFiles ("./binding/*/*.csproj")) {
         var id = file.GetFilenameWithoutExtension ().ToString ();
-        if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (id, StringComparison.OrdinalIgnoreCase))
+        if (!packageToBuild.Equals (id, StringComparison.OrdinalIgnoreCase))
             continue;
 
         if (IsRunningOnWindows () && macOnly.Contains (id))
@@ -403,7 +403,7 @@ Task ("nuget")
 
     foreach (var package in versions) {
         var id = package.Key;
-        if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (id, StringComparison.OrdinalIgnoreCase))
+        if (!packageToBuild.Equals (id, StringComparison.OrdinalIgnoreCase))
             continue;
 
         var version = package.Value [1];
