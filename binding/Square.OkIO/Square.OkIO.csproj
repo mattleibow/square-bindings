@@ -14,9 +14,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <Version>1.0.0.0</Version>
-    <FileVersion>1.17.4.0</FileVersion>
-    <InformationalVersion>1.17.4.0</InformationalVersion>
-    <PackageVersion>1.17.4</PackageVersion>
+    <FileVersion>1.15.0.0</FileVersion>
+    <InformationalVersion>1.15.0.0</InformationalVersion>
+    <PackageVersion>1.15.0</PackageVersion>
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Square.OkIO</PackageId>
