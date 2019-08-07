@@ -250,7 +250,7 @@ void DownloadPod (bool isDynamic, DirectoryPath podfilePath, string platform, st
 
 void CreatePod (string packageId, bool isDynamic, string osxVersion, string iosVersion, string tvosVersion, params string[] podIds)
 {
-    if (!packageToBuild.Equals (packageId, StringComparison.OrdinalIgnoreCase))
+    if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (packageId, StringComparison.OrdinalIgnoreCase))
         return;
 
     var pods = new Dictionary<string, string> ();
