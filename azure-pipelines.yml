@@ -57,6 +57,10 @@ steps:
     inputs:
       provProfileSecureFile: 'Components tvOS Provisioning.mobileprovision'
 
+  - task: JavaToolInstaller@0
+    displayName: 'Use Java 8'
+    inputs:
+      versionSpec: '8'
   - task: UseDotNet@2
     displayName: 'Use the correct version of the .NET Core SDK'
     inputs:
