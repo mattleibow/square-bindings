@@ -90,8 +90,6 @@
   <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readByteArray' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">byteCount</attr>
   <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readByteString' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">byteCount</attr>
   <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readFully' and count(parameter)=1 and parameter[1][@type='byte[]']]/parameter[1]" name="managedName">sink</attr>
-  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readFully' and count(parameter)=1 and parameter[1][@type='byte[]']]/parameter[2]" name="managedName">offset</attr>
-  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readFully' and count(parameter)=1 and parameter[1][@type='byte[]']]/parameter[3]" name="managedName">byteCount</attr>
   <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readFully' and count(parameter)=2 and parameter[1][@type='okio.Buffer'] and parameter[2][@type='long']]/parameter[1]" name="managedName">sink</attr>
   <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readFully' and count(parameter)=2 and parameter[1][@type='okio.Buffer'] and parameter[2][@type='long']]/parameter[2]" name="managedName">byteCount</attr>
   <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='readString' and count(parameter)=1 and parameter[1][@type='java.nio.charset.Charset']]/parameter[1]" name="managedName">charset</attr>
