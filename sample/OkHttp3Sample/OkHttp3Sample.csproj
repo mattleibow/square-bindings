@@ -49,7 +49,7 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="Square.OkIO" Version="1.13.0" />
+    <PackageReference Include="Square.OkIO" Version="1.15.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\binding\Square.OkHttp3\Square.OkHttp3.csproj">
