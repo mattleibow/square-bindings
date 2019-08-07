@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.31">
   <PropertyGroup>
-    <TargetFrameworks>monoandroid4.4</TargetFrameworks>
+    <TargetFrameworks>monoandroid5.0</TargetFrameworks>
     <IsBindingProject>true</IsBindingProject>
     <AssemblyName>Square.OkHttp3</AssemblyName>
     <RootNamespace>Square.OkHttp3</RootNamespace>
@@ -14,9 +14,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <Version>3.0.0.0</Version>
-    <FileVersion>3.12.1.0</FileVersion>
-    <InformationalVersion>3.12.1.0</InformationalVersion>
-    <PackageVersion>3.12.1</PackageVersion>
+    <FileVersion>3.13.0.0</FileVersion>
+    <InformationalVersion>3.13.0.0</InformationalVersion>
+    <PackageVersion>3.13.0</PackageVersion>
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Square.OkHttp3</PackageId>
@@ -33,7 +33,7 @@
     <PackageTags>okhttp square square.okhttp xamarin android monodroid</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Square.OkIO" Version="1.15.0" />
+    <PackageReference Include="Square.OkIO" Version="1.17.4" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Transforms\*.xml" />
