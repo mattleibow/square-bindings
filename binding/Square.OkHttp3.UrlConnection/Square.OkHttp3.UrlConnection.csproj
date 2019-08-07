@@ -1,0 +1,44 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.31">
+  <PropertyGroup>
+    <TargetFrameworks>monoandroid4.4</TargetFrameworks>
+    <IsBindingProject>true</IsBindingProject>
+    <AssemblyName>Square.OkHttp3.UrlConnection</AssemblyName>
+    <RootNamespace>Square.OkHttp3.UrlConnection</RootNamespace>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
+    <AndroidUseIntermediateDesignerFile>True</AndroidUseIntermediateDesignerFile>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidClassParser>class-parse</AndroidClassParser>
+    <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Version>3.0.0.0</Version>
+    <FileVersion>3.8.1.0</FileVersion>
+    <InformationalVersion>3.8.1.0</InformationalVersion>
+    <PackageVersion>3.8.1</PackageVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>Square.OkHttp3.UrlConnection</PackageId>
+    <Title>OkHttp v3 UrlConnection bindings for Xamarin.Android</Title>
+    <Summary>OkHttp ability to be used with HttpURLConnection.</Summary>
+    <Description>OkHttp ability to be used with HttpURLConnection.</Description>
+    <Authors>mattleibow</Authors>
+    <Owners>mattleibow</Owners>
+    <Copyright>Square and Matthew Leibowitz.</Copyright>
+    <PackageProjectUrl>https://github.com/mattleibow/square-bindings</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.okhttp.urlconection_256x256.png</PackageIconUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>okhttp square square.okhttp xamarin android monodroid</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Square.OkHttp3" Version="3.8.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Transforms\*.xml" />
+    <TransformFile Include="Transforms\*.xml" />
+    <EmbeddedJar Include="..\..\externals\$(PackageId)\*.jar" Link="Jars\%(Filename)%(Extension)" />
+    <LibraryProjectZip Include="..\..\externals\$(PackageId)\*.aar" Link="Jars\%(Filename)%(Extension)" />
+  </ItemGroup>
+</Project>
