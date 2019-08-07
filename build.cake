@@ -42,6 +42,7 @@ var versions = new Dictionary<string, string[]> {
     { "Square.OkHttp",                           new [] { "2.7.5"  , "2.7.5.1"  }  },
     { "Square.OkHttp3.WS",                       new [] { "3.4.2"  , "3.4.2.1"  }  },
     { "Square.OkHttp3",                          new [] { "3.13.0" , "3.13.0"   }  },
+    { "Square.OkHttp3.UrlConnection",            new [] { "3.8.1"  , "3.8.1"    }  },
     { "Square.OkIO",                             new [] { "1.17.4" , "1.17.4"   }  },
     { "Square.Picasso",                          new [] { "2.5.2"  , "2.5.2.2"  }  },
     { "Square.Pollexor",                         new [] { "2.0.4"  , "2.0.4.1"  }  },
@@ -313,6 +314,8 @@ Task ("externals")
                  "Square.OkHttp3.WS/okhttp3-ws.jar");
     DownloadJar ("com/squareup/okhttp/okhttp-urlconnection/{0}/okhttp-urlconnection-{0}.jar",
                  "Square.OkHttp.UrlConnection/okhttp-urlconnection.jar");
+    DownloadJar ("com/squareup/okhttp3/okhttp-urlconnection/{0}/okhttp-urlconnection-{0}.jar",
+                 "Square.OkHttp3.UrlConnection/okhttp-urlconnection.jar");
     DownloadJar ("com/squareup/picasso/picasso/{0}/picasso-{0}.jar",
                  "Square.Picasso/picasso.jar");
     DownloadJar ("com/squareup/android-times-square/{0}/android-times-square-{0}.aar",
