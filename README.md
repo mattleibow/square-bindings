@@ -42,7 +42,7 @@ Xamarin.Android and Xamarin.iOS bindings for the various https://github.com/squa
 
 ## Building
 
-In order to build, you will need to use the Cake .NET Core tool (currently using v0.43.1):
+In order to build, you will need to use the Cake .NET Core tool (currently using v0.34.1):
 
 ```
 dotnet cake
