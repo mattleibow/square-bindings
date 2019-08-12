@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.31">
   <PropertyGroup>
-    <TargetFrameworks>monoandroid5.0</TargetFrameworks>
+    <TargetFrameworks>monoandroid4.4</TargetFrameworks>
     <IsBindingProject>true</IsBindingProject>
     <AssemblyName>Square.OkHttp3</AssemblyName>
     <RootNamespace>Square.OkHttp3</RootNamespace>

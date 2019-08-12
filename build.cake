@@ -16,9 +16,7 @@ var configuration = Argument("c", Argument("configuration", "Release"));
 var javaHome = EnvironmentVariable ("JAVA_HOME");
 var packageToBuild = Argument("id", "");
 
-if (!DirectoryExists ("./output")) {
-    CreateDirectory ("./output");
-}
+EnsureDirectoryExists ("./output");
 
 public enum TargetOS {
     Windows,
@@ -41,8 +39,8 @@ var versions = new Dictionary<string, string[]> {
     { "Square.OkHttp.WS",                        new [] { "2.7.5"  , "2.7.5.1"  }  },
     { "Square.OkHttp",                           new [] { "2.7.5"  , "2.7.5.1"  }  },
     { "Square.OkHttp3.WS",                       new [] { "3.4.2"  , "3.4.2.1"  }  },
+    { "Square.OkHttp3.UrlConnection",            new [] { "3.12.3" , "3.12.3"   }  },
     { "Square.OkHttp3",                          new [] { "3.13.0" , "3.13.0"   }  },
-    { "Square.OkHttp3.UrlConnection",            new [] { "3.8.1"  , "3.8.1"    }  },
     { "Square.OkIO",                             new [] { "1.17.4" , "1.17.4"   }  },
     { "Square.Picasso",                          new [] { "2.5.2"  , "2.5.2.2"  }  },
     { "Square.Pollexor",                         new [] { "2.0.4"  , "2.0.4.1"  }  },
