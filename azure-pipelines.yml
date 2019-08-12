@@ -63,7 +63,7 @@ steps:
     inputs:
       version: $(DOTNET_CORE_VERSION)
   - powershell: |
-      dotnet tool install -g cake --version $(CAKE_VERSION)
+      dotnet tool install -g cake.tool --version $(CAKE_VERSION)
       dotnet tool install -g api-tools --version $(API_TOOLS_VERSION)
     displayName: 'Install .NET Core tools'
 
