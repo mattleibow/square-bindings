@@ -5,7 +5,8 @@ trigger:
 
 variables:
   VERBOSITY: diagnostic
-  API_TOOLS_VERSION: 1.0.2-preview.5
+  API_TOOLS_VERSION: 1.0.2-preview.14
+  CAKE_VERSION: 0.34.1
   DOTNET_CORE_VERSION: 2.2.x
 
 strategy:
@@ -61,11 +62,15 @@ steps:
     displayName: 'Use the correct version of the .NET Core SDK'
     inputs:
       version: $(DOTNET_CORE_VERSION)
-  - powershell: dotnet tool install -g api-tools --version $(API_TOOLS_VERSION)
-    displayName: 'Install api-tools'
+  - powershell: |
+      dotnet tool install -g cake --version $(CAKE_VERSION)
+      dotnet tool install -g api-tools --version $(API_TOOLS_VERSION)
+    displayName: 'Install .NET Core tools'
 
-  - powershell: .\build.ps1 --verbosity=$(VERBOSITY)
+  - powershell: dotnet cake --verbosity=$(VERBOSITY)
     displayName: 'Run build'
+    env:
+      JavaSdkDirectory: $(JAVA_HOME)
 
   - powershell: |
       if (Get-ChildItem output -Filter *.nupkg) {

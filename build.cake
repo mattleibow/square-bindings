@@ -13,7 +13,6 @@ using System.Xml.Linq;
 
 var target = Argument("t", Argument("target", "Default"));
 var configuration = Argument("c", Argument("configuration", "Release"));
-var javaHome = EnvironmentVariable ("JAVA_HOME");
 var packageToBuild = Argument("id", "");
 
 EnsureDirectoryExists ("./output");
@@ -383,9 +382,6 @@ Task ("libs")
             .WithProperty ("PackageOutputPath", MakeAbsolute ((DirectoryPath)"./output/").FullPath)
             .WithTarget ("Pack");
 
-        if (!string.IsNullOrEmpty (javaHome))
-            settings.WithProperty ("JavaSdkDirectory", javaHome);
-
         MSBuild (file, settings);
     }
 });
@@ -445,9 +441,6 @@ Task ("samples")
             .SetVerbosity (Verbosity.Minimal)
             .WithRestore ()
             .WithProperty ("DesignTimeBuild", "false");
-
-        if (!string.IsNullOrEmpty (javaHome))
-            settings.WithProperty ("JavaSdkDirectory", javaHome);
 
         MSBuild (file, settings);
     }
