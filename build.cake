@@ -13,7 +13,13 @@ using System.Xml.Linq;
 
 var target = Argument("t", Argument("target", "Default"));
 var configuration = Argument("c", Argument("configuration", "Release"));
-var packageToBuild = Argument("id", "");
+var packagesToBuild = Argument ("id", "")?.Split (new [] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+if (packagesToBuild?.Length > 0) {
+    Information ($"Building {packagesToBuild.Length} project(s): " + string.Join (", ", packagesToBuild));
+} else {
+    packagesToBuild = null;
+    Information ($"Building all the projects.");
+}
 
 EnsureDirectoryExists ("./output");
 
@@ -39,7 +45,7 @@ var versions = new Dictionary<string, string[]> {
     { "Square.OkHttp",                           new [] { "2.7.5"  , "2.7.5.1"  }  },
     { "Square.OkHttp3.WS",                       new [] { "3.4.2"  , "3.4.2.1"  }  },
     { "Square.OkHttp3.UrlConnection",            new [] { "3.12.3" , "3.12.3"   }  },
-    { "Square.OkHttp3",                          new [] { "3.13.0" , "3.13.0"   }  },
+    { "Square.OkHttp3",                          new [] { "3.13.1" , "3.13.1"   }  },
     { "Square.OkIO",                             new [] { "1.17.4" , "1.17.4"   }  },
     { "Square.Picasso",                          new [] { "2.5.2"  , "2.5.2.2"  }  },
     { "Square.Pollexor",                         new [] { "2.0.4"  , "2.0.4.1"  }  },
@@ -248,7 +254,7 @@ void DownloadPod (bool isDynamic, DirectoryPath podfilePath, string platform, st
 
 void CreatePod (string packageId, bool isDynamic, string osxVersion, string iosVersion, string tvosVersion, params string[] podIds)
 {
-    if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (packageId, StringComparison.OrdinalIgnoreCase))
+    if (packagesToBuild != null && packagesToBuild.All (x => !x.Equals (packageId, StringComparison.OrdinalIgnoreCase)))
         return;
 
     var pods = new Dictionary<string, string> ();
@@ -279,7 +285,7 @@ void CreatePod (string packageId, bool isDynamic, string osxVersion, string iosV
 void DownloadJar (string source, FilePath destination)
 {
     var packageId = destination.GetDirectory ().GetDirectoryName ();
-    if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (packageId, StringComparison.OrdinalIgnoreCase))
+    if (packagesToBuild != null && packagesToBuild.All (x => !x.Equals (packageId, StringComparison.OrdinalIgnoreCase)))
         return;
 
     destination = ((DirectoryPath)"./externals").CombineWithFilePath (destination);
@@ -350,7 +356,7 @@ Task ("libs")
 {
     foreach (var file in GetFiles ("./binding/*/*.csproj")) {
         var id = file.GetFilenameWithoutExtension ().ToString ();
-        if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (id, StringComparison.OrdinalIgnoreCase))
+        if (packagesToBuild != null && packagesToBuild.All (x => !x.Equals (id, StringComparison.OrdinalIgnoreCase)))
             continue;
 
         var version = Version.Parse (versions [id] [0]);
@@ -367,7 +373,7 @@ Task ("libs")
 
     foreach (var file in GetFiles ("./binding/*/*.csproj")) {
         var id = file.GetFilenameWithoutExtension ().ToString ();
-        if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (id, StringComparison.OrdinalIgnoreCase))
+        if (packagesToBuild != null && packagesToBuild.All (x => !x.Equals (id, StringComparison.OrdinalIgnoreCase)))
             continue;
 
         if (IsRunningOnWindows () && macOnly.Contains (id))
@@ -400,7 +406,7 @@ Task ("nuget")
 
     foreach (var package in versions) {
         var id = package.Key;
-        if (!string.IsNullOrEmpty (packageToBuild) && !packageToBuild.Equals (id, StringComparison.OrdinalIgnoreCase))
+        if (packagesToBuild != null && packagesToBuild.All (x => !x.Equals (id, StringComparison.OrdinalIgnoreCase)))
             continue;
 
         var version = package.Value [1];
@@ -422,6 +428,17 @@ Task ("nuget")
 
 Task ("component")
     .IsDependentOn ("nuget");
+
+Task ("diff")
+    .IsDependentOn ("nuget")
+    .Does (() =>
+{
+    var res = StartProcess("api-tools",
+        "nuget-diff ./output --latest --group-ids --ignore-unchanged --output ./output/api-diff --cache ./externals/package_cache");
+
+    if (res != 0)
+        throw new Exception($"Process api-tools exited with code {res}.");
+});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // SAMPLES -
@@ -478,12 +495,14 @@ Task ("clean-native")
 Task("Fast")
     .IsDependentOn("externals")
     .IsDependentOn("libs")
-    .IsDependentOn("nuget");
+    .IsDependentOn("nuget")
+    .IsDependentOn("diff");
 
 Task("Default")
     .IsDependentOn("externals")
     .IsDependentOn("libs")
     .IsDependentOn("nuget")
+    .IsDependentOn("diff")
     .IsDependentOn("samples");
 
 RunTarget (target);
