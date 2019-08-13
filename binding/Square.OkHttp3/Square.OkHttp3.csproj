@@ -14,9 +14,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <Version>3.0.0.0</Version>
-    <FileVersion>3.12.3.0</FileVersion>
-    <InformationalVersion>3.12.3.0</InformationalVersion>
-    <PackageVersion>3.12.3</PackageVersion>
+    <FileVersion>3.13.0.0</FileVersion>
+    <InformationalVersion>3.13.0.0</InformationalVersion>
+    <PackageVersion>3.13.0</PackageVersion>
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Square.OkHttp3</PackageId>
@@ -33,7 +33,7 @@
     <PackageTags>okhttp square square.okhttp xamarin android monodroid</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Square.OkIO" Version="1.15.0" />
+    <PackageReference Include="Square.OkIO" Version="1.17.4" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Transforms\*.xml" />

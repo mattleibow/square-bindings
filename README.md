@@ -4,7 +4,7 @@
 
 Xamarin.Android and Xamarin.iOS bindings for the various https://github.com/square libraries
 
-Bound:
+## Libraries
 
  - **Picasso** - https://github.com/square/picasso  
    A powerful image downloading and caching library for Android  
@@ -39,6 +39,20 @@ Bound:
  - **Retrofit** - https://github.com/square/retrofit  
    [binding][3] | [sample][7] | [NuGet][11]
  - **Retrofit2** - https://github.com/square/retrofit
+
+## Building
+
+In order to build, you will need to use the Cake .NET Core tool (currently using v0.34.1):
+
+```
+dotnet cake
+```
+
+If the tool is not installed, then you can just install it with a simple command:
+
+```
+dotnet tool install -g cake
+```
 
 [1]:  https://github.com/mattleibow/square-bindings/tree/master/binding/Square.Picasso
 [2]:  https://github.com/mattleibow/square-bindings/tree/master/sample/PicassoSample
