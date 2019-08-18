@@ -23,8 +23,12 @@
   <attr path="/api/package[@name='okio']/class[@name='ByteString']/method[@name='compareTo']/parameter[1]" name="managedType">Java.Lang.Object</attr>
 
   <!-- methods to properties -->
-  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='buffer']" name="managedName">GetBuffer</attr>
-  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='buffer']" name="managedName">GetBuffer</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='buffer']" name="managedName">GetBufferObsolete</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='buffer']" name="propertyName">Buffer</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='getBuffer']" name="propertyName"></attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='buffer']" name="managedName">GetBufferObsolete</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='buffer']" name="propertyName">Buffer</attr>
+  <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='getBuffer']" name="propertyName"></attr>
   <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='outputStream']" name="managedName">GetOutputStream</attr>
   <attr path="/api/package[@name='okio']/class[@name='Buffer']/method[@name='buffer']" name="managedName">GetBuffer</attr>
   <attr path="/api/package[@name='okio']/class[@name='Buffer']/method[@name='outputStream']" name="managedName">GetOutputStream</attr>
