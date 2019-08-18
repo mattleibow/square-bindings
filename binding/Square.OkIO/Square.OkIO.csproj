@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.31">
   <PropertyGroup>
-    <TargetFrameworks>monoandroid9.0</TargetFrameworks>
+    <TargetFrameworks>monoandroid4.4</TargetFrameworks>
     <IsBindingProject>true</IsBindingProject>
     <AssemblyName>Square.OkIO</AssemblyName>
     <RootNamespace>Square.OkIO</RootNamespace>
@@ -32,8 +32,7 @@
     <PackageTags>okio square square.okio xamarin android monodroid</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Kotlin.StdLib" Version="1.2.71" />
-    <PackageReference Include="Xamarin.Kotlin.BindingSupport" Version="0.1.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Xamarin.Kotlin.StdLib" Version="1.3.31" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Transforms\*.xml" />
