@@ -9,49 +9,23 @@
 
   <attr path="/api/package[@name='okio']" name="managedName">Square.OkIO</attr>
 
-  <remove-node path="/api/package/class[@visibility='']" />
+  <!-- <remove-node path="/api/package/class[@visibility='']" /> -->
   <remove-node path="/api/package[@name='okio.internal']" />
 
   <attr path="/api/package[@name='okio']/class[@name='Buffer']" name="managedName">OkBuffer</attr>
   <attr path="/api/package[@name='okio']/class[@name='Okio']" name="managedName">OkIO</attr>
 
-  <!-- remove kotlin-isms -->
+  <!-- remove the - prefixed classes as they are not meant to be used at all -->
   <remove-node path="/api/package/class[starts-with(@name,'-')]" />
   <remove-node path="/api/package/class/method[starts-with(@name,'-')]" />
-  <remove-node path="/api/package[@name='okio']/class[contains(@name,'.Companion')]" />
-  <remove-node path="/api/package[@name='okio']/class/field[@name='Companion' and contains(@type,'.Companion')]" />
-  <attr path="/api/package[@name='okio']/class/method[parameter[1][@name='$receiver']]/parameter[1]" name="managedName">TODO_CHANGE_THIS</attr>
-  <!-- kotlin internal -->
-  <remove-node path="/api/package[@name='okio']/class[@name='Buffer']/field[@name='head']" />
-  <remove-node path="/api/package[@name='okio']/class[@name='RealBufferedSink']" />
-  <remove-node path="/api/package[@name='okio']/class[@name='RealBufferedSource']" />
-  <remove-node path="/api/package[@name='okio']/class[@name='Segment']" />
-  <remove-node path="/api/package[@name='okio']/class[@name='SegmentPool']" />
-  <remove-node path="/api/package[@name='okio']/class[@name='SegmentedByteString']" />
-  <remove-node path="/api/package[@name='okio']/class[@name='ByteString']/constructor[@name='ByteString' and count(parameter)=1 and parameter[1][@type='byte[]']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='DeflaterSink']/constructor[@name='DeflaterSink' and count(parameter)=2 and parameter[1][@type='okio.BufferedSink'] and parameter[2][@type='java.util.zip.Deflater']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='HashingSink']/constructor[@name='HashingSink' and count(parameter)=2 and parameter[1][@type='okio.Sink'] and parameter[2][@type='java.lang.String']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='HashingSink']/constructor[@name='HashingSink' and count(parameter)=3 and parameter[1][@type='okio.Sink'] and parameter[2][@type='okio.ByteString'] and parameter[3][@type='java.lang.String']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='HashingSource']/constructor[@name='HashingSource' and count(parameter)=2 and parameter[1][@type='okio.Source'] and parameter[2][@type='java.lang.String']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='HashingSource']/constructor[@name='HashingSource' and count(parameter)=3 and parameter[1][@type='okio.Source'] and parameter[2][@type='okio.ByteString'] and parameter[3][@type='java.lang.String']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='InflaterSource']/constructor[@name='InflaterSource' and count(parameter)=2 and parameter[1][@type='okio.BufferedSource'] and parameter[2][@type='java.util.zip.Inflater']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='Okio']/method[@name='isAndroidGetsocknameError' and count(parameter)=1 and parameter[1][@type='java.lang.AssertionError']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='Utf8']/method[@name='codePointAt' and count(parameter)=2 and parameter[1][@type='byte[]'] and parameter[2][@type='int']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='Utf8']/method[@name='codePointByteCount' and count(parameter)=1 and parameter[1][@type='int']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='Utf8']/method[@name='codePointCharCount' and count(parameter)=1 and parameter[1][@type='int']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='Utf8']/method[@name='isIsoControl' and count(parameter)=1 and parameter[1][@type='int']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='Utf8']/field[@name='REPLACEMENT_CHARACTER']" />
 
   <!-- inheritance fixes -->
   <attr path="/api/package[@name='okio']/class[@name='ByteString']/method[@name='compareTo']/parameter[1]" name="managedType">Java.Lang.Object</attr>
 
-  <!-- methods to poroperties -->
+  <!-- methods to properties -->
   <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='buffer']" name="managedName">GetBuffer</attr>
   <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='buffer']" name="managedName">GetBuffer</attr>
   <attr path="/api/package[@name='okio']/interface[@name='BufferedSink']/method[@name='outputStream']" name="managedName">GetOutputStream</attr>
-  <attr path="/api/package[@name='okio']/class[@name='RealBufferedSource']/method[@name='buffer']" name="managedName">GetBuffer</attr>
-  <attr path="/api/package[@name='okio']/class[@name='RealBufferedSink']/method[@name='buffer']" name="managedName">GetBuffer</attr>
-  <attr path="/api/package[@name='okio']/class[@name='RealBufferedSink']/method[@name='outputStream']" name="managedName">GetOutputStream</attr>
   <attr path="/api/package[@name='okio']/class[@name='Buffer']/method[@name='buffer']" name="managedName">GetBuffer</attr>
   <attr path="/api/package[@name='okio']/class[@name='Buffer']/method[@name='outputStream']" name="managedName">GetOutputStream</attr>
 
@@ -63,6 +37,20 @@
   <remove-node path="/api/package[@name='okio']/class[@name='Options']/method[@name='getSize' and count(parameter)=0]" />
   <remove-node path="/api/package[@name='okio']/class[@name='Options']/method[@name='remove' and count(parameter)=1 and parameter[1][@type='okio.ByteString']]" />
   <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='get']" name="managedReturn">Java.Lang.Object</attr>
+
+  <!-- interface fixups -->
+  <add-node path="/api/package[@name='okio']/interface[@name='BufferedSource']">
+    <method abstract="true" deprecated="not deprecated" final="false" name="close" jni-signature="()V" bridge="false" native="false" return="void" jni-return="V" static="false" synchronized="false" synthetic="false" visibility="public">
+      <exception name="IOException" type="java.io.IOException">
+      </exception>
+    </method>
+  </add-node>
+  <add-node path="/api/package[@name='okio']/interface[@name='BufferedSink']">
+    <method abstract="true" deprecated="not deprecated" final="false" name="close" jni-signature="()V" bridge="false" native="false" return="void" jni-return="V" static="false" synchronized="false" synthetic="false" visibility="public">
+      <exception name="IOException" type="java.io.IOException">
+      </exception>
+    </method>
+  </add-node>
 
   <!-- parameter names -->
   <attr path="/api/package[@name='okio']/class[@name='Buffer']/method[@name='copyTo' and parameter[1][@type='java.io.OutputStream']]/parameter[1]" name="managedName">@out</attr>
@@ -173,20 +161,5 @@
   <attr path="/api/package[@name='okio']/interface[@name='BufferedSource']/method[@name='skip' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">byteCount</attr>
 
   <attr path="/api/package[@name='okio']/class[@name='Utf8']/method[@name='size' and parameter[1][@type='java.lang.String']]/parameter[1]" name="managedName">@string</attr>
-
-  <!-- interface fixups -->
-  <add-node path="/api/package[@name='okio']/interface[@name='BufferedSource']">
-    <method abstract="true" deprecated="not deprecated" final="false" name="close" jni-signature="()V" bridge="false" native="false" return="void" jni-return="V" static="false" synchronized="false" synthetic="false" visibility="public">
-      <exception name="IOException" type="java.io.IOException">
-      </exception>
-    </method>
-  </add-node>
-
-  <add-node path="/api/package[@name='okio']/interface[@name='BufferedSink']">
-    <method abstract="true" deprecated="not deprecated" final="false" name="close" jni-signature="()V" bridge="false" native="false" return="void" jni-return="V" static="false" synchronized="false" synthetic="false" visibility="public">
-      <exception name="IOException" type="java.io.IOException">
-      </exception>
-    </method>
-  </add-node>
 
 </metadata>
