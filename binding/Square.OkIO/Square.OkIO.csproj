@@ -32,7 +32,7 @@
     <PackageTags>okio square square.okio xamarin android monodroid</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Kotlin.StdLib" Version="1.2.71" />
+    <PackageReference Include="Xamarin.Kotlin.StdLib" Version="1.2.71" PrivateAssets="None" />
     <PackageReference Include="Xamarin.Kotlin.BindingSupport" Version="0.1.0-preview" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
