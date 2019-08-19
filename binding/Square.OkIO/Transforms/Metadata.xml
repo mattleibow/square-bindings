@@ -176,4 +176,8 @@
 
   <attr path="/api/package[@name='okio']/class[@name='Utf8']/method[@name='size' and parameter[1][@type='java.lang.String']]/parameter[1]" name="managedName">@string</attr>
 
+  <attr path="/api/package[@name='okio']/class[@name='Throttler']/method[@name='bytesPerSecond' and count(parameter)=1 and parameter[1][@type='long']]/parameter[1]" name="managedName">bytesPerSecond</attr>
+  <attr path="/api/package[@name='okio']/class[@name='Throttler']/method[@name='bytesPerSecond' and count(parameter)=2 and parameter[1][@type='long'] and parameter[2][@type='long']]/parameter[1]" name="managedName">bytesPerSecond</attr>
+  <attr path="/api/package[@name='okio']/class[@name='Throttler']/method[@name='bytesPerSecond' and count(parameter)=2 and parameter[1][@type='long'] and parameter[2][@type='long']]/parameter[2]" name="managedName">waitByteCount</attr>
+
 </metadata>
