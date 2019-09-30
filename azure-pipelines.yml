@@ -22,7 +22,11 @@ pool:
   name: $(imageName)
 
 steps:
-  - bash: cat $(Agent.HomeDirectory)/scripts/select-xamarin-sdk.sh
+  - bash: |
+      ls -l /Library/Frameworks/Mono.framework/Versions
+      ls -l /Library/Frameworks/Xamarin.iOS.framework/Versions
+      ls -l /Library/Frameworks/Xamarin.Android.framework/Versions
+      ls -l /Library/Frameworks/Xamarin.Mac.framework/Versions
 
   # - bash: sudo $(Agent.HomeDirectory)/scripts/select-xamarin-sdk.sh $(MONO_VERSION)
   #   displayName: 'Switch to the latest Xamarin SDK'
