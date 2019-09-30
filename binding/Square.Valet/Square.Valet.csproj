@@ -1,4 +1,4 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.31">
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
   <PropertyGroup>
     <TargetFrameworks>xamarinios1.0;xamarinmac2.0</TargetFrameworks>
     <IsBindingProject>true</IsBindingProject>

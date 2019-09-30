@@ -1,4 +1,4 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.31">
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
   <PropertyGroup>
     <TargetFrameworks>monoandroid9.0</TargetFrameworks>
     <IsBindingProject>true</IsBindingProject>
@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Kotlin.StdLib" Version="1.2.71" PrivateAssets="None" />
-    <PackageReference Include="Xamarin.Kotlin.BindingSupport" Version="0.1.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Xamarin.Kotlin.BindingSupport" Version="0.2.0-preview" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Transforms\*.xml" />

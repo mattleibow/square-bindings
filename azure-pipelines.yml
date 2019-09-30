@@ -4,17 +4,17 @@ trigger:
   - previous/*
 
 variables:
-  VERBOSITY: diagnostic
-  API_TOOLS_VERSION: 1.0.2-preview.14
-  CAKE_VERSION: 0.34.1
-  DOTNET_CORE_VERSION: 2.2.x
+  VERBOSITY: normal
+  API_TOOLS_VERSION: 1.1.0-preview.1
+  CAKE_VERSION: 0.35.0
+  DOTNET_CORE_VERSION: 3.0.x
 
 strategy:
   matrix:
     macos:
       imageName: 'Hosted macOS'
-      MONO_VERSION: 5_18_1
-      XCODE_VERSION: 10.3
+      MONO_VERSION: 6_4_0
+      XCODE_VERSION: 11
     windows:
       imageName: 'Hosted Windows 2019 with VS2019'
 
@@ -22,7 +22,7 @@ pool:
   name: $(imageName)
 
 steps:
-  - bash: sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh $(MONO_VERSION)
+  - bash: sudo $(Agent.HomeDirectory)/scripts/select-xamarin-sdk.sh $(MONO_VERSION)
     displayName: 'Switch to the latest Xamarin SDK'
     condition: eq(variables['System.JobName'], 'macos')
   - bash: echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'/Applications/Xcode_$(XCODE_VERSION).app;sudo xcode-select --switch /Applications/Xcode_$(XCODE_VERSION).app/Contents/Developer
