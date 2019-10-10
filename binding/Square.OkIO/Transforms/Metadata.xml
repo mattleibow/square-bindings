@@ -33,13 +33,12 @@
   <attr path="/api/package[@name='okio']/class[@name='Buffer']/method[@name='outputStream']" name="managedName">GetOutputStream</attr>
 
   <!-- Options fixup -->
-  <remove-node path="/api/package[@name='okio']/class[@name='Options']/method[@name='contains' and count(parameter)=1 and parameter[1][@type='okio.ByteString']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='Options']/method[@name='indexOf' and count(parameter)=1 and parameter[1][@type='okio.ByteString']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='Options']/method[@name='lastIndexOf' and count(parameter)=1 and parameter[1][@type='okio.ByteString']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='Options']/method[@name='remove' and count(parameter)=1 and parameter[1][@type='int']]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='Options']/method[@name='getSize' and count(parameter)=0]" />
-  <remove-node path="/api/package[@name='okio']/class[@name='Options']/method[@name='remove' and count(parameter)=1 and parameter[1][@type='okio.ByteString']]" />
   <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='get']" name="managedReturn">Java.Lang.Object</attr>
+  <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='getSize' and count(parameter)=0]" name="propertyName"></attr>
+
+  <!-- Utf8 fixup -->
+  <remove-node path="/api/package[@name='okio']/class[@name='Utf8']/method[starts-with(@name,'process')]" />
+  <!-- <remove-node path="/api/package[@name='okio']/class[@name='Utf8']/field" /> -->
 
   <!-- interface fixups -->
   <add-node path="/api/package[@name='okio']/interface[@name='BufferedSource']">
@@ -93,12 +92,13 @@
   <attr path="/api/package[@name='okio']/class[@name='ByteString.Companion']/method[@name='of' and count(parameter)=1 and parameter[1][@type='java.nio.ByteBuffer']]/parameter[1]" name="managedName">data</attr>
   <attr path="/api/package[@name='okio']/class[@name='ByteString.Companion']/method[@name='read' and count(parameter)=2 and parameter[1][@type='java.io.InputStream'] and parameter[2][@type='int']]/parameter[1]" name="managedName">@in</attr>
 
+  <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='contains' and count(parameter)=1 and parameter[1][@type='okio.ByteString']]/parameter[1]" name="managedName">o</attr>
   <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='contains' and count(parameter)=1 and parameter[1][@type='java.lang.Object']]/parameter[1]" name="managedName">o</attr>
   <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='get' and count(parameter)=1 and parameter[1][@type='int']]/parameter[1]" name="managedName">i</attr>
+  <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='indexOf' and count(parameter)=1 and parameter[1][@type='okio.ByteString']]/parameter[1]" name="managedName">o</attr>
   <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='indexOf' and count(parameter)=1 and parameter[1][@type='java.lang.Object']]/parameter[1]" name="managedName">o</attr>
+  <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='lastIndexOf' and count(parameter)=1 and parameter[1][@type='okio.ByteString']]/parameter[1]" name="managedName">o</attr>
   <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='lastIndexOf' and count(parameter)=1 and parameter[1][@type='java.lang.Object']]/parameter[1]" name="managedName">o</attr>
-  <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='remove' and count(parameter)=1 and parameter[1][@type='java.lang.Object']]/parameter[1]" name="managedName">o</attr>
-  <attr path="/api/package[@name='okio']/class[@name='Options']/method[@name='removeAt' and count(parameter)=1 and parameter[1][@type='int']]/parameter[1]" name="managedName">index</attr>
 
   <attr path="/api/package[@name='okio']/interface[@name='Source']/method[@name='read']/parameter[1]" name="managedName">sink</attr>
   <attr path="/api/package[@name='okio']/interface[@name='Source']/method[@name='read']/parameter[2]" name="managedName">byteCount</attr>
