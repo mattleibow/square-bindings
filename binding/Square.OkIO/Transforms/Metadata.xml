@@ -38,7 +38,7 @@
 
   <!-- Utf8 fixup -->
   <remove-node path="/api/package[@name='okio']/class[@name='Utf8']/method[starts-with(@name,'process')]" />
-  <!-- <remove-node path="/api/package[@name='okio']/class[@name='Utf8']/field" /> -->
+  <remove-node path="/api/package[@name='okio']/class[@name='Utf8']/field" />
 
   <!-- interface fixups -->
   <add-node path="/api/package[@name='okio']/interface[@name='BufferedSource']">
