@@ -8,6 +8,8 @@ namespace Square.OkIO
 
         IBufferedSink IBufferedSink.EmitCompleteSegments() => EmitCompleteSegments();
 
+        IBufferedSink IBufferedSink.Write(ISource source, long byteCount) => Write(source, byteCount);
+
         IBufferedSink IBufferedSink.Write(byte[] source) => Write(source);
 
         IBufferedSink IBufferedSink.Write(byte[] source, int offset, int byteCount) => Write(source, offset, byteCount);
