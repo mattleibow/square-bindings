@@ -16,6 +16,8 @@ namespace Square.OkIO
 
         IBufferedSink IBufferedSink.Write(ByteString byteString) => Write(byteString);
 
+        IBufferedSink IBufferedSink.Write(ByteString byteString, int offset, int byteCount) => Write(byteString, offset, byteCount);
+
         IBufferedSink IBufferedSink.WriteByte(int b) => WriteByte(b);
 
         IBufferedSink IBufferedSink.WriteDecimalLong(long v) => WriteDecimalLong(v);
