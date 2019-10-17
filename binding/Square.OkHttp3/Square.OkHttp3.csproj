@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
   <PropertyGroup>
-    <TargetFrameworks>monoandroid4.4</TargetFrameworks>
+    <TargetFrameworks>monoandroid9.0</TargetFrameworks>
     <IsBindingProject>true</IsBindingProject>
     <AssemblyName>Square.OkHttp3</AssemblyName>
     <RootNamespace>Square.OkHttp3</RootNamespace>
@@ -13,10 +13,10 @@
     <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
   </PropertyGroup>
   <PropertyGroup>
-    <Version>3.0.0.0</Version>
-    <FileVersion>3.14.4.0</FileVersion>
-    <InformationalVersion>3.14.4.0</InformationalVersion>
-    <PackageVersion>3.14.4</PackageVersion>
+    <Version>4.0.0.0</Version>
+    <FileVersion>4.0.0.0</FileVersion>
+    <InformationalVersion>4.0.0.0</InformationalVersion>
+    <PackageVersion>4.0.0</PackageVersion>
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Square.OkHttp3</PackageId>
@@ -33,12 +33,18 @@
     <PackageTags>okhttp square square.okhttp xamarin android monodroid</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Square.OkIO" Version="1.17.4" />
+    <PackageReference Include="Square.OkIO" Version="2.2.2" />
+    <PackageReference Include="Xamarin.Kotlin.StdLib" Version="1.3.41" PrivateAssets="None" />
+    <PackageReference Include="Xamarin.Kotlin.BindingSupport" Version="0.5.2-preview" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Transforms\*.xml" />
     <TransformFile Include="Transforms\*.xml" />
     <EmbeddedJar Include="..\..\externals\$(PackageId)\*.jar" Link="Jars\%(Filename)%(Extension)" />
     <LibraryProjectZip Include="..\..\externals\$(PackageId)\*.aar" Link="Jars\%(Filename)%(Extension)" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="kotlin.ignore" />
+    <KotlinBindingSupportIgnore Include="kotlin.ignore" />
   </ItemGroup>
 </Project>

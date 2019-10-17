@@ -24,6 +24,7 @@ bld/
 Resource.Designer.cs
 tools/
 output/
+*.binlog
 
 # Visual Studo 2015 cache/options directory
 .vs/

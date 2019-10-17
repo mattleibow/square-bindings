@@ -9,10 +9,8 @@
 
     <attr path="/api/package[@name='okhttp3']" name="managedName">Square.OkHttp3</attr>
 
-    <attr path="/api/package[@name='okhttp3']/class[@name='RealCall']" name="visibility">public</attr>
-    <attr path="/api/package[@name='okhttp3']/class[@name='RealCall']/method[@name='clone' and count(parameter)=0]" name="managedReturn">Square.OkHttp3.ICall</attr>
     <remove-node path="/api/package[starts-with(@name, 'okhttp3.internal')]" />
-    <remove-node path="/api/package/class[@visibility='']" />
+    <remove-node path="/api/package/class/method[starts-with(@name, '-')]" />
 
     <attr path="/api/package[@name='okhttp3']/interface[@name='Authenticator']/method[@name='authenticate']/parameter[1]" name="managedName">route</attr>
     <attr path="/api/package[@name='okhttp3']/interface[@name='Authenticator']/method[@name='authenticate']/parameter[2]" name="managedName">response</attr>
