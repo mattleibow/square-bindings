@@ -34,8 +34,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Square.OkIO" Version="2.2.2" />
-    <PackageReference Include="Xamarin.Kotlin.StdLib" Version="1.3.41" PrivateAssets="None" />
-    <PackageReference Include="Xamarin.Kotlin.BindingSupport" Version="0.5.2-preview" PrivateAssets="All" />
+    <PackageReference Include="Xamarin.Kotlin.StdLib" Version="1.3.50.1" PrivateAssets="None" />
+    <PackageReference Include="Xamarin.Kotlin.BindingSupport" Version="0.6.0-preview" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Transforms\*.xml" />
