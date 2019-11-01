@@ -12,6 +12,9 @@ Xamarin.Android and Xamarin.iOS bindings for the various https://github.com/squa
  - **OkHttp** - https://github.com/square/okhttp  
    An HTTP+SPDY client for Android and Java applications  
    [binding][3] | [sample][7] | [NuGet][11]
+ - **OkHttp3** - https://github.com/square/okhttp  
+   An HTTP+SPDY client for Android and Java applications  
+   [binding][38] | [sample][39] | [NuGet][40]
  - **OkHttp.WS** - https://github.com/square/okhttp/tree/parent-2.4.0/okhttp-ws  
    A RFC6455-compliant web socket implementation  
    [binding][5] | [sample][6] | [NuGet][13]
@@ -83,3 +86,6 @@ dotnet tool install -g cake
 [35]: https://github.com/mattleibow/square-bindings/tree/master/binding/Square.Pollexor
 [36]: https://github.com/mattleibow/square-bindings/tree/master/sample/PollexorSample
 [37]: https://www.nuget.org/packages/Square.Pollexor
+[38]: https://github.com/mattleibow/square-bindings/tree/master/binding/Square.OkHttp3
+[39]: https://github.com/mattleibow/square-bindings/tree/master/sample/OkHttp3Sample
+[40]: https://www.nuget.org/packages/Square.OkHttp3
