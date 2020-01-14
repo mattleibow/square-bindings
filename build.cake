@@ -44,9 +44,10 @@ var versions = new Dictionary<string, string[]> {
     { "Square.OkHttp.WS",                        new [] { "2.7.5"  , "2.7.5.1"  }  },
     { "Square.OkHttp",                           new [] { "2.7.5"  , "2.7.5.1"  }  },
     { "Square.OkHttp3.WS",                       new [] { "3.4.2"  , "3.4.2.1"  }  },
-    { "Square.OkHttp3.UrlConnection",            new [] { "3.12.3" , "3.12.3"   }  },
-    { "Square.OkHttp3",                          new [] { "4.2.2"  , "4.2.2"    }  },
-    { "Square.OkIO",                             new [] { "2.4.1"  , "2.4.1"    }  },
+    { "Square.OkHttp3.UrlConnection",            new [] { "4.3.1"  , "4.3.1"    }  },
+    { "Square.OkHttp3.LoggingInterceptor",       new [] { "4.3.1"  , "4.3.1"    }  },
+    { "Square.OkHttp3",                          new [] { "4.3.1"  , "4.3.1"    }  },
+    { "Square.OkIO",                             new [] { "2.4.3"  , "2.4.3"    }  },
     { "Square.Picasso",                          new [] { "2.5.2"  , "2.5.2.2"  }  },
     { "Square.Pollexor",                         new [] { "2.0.4"  , "2.0.4.1"  }  },
     { "Square.Retrofit",                         new [] { "1.9.0"  , "1.9.0.1"  }  },
@@ -319,6 +320,8 @@ Task ("externals")
                  "Square.OkHttp.UrlConnection/okhttp-urlconnection.jar");
     DownloadJar ("com/squareup/okhttp3/okhttp-urlconnection/{0}/okhttp-urlconnection-{0}.jar",
                  "Square.OkHttp3.UrlConnection/okhttp-urlconnection.jar");
+    DownloadJar ("com/squareup/okhttp3/logging-interceptor/{0}/logging-interceptor-{0}.jar",
+                 "Square.OkHttp3.LoggingInterceptor/logging-interceptor.jar");
     DownloadJar ("com/squareup/picasso/picasso/{0}/picasso-{0}.jar",
                  "Square.Picasso/picasso.jar");
     DownloadJar ("com/squareup/android-times-square/{0}/android-times-square-{0}.aar",
