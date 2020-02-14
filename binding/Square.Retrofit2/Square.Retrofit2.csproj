@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
   <PropertyGroup>
-    <TargetFrameworks>monoandroid4.4</TargetFrameworks>
+    <TargetFrameworks>monoandroid9.0</TargetFrameworks>
     <IsBindingProject>true</IsBindingProject>
     <AssemblyName>Square.Retrofit2</AssemblyName>
     <RootNamespace>Square.Retrofit2</RootNamespace>
@@ -14,9 +14,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <Version>2.0.0.0</Version>
-    <FileVersion>2.4.0.0</FileVersion>
-    <InformationalVersion>2.4.0.0</InformationalVersion>
-    <PackageVersion>2.4.0.1</PackageVersion>
+    <FileVersion>2.7.1.0</FileVersion>
+    <InformationalVersion>2.7.1.0</InformationalVersion>
+    <PackageVersion>2.7.1</PackageVersion>
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Square.Retrofit2</PackageId>
@@ -33,8 +33,8 @@
     <PackageTags>retrofit xamarin android monodroid</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Square.OkIO" Version="1.13.0" />
-    <PackageReference Include="Square.OkHttp3" Version="3.8.0" />
+    <PackageReference Include="Square.OkHttp3" Version="3.14.4" />
+    <PackageReference Include="Xamarin.Kotlin.StdLib" Version="1.3.50.1" PrivateAssets="None" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Transforms\*.xml" />

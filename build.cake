@@ -50,9 +50,9 @@ var versions = new Dictionary<string, string[]> {
     { "Square.Picasso",                          new [] { "2.5.2"  , "2.5.2.2"  }  },
     { "Square.Pollexor",                         new [] { "2.0.4"  , "2.0.4.1"  }  },
     { "Square.Retrofit",                         new [] { "1.9.0"  , "1.9.0.1"  }  },
-    { "Square.Retrofit2.AdapterRxJava2",         new [] { "2.4.0"  , "2.4.0.1"  }  },
-    { "Square.Retrofit2.ConverterGson",          new [] { "2.4.0"  , "2.4.0.1"  }  },
-    { "Square.Retrofit2",                        new [] { "2.4.0"  , "2.4.0.1"  }  },
+    { "Square.Retrofit2.AdapterRxJava2",         new [] { "2.7.1"  , "2.7.1"    }  },
+    { "Square.Retrofit2.ConverterGson",          new [] { "2.7.1"  , "2.7.1"    }  },
+    { "Square.Retrofit2",                        new [] { "2.7.1"  , "2.7.1"    }  },
     { "Square.Seismic",                          new [] { "1.0.2"  , "1.0.2.1"  }  },
     { "Square.SocketRocket",                     new [] { "0.5.1"  , "0.5.1.1"  }  },
     { "Square.Valet",                            new [] { "2.4.1"  , "2.4.1.1"  }  },
@@ -354,6 +354,8 @@ Task ("libs")
     .IsDependentOn ("externals")
     .Does (() =>
 {
+    EnsureDirectoryExists ("./output/binlogs/");
+
     foreach (var file in GetFiles ("./binding/*/*.csproj")) {
         var id = file.GetFilenameWithoutExtension ().ToString ();
         if (packagesToBuild != null && packagesToBuild.All (x => !x.Equals (id, StringComparison.OrdinalIgnoreCase)))
@@ -382,6 +384,7 @@ Task ("libs")
         var settings = new MSBuildSettings ()
             .SetConfiguration (configuration)
             .SetVerbosity (Verbosity.Minimal)
+            .EnableBinaryLogger (MakeAbsolute ((DirectoryPath)$"./output/binlogs/{id}.binlog").FullPath)
             .WithRestore ()
             // .WithProperty ("IncludeSymbols", "true")
             .WithProperty ("DesignTimeBuild", "false")

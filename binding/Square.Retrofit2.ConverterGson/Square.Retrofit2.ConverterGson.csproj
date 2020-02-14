@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
   <PropertyGroup>
-    <TargetFrameworks>monoandroid4.4</TargetFrameworks>
+    <TargetFrameworks>monoandroid9.0</TargetFrameworks>
     <IsBindingProject>true</IsBindingProject>
     <AssemblyName>Square.Retrofit2.ConverterGson</AssemblyName>
     <RootNamespace>Square.Retrofit2.ConverterGson</RootNamespace>
@@ -14,9 +14,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <Version>2.0.0.0</Version>
-    <FileVersion>2.4.0.0</FileVersion>
-    <InformationalVersion>2.4.0.0</InformationalVersion>
-    <PackageVersion>2.4.0.1</PackageVersion>
+    <FileVersion>2.7.1.0</FileVersion>
+    <InformationalVersion>2.7.1.0</InformationalVersion>
+    <PackageVersion>2.7.1</PackageVersion>
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Square.Retrofit2.ConverterGson</PackageId>
@@ -35,7 +35,7 @@
     <ProjectReference Include="..\Square.Retrofit2\Square.Retrofit2.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GoogleGson" Version="2.8.1" />
+    <PackageReference Include="GoogleGson" Version="2.8.5" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Transforms\*.xml" />
