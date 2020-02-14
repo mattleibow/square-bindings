@@ -5,9 +5,10 @@ trigger:
 
 variables:
   VERBOSITY: normal
-  API_TOOLS_VERSION: 1.1.0-preview.1
-  CAKE_VERSION: 0.35.0
+  API_TOOLS_VERSION: 1.3.1
+  CAKE_VERSION: 0.37.0
   DOTNET_CORE_VERSION: 3.0.x
+  BOOTS_VERSION: 1.0.2.421
 
 strategy:
   matrix:
@@ -15,8 +16,10 @@ strategy:
       imageName: 'Hosted macOS'
       MONO_VERSION: 6_4_0
       XCODE_VERSION: 11
+      XAMARIN_ANDROID_VERSION: d16-5-macos
     windows:
       imageName: 'Hosted Windows 2019 with VS2019'
+      XAMARIN_ANDROID_VERSION: d16-5-windows
 
 pool:
   name: $(imageName)
@@ -62,12 +65,16 @@ steps:
     displayName: 'Use the correct version of the .NET Core SDK'
     inputs:
       version: $(DOTNET_CORE_VERSION)
-  - powershell: |
+  - pwsh: |
       dotnet tool install -g cake.tool --version $(CAKE_VERSION)
       dotnet tool install -g api-tools --version $(API_TOOLS_VERSION)
+      dotnet tool install -g boots --version $(BOOTS_VERSION)
     displayName: 'Install .NET Core tools'
 
-  - powershell: dotnet cake --verbosity=$(VERBOSITY)
+  - pwsh: boots https://aka.ms/xamarin-android-commercial-$(XAMARIN_ANDROID_VERSION)
+    displayName: 'Install the latest version of Xamarin.Android'
+
+  - pwsh: dotnet cake --verbosity=$(VERBOSITY)
     displayName: 'Run build'
     env:
       JavaSdkDirectory: $(JAVA_HOME)
