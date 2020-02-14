@@ -354,6 +354,8 @@ Task ("libs")
     .IsDependentOn ("externals")
     .Does (() =>
 {
+    EnsureDirectoryExists ("./output/binlogs/");
+
     foreach (var file in GetFiles ("./binding/*/*.csproj")) {
         var id = file.GetFilenameWithoutExtension ().ToString ();
         if (packagesToBuild != null && packagesToBuild.All (x => !x.Equals (id, StringComparison.OrdinalIgnoreCase)))
@@ -382,6 +384,7 @@ Task ("libs")
         var settings = new MSBuildSettings ()
             .SetConfiguration (configuration)
             .SetVerbosity (Verbosity.Minimal)
+            .EnableBinaryLogger (MakeAbsolute ((DirectoryPath)$"./output/binlogs/{id}.binlog").FullPath)
             .WithRestore ()
             // .WithProperty ("IncludeSymbols", "true")
             .WithProperty ("DesignTimeBuild", "false")

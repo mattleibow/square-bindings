@@ -88,4 +88,19 @@
     <attr path="/api/package[@name='okhttp3']/interface[@name='WebSocket.Factory']/method[@name='newWebSocket']/parameter[1]" name="managedName">request</attr>
     <attr path="/api/package[@name='okhttp3']/interface[@name='WebSocket.Factory']/method[@name='newWebSocket']/parameter[2]" name="managedName">listener</attr>
 
+    <!--https://github.com/xamarin/java.interop/issues/571-->
+    <add-node path="/api/package[@name='okhttp3']/class[@name='Cache']">
+      <method abstract="false" deprecated="not deprecated" final="true" name="hitCount" jni-signature="()I" bridge="false" native="false" return="int" jni-return="I" static="false" synchronized="true" synthetic="false" visibility="public" />
+      <method abstract="false" deprecated="not deprecated" final="true" name="networkCount" jni-signature="()I" bridge="false" native="false" return="int" jni-return="I" static="false" synchronized="true" synthetic="false" visibility="public" />
+      <method abstract="false" deprecated="not deprecated" final="true" name="requestCount" jni-signature="()I" bridge="false" native="false" return="int" jni-return="I" static="false" synchronized="true" synthetic="false" visibility="public" />
+    </add-node>
+    <add-node path="/api/package[@name='okhttp3']/class[@name='MultipartBody']">
+      <method abstract="false" deprecated="not deprecated" final="false" name="contentType" jni-signature="()Lokhttp3/MediaType;" bridge="false" native="false" return="okhttp3.MediaType" jni-return="Lokhttp3/MediaType;" static="false" synchronized="false" synthetic="false" visibility="public" />
+    </add-node>
+    <add-node path="/api/package[@name='okhttp3']/class[@name='MultipartBody.Builder']">
+      <method abstract="false" deprecated="not deprecated" final="true" name="setType" jni-signature="(Lokhttp3/MediaType;)Lokhttp3/MultipartBody$Builder;" bridge="false" native="false" return="okhttp3.MultipartBody.Builder" jni-return="Lokhttp3/MultipartBody$Builder;" static="false" synchronized="false" synthetic="false" visibility="public">
+        <parameter name="type" type="okhttp3.MediaType" jni-type="Lokhttp3/MediaType;" />
+      </method>
+    </add-node>
+
 </metadata>
