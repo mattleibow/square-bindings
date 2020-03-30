@@ -47,7 +47,7 @@ var versions = new Dictionary<string, string[]> {
     { "Square.OkHttp3.UrlConnection",            new [] { "3.12.3" , "3.12.3"   }  },
     { "Square.OkHttp3",                          new [] { "4.2.2"  , "4.2.2"    }  },
     { "Square.OkIO",                             new [] { "2.4.1"  , "2.4.1"    }  },
-    { "Square.Picasso",                          new [] { "2.5.2"  , "2.5.2.2"  }  },
+    { "Square.Picasso",                          new [] { "2.71828", "2.71828.0"}  },
     { "Square.Pollexor",                         new [] { "2.0.4"  , "2.0.4.1"  }  },
     { "Square.Retrofit",                         new [] { "1.9.0"  , "1.9.0.1"  }  },
     { "Square.Retrofit2.AdapterRxJava2",         new [] { "2.4.0"  , "2.4.0.1"  }  },
@@ -319,8 +319,8 @@ Task ("externals")
                  "Square.OkHttp.UrlConnection/okhttp-urlconnection.jar");
     DownloadJar ("com/squareup/okhttp3/okhttp-urlconnection/{0}/okhttp-urlconnection-{0}.jar",
                  "Square.OkHttp3.UrlConnection/okhttp-urlconnection.jar");
-    DownloadJar ("com/squareup/picasso/picasso/{0}/picasso-{0}.jar",
-                 "Square.Picasso/picasso.jar");
+    DownloadJar ("com/squareup/picasso/picasso/{0}/picasso-{0}.aar",
+                 "Square.Picasso/picasso.aar");
     DownloadJar ("com/squareup/android-times-square/{0}/android-times-square-{0}.aar",
                  "Square.AndroidTimesSquare/android-times-square.aar");
     DownloadJar ("com/squareup/seismic/{0}/seismic-{0}.jar",
@@ -361,7 +361,7 @@ Task ("libs")
 
         var version = Version.Parse (versions [id] [0]);
         var assemblyVersion = $"{version.Major}.0.0.0";
-        var fileVersion     = $"{version.Major}.{version.Minor}.{version.Build}.0";
+        var fileVersion     = $"{version.Major}.{version.Minor}.{(version.Build > 0 ? version.Build : 0)}.0";
         var infoVersion     = versions [id] [1];
         var packageVersion  = versions [id] [1];
 

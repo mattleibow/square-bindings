@@ -14,7 +14,7 @@ namespace Square.Picasso
 {
     partial class RequestCreator
     {
-        public virtual void Into (ImageView imageView, Action onSuccess, Action onError)
+        public virtual void Into (ImageView imageView, Action onSuccess, Action<Java.Lang.Exception> onError)
         {
             Into(imageView, new ActionCallback(onSuccess, onError));
         }
@@ -22,9 +22,9 @@ namespace Square.Picasso
         private class ActionCallback : Java.Lang.Object, ICallback
         {
             private readonly Action onSuccess;
-            private readonly Action onError;
+            private readonly Action<Java.Lang.Exception> onError;
 
-            public ActionCallback(Action onSuccess, Action onError)
+            public ActionCallback(Action onSuccess, Action<Java.Lang.Exception> onError)
             {
                 this.onSuccess = onSuccess;
                 this.onError = onError;
@@ -37,11 +37,11 @@ namespace Square.Picasso
                 }
             }
 
-            public void OnError()
+            public void OnError(Java.Lang.Exception exc)
             {
                 if (onError != null)
                 {
-                    onError();
+                    onError(exc);
                 }
             }
         }
