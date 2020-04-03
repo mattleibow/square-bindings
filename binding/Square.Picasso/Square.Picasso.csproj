@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
   <PropertyGroup>
-    <TargetFrameworks>monoandroid4.4</TargetFrameworks>
+    <TargetFrameworks>monoandroid8.1</TargetFrameworks>
     <IsBindingProject>true</IsBindingProject>
     <AssemblyName>Square.Picasso</AssemblyName>
     <RootNamespace>Square.Picasso</RootNamespace>
@@ -14,9 +14,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <Version>2.0.0.0</Version>
-    <FileVersion>2.5.2.0</FileVersion>
-    <InformationalVersion>2.5.2.0</InformationalVersion>
-    <PackageVersion>2.5.2.2</PackageVersion>
+    <FileVersion>2.71828.0.0</FileVersion>
+    <InformationalVersion>2.71828.0.0</InformationalVersion>
+    <PackageVersion>2.71828.0</PackageVersion>
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Square.Picasso</PackageId>
@@ -33,13 +33,14 @@
     <PackageTags>picasso images xamarin android monodroid</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Square.OkIO" Version="1.5.0" />
-    <PackageReference Include="Square.OkHttp" Version="2.4.0" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Transforms\*.xml" />
     <TransformFile Include="Transforms\*.xml" />
     <EmbeddedJar Include="..\..\externals\$(PackageId)\*.jar" Link="Jars\%(Filename)%(Extension)" />
     <LibraryProjectZip Include="..\..\externals\$(PackageId)\*.aar" Link="Jars\%(Filename)%(Extension)" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Square.OkHttp3" Version="3.11.0" />
+    <PackageReference Include="Xamarin.Android.Support.Annotations" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.Android.Support.Exif" Version="27.0.2.1" />
   </ItemGroup>
 </Project>
