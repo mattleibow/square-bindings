@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.Retrofit2.AdapterRxJ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square.OkHttp3.UrlConnection", "Square.OkHttp3.UrlConnection\Square.OkHttp3.UrlConnection.csproj", "{0836D1C6-7C45-48C8-9DCF-D85104EEEB77}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Square.OkHttp3.LoggingInterceptor", "Square.OkHttp3.LoggingInterceptor\Square.OkHttp3.LoggingInterceptor.csproj", "{77A709C5-86D7-4D51-8857-F8DECF49BEF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{0836D1C6-7C45-48C8-9DCF-D85104EEEB77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0836D1C6-7C45-48C8-9DCF-D85104EEEB77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0836D1C6-7C45-48C8-9DCF-D85104EEEB77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77A709C5-86D7-4D51-8857-F8DECF49BEF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77A709C5-86D7-4D51-8857-F8DECF49BEF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77A709C5-86D7-4D51-8857-F8DECF49BEF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77A709C5-86D7-4D51-8857-F8DECF49BEF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,8 +2,8 @@
   <PropertyGroup>
     <TargetFrameworks>monoandroid4.4</TargetFrameworks>
     <IsBindingProject>true</IsBindingProject>
-    <AssemblyName>Square.OkHttp3.UrlConnection</AssemblyName>
-    <RootNamespace>Square.OkHttp3.UrlConnection</RootNamespace>
+    <AssemblyName>Square.OkHttp3.LoggingInterceptor</AssemblyName>
+    <RootNamespace>Square.OkHttp3.LoggingInterceptor</RootNamespace>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
@@ -19,21 +19,21 @@
     <PackageVersion>4.4.0</PackageVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <PackageId>Square.OkHttp3.UrlConnection</PackageId>
-    <Title>OkHttp v3 UrlConnection bindings for Xamarin.Android</Title>
-    <Summary>OkHttp ability to be used with HttpURLConnection.</Summary>
-    <Description>OkHttp ability to be used with HttpURLConnection.</Description>
+    <PackageId>Square.OkHttp3.LoggingInterceptor</PackageId>
+    <Title>OkHttp v3 LoggingInterceptor bindings for Xamarin.Android</Title>
+    <Summary>OkHttp ability to be used with LoggingInterceptor.</Summary>
+    <Description>OkHttp ability to be used with LoggingInterceptor.</Description>
     <Authors>mattleibow</Authors>
     <Owners>mattleibow</Owners>
     <Copyright>Square and Matthew Leibowitz.</Copyright>
     <PackageProjectUrl>https://github.com/mattleibow/square-bindings</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.okhttp.urlconection_256x256.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/mattleibow/square-bindings/master/icons/square.okhttp.logginginterceptor_256x256.png</PackageIconUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>okhttp square square.okhttp xamarin android monodroid</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Square.OkHttp3" Version="4.3.1" />
+    <PackageReference Include="Square.OkHttp3" Version="4.4.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Transforms\*.xml" />
